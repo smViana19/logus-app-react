@@ -5,9 +5,11 @@ import LayoutDeslogado from '../Layouts/LayoutDeslogado'
 export default function HomePage() {
     return (
         <LayoutDeslogado>
-            <a href="">Login</a>
+            <Link to="/login">Login</Link>
             <br />
-            <a href="">Registro</a>
+            <Link to="/registro">Registro</Link>
+            <br />
+            <Link to="/dashboard">Dashboard</Link>
         </LayoutDeslogado>
     );
 }

@@ -1,10 +1,19 @@
 import React from 'react';
-import LayoutDeslogado from '../Layouts/LayoutDeslogado'
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+
 
 export default function Dashboard() {
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    }
     return (
-        <LayoutDeslogado>
-            <h1>Dashboard</h1>
-        </LayoutDeslogado>
+        <>
+        <h1>Dashboard</h1>
+        </>
+            
+        
     );
 }

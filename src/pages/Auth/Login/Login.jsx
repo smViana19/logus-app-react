@@ -10,6 +10,7 @@ import Checkbox from '../../../components/Checkbox';
 import BotaoPrincipal from '../../../components/Botoes/BtnPrincipal';
 import * as actions from '../../../store/modules/auth/actions'
 
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 
 
@@ -19,6 +20,7 @@ export default function Login(props) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -26,10 +28,12 @@ export default function Login(props) {
 
         if (!isEmail(email) || password.length < 6 || password.length > 50) {
             toast.error('Email ou senha invalidos');
+            return
         }
 
         if (formErrors) return;
         dispatch(actions.loginRequest({ email, password, prevPath }));
+        navigate('/dashboard')
     }
 
     return (

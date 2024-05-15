@@ -10,14 +10,15 @@ import BtnPrincipal from "../../../components/Botoes/BtnPrincipal";
 import LayoutDeslogado from '../../../Layouts/LayoutDeslogado';
 
 import axios from "../../../../services/axios";
-import history from '../../../../services/history';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Registro() {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -49,7 +50,7 @@ export default function Registro() {
                 email,
             })
             toast.success('Registrado com sucesso!');
-            history.push('/login')
+            navigate('/login');
             
         } catch (err) {
 

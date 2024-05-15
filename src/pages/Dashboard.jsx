@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import LayoutLogado from '../Layouts/LayoutLogado';
 
 
 export default function Dashboard() {
@@ -11,9 +12,13 @@ export default function Dashboard() {
     }
     return (
         <>
-        <h1>Dashboard</h1>
+            <LayoutLogado
+                
+                header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Tela Principal</h2>}
+            >
+            </LayoutLogado>
         </>
-            
-        
+
+
     );
 }

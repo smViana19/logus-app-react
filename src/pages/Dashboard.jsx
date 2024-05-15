@@ -5,11 +5,11 @@ import LayoutLogado from '../Layouts/LayoutLogado';
 
 
 export default function Dashboard() {
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-    if (!isLoggedIn) {
-        return <Navigate to="/login" replace />;
-    }
+    // if (!isLoggedIn) {
+    //     return <Navigate to="/login" replace />;
+    // }
     return (
         <>
             <LayoutLogado

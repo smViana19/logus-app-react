@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LayoutDeslogado from '../Layouts/LayoutDeslogado'
 import { FaCircle, FaPowerOff, FaUserAlt } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../store/modules/auth/actions'

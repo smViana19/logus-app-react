@@ -18,7 +18,7 @@ export default {
                 purpleDarkBg: '#533680',
                 //textos
                 txtPlaceholder: '#3A3A3A',
-                txtTitulo: '',
+                txtTitulo: '#533680',
                 txtLink: '',
                 txtBotao: '',
             },

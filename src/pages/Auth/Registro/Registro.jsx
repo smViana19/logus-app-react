@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import isEmail from "validator/lib/isEmail";
 import { get } from "lodash";
-import { useSelector } from "react-redux";
+
 import '../../../css/style.css'
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
 import BtnPrincipal from "../../../components/Botoes/BtnPrincipal";
-import LayoutDeslogado from '../../../Layouts/LayoutDeslogado';
+import { Link } from "react-router-dom";
 
 import axios from "../../../../services/axios";
 import { useNavigate } from "react-router-dom";
 
 
 export default function Registro() {
-    const id = useSelector(state => state.auth.user.id);
-    const nomeStorage = useSelector(state => state.auth.user.nome);
-    const emailStorage = useSelector(state => state.auth.user.email);
+    // const id = useSelector(state => state.auth.user.id);
+    // const nomeStorage = useSelector(state => state.auth.user.nome);
+    // const emailStorage = useSelector(state => state.auth.user.email);
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
@@ -71,80 +71,80 @@ export default function Registro() {
         <>
             <ToastContainer />
 
-            <LayoutDeslogado>
-
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <InputLabel htmlFor="nome" value="Nome" />
-
-                        <TextInput
-                            type="text"
-                            value={nome}
-                            onChange={e => setNome(e.target.value)}
-                            placeholder="Digite seu nome"
-                        />
 
 
-                    </div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <InputLabel htmlFor="nome" value="Nome" />
 
-                    <div className="mt-4">
-                        <InputLabel htmlFor="email" value="Email" />
-
-                        <TextInput
-                            type="email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            placeholder="Digite seu email"
-                        />
-
-
-                    </div>
-
-                    <div className="mt-4">
-                        <InputLabel htmlFor="password" value="Senha" />
-
-                        <TextInput
-                            type="password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                            placeholder="Digite sua senha"
-                        />
+                    <TextInput
+                        type="text"
+                        value={nome}
+                        onChange={e => setNome(e.target.value)}
+                        placeholder="Digite seu nome"
+                    />
 
 
-                    </div>
+                </div>
 
-                    <div className="mt-4 ">
-                        <InputLabel htmlFor="password_confirmation" value="Confirmar senha" />
+                <div className="mt-4">
+                    <InputLabel htmlFor="email" value="Email" />
 
-                        <TextInput
-                            type="password"
-                            value={confirmPassword}
-                            onChange={e => setConfirmPassword(e.target.value)}
-                            placeholder="Confirme sua senha"
-                        />
-
-
-                    </div>
-                    <div className="flex justify-center mt-5">
-
-                        <a
-                            className=" text-sm text-gray-500 hover:text-gray-900"
-                        >
-                            Ja possui uma conta? <span className='font-bold text-roxoPrincipal hover:underline'>Entrar</span>
-                        </a>
-                    </div>
-                    <div className="flex items-center justify-center mt-5">
+                    <TextInput
+                        type="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder="Digite seu email"
+                    />
 
 
+                </div>
 
-                        <BtnPrincipal type='submit'>
-                            Cadastrar
-                        </BtnPrincipal>
+                <div className="mt-4">
+                    <InputLabel htmlFor="password" value="Senha" />
 
-                    </div>
+                    <TextInput
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        placeholder="Digite sua senha"
+                    />
 
-                </form>
-            </LayoutDeslogado>
+
+                </div>
+
+                <div className="mt-4 ">
+                    <InputLabel htmlFor="password_confirmation" value="Confirmar senha" />
+
+                    <TextInput
+                        type="password"
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
+                        placeholder="Confirme sua senha"
+                    />
+
+
+                </div>
+                <div className="flex justify-center mt-5">
+                    <span className="text-sm text-gray-500">Já possui uma conta?
+                        <Link to="/login" className="font-bold text-txtTitulo hover:underline">
+                            Entrar
+                        </Link>
+                    </span>
+
+                </div>
+                <div className="flex items-center justify-center mt-5">
+
+
+
+                    <BtnPrincipal type='submit'>
+                        Cadastrar
+                    </BtnPrincipal>
+
+                </div>
+
+            </form>
+
 
         </>
 

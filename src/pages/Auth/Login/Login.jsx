@@ -38,53 +38,53 @@ export default function Login(props) {
 
     return (
         <>
-        <ToastContainer />
-        <LayoutDeslogado>
-            
-            
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
+            <ToastContainer />
+            <LayoutDeslogado>
 
-                    <TextInput
-                        value={email}
-                        type="email"
-                        className="mt-1 block w-full"
-                        onChange={e => setEmail(e.target.value)}
-                        placeholder="Digite seu email"
-                    />
 
-                    <InputError message="" className="mt-2" />
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <InputLabel htmlFor="email" value="Email" />
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Senha" />
-                    <TextInput
+                        <TextInput
+                            value={email}
+                            type="email"
+                            className="mt-1 block w-full"
+                            onChange={e => setEmail(e.target.value)}
+                            placeholder="Digite seu email"
+                        />
+
+                        <InputError message="" className="mt-2" />
+                    </div>
+
+                    <div className="mt-4">
+                        <InputLabel htmlFor="password" value="Senha" />
+                        <TextInput
                             type="password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             placeholder="Digite sua senha"
                         />
 
-                </div>
+                    </div>
 
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                        />
-                        <span className="ms-2 text-sm text-gray-600">Lembre-me</span>
-                    </label>
-                </div>
+                    <div className="block mt-4">
+                        <label className="flex items-center">
+                            <Checkbox
+                                name="remember"
+                            />
+                            <span className="ms-2 text-sm text-gray-600">Lembre-me</span>
+                        </label>
+                    </div>
 
-                <div className="flex justify-center mt-5">
-                    <BotaoPrincipal type="submit">
-                        Login
-                    </BotaoPrincipal>
-                </div>
-            </form>
-        </LayoutDeslogado>
+                    <div className="flex justify-center mt-5">
+                        <BotaoPrincipal type="submit">
+                            Login
+                        </BotaoPrincipal>
+                    </div>
+                </form>
+            </LayoutDeslogado>
         </>
-        
+
     );
 }

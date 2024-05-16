@@ -3,8 +3,8 @@ import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
 import NavLink from '../components/NavLink';
 
-export default function LayoutLogado({}) { //colocar o user.name 
-    
+export default function LayoutLogado({ }) { //colocar o user.name 
+
     const currentRoute = window.location.pathname;
     return (
         <div className="min-h-screen bg-gray-100">

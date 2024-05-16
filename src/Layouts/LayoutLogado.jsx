@@ -40,6 +40,11 @@ export default function LayoutLogado({ }) { //colocar o user.name
                                     href="#" >
                                     Agenda
                                 </NavLink>
+                                <NavLink
+                                    // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
+                                    href="#" >
+                                    Método Pomodoro
+                                </NavLink>
                             </div>
 
                         </div>

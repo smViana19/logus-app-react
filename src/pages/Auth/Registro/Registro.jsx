@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import isEmail from "validator/lib/isEmail";
 import { get } from "lodash";
-
+import { useSelector } from "react-redux";
 import '../../../css/style.css'
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
@@ -14,11 +14,21 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Registro() {
+    const id = useSelector(state => state.auth.user.id);
+    const nomeStorage = useSelector(state => state.auth.user.nome);
+    const emailStorage = useSelector(state => state.auth.user.email);
+
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     if (!id) return;
+    //     setNome = (nomeStorage);
+    //     setEmail = (emailStorage);
+    // }, [emailStorage, id, nomeStorage]);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -26,20 +36,16 @@ export default function Registro() {
 
         if (nome.length < 3 || nome.length > 255) {
             toast.warn('O nome deve ter entre 3 e 255 caracteres.');
-
         }
         if (!isEmail(email)) {
             toast.error('Email inválido');
-
         }
 
         if (password.length < 6 || password.length > 50) {
             toast.warn('Senha deve ter entre 6 a 50 caracteres');
-
         }
         if (password !== confirmPassword) {
             toast.warn('A senha e a confirmação de senha não coincidem.');
-
         }
 
         if (formErrors) return;
@@ -51,7 +57,7 @@ export default function Registro() {
             })
             toast.success('Registrado com sucesso!');
             navigate('/login');
-            
+
         } catch (err) {
 
             const errors = get(err, 'response.data.errors', []);

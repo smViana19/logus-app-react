@@ -33,16 +33,14 @@ export default function Login(props) {
 
         if (formErrors) return;
         dispatch(actions.loginRequest({ email, password, prevPath }));
-        navigate('/dashboard')
+        navigate(prevPath)
     }
 
     return (
         <>
             <ToastContainer />
             <LayoutDeslogado>
-
-
-                <form onSubmit={handleSubmit}>
+                <form className="w-full sm:w-1/2" onSubmit={handleSubmit}>
                     <div>
                         <InputLabel htmlFor="email" value="Email" />
 

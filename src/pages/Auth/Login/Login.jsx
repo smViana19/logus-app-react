@@ -33,7 +33,7 @@ export default function Login(props) {
         if (formErrors) 
         dispatch(actions.loginRequest({ email, password, prevPath }));
         navigate(prevPath)
-        return
+        return;
     }
 
     return (

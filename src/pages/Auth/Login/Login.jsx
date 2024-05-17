@@ -30,9 +30,10 @@ export default function Login(props) {
             return
         }
 
-        if (formErrors) return;
+        if (formErrors) 
         dispatch(actions.loginRequest({ email, password, prevPath }));
         navigate(prevPath)
+        return
     }
 
     return (

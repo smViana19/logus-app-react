@@ -11,9 +11,9 @@ import CardArea from '../components/CardsContainers/CardArea';
 export default function Dashboard() {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-    // if (!isLoggedIn) {
-    //     return <Navigate to="/login" replace />;
-    // }
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    }
     return (
         <>
             <div className="min-h-screen bg-gray-50">

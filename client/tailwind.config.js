@@ -22,6 +22,9 @@ export default {
                 txtLink: '',
                 txtBotao: '',
             },
+            scale: {
+                '102': '1.02',
+              }
         },
     },
     plugins: [],

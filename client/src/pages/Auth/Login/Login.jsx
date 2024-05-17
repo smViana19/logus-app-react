@@ -5,7 +5,6 @@ import isEmail from "validator/lib/isEmail";
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
 import InputError from '../../../components/Inputs/InputErro';
-import Checkbox from '../../../components/Checkbox';
 import BotaoPrincipal from '../../../components/Botoes/BtnPrincipal';
 import * as actions from '../../../store/modules/auth/actions'
 
@@ -15,7 +14,7 @@ import { useState } from 'react';
 
 export default function Login(props) {
     const dispatch = useDispatch();
-    const prevPath = get(props, 'location.state.prevPath', '/')
+    const prevPath = get(props, 'location.state.prevPath', '/dashboard')
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,10 +29,12 @@ export default function Login(props) {
             return
         }
 
-        if (formErrors)
+        if (formErrors) {
             dispatch(actions.loginRequest({ email, password, prevPath }));
-        navigate(prevPath)
-        return;
+            navigate(prevPath)
+            return;
+        }
+
     }
 
     return (
@@ -82,22 +83,22 @@ export default function Login(props) {
                                 />
                             </div>
                         </div>
-                        <div class="inline-flex items-center">
-                            <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+                        <div className="inline-flex items-center">
+                            <label className="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
                                 <input type="checkbox"
-                                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-400 checked:bg-violet-800 checked:before:bg-gray-400 hover:before:opacity-10"
+                                    className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-400 checked:bg-violet-800 checked:before:bg-gray-400 hover:before:opacity-10"
                                     id="check" />
                                 <span
-                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
-                                        stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd"
+                                    className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+                                        stroke="currentColor" strokeWidth="1">
+                                        <path fillRule="evenodd"
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
+                                            clipRule="evenodd"></path>
                                     </svg>
                                 </span>
                             </label>
-                            <label class="mt-px text-gray-700 cursor-pointer select-none" htmlFor="check">
+                            <label className="mt-px text-gray-700 cursor-pointer select-none" htmlFor="check">
                                 Lembre-me
                             </label>
                         </div>

@@ -9,15 +9,15 @@ import styled from 'styled-components';
 import SelectTarefa from '../components/Inputs/SelectTarefa';
 
 export default function Pomodoro() {
-    const [tempoDecorrido, setTempoDecorrido] = useState(1500); 
-    const [intervaloId, setIntervaloId] = useState(null); 
+    const [tempoDecorrido, setTempoDecorrido] = useState(1500);
+    const [intervaloId, setIntervaloId] = useState(null);
     const [cronometroExecutando, setCronometroExecutando] = useState(false);
 
     useEffect(() => {
         const contagemRegressiva = () => {
             setTempoDecorrido((prevTempo) => {
                 if (prevTempo <= 0) {
-                    clearInterval(intervaloId); 
+                    clearInterval(intervaloId);
                     setIntervaloId(null);
                     setCronometroExecutando(false);
                     return 0;
@@ -26,13 +26,13 @@ export default function Pomodoro() {
             });
         };
 
-    
+
         if (cronometroExecutando) {
             const id = setInterval(contagemRegressiva, 1000);
             setIntervaloId(id);
-            return () => clearInterval(id); 
+            return () => clearInterval(id);
         } else {
-       
+
             clearInterval(intervaloId);
             setIntervaloId(null);
         }
@@ -43,7 +43,7 @@ export default function Pomodoro() {
         setCronometroExecutando((prevExecutando) => !prevExecutando);
     };
 
-  
+
     const formatarTempo = (tempo) => {
         const minutos = Math.floor(tempo / 60);
         const segundos = tempo % 60;
@@ -76,16 +76,16 @@ export default function Pomodoro() {
             <main>
 
                 <div className='flex justify-center mt-8 rounded-lg'>
-                   <SelectTarefa/>
+                    <SelectTarefa />
                 </div>
                 <div className='w-2/6 m-auto'>
-                <StyledCircularProgressbar 
-                    value={tempoDecorrido / 1500} // Normaliza o valor entre 0 e 1 para o progresso
-                    text={formatarTempo(tempoDecorrido)} // Define o texto do CircularProgressbar
-                />
+                    <StyledCircularProgressbar
+                        value={tempoDecorrido / 1500} // Normaliza o valor entre 0 e 1 para o progresso
+                        text={formatarTempo(tempoDecorrido)} // Define o texto do CircularProgressbar
+                    />
                     <div className='grid grid-flow-row-dense grid-cols-5 gap-4'>
                         <BtnPrincipal className='start-btn py-3 rounded-xl text-xl col-span-4' onClick={alternarCronometro}>
-                                {cronometroExecutando ? 'Pause' : 'Start'}
+                            {cronometroExecutando ? 'Pause' : 'Start'}
                         </BtnPrincipal>
                         <BtnPrincipal className='rounded-xl'>
                             Reset
@@ -93,8 +93,16 @@ export default function Pomodoro() {
                     </div>
                 </div>
 
-                
+
             </main>
+            <aside className='fixed right-8 top-24'>
+                <div className=' bg-gray-200 h-32 w-56 rounded-lg px-4 py-4'>
+                    <span className='font-base text-lg '>Tempo de foco hoje: </span>
+                    <span className='text-2xl font-medium text-violet-900 mt-8'>00:00</span>
+                </div>
+            </aside>
+
+
         </div>
     );
 }

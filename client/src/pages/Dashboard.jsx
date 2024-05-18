@@ -8,12 +8,13 @@ import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardArea from '../components/CardsContainers/CardArea';
 
 
+
 export default function Dashboard() {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-
+/*
     if (!isLoggedIn) {
         return <Navigate to="/login" replace />;
-    }
+    }*/
     return (
         <>
             <div className="min-h-screen bg-gray-50">
@@ -40,6 +41,7 @@ export default function Dashboard() {
                                         // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
                                         href="#" >
                                         Área de Postagens {/* fazer dropdown - resumo slide etc */}
+                                        
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
@@ -48,7 +50,7 @@ export default function Dashboard() {
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" >
+                                        href="#"  to='/pomodoro' >
                                         Método Pomodoro
                                     </NavLink>
                                 </div>

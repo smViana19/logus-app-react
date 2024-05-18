@@ -24,7 +24,12 @@ export default {
             },
             scale: {
                 '102': '1.02',
-              }
+              },
+              fontSize: {
+                '5xl': '3rem',
+                '6xl': '4rem',
+          
+              },
         },
     },
     plugins: [],

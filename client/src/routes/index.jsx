@@ -8,6 +8,7 @@ import HomePage from '../pages/Index';
 import Registro from '../pages/Auth/Registro/Registro';
 import Dashboard from '../pages/Dashboard';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
+import Pomodoro from '../pages/Pomodoro';
 
 
 export default function Rotas() {
@@ -19,9 +20,10 @@ export default function Rotas() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
-
                 <Route path="/registro" element={<Registro />} />
                 <Route path="/dashboard" element={<Dashboard/>} /> 
+                <Route path="/pomodoro" element={<Pomodoro/>} /> 
+                
                 
             </Routes>
         

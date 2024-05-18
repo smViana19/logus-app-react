@@ -25,7 +25,7 @@ export default function ForgotPassword() {
                     </div>
                     
                     <BtnPrincipal>
-                        Login
+                        Enviar
                     </BtnPrincipal>
                 </div>
 

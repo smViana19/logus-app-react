@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import NavLink from '../components/NavLink';
 import Logo from '../components/Logo';
 import BtnPrincipal from '../components/Botoes/BtnPrincipal';
-
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css'; // Importe os estilos CSS do react-circular-progressbar
+import styled from 'styled-components';
+import SelectTarefa from '../components/Inputs/SelectTarefa';
 
 export default function Pomodoro() {
     const [tempoDecorrido, setTempoDecorrido] = useState(1500); 
@@ -73,21 +76,61 @@ export default function Pomodoro() {
             <main>
 
                 <div className='flex justify-center mt-8 rounded-lg'>
-                    <select className='w-1/2 m-auto rounded-xl px-4 py-2 border border-gray-100' name="" id="">
-                        <option className=' text-gray-300 ' value="" select disabled>Selecione sua tarefa</option>
-                        <option value=""></option>
-                    </select>
+                   <SelectTarefa/>
                 </div>
-                <div className='w-1/2 m-auto'>
-                    <div className='cronometro-card border-4 border-violet-700 flex mx-auto w-96 h-96 flex-1 m-32 flex-col justify-center items-center px-8 py-16 rounded-full'>
-                        <span className='text-6xl font-semibold text-center mb-16'>{formatarTempo(tempoDecorrido)}</span>
-                    
-                    </div>
-                    <BtnPrincipal className='start-btn py-4 rounded-xl text-xl' onClick={alternarCronometro}>
-                            {cronometroExecutando ? 'Pause' : 'Start'}
+                <div className='w-2/6 m-auto'>
+                <StyledCircularProgressbar 
+                    value={tempoDecorrido / 1500} // Normaliza o valor entre 0 e 1 para o progresso
+                    text={formatarTempo(tempoDecorrido)} // Define o texto do CircularProgressbar
+                />
+                    <div className='grid grid-flow-row-dense grid-cols-5 gap-4'>
+                        <BtnPrincipal className='start-btn py-3 rounded-xl text-xl col-span-4' onClick={alternarCronometro}>
+                                {cronometroExecutando ? 'Pause' : 'Start'}
                         </BtnPrincipal>
+                        <BtnPrincipal className='rounded-xl'>
+                            Reset
+                        </BtnPrincipal>
+                    </div>
                 </div>
+
+                
             </main>
         </div>
     );
 }
+
+
+
+
+
+
+const StyledCircularProgressbar = styled(CircularProgressbar)`
+    /* Defina a largura da barra preenchida */
+    .CircularProgressbar-path {
+        stroke-width: 6px; /* Ajuste a largura da barra preenchida conforme necessário */
+    }
+
+    /* Defina a largura da barra não preenchida */
+    .CircularProgressbar-trail {
+        stroke-width: 6px; /* Mantém a mesma largura da barra não preenchida */
+    }
+
+    /* Defina a cor da barra preenchida */
+    .CircularProgressbar-path {
+        stroke: rgb(109 40 217); /* Cor violeta com 100% de opacidade */
+    }
+
+    /* Defina a cor da barra não preenchida */
+    .CircularProgressbar-trail {
+        stroke: #d6d6d6; /* Cor da barra não preenchida */
+    }
+
+    /* Ajuste opcional para o tamanho e a margem do CircularProgressbar */
+    width: 60%;
+    margin: 64px auto;
+
+    /* Defina a cor do texto */
+    .CircularProgressbar-text {
+        fill: #2e2e2e; /* Cor cinza escuro */
+    }
+`;

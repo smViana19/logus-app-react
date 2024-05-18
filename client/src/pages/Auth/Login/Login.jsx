@@ -9,7 +9,7 @@ import BotaoPrincipal from '../../../components/Botoes/BtnPrincipal';
 import * as actions from '../../../store/modules/auth/actions'
 
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 
 export default function Login(props) {
@@ -70,9 +70,10 @@ export default function Login(props) {
                             <div className="flex items-center justify-between">
                                 <InputLabel htmlFor="password" value="Senha" />
                                 <div className="text-sm">
-                                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Esqueci minha senha
-                                    </a>
+                                    <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                    Esqueci minha senha
+                                    </Link>
+                                    
                                 </div>
                             </div>
                             <div className="mt-2">
@@ -112,7 +113,7 @@ export default function Login(props) {
 
                     <p className="mt-10 text-center text- text-gray-500">
                         Ainda não possui cadastro?{' '}
-                        <Link to="/login" className="font-bold text-txtTitulo hover:underline">
+                        <Link to="/Registro" className="font-bold text-txtTitulo hover:underline">
                             Cadastre-se
                         </Link>
                     </p>

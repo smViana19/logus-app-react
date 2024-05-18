@@ -7,6 +7,7 @@ import HomePage from '../pages/Index';
 
 import Registro from '../pages/Auth/Registro/Registro';
 import Dashboard from '../pages/Dashboard';
+import ForgotPassword from '../pages/Auth/ForgotPassword';
 
 
 export default function Rotas() {
@@ -17,6 +18,8 @@ export default function Rotas() {
             <Routes> {/* Use o componente Routes para definir suas rotas */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+
                 <Route path="/registro" element={<Registro />} />
                 <Route path="/dashboard" element={<Dashboard/>} /> 
                 

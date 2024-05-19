@@ -9,6 +9,7 @@ import Registro from '../pages/Auth/Registro/Registro';
 import Dashboard from '../pages/Dashboard';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
 import Pomodoro from '../pages/Pomodoro';
+import Agenda from '../pages/Agenda';
 
 
 export default function Rotas() {
@@ -23,6 +24,7 @@ export default function Rotas() {
                 <Route path="/registro" element={<Registro />} />
                 <Route path="/dashboard" element={<Dashboard/>} /> 
                 <Route path="/pomodoro" element={<Pomodoro/>} /> 
+                <Route path="/agenda" element={<Agenda/>} /> 
                 
                 
             </Routes>

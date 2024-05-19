@@ -45,7 +45,7 @@ export default function Dashboard() {
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" >
+                                        href="#" to='/agenda' >
                                         Agenda
                                     </NavLink>
                                     <NavLink

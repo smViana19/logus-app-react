@@ -26,23 +26,26 @@ export default function Pomodoro() {
             });
         };
 
-
         if (cronometroExecutando) {
             const id = setInterval(contagemRegressiva, 1000);
             setIntervaloId(id);
             return () => clearInterval(id);
         } else {
-
             clearInterval(intervaloId);
             setIntervaloId(null);
         }
     }, [cronometroExecutando]);
 
-
     const alternarCronometro = () => {
         setCronometroExecutando((prevExecutando) => !prevExecutando);
     };
 
+    const resetarCronometro = () => {
+        clearInterval(intervaloId);
+        setIntervaloId(null);
+        setCronometroExecutando(false);
+        setTempoDecorrido(1500);
+    };
 
     const formatarTempo = (tempo) => {
         const minutos = Math.floor(tempo / 60);
@@ -61,7 +64,6 @@ export default function Pomodoro() {
                                     <Logo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink href="#" to='/dashboard'>Dashboard</NavLink>
                                 <NavLink href="#">Área de Postagens</NavLink>
@@ -72,28 +74,24 @@ export default function Pomodoro() {
                     </div>
                 </div>
             </nav>
-
             <main>
-
                 <div className='flex justify-center mt-8 rounded-lg'>
                     <SelectTarefa />
                 </div>
                 <div className='w-2/6 m-auto'>
                     <StyledCircularProgressbar
-                        value={tempoDecorrido / 1500} // Normaliza o valor entre 0 e 1 para o progresso
+                        value={(1500 - tempoDecorrido) / 1500 * 100} // Normaliza o valor entre 0 e 100 para o progresso
                         text={formatarTempo(tempoDecorrido)} // Define o texto do CircularProgressbar
                     />
                     <div className='grid grid-flow-row-dense grid-cols-5 gap-4'>
                         <BtnPrincipal className='start-btn py-3 rounded-xl text-xl col-span-4' onClick={alternarCronometro}>
                             {cronometroExecutando ? 'Pause' : 'Start'}
                         </BtnPrincipal>
-                        <BtnPrincipal className='rounded-xl'>
+                        <BtnPrincipal className='rounded-xl' onClick={resetarCronometro}>
                             Reset
                         </BtnPrincipal>
                     </div>
                 </div>
-
-
             </main>
             <aside className='fixed right-8 top-24'>
                 <div className=' bg-gray-200 h-32 w-56 rounded-lg px-4 py-4'>
@@ -101,44 +99,22 @@ export default function Pomodoro() {
                     <span className='text-2xl font-medium text-violet-900 mt-8'>00:00</span>
                 </div>
             </aside>
-
-
         </div>
     );
 }
 
-
-
-
-
-
 const StyledCircularProgressbar = styled(CircularProgressbar)`
-    /* Defina a largura da barra preenchida */
     .CircularProgressbar-path {
-        stroke-width: 6px; /* Ajuste a largura da barra preenchida conforme necessário */
+        stroke-width: 6px;
+        stroke: rgb(109 40 217);
     }
-
-    /* Defina a largura da barra não preenchida */
     .CircularProgressbar-trail {
-        stroke-width: 6px; /* Mantém a mesma largura da barra não preenchida */
+        stroke-width: 6px;
+        stroke: #d6d6d6;
     }
-
-    /* Defina a cor da barra preenchida */
-    .CircularProgressbar-path {
-        stroke: rgb(109 40 217); /* Cor violeta com 100% de opacidade */
-    }
-
-    /* Defina a cor da barra não preenchida */
-    .CircularProgressbar-trail {
-        stroke: #d6d6d6; /* Cor da barra não preenchida */
-    }
-
-    /* Ajuste opcional para o tamanho e a margem do CircularProgressbar */
     width: 60%;
     margin: 64px auto;
-
-    /* Defina a cor do texto */
     .CircularProgressbar-text {
-        fill: #2e2e2e; /* Cor cinza escuro */
+        fill: #2e2e2e;
     }
 `;

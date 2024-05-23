@@ -5,6 +5,7 @@ import isEmail from "validator/lib/isEmail";
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
 import InputError from '../../../components/Inputs/InputErro';
+import Logo from '../../../components/Logo'
 import BotaoPrincipal from '../../../components/Botoes/BtnPrincipal';
 import * as actions from '../../../store/modules/auth/actions'
 
@@ -43,13 +44,9 @@ export default function Login(props) {
             <ToastContainer />
             <div className="flex sm:mx-auto sm:w-full sm:max-w-xl flex-1 flex-col justify-center px-0 py-12 lg:px-16 bg-white rounded-xl">
                 <div className="sm:mx-auto ">
-                    <img
-                        className="mx-auto h-10 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                    />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Sigin to your account
+                    <Logo/>
+                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700">
+                       Login
                     </h2>
                 </div>
 
@@ -113,7 +110,7 @@ export default function Login(props) {
 
                     <p className="mt-10 text-center text- text-gray-500">
                         Ainda não possui cadastro?{' '}
-                        <Link to="/Registro" className="font-bold text-txtTitulo hover:underline">
+                        <Link to="/registro" className="font-bold text-txtTitulo hover:underline">
                             Cadastre-se
                         </Link>
                     </p>

@@ -26,8 +26,8 @@ export default function HomePage() {
                     <li><img className='w-32' src={logo} alt="" /></li>
                 </ul>
                 <ul className='flex gap-16'>
-                    <li className='text-lg border-r-gray-500 border-r w-16 text-center h-8'>HOME</li>
-                    <li className='text-lg w-8 px-6 text-center'>FUNCIONALIDADES</li>
+                    <li className='text-lg border-r-gray-500 border-r w-16 text-center h-8'>Home</li>
+                    <li className='text-lg w-8 px-6 text-center'>Funcionalidades</li>
                 </ul>
             
                     <ul className='flex gap-16' >
@@ -38,7 +38,7 @@ export default function HomePage() {
                                 </Link>
                             ) : (
                                 <Link to="/login">
-                                    LOGIN
+                                    Login
                                 </Link>
                             )}
                         </li>
@@ -46,7 +46,7 @@ export default function HomePage() {
                             {isLoggedIn ? (
                                 <Link to="/dashboard">Dashboard</Link>
                             ) : (
-                                <Link to="/registro">CADASTRAR</Link>
+                                <Link to="/registro">Cadastrar</Link>
                             )}
                             {isLoggedIn && (<FaCircle size={24} color='#66ff33' />)}
                         </li>

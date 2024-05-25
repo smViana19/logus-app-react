@@ -7,6 +7,7 @@ import '../../../css/style.css'
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
 import BtnPrincipal from "../../../components/Botoes/BtnPrincipal";
+import Logo from '../../../components/Logo';
 import { Link } from "react-router-dom";
 
 import axios from "../../../../services/axios";
@@ -72,13 +73,9 @@ export default function Registro() {
 
             <div className="flex sm:mx-auto sm:w-full sm:max-w-xl flex-1 flex-col justify-center px-0 py-12 lg:px-16 bg-white rounded-xl">
                 <div className="sm:mx-auto ">
-                    <img
-                        className="mx-auto h-10 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                    />
+                    <Logo/>
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Create an account
+                        Crie sua conta
                     </h2>
                 </div>
 

@@ -5,16 +5,16 @@ import NavLink from '../components/NavLink';
 import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
-import CardArea from '../components/CardsContainers/CardArea';
+import CardCategoria from '../components/CardsContainers/CardCategoria';
 
 
 
 export default function Dashboard() {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-/*
-    if (!isLoggedIn) {
+
+    {/*if (!isLoggedIn) {
         return <Navigate to="/login" replace />;
-    }*/
+    }*/}
     return (
         <>
             <div className="min-h-screen bg-gray-50">
@@ -62,8 +62,10 @@ export default function Dashboard() {
                 <UsuarioCard />
 
                 <div className='flex gap-8 mx-16'>
-                    <CardArea area={'Área do Aluno'} colorProps={'violet-700'} colorText={'white'} />
-                    <CardArea area={'Área do Professor'} colorText={'gray-600'} />
+                    <CardCategoria categoria={'Resumos'}  />
+                    <CardCategoria categoria={'Apresentações'} customClass={'bg-white text-black' } />
+                    <CardCategoria categoria={'Atividades'} customClass={'bg-white text-black' } />
+                  
                 </div>
 
                 <section className='mx-16 mt-16'>

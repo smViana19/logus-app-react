@@ -11,6 +11,7 @@ import ForgotPassword from '../pages/Auth/ForgotPassword';
 import Pomodoro from '../pages/Pomodoro';
 import Agenda from '../pages/Agenda';
 import AreaPostagens from '../pages/AreaPostagens';
+import DashboardAdm from '../pages/Admin/DashboardAdm';
 
 
 export default function Rotas() {
@@ -27,9 +28,7 @@ export default function Rotas() {
                 <Route path="/pomodoro" element={<Pomodoro/>} /> 
                 <Route path="/agenda" element={<Agenda/>} /> 
                 <Route path="/areapostagens" element={<AreaPostagens/>} /> 
-
-                
-                
+                <Route path="/dashboardAdmin" element={<DashboardAdm/>} /> 
             </Routes>
         
 

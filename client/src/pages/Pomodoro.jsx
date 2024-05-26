@@ -66,9 +66,9 @@ export default function Pomodoro() {
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink href="#" to='/dashboard'>Dashboard</NavLink>
-                                <NavLink href="#">Área de Postagens</NavLink>
-                                <NavLink href="#">Agenda</NavLink>
-                                <NavLink href="#" to='/pomodoro'>Método Pomodoro</NavLink>
+                                <NavLink href="#" to='/areapostagens' >Área de Postagens</NavLink>
+                                <NavLink href="#" to='/agenda'>Agenda</NavLink>
+                                <NavLink href="#" to='/pomodoro' className='text-purplePrimary'>Método Pomodoro</NavLink>
                             </div>
                         </div>
                     </div>

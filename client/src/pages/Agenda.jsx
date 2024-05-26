@@ -56,15 +56,9 @@ export default function Agenda() {
                                     <NavLink
 
                                         // borderPage={currentRoute === '/' ? '1px solid black' : 'none'}
-
+                                        to='/dashboard'
                                         href="#" >
                                         Dashboard
-                                    </NavLink>
-
-
-                                    <NavLink
-                                        href="#" >
-                                        Área de Postagens {/* fazer dropdown - resumo slide etc */}
                                     </NavLink>
 
                                     <NavLink to='/areapostagens'
@@ -76,7 +70,7 @@ export default function Agenda() {
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
 
-                                        href="#" to='/agenda' >
+                                        href="#" to='/agenda' className='text-purplePrimary'>
                                         Agenda
                                     </NavLink>
                                     <NavLink

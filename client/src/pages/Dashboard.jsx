@@ -31,7 +31,7 @@ export default function Dashboard() {
                                 </div>
 
                                 <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                    <NavLink
+                                    <NavLink className='text-purplePrimary'
                                         // borderPage={currentRoute === '/' ? '1px solid black' : 'none'}
                                         href="#" >
                                         Dashboard
@@ -39,7 +39,7 @@ export default function Dashboard() {
 
                                     <NavLink
                                         // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
-                                        href="#" >
+                                        href="#"  to='/areapostagens'>
                                         Área de Postagens {/* fazer dropdown - resumo slide etc */}
                                         
                                     </NavLink>

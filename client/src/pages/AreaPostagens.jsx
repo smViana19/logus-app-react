@@ -33,13 +33,13 @@ export default function AreaPostagens() {
                                 <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                     <NavLink
                                         // borderPage={currentRoute === '/' ? '1px solid black' : 'none'}
-                                        href="#" >
+                                        href="#" to='/dashboard'>
                                         Dashboard
                                     </NavLink>
 
                                     <NavLink to='/areapostagens'
                                         // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
-                                        href="#" >
+                                        href="#" className='text-purplePrimary' >
                                         Área de Postagens {/* fazer dropdown - resumo slide etc */}
 
                                     </NavLink>
@@ -73,6 +73,17 @@ export default function AreaPostagens() {
                                 <li className='text-sm pt-2'>Atividade de geometria analítica</li>
                                 <li className='text-sm pt-1'>Lista de exercícios de funções</li>
 
+                            </div>
+                        </div>
+
+                        <div className=' rounded-lg p-1 flex border-2'>
+                            <div className='bg-red-600 w-40 rounded-md'>image</div>
+                            <div className='ml-2'>
+                                <h2 className='text-2xl font-semibold'>Matéria</h2>
+                                <ul>
+                                    <li>Lista</li>
+                                    <li>atividade 2</li>
+                                </ul>
                             </div>
                         </div>
 

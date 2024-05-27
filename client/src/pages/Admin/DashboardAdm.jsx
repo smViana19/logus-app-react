@@ -21,7 +21,7 @@ export default function DashboardAdm() {
             <MenuAdmin/>
 
                 <main>
-
+<h1>Notas</h1>
                 </main>
 
             </div>

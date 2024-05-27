@@ -8,7 +8,6 @@ import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
 
 
-
 export default function Dashboard() {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
@@ -21,7 +20,6 @@ export default function Dashboard() {
                 <nav className="bg-white border-b border-gray-100">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
-
 
                             <div className="flex">
                                 <div className="shrink-0 flex items-center">

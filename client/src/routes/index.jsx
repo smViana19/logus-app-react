@@ -12,6 +12,7 @@ import Pomodoro from '../pages/Pomodoro';
 import Agenda from '../pages/Agenda';
 import AreaPostagens from '../pages/AreaPostagens';
 import DashboardAdm from '../pages/Admin/DashboardAdm';
+import Notas from '../pages/Admin/Notas';
 
 
 export default function Rotas() {
@@ -29,6 +30,8 @@ export default function Rotas() {
                 <Route path="/agenda" element={<Agenda/>} /> 
                 <Route path="/areapostagens" element={<AreaPostagens/>} /> 
                 <Route path="/dashboardAdmin" element={<DashboardAdm/>} /> 
+                <Route path="/notas" element={<Notas/>} /> 
+
             </Routes>
         
 

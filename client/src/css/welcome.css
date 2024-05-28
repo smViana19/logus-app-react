@@ -1,0 +1,103 @@
+.bg-img{
+    background-image: url(../assets/bg-Welcome.png);
+    height: 100vh;
+    
+}
+
+.nav__landing-page {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.border-link {
+    border-right: 1.6px solid rgb(165, 165, 165);
+    padding: 0 24px;
+}
+
+#btnRegistrar {
+    background-color: white;
+    border-radius: 12px;
+    color: #820ad1;
+    padding: 4px 16px 6px 16px;
+    margin-left: 24px;
+}
+
+
+/*Section aplicativo web*/
+.container__app-mobile{
+  display: grid;
+  grid-template-columns: 42% 24%;
+  gap: 12%;
+  justify-content: center;
+}
+
+
+.container__funcionalidades-grid {
+  display: grid;
+  grid-template-columns: 50% 40%;
+  gap: 10%;
+  justify-content: center;
+}
+.onhover {
+  border-left: 6px solid #820AD1;
+  border-radius: 8px;
+  box-shadow: 16px 16px 16px 8px rgba(179, 178, 178, 0.133);
+}
+/* -------------------------- COMPONENTS ----------------------------------- */
+
+/* -- InputPurple Component -- */
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.input {
+  min-height: 44px;
+  width: 18%;
+  padding: 0 1rem;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #820ad1;
+  border-radius: 16px 0 0 16px;
+  background-color: transparent;
+  outline: none;
+}
+
+.button--submit {
+  min-height: 44px;
+  padding: .5em .8em;
+  border: none;
+  border-radius: 0 16px 16px 0;
+  background-color: #820AD1;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+
+.button--submit:hover {
+  background-color: #6a0aa9;
+}
+
+
+/*-- container print app pagina principal --*/
+.custum__container-print {
+  border: 6px solid #7C7C7C;
+  width: 68%;
+  height: 72vh;
+  margin: auto;
+  background-color: white;
+  margin-top: 144px;
+  border-radius: 16px;
+  padding: 8px 16px;
+  box-shadow: 16px 16px 16px 4px  rgba(115, 115, 115, 0.179);
+}
+
+
+
+header{
+    color: white;
+}

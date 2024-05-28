@@ -29,8 +29,8 @@ export default function Rotas() {
                 <Route path="/pomodoro" element={<Pomodoro/>} /> 
                 <Route path="/agenda" element={<Agenda/>} /> 
                 <Route path="/areapostagens" element={<AreaPostagens/>} /> 
-                <Route path="/dashboardAdmin" element={<DashboardAdm/>} /> 
-                <Route path="/notas" element={<Notas/>} /> 
+                <Route path="/admin/dashboard" element={<DashboardAdm/>} /> 
+                <Route path="/admin/notas" element={<Notas/>} /> 
 
             </Routes>
         

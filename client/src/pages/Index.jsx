@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCircle, FaPowerOff } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,6 +17,7 @@ export default function HomePage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    const [description, setDescription] = useState('Passe o cursor do mouse por cima do ícone da habilidade para ver mais informações sobre ela.');
 
     const handleLogout = e => {
         e.preventDefault();
@@ -79,7 +80,7 @@ export default function HomePage() {
                 <section id='home' className='container__app-mobile mt-16'>
                     <div className='mt-40'>
                         <Subtitle>Baixe também nosso aplicativo mobile</Subtitle>
-                        <p className='mt-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+                        <p className='mt-4'>Baixe o nosso aplicativo e tenha acesso a todas as funcionalidades a qualquer hora e em qualquer lugar. Simplifique sua vida com a conveniência do nosso app.</p>
                         <div className='flex justify-left gap-32 mt-16'>
                             <a href=""><img className='w-32' src={imgGooglePlay} alt="Link para baixar o aplicativo android" /></a>
                             <a href=""><img className='w-32' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
@@ -90,23 +91,35 @@ export default function HomePage() {
 
                 <section id='funcionalidades' className='my-32 w-3/4 m-auto'>
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
-                    <p className='text-center mt-4 mb-24 w-auto'>Passe o mouse por cima dos titulos e veja nossas principais funcionalidades...</p>
-                    <div className='container__funcionalidades-grid'>
-                        <div>
-                            <CardFuncionalidades
-                                title='Postagem de Materiais'
-                                text='Lorem ipsum dolor sit amet consectetur...'
-                            />
-                            <CardFuncionalidades
-                                title='Agenda'
-                                text='Lorem ipsum dolor sit amet consectetur...'
-                            />
-                            <CardFuncionalidades
-                                title='Método Pomodoro'
-                                text='Lorem ipsum dolor sit amet consectetur...'
-                            />
+                    <div className='grid grid-cols-4 gap-32 justify-between'>
+                        <div className='bg-gray-200 flex-none col-span-1'>
+                            <ul>
+                                <li 
+                                    className='py-2 px-4'
+                                    onMouseOver={() => setDescription('Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional')}
+                                >
+                                    Agenda
+                                </li>
+                                <li 
+                                    className='py-2 px-4'
+                                    onMouseOver={() => setDescription('Descrição do Método Pomodoro')}
+                                  
+                                >
+                                    Método Pomodoro
+                                </li>
+                                <li 
+                                    className='py-2 px-4'
+                                    onMouseOver={() => setDescription('Outra Descrição do Método Pomodoro')}
+                                    
+                                >
+                                    Outra Descrição
+                                </li>
+                            </ul>
                         </div>
-                        <img src="" alt="Print das funcionalidades" />
+
+                        <div className='col-span-3'>
+                            <p className='changeDescription'>{description}</p>
+                        </div>
                     </div>
                 </section>
             </main>

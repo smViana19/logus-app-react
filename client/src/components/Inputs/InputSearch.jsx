@@ -3,7 +3,7 @@ import React from 'react';
 export default function InputSearch({ placeholder, className }) {
     return (
         <form className={`relative flex-grow ml-4 ${className}`}>
-            <button className="absolute left-2 -translate-y-1/2 top-1/2 p-1">
+            <button className="absolute left-3 -translate-y-1/2 top-1/2 p-1">
                 <svg
                     width="17"
                     height="16"
@@ -23,7 +23,7 @@ export default function InputSearch({ placeholder, className }) {
                 </svg>
             </button>
             <input
-                className="input rounded-full px-8 py-3 border-2 border-transparent focus:outline-none focus:border-blue-500 placeholder-gray-400 transition-all duration-300 shadow-md w-full"
+                className="input rounded-full px-12 py-3 border-2 border-transparent focus:outline-none focus:border-blue-500 placeholder-gray-400 transition-all duration-300 shadow-md w-full text-black"
                 placeholder={placeholder}
                 required
                 type="text"

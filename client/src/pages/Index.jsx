@@ -10,20 +10,23 @@ import Subtitle from '../components/Text/Subtitulo';
 import imgAppStore from '../assets/installAppStore.png';
 import imgGooglePlay from '../assets/installGooglePlay.png';
 import imgMockupMobile from '../assets/mockup-home-mobile.png';
-import CardFuncionalidades from '../components/CardsContainers/CardFuncionalidades';
-import '../css/welcome.css'
+import imgAgenda from '../assets/agenda.png'; // Assuming this is the correct path
+
+import '../css/welcome.css';
 
 export default function HomePage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
     const [description, setDescription] = useState('Passe o cursor do mouse por cima do ícone da habilidade para ver mais informações sobre ela.');
+    const [imageChange, setImageChange] = useState('');
 
     const handleLogout = e => {
         e.preventDefault();
         dispatch(actions.loginFailure());
         navigate('/');
-    }
+    };
 
     return (
         <div className="bg-center bg-corPrincipal selection:bg-red-500 selection:text-white bg-img">
@@ -34,10 +37,10 @@ export default function HomePage() {
                     </ul>
                     <ul className='flex gap-16'>
                         <li className='text-lg border-r-gray-500 border-r w-16 text-center h-8'>
-                            <Link to="#home">Home</Link>
+                            <a href="#home">Home</a>
                         </li>
                         <li className='text-lg w-8 px-6 text-center'>
-                            <Link to="#funcionalidades">Funcionalidades</Link>
+                            <a href="#funcionalidades">Funcionalidades</a>
                         </li>
                     </ul>
                     <ul className='flex gap-16'>
@@ -77,13 +80,13 @@ export default function HomePage() {
 
                 <ContainerPrintApp />
 
-                <section id='home' className='container__app-mobile mt-16'>
+                <section className='container__app-mobile mt-16'>
                     <div className='mt-40'>
                         <Subtitle>Baixe também nosso aplicativo mobile</Subtitle>
                         <p className='mt-4'>Baixe o nosso aplicativo e tenha acesso a todas as funcionalidades a qualquer hora e em qualquer lugar. Simplifique sua vida com a conveniência do nosso app.</p>
                         <div className='flex justify-left gap-32 mt-16'>
-                            <a href=""><img className='w-32' src={imgGooglePlay} alt="Link para baixar o aplicativo android" /></a>
-                            <a href=""><img className='w-32' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
+                            <a href="#"><img className='w-32' src={imgGooglePlay} alt="Link para baixar o aplicativo android" /></a>
+                            <a href="#"><img className='w-32' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
                         </div>
                     </div>
                     <img className='w-3/4' src={imgMockupMobile} alt="Mockup Mobile" />
@@ -95,30 +98,39 @@ export default function HomePage() {
                         <div className='bg-gray-200 flex-none col-span-1'>
                             <ul>
                                 <li 
-                                    className='py-2 px-4'
-                                    onMouseOver={() => setDescription('Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional')}
+                                    className='py-2 px-4 flex'
+                                    onMouseOver={() => 
+                                        {
+                                            setDescription(`
+                                                <h3 class="text-lg font-semibold">Agenda</h3>
+                                                <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                                            `);
+                                            setImageChange(imgAgenda);
+                                        }}
                                 >
                                     Agenda
                                 </li>
                                 <li 
-                                    className='py-2 px-4'
-                                    onMouseOver={() => setDescription('Descrição do Método Pomodoro')}
-                                  
+                                    className='py-2 px-4 flex'
+                                    onMouseOver={() => {
+                                        setDescription('Descrição do Método Pomodoro');
+                                        setImageChange(imgGooglePlay);
+                                    }}
                                 >
                                     Método Pomodoro
                                 </li>
                                 <li 
-                                    className='py-2 px-4'
+                                    className='py-2 px-4 flex'
                                     onMouseOver={() => setDescription('Outra Descrição do Método Pomodoro')}
-                                    
                                 >
                                     Outra Descrição
                                 </li>
                             </ul>
                         </div>
 
-                        <div className='col-span-3'>
-                            <p className='changeDescription'>{description}</p>
+                        <div className='col-span-3 flex items-center'>
+                            <div dangerouslySetInnerHTML={{ __html: description }} />
+                            {imageChange && <img className='w-52' src={imageChange} alt="Imagem da funcionalidade" />}
                         </div>
                     </div>
                 </section>

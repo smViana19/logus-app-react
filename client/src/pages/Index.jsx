@@ -39,7 +39,7 @@ export default function HomePage() {
             name: 'Agenda',
             description: `
                 <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-                <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional. Os recusos que ela </p>
             `,
             image: imgAgenda,
             id: 'agenda'
@@ -118,7 +118,7 @@ export default function HomePage() {
 
                 <ContainerPrintApp />
 
-                <section className='container__app-mobile mt-16'>
+                <section className='container__app-mobile mt-16 flex'>
                     <div className='mt-40'>
                         <Subtitle>Baixe também nosso aplicativo mobile</Subtitle>
                         <p className='mt-4'>Baixe o nosso aplicativo e tenha acesso a todas as funcionalidades a qualquer hora e em qualquer lugar. Simplifique sua vida com a conveniência do nosso app.</p>
@@ -127,13 +127,13 @@ export default function HomePage() {
                             <a href="#"><img className='w-40' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
                         </div>
                     </div>
-                    <img className='w-3/4' src={imgMockupMobile} alt="Mockup Mobile" />
+                    <img className='w-1/4' src={imgMockupMobile} alt="Mockup Mobile" />
                 </section>
 
                 <section id='funcionalidades' className='my-32 m-auto'>
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
-                    <div className='grid grid-cols-4 gap-32 justify-between mt-16'>
-                        <div className='bg-gray-200 flex-none col-span-1'>
+                    <div className='grid grid-cols-7 gap-32 justify-between mt-16'>
+                        <div className='bg-gray-200 flex-none col-span-2'>
                             <ul>
                                 {functionalities.map(item => (
                                     <FunctionalityItem
@@ -152,7 +152,7 @@ export default function HomePage() {
                             </ul>
                         </div>
 
-                        <div className='col-span-3 flex items-center'>
+                        <div className='col-span-5 flex items-center'>
                             <div dangerouslySetInnerHTML={{ __html: description }} />
                             {imageChange && <img className='ml-4 w-52' src={imageChange} alt="Imagem da funcionalidade" />}
                         </div>

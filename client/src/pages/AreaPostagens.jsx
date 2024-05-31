@@ -6,7 +6,7 @@ import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
-
+import math from '../assets/math.png'
 
 
 export default function AreaPostagens() {
@@ -76,19 +76,10 @@ export default function AreaPostagens() {
                             </div>
                         </div>
 
-                        <div className=' rounded-lg p-1 flex border-2'>
-                            <div className='bg-red-600 w-40 rounded-md'>image</div>
-                            <div className='ml-2'>
-                                <h2 className='text-2xl font-semibold'>Matéria</h2>
-                                <ul>
-                                    <li>Lista</li>
-                                    <li>atividade 2</li>
-                                </ul>
-                            </div>
-                        </div>
+                     
 
                         <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
+                            <div className='bg-[#A35454] h-16 rounded-t-lg flex items-end py-2 px-4'>
                                 <span className='text-2xl font-semibold text-white '>Português</span>
                             </div>
                         </div>

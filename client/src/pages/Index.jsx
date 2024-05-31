@@ -7,13 +7,15 @@ import logo from '../assets/logo.png';
 import InputPurple from '../components/Inputs/InputPurple';
 import ContainerPrintApp from '../components/CardsContainers/ContainerPrintApp';
 import Subtitle from '../components/Text/Subtitulo';
+import FunctionalityItem from '../components/FunctionalityItem';
+import FooterLanding from '../components/Footer/FooterLanding';
 
 //images
 import imgAppStore from '../assets/installAppStore.png';
 import imgGooglePlay from '../assets/installGooglePlay.png';
 import imgMockupMobile from '../assets/mockup-home-mobile.png';
-import imgAgenda from '../assets/agenda.png'; 
-import imgPomodoro from '../assets/pomodoro.png'
+import imgAgenda from '../assets/agenda.png';
+import imgPomodoro from '../assets/pomodoro.png';
 
 import '../css/welcome.css';
 
@@ -31,6 +33,38 @@ export default function HomePage() {
         dispatch(actions.loginFailure());
         navigate('/');
     };
+
+    const functionalities = [
+        {
+            name: 'Agenda',
+            description: `
+                <h3 class="text-lg font-semibold mb-4">Agenda</h3>
+                <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+            `,
+            image: imgAgenda,
+            id: 'agenda'
+        },
+        {
+            name: 'Método Pomodoro',
+            description: `
+                <h3 class="text-lg font-semibold mb-4">Método Pomodoro</h3>
+                <p class="w-3/4 mt-4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+            `,
+            image: imgPomodoro,
+            id: 'pomodoro'
+        },
+        {
+            name: 'Pontuação',
+            description: `
+                <h3 class="text-lg font-semibold mb-4">Pontuação</h3>
+                <p class="w-3/4">Optamos pelo método de pontuação para incentivar os alunos a se dedicarem mais aos estudos. A ideia é recompensar os esforços dos estudantes através de um sistema que contabiliza pontos cada vez que eles realizam determinadas atividades acadêmicas. Essas atividades incluem a postagem de exercícios resolvidos, a elaboração de resumos detalhados, a criação e compartilhamento de slides para apresentações, a entrega de trabalhos bem feitos, ou qualquer outra atividade elaborada pelo professor.</p>
+                <p class="w-3/4 mt-4">Nosso objetivo é criar um ambiente mais dinâmico e participativo, onde os alunos se sintam motivados a contribuir continuamente para o seu próprio aprendizado e para o de seus colegas.</p>
+                <p class="w-3/4 mt-4">Quando o aluno atinge uma determinada pontuação, a própria escola será responsável por decidir qual recompensa ele receberá. As recompensas serão selecionadas para refletir o esforço e a dedicação do aluno, e poderão variar desde reconhecimentos públicos, certificados de mérito, até pequenas premiações.</p>
+            `,
+            image: null,
+            id: 'pontuacao'
+        }
+    ];
 
     return (
         <div className="bg-center bg-corPrincipal selection:bg-red-500 selection:text-white bg-img">
@@ -61,9 +95,9 @@ export default function HomePage() {
                             {isLoggedIn ? (
                                 <Link to="/dashboard">Dashboard</Link>
                             ) : (
-                                <Link to="/registro" 
-                                className="font-medium text-white  hover:text-neutral-500"
-                                id='btnRegistrar'>Registrar</Link>
+                                <Link to="/registro"
+                                    className="font-medium text-white  hover:text-neutral-500"
+                                    id='btnRegistrar'>Registrar</Link>
                             )}
                             {isLoggedIn && (<FaCircle size={24} color='#66ff33' />)}
                         </li>
@@ -71,7 +105,7 @@ export default function HomePage() {
                 </nav>
             </header>
 
-            <main>
+            <main className='mx-64'>
                 <section id='home'>
                     <h1 className='text-4xl text-white font-bold text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
                     <InputPurple
@@ -89,80 +123,32 @@ export default function HomePage() {
                         <Subtitle>Baixe também nosso aplicativo mobile</Subtitle>
                         <p className='mt-4'>Baixe o nosso aplicativo e tenha acesso a todas as funcionalidades a qualquer hora e em qualquer lugar. Simplifique sua vida com a conveniência do nosso app.</p>
                         <div className='flex justify-left gap-32 mt-16'>
-                            <a href="#"><img className='w-32' src={imgGooglePlay} alt="Link para baixar o aplicativo android" /></a>
-                            <a href="#"><img className='w-32' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
+                            <a href="#"><img className='w-40' src={imgGooglePlay} alt="Link para baixar o aplicativo android" /></a>
+                            <a href="#"><img className='w-40' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
                         </div>
                     </div>
                     <img className='w-3/4' src={imgMockupMobile} alt="Mockup Mobile" />
                 </section>
 
-                <section id='funcionalidades' className='my-32 w-3/4 m-auto'>
+                <section id='funcionalidades' className='my-32 m-auto'>
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
                     <div className='grid grid-cols-4 gap-32 justify-between mt-16'>
                         <div className='bg-gray-200 flex-none col-span-1'>
                             <ul>
-                                <li 
-                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'agenda' ? 'border-l-2 border-purplePrimary' : ''}`}
-                                    onMouseOver={() => {
-                                        setDescription(`
-                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
-                                        `);
-                                        setImageChange(imgAgenda);
-                                        setHoveredItem('agenda');
-                                    }}
-                                >
-                                    Agenda
-                                </li>
-                                <li 
-                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'pomodoro' ? 'border-l-2 border-purplePrimary' : ''}`}
-                                    onMouseOver={() => {
-                                        setDescription(`
-                                            <h3 class="text-lg font-semibold mb-4">Método Pomodoro</h3>
-                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
-                                        `);
-                                        setImageChange(imgPomodoro);
-                                        setHoveredItem('pomodoro');
-                                    }}
-                                >
-                                    Método Pomodoro
-                                </li>
-                                <li 
-                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'outra' ? 'border-l-2 border-purplePrimary' : ''}`}
-                                    onMouseOver={() => {
-                                        setDescription(`
-                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
-                                        `);
-                                        setHoveredItem('outra');
-                                    }}
-                                >
-                                    Outra Descrição
-                                </li>
-                                <li 
-                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'outra' ? 'border-l-2 border-purplePrimary' : ''}`}
-                                    onMouseOver={() => {
-                                        setDescription(`
-                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
-                                        `);
-                                        setHoveredItem('outra');
-                                    }}
-                                >
-                                    Outra Descrição
-                                </li>
-                                <li 
-                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'outra' ? 'border-l-2 border-purplePrimary' : ''}`}
-                                    onMouseOver={() => {
-                                        setDescription(`
-                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
-                                        `);
-                                        setHoveredItem('outra');
-                                    }}
-                                >
-                                    Outra Descrição
-                                </li>
+                                {functionalities.map(item => (
+                                    <FunctionalityItem
+                                        key={item.id}
+                                        name={item.name}
+                                        description={item.description}
+                                        image={item.image}
+                                        isActive={hoveredItem === item.id}
+                                        onHover={() => {
+                                            setDescription(item.description);
+                                            setImageChange(item.image);
+                                            setHoveredItem(item.id);
+                                        }}
+                                    />
+                                ))}
                             </ul>
                         </div>
 
@@ -174,24 +160,7 @@ export default function HomePage() {
                 </section>
             </main>
 
-            <footer>
-                <div className='bg-[#820AD1] py-4'>
-                    <h3 className='font-semibold text-xl text-white text-center my-8'>O que está esperando para se cadastrar??</h3>
-                    <InputPurple
-                        typeInput='email'
-                        placeholderInput='logus@study.com'
-                        typeBtn='submit'
-                        valueBtn='Obtenha o Lógus grátis'
-                        btnBgColor='white'
-                        btnTextColor='#830AD1'
-                        inputBorder='1px solid #E3E3E3'
-                        placeholderColor='white'
-                    />
-                </div>
-                <div className='bg-[#533680] text-white h-40'>
-                    footer
-                </div>
-            </footer>
+            <FooterLanding />
         </div>
     );
 }

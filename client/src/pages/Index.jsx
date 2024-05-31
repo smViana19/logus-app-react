@@ -7,10 +7,13 @@ import logo from '../assets/logo.png';
 import InputPurple from '../components/Inputs/InputPurple';
 import ContainerPrintApp from '../components/CardsContainers/ContainerPrintApp';
 import Subtitle from '../components/Text/Subtitulo';
+
+//images
 import imgAppStore from '../assets/installAppStore.png';
 import imgGooglePlay from '../assets/installGooglePlay.png';
 import imgMockupMobile from '../assets/mockup-home-mobile.png';
-import imgAgenda from '../assets/agenda.png'; // Assuming this is the correct path
+import imgAgenda from '../assets/agenda.png'; 
+import imgPomodoro from '../assets/pomodoro.png'
 
 import '../css/welcome.css';
 
@@ -21,6 +24,7 @@ export default function HomePage() {
 
     const [description, setDescription] = useState('Passe o cursor do mouse por cima do ícone da habilidade para ver mais informações sobre ela.');
     const [imageChange, setImageChange] = useState('');
+    const [hoveredItem, setHoveredItem] = useState(null);
 
     const handleLogout = e => {
         e.preventDefault();
@@ -94,34 +98,68 @@ export default function HomePage() {
 
                 <section id='funcionalidades' className='my-32 w-3/4 m-auto'>
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
-                    <div className='grid grid-cols-4 gap-32 justify-between'>
+                    <div className='grid grid-cols-4 gap-32 justify-between mt-16'>
                         <div className='bg-gray-200 flex-none col-span-1'>
                             <ul>
                                 <li 
-                                    className='py-2 px-4 flex'
-                                    onMouseOver={() => 
-                                        {
-                                            setDescription(`
-                                                <h3 class="text-lg font-semibold">Agenda</h3>
-                                                <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
-                                            `);
-                                            setImageChange(imgAgenda);
-                                        }}
+                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'agenda' ? 'border-l-2 border-purplePrimary' : ''}`}
+                                    onMouseOver={() => {
+                                        setDescription(`
+                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
+                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                                        `);
+                                        setImageChange(imgAgenda);
+                                        setHoveredItem('agenda');
+                                    }}
                                 >
                                     Agenda
                                 </li>
                                 <li 
-                                    className='py-2 px-4 flex'
+                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'pomodoro' ? 'border-l-2 border-purplePrimary' : ''}`}
                                     onMouseOver={() => {
-                                        setDescription('Descrição do Método Pomodoro');
-                                        setImageChange(imgGooglePlay);
+                                        setDescription(`
+                                            <h3 class="text-lg font-semibold mb-4">Método Pomodoro</h3>
+                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                                        `);
+                                        setImageChange(imgPomodoro);
+                                        setHoveredItem('pomodoro');
                                     }}
                                 >
                                     Método Pomodoro
                                 </li>
                                 <li 
-                                    className='py-2 px-4 flex'
-                                    onMouseOver={() => setDescription('Outra Descrição do Método Pomodoro')}
+                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'outra' ? 'border-l-2 border-purplePrimary' : ''}`}
+                                    onMouseOver={() => {
+                                        setDescription(`
+                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
+                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                                        `);
+                                        setHoveredItem('outra');
+                                    }}
+                                >
+                                    Outra Descrição
+                                </li>
+                                <li 
+                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'outra' ? 'border-l-2 border-purplePrimary' : ''}`}
+                                    onMouseOver={() => {
+                                        setDescription(`
+                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
+                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                                        `);
+                                        setHoveredItem('outra');
+                                    }}
+                                >
+                                    Outra Descrição
+                                </li>
+                                <li 
+                                    className={`py-3 px-4 flex cursor-pointer ${hoveredItem === 'outra' ? 'border-l-2 border-purplePrimary' : ''}`}
+                                    onMouseOver={() => {
+                                        setDescription(`
+                                            <h3 class="text-lg font-semibold mb-4">Agenda</h3>
+                                            <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                                        `);
+                                        setHoveredItem('outra');
+                                    }}
                                 >
                                     Outra Descrição
                                 </li>
@@ -130,7 +168,7 @@ export default function HomePage() {
 
                         <div className='col-span-3 flex items-center'>
                             <div dangerouslySetInnerHTML={{ __html: description }} />
-                            {imageChange && <img className='w-52' src={imageChange} alt="Imagem da funcionalidade" />}
+                            {imageChange && <img className='ml-4 w-52' src={imageChange} alt="Imagem da funcionalidade" />}
                         </div>
                     </div>
                 </section>

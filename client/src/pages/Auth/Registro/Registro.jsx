@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import isEmail from "validator/lib/isEmail";
 import { get } from "lodash";
@@ -12,7 +12,8 @@ import { Link } from "react-router-dom";
 
 import axios from "../../../../services/axios";
 import { useNavigate } from "react-router-dom";
-import Checkbox from "../../../components/Checkbox";
+import UserRoleSelector from "../../../components/UserSelectorRole";
+
 
 
 export default function Registro() {
@@ -24,6 +25,7 @@ export default function Registro() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [role, setRole] = useState('');
     const navigate = useNavigate();
 
     // useEffect(() => {
@@ -56,6 +58,7 @@ export default function Registro() {
                 nome,
                 password,
                 email,
+                role,
             })
             toast.success('Registrado com sucesso!');
             navigate('/login');
@@ -125,25 +128,7 @@ export default function Registro() {
                         />
                     </div>
                 </div>
-
-                <div class="flex">
-                    <div class="flex mr-4">
-                        <label for="aluno" className="mr-2">Aluno</label>
-                        <input type="radio" name="tipo" id="aluno" />
-                    </div>
-
-                    <div class="flex mr-4">
-                        <label for="professor" className="mr-2">Professor</label>
-                        <input type="radio" name="tipo" id="professor" />
-                    </div>
-
-                    <div class="flex">
-                        <label for="administrador" className="mr-2">Administrador</label>
-                        <input type="radio" name="tipo" id="administrador" />
-                    </div>
-                </div>
-
-
+                <UserRoleSelector role={role} setRole={setRole} />
                 <div className="flex items-center justify-center mt-5">
                     <BtnPrincipal type='submit'>
                         Cadastrar

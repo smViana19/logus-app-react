@@ -4,15 +4,16 @@ import NavLink from '../components/NavLink';
 import Logo from '../components/Logo';
 import BtnPrincipal from '../components/Botoes/BtnPrincipal';
 import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css'; // Importe os estilos CSS do react-circular-progressbar
+import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
-import SelectTarefa from '../components/Inputs/SelectTarefa';
 import LogoutButton from '../components/Botoes/LogoutBtn';
+import BtnPomodoroOpenModal from '../components/Botoes/BtnPomodoroOpenModal';
 
 export default function Pomodoro() {
     const [tempoDecorrido, setTempoDecorrido] = useState(1500);
     const [intervaloId, setIntervaloId] = useState(null);
     const [cronometroExecutando, setCronometroExecutando] = useState(false);
+    const [bloqueado, setBloqueado] = useState(false);
 
     useEffect(() => {
         const contagemRegressiva = () => {
@@ -54,8 +55,12 @@ export default function Pomodoro() {
         return `${minutos < 10 ? '0' : ''}${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
     };
 
+    const alternarBloqueio = () => {
+        setBloqueado((prevBloqueado) => !prevBloqueado);
+    };
+
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 relative">
             <nav className="bg-white border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
@@ -77,13 +82,27 @@ export default function Pomodoro() {
                 </div>
             </nav>
             <main>
-                <div className='flex justify-center mt-8 rounded-lg'>
-                    <SelectTarefa />
+                <div className='flex justify-around mt-8 rounded-lg w-2/4 m-auto'>
+                    <BtnPomodoroOpenModal onClick={() => console.log('sons clicado')}
+                        svg={
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="16" viewBox="0 0 512 512">
+                                <path fill="#820ad1" d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z" />
+                             </svg>
+                             }
+                        text={'Sons'}
+                    />
+                    <BtnPomodoroOpenModal onClick={alternarBloqueio}
+                        svg={
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="16" viewBox="0 0 512 512">
+                                <path fill="#820ad1" d="M367.2 412.5L99.5 144.8C77.1 176.1 64 214.5 64 256c0 106 86 192 192 192c41.5 0 79.9-13.1 111.2-35.5zm45.3-45.3C434.9 335.9 448 297.5 448 256c0-106-86-192-192-192c-41.5 0-79.9 13.1-111.2 35.5L412.5 367.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/>
+                            </svg>}
+                        text={bloqueado ? 'Desbloquear tela' : 'Bloquear tela'}
+                    />
                 </div>
                 <div className='w-2/6 m-auto'>
                     <StyledCircularProgressbar
-                        value={(1500 - tempoDecorrido) / 1500 * 100} // Normaliza o valor entre 0 e 100 para o progresso
-                        text={formatarTempo(tempoDecorrido)} // Define o texto do CircularProgressbar
+                        value={(1500 - tempoDecorrido) / 1500 * 100}
+                        text={formatarTempo(tempoDecorrido)}
                     />
                     <div className='grid grid-flow-row-dense grid-cols-5 gap-4'>
                         <BtnPrincipal className='start-btn py-3 rounded-xl text-xl col-span-4' onClick={alternarCronometro}>
@@ -95,6 +114,17 @@ export default function Pomodoro() {
                     </div>
                 </div>
             </main>
+            {bloqueado && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center z-50">
+                    <span className="text-white text-2xl mb-4">Tela Bloqueada</span>
+                    <button
+                        className="bg-white text-black px-4 py-2 rounded-lg"
+                        onClick={alternarBloqueio}
+                    >
+                        Desbloquear Tela
+                    </button>
+                </div>
+            )}
             <aside className='fixed right-8 top-24'>
                 <div className=' bg-gray-200 h-32 w-56 rounded-lg px-4 py-4'>
                     <span className='font-base text-lg '>Tempo de foco hoje: </span>

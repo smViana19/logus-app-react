@@ -8,12 +8,14 @@ import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import LogoutButton from '../components/Botoes/LogoutBtn';
 import BtnPomodoroOpenModal from '../components/Botoes/BtnPomodoroOpenModal';
+import ModalPomodoroSound from '../components/Modal/ModalPomodoroSound';
 
 export default function Pomodoro() {
     const [tempoDecorrido, setTempoDecorrido] = useState(1500);
     const [intervaloId, setIntervaloId] = useState(null);
     const [cronometroExecutando, setCronometroExecutando] = useState(false);
     const [bloqueado, setBloqueado] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         const contagemRegressiva = () => {
@@ -59,6 +61,11 @@ export default function Pomodoro() {
         setBloqueado((prevBloqueado) => !prevBloqueado);
     };
 
+    const abrirModal = () => {
+        console.log('Abrindo modal');
+        setOpenModal(true);
+    };
+
     return (
         <div className="min-h-screen bg-gray-50 relative">
             <nav className="bg-white border-b border-gray-100">
@@ -83,13 +90,13 @@ export default function Pomodoro() {
             </nav>
             <main>
                 <div className='flex justify-around mt-8 rounded-lg w-2/4 m-auto'>
-                    <BtnPomodoroOpenModal onClick={() => console.log('sons clicado')}
+                    <BtnPomodoroOpenModal onClick={abrirModal}
                         svg={
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" width="16" viewBox="0 0 512 512">
                                 <path fill="#820ad1" d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z" />
                              </svg>
                              }
-                        text={'Sons'}
+                        text={'Modo Foco'}
                     />
                     <BtnPomodoroOpenModal onClick={alternarBloqueio}
                         svg={
@@ -113,6 +120,10 @@ export default function Pomodoro() {
                         </BtnPrincipal>
                     </div>
                 </div>
+
+                <ModalPomodoroSound 
+                    isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)}
+                />
             </main>
             {bloqueado && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center z-50">

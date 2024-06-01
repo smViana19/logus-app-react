@@ -137,7 +137,7 @@ export default function Pomodoro() {
                 </div>
             )}
             <aside className='fixed right-8 top-24'>
-                <div className=' bg-gray-200 h-32 w-56 rounded-lg px-4 py-4'>
+                <div className=' bg-white border border-gray-200 h-32 w-56 rounded-lg px-4 py-4'>
                     <span className='font-base text-lg '>Tempo de foco hoje: </span>
                     <span className='text-2xl font-medium text-violet-900 mt-8'>00:00</span>
                 </div>

@@ -6,13 +6,15 @@ import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
+import LogoutButton from '../components/Botoes/LogoutBtn';
+
 
 
 export default function Dashboard() {
 
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-    const role = useSelector(state => state.auth.user.role);
-    const user = useSelector(state => state.auth.user.nome);
+    const role = useSelector(state => state.auth.user?.role);
+    const user = useSelector(state => state.auth.user?.nome);
 
     if (!isLoggedIn) {
         return <Navigate to="/login" replace />;
@@ -54,6 +56,7 @@ export default function Dashboard() {
                                         href="#" to='/pomodoro' >
                                         Método Pomodoro
                                     </NavLink>
+                                    <LogoutButton />
                                 </div>
                             </div>
                         </div>

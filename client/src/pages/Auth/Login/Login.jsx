@@ -15,11 +15,12 @@ import React, { useState } from 'react';
 
 export default function Login(props) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const prevPath = get(props, 'location.state.prevPath', '/dashboard')
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -32,6 +33,8 @@ export default function Login(props) {
 
         if (formErrors) return;
         dispatch(actions.loginRequest({ email, password, prevPath }));
+        navigate(prevPath)
+
 
     }
 

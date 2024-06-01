@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaCircle, FaPowerOff } from 'react-icons/fa';
+import { FaCircle, FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../store/modules/auth/actions';
 import logo from '../assets/logo.png';
@@ -82,7 +82,7 @@ export default function HomePage() {
     return (
         <div className="bg-center bg-corPrincipal selection:bg-red-500 selection:text-white bg-img">
             <header>
-                <nav className="flex justify-around py-4 nav__landing-page">
+                <nav className="flex justify-around py-4 nav__landing-page items-center">
                     <ul>
                         <li><img className='w-32' src={logo} alt="Logo" /></li>
                     </ul>
@@ -94,7 +94,7 @@ export default function HomePage() {
                             <a href="#funcionalidades">Funcionalidades</a>
                         </li>
                     </ul>
-                    <ul className='flex gap-16'>
+                    <ul className='flex gap-16 items-center'>
                         <li className='text-lg'>
                             {isLoggedIn ? (
                                 <Link onClick={handleLogout} to="#">
@@ -106,12 +106,17 @@ export default function HomePage() {
                         </li>
                         <li className='text-lg'>
                             {isLoggedIn ? (
-                                <Link to="/dashboard">Dashboard</Link>
+                                <Link to="/dashboard">
+                                    <FaUserCircle />
+                                </Link>
                             ) : (
                                 <Link to="/registro"
                                     className="font-medium text-white hover:text-neutral-500"
                                     id='btnRegistrar'>Registrar</Link>
                             )}
+
+                        </li>
+                        <li>
                             {isLoggedIn && (<FaCircle size={24} color='#66ff33' />)}
                         </li>
                     </ul>
@@ -149,7 +154,7 @@ export default function HomePage() {
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
                     <div className='gap-32 justify-between mt-16'>
                         <div className='mb-16 col-span-2'>
-                            <ul className='flex justify-around'>
+                            <ul className='flex justify-around '>
                                 {functionalities.map(item => (
                                     <FunctionalityItem
                                         key={item.id}

@@ -24,8 +24,13 @@ export default function HomePage() {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-    const [description, setDescription] = useState('Passe o cursor do mouse por cima do ícone da habilidade para ver mais informações sobre ela.');
-    const [imageChange, setImageChange] = useState('');
+    const initialDescription = `
+        <h3 class="text-lg font-semibold mb-4">Agenda</h3>
+        <p class="w-3/4">A agenda integrada permite aos alunos organizarem suas atividades acadêmicas e pessoais de maneira estruturada. Com opções para adicionar lembretes de tarefas, podendo ser organizadas como urgente, moderado, e tranquilo, a agenda digital facilita o planejamento e a gestão do tempo do aluno.</p>
+    `;
+
+    const [description, setDescription] = useState(initialDescription);
+    const [imageChange, setImageChange] = useState(imgAgenda);
     const [hoveredItem, setHoveredItem] = useState(null);
 
     const handleLogout = e => {
@@ -37,10 +42,7 @@ export default function HomePage() {
     const functionalities = [
         {
             name: 'Agenda',
-            description: `
-                <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-                <p class="w-3/4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional. Os recusos que ela </p>
-            `,
+            description: initialDescription,
             image: imgAgenda,
             id: 'agenda'
         },
@@ -48,7 +50,10 @@ export default function HomePage() {
             name: 'Método Pomodoro',
             description: `
                 <h3 class="text-lg font-semibold mb-4">Método Pomodoro</h3>
-                <p class="w-3/4 mt-4">Implementamos uma agenda intuitiva para organizar suas atividades de forma funcional</p>
+                <p class="w-3/4 mt-4">A funcionalidade do método Pomodoro no nosso aplicativo oferece uma maneira eficiente de gerenciar o tempo de estudo. Utilizando ciclos de 25 minutos de trabalho intenso seguidos por pausas curtas, essa técnica ajuda os alunos a manterem o foco e a produtividade.</p>
+                <p class="w-3/4 mt-4">Aém disso, implementamos uma série de sons para ajudar na concentração. Alguns desses sons são:  </p>
+                <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span>  → Tem uma frequência específica para inibir sons externos, auxiliando na melhor concentração do aluno </li>
+                <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span>  → Tem uma frequência específica para inibir sons externos, auxiliando na melhor concentração do aluno </li>
             `,
             image: imgPomodoro,
             id: 'pomodoro'
@@ -57,13 +62,21 @@ export default function HomePage() {
             name: 'Pontuação',
             description: `
                 <h3 class="text-lg font-semibold mb-4">Pontuação</h3>
-                <p class="w-3/4">Optamos pelo método de pontuação para incentivar os alunos a se dedicarem mais aos estudos. A ideia é recompensar os esforços dos estudantes através de um sistema que contabiliza pontos cada vez que eles realizam determinadas atividades acadêmicas. Essas atividades incluem a postagem de exercícios resolvidos, a elaboração de resumos detalhados, a criação e compartilhamento de slides para apresentações, a entrega de trabalhos bem feitos, ou qualquer outra atividade elaborada pelo professor.</p>
-                <p class="w-3/4 mt-4">Nosso objetivo é criar um ambiente mais dinâmico e participativo, onde os alunos se sintam motivados a contribuir continuamente para o seu próprio aprendizado e para o de seus colegas.</p>
-                <p class="w-3/4 mt-4">Quando o aluno atinge uma determinada pontuação, a própria escola será responsável por decidir qual recompensa ele receberá. As recompensas serão selecionadas para refletir o esforço e a dedicação do aluno, e poderão variar desde reconhecimentos públicos, certificados de mérito, até pequenas premiações.</p>
+                <p class="w-3/4">O sistema de pontuação incentiva os alunos a se dedicarem mais aos estudos ao recompensar suas atividades acadêmicas com pontos. Atividades como a postagem de exercícios, elaboração de resumos e entrega de trabalhos geram pontos, motivando os alunos a participarem ativamente. Quando atingem uma determinada pontuação, a escola decide as recompensas, que podem incluir reconhecimentos públicos, certificados de mérito ou pequenas premiações, refletindo o esforço e a dedicação dos alunos.</p>
             `,
             image: null,
             id: 'pontuacao'
-        }
+        },
+        {
+            name: 'Área de Postagens',
+            description: `
+                <h3 class="text-lg font-semibold mb-4">Área de Postagens</h3>
+                <p class="w-3/4">A área de postagens é uma área colaborativa onde os alunos podem compartilhar resumos, atividades, apresentações e outros materiais de estudo. Essa funcionalidade promove a troca de conhecimento e recursos entre os estudantes, incentivando um ambiente de aprendizado colaborativo.</p>
+                <p class="w-3/4 mt-2">A ideia é que os alunos possam postar, por espontânea vontade, os resumos e materiais de estudo que fizerem, mas disponiblizamos uma área onde o professor possa posta as atividades e os alunos podem anexá-las</p>
+            `,
+            image: null,
+            id: 'postagens'
+        },
     ];
 
     return (
@@ -96,7 +109,7 @@ export default function HomePage() {
                                 <Link to="/dashboard">Dashboard</Link>
                             ) : (
                                 <Link to="/registro"
-                                    className="font-medium text-white  hover:text-neutral-500"
+                                    className="font-medium text-white hover:text-neutral-500"
                                     id='btnRegistrar'>Registrar</Link>
                             )}
                             {isLoggedIn && (<FaCircle size={24} color='#66ff33' />)}
@@ -118,7 +131,8 @@ export default function HomePage() {
 
                 <ContainerPrintApp />
 
-                <section className='container__app-mobile mt-16 flex'>
+                <section className='container__app-mobile mt-24 flex'>
+
                     <div className='mt-40'>
                         <Subtitle>Baixe também nosso aplicativo mobile</Subtitle>
                         <p className='mt-4'>Baixe o nosso aplicativo e tenha acesso a todas as funcionalidades a qualquer hora e em qualquer lugar. Simplifique sua vida com a conveniência do nosso app.</p>
@@ -126,15 +140,16 @@ export default function HomePage() {
                             <a href="#"><img className='w-40' src={imgGooglePlay} alt="Link para baixar o aplicativo android" /></a>
                             <a href="#"><img className='w-40' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
                         </div>
+
                     </div>
                     <img className='w-1/4' src={imgMockupMobile} alt="Mockup Mobile" />
                 </section>
 
                 <section id='funcionalidades' className='my-32 m-auto'>
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
-                    <div className='grid grid-cols-7 gap-32 justify-between mt-16'>
-                        <div className='bg-gray-200 flex-none col-span-2'>
-                            <ul>
+                    <div className='gap-32 justify-between mt-16'>
+                        <div className='mb-16 col-span-2'>
+                            <ul className='flex justify-around'>
                                 {functionalities.map(item => (
                                     <FunctionalityItem
                                         key={item.id}
@@ -158,6 +173,21 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
+
+                <section className='mb-16'>
+                    <Subtitle centered>DIFERENCIAL</Subtitle>
+                    <div className='mt-16 grid grid-cols-2 gap-16 text-justify justify-between'>
+                        <div className='col-span-1'>
+                            <h4 className='text-center font-medium text-lg mb-4'>Suporte 24h na plataforma</h4>
+                            <p>Oferecemos suporte técnico personalizado para cada cliente, sem a utilização de robôs ou inteligências artificiais. Você será atendido por um ser humano. Nosso atendimento está disponível durante o horário comercial, de segunda à sexta.</p>
+                        </div>
+                        <div className='col-span-1'>
+                            <h4 className='text-center font-medium text-lg mb-4'>Funcionalidades especiais</h4>
+                            <p>Nossa plataforma oferece diversas funcionalidades para alunos que possuem dificuldades de concentração ou aprendizagem.</p>
+                        </div>
+                    </div>
+                </section>
+
             </main>
 
             <FooterLanding />

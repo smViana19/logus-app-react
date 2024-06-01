@@ -37,7 +37,7 @@ export default function AreaPostagens() {
                                         Dashboard
                                     </NavLink>
 
-                                    <NavLink to='/areapostagens'
+                                    <NavLink to='/dashboard/postagens'
                                         // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
                                         href="#" className='text-purplePrimary' >
                                         Área de Postagens {/* fazer dropdown - resumo slide etc */}
@@ -45,12 +45,12 @@ export default function AreaPostagens() {
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" to='/agenda' >
+                                        href="#" to='/dashboard/agenda'>
                                         Agenda
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" to='/pomodoro' >
+                                        href="#" to='/dashboard/pomodoro'>
                                         Método Pomodoro
                                     </NavLink>
                                 </div>
@@ -76,7 +76,7 @@ export default function AreaPostagens() {
                             </div>
                         </div>
 
-                     
+
 
                         <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
                             <div className='bg-[#A35454] h-16 rounded-t-lg flex items-end py-2 px-4'>
@@ -124,8 +124,8 @@ export default function AreaPostagens() {
                                 <span className='text-2xl font-semibold text-white'>Geografia</span>
                             </div>
                         </div>
-                       
-                       
+
+
                     </section>
                 </main>
 

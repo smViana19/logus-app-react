@@ -61,22 +61,22 @@ export default function Agenda() {
                                         Dashboard
                                     </NavLink>
 
-                                    <NavLink to='/areapostagens'
+                                    <NavLink to='/dashboard/postagens'
                                         // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
                                         href="#" >
                                         Área de Postagens {/* fazer dropdown - resumo slide etc */}
-                                        
+
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
 
-                                        href="#" to='/agenda' className='text-purplePrimary'>
+                                        href="#" to='/dashboard/agenda' className='text-purplePrimary'>
                                         Agenda
                                     </NavLink>
                                     <NavLink
-                                        href="#" to='/pomodoro' 
-                                        // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                     >
+                                        href="#" to='/dashboard/pomodoro'
+                                    // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
+                                    >
                                         Método Pomodoro
                                     </NavLink>
                                 </div>
@@ -97,18 +97,18 @@ export default function Agenda() {
                         </div>
 
                         <button className='bg-purple-700 w-12 h-10 rounded-xl color-white' onClick={() => setOpenModal(true)}>
-                                +
+                            +
                         </button>
 
 
                     </ContainerAllDate>
                     <ModalCreateTask isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)} />
-      
+
 
                 </main>
             </div>
         </>
     );
 }
-              
-                
+
+

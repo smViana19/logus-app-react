@@ -42,18 +42,18 @@ export default function Dashboard() {
 
                                     <NavLink
                                         // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
-                                        href="#" to='/areapostagens'>
+                                        href="#" to='/dashboard/postagens'>
                                         Área de Postagens {/* fazer dropdown - resumo slide etc */}
 
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" to='/agenda' >
+                                        href="#" to='/dashboard/agenda' >
                                         Agenda
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" to='/pomodoro' >
+                                        href="#" to='/dashboard/pomodoro' >
                                         Método Pomodoro
                                     </NavLink>
                                     <LogoutButton />

@@ -18,22 +18,22 @@ import Notas from '../pages/Admin/Notas';
 export default function Rotas() {
 
     return (
-        
-         //IMPLEMENTAR O /DASHBOARD COMO PRIVADO
-            <Routes> {/* Use o componente Routes para definir suas rotas */}
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/registro" element={<Registro />} />
-                <Route path="/dashboard" element={<Dashboard/>} /> 
-                <Route path="/pomodoro" element={<Pomodoro/>} /> 
-                <Route path="/agenda" element={<Agenda/>} /> 
-                <Route path="/areapostagens" element={<AreaPostagens/>} /> 
-                <Route path="/admin/dashboard" element={<DashboardAdm/>} /> 
-                <Route path="/admin/notas" element={<Notas/>} /> 
 
-            </Routes>
-        
+        //IMPLEMENTAR O /DASHBOARD COMO PRIVADO
+        <Routes> {/* Use o componente Routes para definir suas rotas */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/registro" element={<Registro />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
+            <Route path="/dashboard/agenda" element={<Agenda />} />
+            <Route path="/dashboard/postagens" element={<AreaPostagens />} />
+            <Route path="/admin/dashboard" element={<DashboardAdm />} />
+            <Route path="/admin/notas" element={<Notas />} />
+
+        </Routes>
+
 
 
     );

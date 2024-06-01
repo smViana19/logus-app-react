@@ -30,11 +30,8 @@ export default function Login(props) {
             return
         }
 
-        if (formErrors) {
-            dispatch(actions.loginRequest({ email, password, prevPath }));
-            navigate(prevPath)
-            return;
-        }
+        if (formErrors) return;
+        dispatch(actions.loginRequest({ email, password, prevPath }));
 
     }
 
@@ -44,9 +41,9 @@ export default function Login(props) {
             <ToastContainer />
             <div className="flex sm:mx-auto sm:w-full sm:max-w-xl flex-1 flex-col justify-center px-0 py-12 lg:px-16 bg-white rounded-xl">
                 <div className="sm:mx-auto ">
-                    <Logo/>
+                    <Logo />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700">
-                       Login
+                        Login
                     </h2>
                 </div>
 
@@ -68,9 +65,9 @@ export default function Login(props) {
                                 <InputLabel htmlFor="password" value="Senha" />
                                 <div className="text-sm">
                                     <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                    Esqueci minha senha
+                                        Esqueci minha senha
                                     </Link>
-                                    
+
                                 </div>
                             </div>
                             <div className="mt-2">

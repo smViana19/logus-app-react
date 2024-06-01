@@ -9,11 +9,14 @@ import CardCategoria from '../components/CardsContainers/CardCategoria';
 
 
 export default function Dashboard() {
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-    {/*if (!isLoggedIn) {
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    const role = useSelector(state => state.auth.user.role);
+    const user = useSelector(state => state.auth.user.nome);
+
+    if (!isLoggedIn) {
         return <Navigate to="/login" replace />;
-    }*/}
+    }
     return (
         <>
             <div className="min-h-screen bg-gray-50">
@@ -37,9 +40,9 @@ export default function Dashboard() {
 
                                     <NavLink
                                         // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
-                                        href="#"  to='/areapostagens'>
+                                        href="#" to='/areapostagens'>
                                         Área de Postagens {/* fazer dropdown - resumo slide etc */}
-                                        
+
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
@@ -48,7 +51,7 @@ export default function Dashboard() {
                                     </NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#"  to='/pomodoro' >
+                                        href="#" to='/pomodoro' >
                                         Método Pomodoro
                                     </NavLink>
                                 </div>
@@ -57,13 +60,13 @@ export default function Dashboard() {
                     </div>
                 </nav>
 
-                <UsuarioCard />
+                <UsuarioCard role={role} user={user} />
 
                 <div className='flex gap-8 mx-16'>
-                    <CardCategoria categoria={'Resumos'}  />
-                    <CardCategoria categoria={'Apresentações'} customClass={'bg-white text-black' } />
-                    <CardCategoria categoria={'Atividades'} customClass={'bg-white text-black' } />
-                  
+                    <CardCategoria categoria={'Resumos'} />
+                    <CardCategoria categoria={'Apresentações'} customClass={'bg-white text-black'} />
+                    <CardCategoria categoria={'Atividades'} customClass={'bg-white text-black'} />
+
                 </div>
 
                 <section className='mx-16 mt-16'>
@@ -74,9 +77,9 @@ export default function Dashboard() {
                             <input type="checkbox" />
                             <p className='text-lg'>Atividade de matemática sobre funções de segundo grau</p>
                         </div>
-                        
+
                         <span>
-                            Escola 
+                            Escola
                             <img src="" alt="" />
                         </span>
                     </div>

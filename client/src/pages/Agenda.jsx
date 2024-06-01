@@ -5,6 +5,7 @@ import NavLink from '../components/NavLink';
 import Logo from '../components/Logo';
 import styled from 'styled-components';
 import ModalCreateTask from '../components/Modal/ModalCreateTask';
+import LogoutButton from '../components/Botoes/LogoutBtn';
 
 const DayDiv = styled.div`
     font-size: 64px;
@@ -31,11 +32,12 @@ export default function Agenda() {
 
     const [openModal, setOpenModal] = useState(false)
 
-    // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-    // if (!isLoggedIn) {
-    //     return <Navigate to="/login" replace />;
-    // } 
+    //desativar qd tiver sem api
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    }
 
 
     return (
@@ -79,6 +81,7 @@ export default function Agenda() {
                                     >
                                         Método Pomodoro
                                     </NavLink>
+                                    <LogoutButton />
                                 </div>
                             </div>
                         </div>

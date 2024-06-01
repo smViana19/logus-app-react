@@ -7,6 +7,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css'; // Importe os estilos CSS do react-circular-progressbar
 import styled from 'styled-components';
 import SelectTarefa from '../components/Inputs/SelectTarefa';
+import LogoutButton from '../components/Botoes/LogoutBtn';
 
 export default function Pomodoro() {
     const [tempoDecorrido, setTempoDecorrido] = useState(1500);
@@ -69,6 +70,7 @@ export default function Pomodoro() {
                                 <NavLink href="#" to='/dashboard/postagens' >Área de Postagens</NavLink>
                                 <NavLink href="#" to='/dashboard/agenda'>Agenda</NavLink>
                                 <NavLink href="#" to='/dashboard/pomodoro' className='text-purplePrimary'>Método Pomodoro</NavLink>
+                                <LogoutButton />
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import NavLink from '../components/NavLink';
 import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
+import LogoutButton from '../components/Botoes/LogoutBtn';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
 import math from '../assets/math.png'
@@ -53,6 +54,7 @@ export default function AreaPostagens() {
                                         href="#" to='/dashboard/pomodoro'>
                                         Método Pomodoro
                                     </NavLink>
+                                    <LogoutButton />
                                 </div>
                             </div>
                         </div>

@@ -66,12 +66,7 @@ export default function Login(props) {
                         <div>
                             <div className="flex items-center justify-between">
                                 <InputLabel htmlFor="password" value="Senha" />
-                                <div className="text-sm">
-                                    <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Esqueci minha senha
-                                    </Link>
 
-                                </div>
                             </div>
                             <div className="mt-2">
                                 <TextInput
@@ -81,6 +76,12 @@ export default function Login(props) {
                                     placeholder="Digite sua senha"
                                 />
                             </div>
+                        </div>
+                        <div className="text-sm">
+                            <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                Esqueci minha senha
+                            </Link>
+
                         </div>
                         <div className="inline-flex items-center">
                             <label className="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">

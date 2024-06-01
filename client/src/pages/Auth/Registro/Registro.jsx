@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 import axios from "../../../../services/axios";
 import { useNavigate } from "react-router-dom";
+import Checkbox from "../../../components/Checkbox";
 
 
 export default function Registro() {
@@ -69,37 +70,42 @@ export default function Registro() {
 
     }
     return (
-        <div className='bg-gray-100 w-full h-screen m-0 flex items-center'>
 
-            <div className="flex sm:mx-auto sm:w-full sm:max-w-xl flex-1 flex-col justify-center px-0 py-12 lg:px-16 bg-white rounded-xl">
-                <div className="sm:mx-auto ">
-                    <Logo/>
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Crie sua conta
-                    </h2>
+
+        <div className="flex sm:mx-auto sm:w-full flex-1 flex-col justify-center px-0 py-12 lg:px-16 bg-white rounded-xl">
+
+            <div className="sm:mx-auto ">
+                <Logo className='w-40' />
+                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    Crie sua conta
+                </h2>
+            </div>
+
+            <ToastContainer />
+
+            <form onSubmit={handleSubmit} className="w-3/4 m-auto">
+                <div>
+                    <InputLabel htmlFor="nome" value="Nome" />
+                    <TextInput
+                        type="text"
+                        value={nome}
+                        onChange={e => setNome(e.target.value)}
+                        placeholder="Digite seu nome"
+                    />
                 </div>
 
-                <ToastContainer />
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <InputLabel htmlFor="nome" value="Nome" />
-                        <TextInput
-                            type="text"
-                            value={nome}
-                            onChange={e => setNome(e.target.value)}
-                            placeholder="Digite seu nome"
-                        />
-                    </div>
-                    <div className="mt-4">
-                        <InputLabel htmlFor="email" value="Email" />
-                        <TextInput
-                            type="email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            placeholder="Digite seu email"
-                        />
-                    </div>
-                    <div className="mt-4">
+                <div className="mt-4">
+                    <InputLabel htmlFor="email" value="Email" />
+                    <TextInput
+                        type="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder="Digite seu email"
+                    />
+                </div>
+
+                <div className="flex gap-16 mb-16">
+                    <div className="mt-4 w-full">
                         <InputLabel htmlFor="password" value="Senha" />
                         <TextInput
                             type="password"
@@ -108,7 +114,8 @@ export default function Registro() {
                             placeholder="Digite sua senha"
                         />
                     </div>
-                    <div className="mt-4 ">
+
+                    <div className="mt-4 w-full">
                         <InputLabel htmlFor="password_confirmation" value="Confirmar senha" />
                         <TextInput
                             type="password"
@@ -117,23 +124,39 @@ export default function Registro() {
                             placeholder="Confirme sua senha"
                         />
                     </div>
-                    
-                    <div className="flex items-center justify-center mt-5">
-                        <BtnPrincipal type='submit'>
-                            Cadastrar
-                        </BtnPrincipal>
+                </div>
+
+                <div class="flex">
+                    <div class="flex mr-4">
+                        <label for="aluno" className="mr-2">Aluno</label>
+                        <input type="radio" name="tipo" id="aluno" />
                     </div>
-                    <div className="flex justify-center mt-5">
-                        <span className="text-sm text-gray-500">Já possui uma conta?{' '}
-                            <Link to="/login" className="font-bold text-txtTitulo hover:underline">
-                                Entrar
-                            </Link>
-                        </span>
+
+                    <div class="flex mr-4">
+                        <label for="professor" className="mr-2">Professor</label>
+                        <input type="radio" name="tipo" id="professor" />
                     </div>
-                </form>
-            </div>
+
+                    <div class="flex">
+                        <label for="administrador" className="mr-2">Administrador</label>
+                        <input type="radio" name="tipo" id="administrador" />
+                    </div>
+                </div>
 
 
+                <div className="flex items-center justify-center mt-5">
+                    <BtnPrincipal type='submit'>
+                        Cadastrar
+                    </BtnPrincipal>
+                </div>
+                <div className="flex justify-center mt-5">
+                    <span className="text-sm text-gray-500">Já possui uma conta?{' '}
+                        <Link to="/login" className="font-bold text-txtTitulo hover:underline">
+                            Entrar
+                        </Link>
+                    </span>
+                </div>
+            </form>
         </div>
 
     );

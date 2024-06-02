@@ -7,23 +7,22 @@ import { Link } from 'react-router-dom';
 import LogoutButton from '../components/Botoes/LogoutBtn';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
-import math from '../assets/math.png'
 
+import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
 
 export default function AreaPostagens() {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-    /*
-        if (!isLoggedIn) {
-            return <Navigate to="/login" replace />;
-        }*/
+
+    // if (!isLoggedIn) {
+    //    return <Navigate to="/login" replace />;
+    //}
+
     return (
         <>
             <div className="min-h-screen bg-gray-50">
                 <nav className="bg-white border-b border-gray-100">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
-
-
                             <div className="flex">
                                 <div className="shrink-0 flex items-center">
                                     <Link to="/">
@@ -33,24 +32,19 @@ export default function AreaPostagens() {
 
                                 <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                     <NavLink
-                                        // borderPage={currentRoute === '/' ? '1px solid black' : 'none'}
                                         href="#" to='/dashboard'>
                                         Dashboard
                                     </NavLink>
 
                                     <NavLink to='/dashboard/postagens'
-                                        // borderPage={currentRoute === '/posts' ? '1px solid black' : 'none'}
                                         href="#" className='text-purplePrimary' >
-                                        Área de Postagens {/* fazer dropdown - resumo slide etc */}
-
+                                        Área de Postagens
                                     </NavLink>
                                     <NavLink
-                                        // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
                                         href="#" to='/dashboard/agenda'>
                                         Agenda
                                     </NavLink>
                                     <NavLink
-                                        // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
                                         href="#" to='/dashboard/pomodoro'>
                                         Método Pomodoro
                                     </NavLink>
@@ -61,80 +55,137 @@ export default function AreaPostagens() {
                     </div>
                 </nav>
 
-
                 <main>
-                    <section class="grid grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-16">
+                    <section className="grid grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-16">
 
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white '>Matemática</span>
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
                             </div>
-                            <div className='flex flex-col p-2'>
-                                <span className='font-medium'>Pendentes: </span>
-                                <li className='text-sm pt-2'>Atividade de geometria analítica</li>
-                                <li className='text-sm pt-1'>Lista de exercícios de funções</li>
-
-                            </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
+                            </ul>
                         </div>
 
-
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-[#A35454] h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white '>Português</span>
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
                             </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
+                            </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white '>História</span>
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
                             </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
+                            </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white'>Geografia</span>
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
                             </div>
-                        </div>
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white '>Matemática</span>
-                            </div>
-                            <div className='flex flex-col p-2'>
-                                <span className='font-medium'>Pendentes: </span>
-                                <li className='text-sm pt-2'>Atividade de geometria analítica</li>
-                                <li className='text-sm pt-1'>Lista de exercícios de funções</li>
-
-                            </div>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white '>Português</span>
-                            </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
+                            </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white '>História</span>
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
                             </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
+                            </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg h-40'>
-                            <div className='bg-gray-600 h-16 rounded-t-lg flex items-end py-2 px-4'>
-                                <span className='text-2xl font-semibold text-white'>Geografia</span>
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
                             </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+
+                            </ul>
                         </div>
 
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                            </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                
+                            </ul>
+                        </div>
+
+                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                backgroundImage: `url(${bannerMateria})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}>
+                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                            </div>
+                            <ul className='px-2 mt-2 pb-2'>
+                                <li className='font-semibold mb-2'>Pendentes:</li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
+                            </ul>
+                        </div>
 
                     </section>
                 </main>
-
             </div>
-
         </>
-
-
     );
 }

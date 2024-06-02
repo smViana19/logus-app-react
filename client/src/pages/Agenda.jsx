@@ -31,13 +31,12 @@ export default function Agenda() {
 
 
     const [openModal, setOpenModal] = useState(false)
-
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
     //desativar qd tiver sem api
-    if (!isLoggedIn) {
-        return <Navigate to="/login" replace />;
-    }
+ //   if (!isLoggedIn) {
+   //     return <Navigate to="/login" replace />;
+//    }
 
 
     return (

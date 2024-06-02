@@ -7,8 +7,9 @@ import { useSelector } from 'react-redux';
 
 
 export default function MyRoute({ component: Component, isClosed = false, ...rest }) {
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
+    
     if (isClosed && !isLoggedIn) {
 
         return <Navigate to="/login" replace />;

@@ -10,7 +10,7 @@ import LogoutButton from '../components/Botoes/LogoutBtn';
 
 
 
-export default function Dashboard() {
+export default function Materia01() {
 
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
     const role = useSelector(state => state.auth.user?.role);
@@ -63,30 +63,7 @@ export default function Dashboard() {
                     </div>
                 </nav>
 
-                <UsuarioCard role={role} user={user} />
-
-                <div className='flex gap-8 mx-16'>
-                    <CardCategoria categoria={'Resumos'} />
-                    <CardCategoria categoria={'Apresentações'} customClass={'bg-white text-black'} />
-                    <CardCategoria categoria={'Atividades'} customClass={'bg-white text-black'} />
-
-                </div>
-
-                <section className='mx-16 mt-16'>
-                    <h1 className='font-semibold text-2xl mb-8'>Tarefas Urgentes</h1>
-
-                    <div className='border-b border-gray-400 flex justify-between'>
-                        <div className='flex gap-8'>
-                            <input type="checkbox" />
-                            <p className='text-lg'>Atividade de matemática sobre funções de segundo grau</p>
-                        </div>
-
-                        <span>
-                            Escola
-                            <img src="" alt="" />
-                        </span>
-                    </div>
-                </section>
+               
 
             </div>
 

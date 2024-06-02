@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import NavLink from '../components/NavLink';
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import LogoutButton from '../components/Botoes/LogoutBtn';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
+import CardMateria from '../components/CardsContainers/CardMateria' // Importando o componente CardMateria
 
 import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
 
@@ -16,6 +17,76 @@ export default function AreaPostagens() {
     // if (!isLoggedIn) {
     //    return <Navigate to="/login" replace />;
     //}
+
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    // Dados simulados para as matérias
+    const materias = [
+        {
+            nome: 'Matéria 01',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+        {
+            nome: 'Matéria 02',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+        {
+            nome: 'Matéria 03',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+        {
+            nome: 'Matéria 04',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+        {
+            nome: 'Matéria 04',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+        {
+            nome: 'Matéria 04',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+        {
+            nome: 'Matéria 04',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+        {
+            nome: 'Matéria 04',
+            banner: bannerMateria,
+            atividades: [
+                { nome: 'Atividade de Geografia Analítica', data: '04/06' },
+                { nome: 'Atividade de Geografia Analítica', data: '12/06' }
+            ]
+        },
+    ];
 
     return (
         <>
@@ -30,24 +101,22 @@ export default function AreaPostagens() {
                                     </Link>
                                 </div>
 
-                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                    <NavLink
-                                        href="#" to='/dashboard'>
-                                        Dashboard
-                                    </NavLink>
-
-                                    <NavLink to='/dashboard/postagens'
-                                        href="#" className='text-purplePrimary' >
+                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative">
+                                    <NavLink to='/dashboard' className='text-gray-800'>Dashboard</NavLink>
+                                    <NavLink to='/dashboard/postagens' className='text-purplePrimary'
+                                        onMouseEnter={() => setDropdownVisible(true)}
+                                        onMouseLeave={() => setDropdownVisible(false)}>
                                         Área de Postagens
                                     </NavLink>
-                                    <NavLink
-                                        href="#" to='/dashboard/agenda'>
-                                        Agenda
-                                    </NavLink>
-                                    <NavLink
-                                        href="#" to='/dashboard/pomodoro'>
-                                        Método Pomodoro
-                                    </NavLink>
+                                    {dropdownVisible && (
+                                        <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
+                                            <Link to="/dashboard/postagens/resumo" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Resumo</Link>
+                                            <Link to="/dashboard/postagens/slide" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Slide</Link>
+                                            <Link to="/dashboard/postagens/atividade" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Atividade</Link>
+                                        </div>
+                                    )}
+                                    <NavLink to='/dashboard/agenda' className='text-gray-800'>Agenda</NavLink>
+                                    <NavLink to='/dashboard/pomodoro' className='text-gray-800'>Método Pomodoro</NavLink>
                                     <LogoutButton />
                                 </div>
                             </div>
@@ -56,136 +125,14 @@ export default function AreaPostagens() {
                 </nav>
 
                 <main>
-                    <section className="grid grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-16">
-
-                        <Link to='/dashboard/postagens/materia01'>
-                            <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                                <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                    backgroundImage: `url(${bannerMateria})`,
-                                    backgroundPosition: 'center',
-                                    backgroundSize: 'cover'
-                                }}>
-                                    <span className='text-2xl font-semibold text-white px-4'>Matéria 01</span>
-                                </div>
-                                <ul className='px-2 mt-2 pb-2'>
-                                    <li className='font-semibold mb-2'>Pendentes:</li>
-                                    <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                    <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
-                                    <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
-                                </ul>
-                            </div>
-                        </Link>
-
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matéria 02</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
-                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
-                            </ul>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matéria 03</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
-                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
-                            </ul>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matéria 04</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>12/06</span></li>
-                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
-                            </ul>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matéria 05</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>12/06</span></li>
-                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
-                            </ul>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matéria 06</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-
-                            </ul>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matéria 07</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                
-                            </ul>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matéria 08</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
-                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
-                            </ul>
-                        </div>
-
+                    <section className='w-4/5 m-auto'>
+                        <button className='border border-gray-300 w-1/4 py-2 rounded-lg mt-4'> Atividades pendentes </button>
+                    </section>
+                    <section className="grid grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
+                        {/* Renderizando os cards das matérias */}
+                        {materias.map((materia, index) => (
+                            <CardMateria key={index} {...materia} caminho={'dashboard/postagens/materia01'}/>
+                        ))}
                     </section>
                 </main>
             </div>

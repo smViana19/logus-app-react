@@ -58,13 +58,32 @@ export default function AreaPostagens() {
                 <main>
                     <section className="grid grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-16">
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                        <Link to='/dashboard/postagens/materia01'>
+                            <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
+                                <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
+                                    backgroundImage: `url(${bannerMateria})`,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: 'cover'
+                                }}>
+                                    <span className='text-2xl font-semibold text-white px-4'>Matéria 01</span>
+                                </div>
+                                <ul className='px-2 mt-2 pb-2'>
+                                    <li className='font-semibold mb-2'>Pendentes:</li>
+                                    <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
+                                    <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                    <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
+                                </ul>
+                            </div>
+                        </Link>
+
+
+                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
                             <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
                                 backgroundImage: `url(${bannerMateria})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover'
                             }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                                <span className='text-2xl font-semibold text-white px-4'>Matéria 02</span>
                             </div>
                             <ul className='px-2 mt-2 pb-2'>
                                 <li className='font-semibold mb-2'>Pendentes:</li>
@@ -74,13 +93,13 @@ export default function AreaPostagens() {
                             </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
                             <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
                                 backgroundImage: `url(${bannerMateria})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover'
                             }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                                <span className='text-2xl font-semibold text-white px-4'>Matéria 03</span>
                             </div>
                             <ul className='px-2 mt-2 pb-2'>
                                 <li className='font-semibold mb-2'>Pendentes:</li>
@@ -90,61 +109,45 @@ export default function AreaPostagens() {
                             </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
                             <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
                                 backgroundImage: `url(${bannerMateria})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover'
                             }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                                <span className='text-2xl font-semibold text-white px-4'>Matéria 04</span>
                             </div>
                             <ul className='px-2 mt-2 pb-2'>
                                 <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>12/06</span></li>
                                 <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
                             </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
                             <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
                                 backgroundImage: `url(${bannerMateria})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover'
                             }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                                <span className='text-2xl font-semibold text-white px-4'>Matéria 05</span>
                             </div>
                             <ul className='px-2 mt-2 pb-2'>
                                 <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>04/06</span></li>
+                                <li className='flex justify-between text-sm pb-2'>Atividade de Geometria Analítica <span className='text-gray-600'>12/06</span></li>
                                 <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
                             </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
                             <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
                                 backgroundImage: `url(${bannerMateria})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover'
                             }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
-                            </div>
-                            <ul className='px-2 mt-2 pb-2'>
-                                <li className='font-semibold mb-2'>Pendentes:</li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>04/06</span></li>
-                                <li className='flex justify-between text-sm pb-2'>Atividade de Geografia Analítica <span className='text-gray-600'>12/06</span></li>
-                                <li className='flex justify-between text-sm pb-1 mt-2'><a href="" className='border-b border-gray-300'>Ver mais ...</a></li>
-                            </ul>
-                        </div>
-
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
-                            <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
-                                backgroundImage: `url(${bannerMateria})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
-                            }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                                <span className='text-2xl font-semibold text-white px-4'>Matéria 06</span>
                             </div>
                             <ul className='px-2 mt-2 pb-2'>
                                 <li className='font-semibold mb-2'>Pendentes:</li>
@@ -152,13 +155,13 @@ export default function AreaPostagens() {
                             </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
                             <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
                                 backgroundImage: `url(${bannerMateria})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover'
                             }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                                <span className='text-2xl font-semibold text-white px-4'>Matéria 07</span>
                             </div>
                             <ul className='px-2 mt-2 pb-2'>
                                 <li className='font-semibold mb-2'>Pendentes:</li>
@@ -167,13 +170,13 @@ export default function AreaPostagens() {
                             </ul>
                         </div>
 
-                        <div className='bg-gray-100 shadow-sm rounded-lg'>
+                        <div className='bg-gray-100 shadow-sm rounded-lg hover:scale-102 transition-transform duration-500 cursor-pointer'>
                             <div className='h-16 rounded-t-lg flex items-end py-2 px-4' style={{
                                 backgroundImage: `url(${bannerMateria})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover'
                             }}>
-                                <span className='text-2xl font-semibold text-white px-4'>Matemática</span>
+                                <span className='text-2xl font-semibold text-white px-4'>Matéria 08</span>
                             </div>
                             <ul className='px-2 mt-2 pb-2'>
                                 <li className='font-semibold mb-2'>Pendentes:</li>

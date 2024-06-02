@@ -13,6 +13,7 @@ import Agenda from '../pages/Agenda';
 import AreaPostagens from '../pages/AreaPostagens';
 import DashboardAdm from '../pages/Admin/DashboardAdm';
 import Notas from '../pages/Admin/Notas';
+import Materia01 from '../pages/Materias/Materia01'
 
 
 export default function Rotas() {
@@ -28,7 +29,9 @@ export default function Rotas() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
             <Route path="/dashboard/agenda" element={<Agenda />} />
+            <Route path="/dashboard/postagens/materia01" element={<Materia01 />} />
             <Route path="/dashboard/postagens" element={<AreaPostagens />} />
+
             <Route path="/admin/dashboard" element={<DashboardAdm />} />
             <Route path="/admin/notas" element={<Notas />} />
 

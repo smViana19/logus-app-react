@@ -18,6 +18,7 @@ import imgAgenda from '../assets/agenda.png';
 import imgPomodoro from '../assets/pomodoro.png';
 
 import '../css/welcome.css';
+import Loading from '../components/Loading';
 
 export default function HomePage() {
     const navigate = useNavigate();

@@ -1,19 +1,36 @@
 import React from 'react';
 import Switch from '../Switch';
+import { select } from 'redux-saga/effects';
 
 export default function ModalCreateTask({ isOpen, setOpenModal }) {
 
     function criarTarefa() {
         var nomeTarefa = document.getElementById('nome-tarefa').value;
+        var selectCategoria = document.getElementById('categoria-select').value; // Alterado para o ID correto
+        var selectUrgencia = document.getElementById('urgencia-select').value; 
         console.log(nomeTarefa); 
-
+        console.log(selectCategoria);
+        console.log(selectUrgencia);
+    
         var newTask = document.getElementById('new-task')
         newTask.innerHTML += `
-            ${nomeTarefa} teste
-        `
+            <div>
+               <input type='checkbox' />
+               <div>
+                    <div className='flex'>
+                        <span>${selectCategoria}</span>
+                        <div></div>
+                    </div>
 
-        
+                    <div> 
+                        <span>${nomeTarefa}</span>
+                    </div>
+               </div>
+                
+            </div>
+        `
     }
+    
 
     if (!isOpen) {
         return null;
@@ -33,16 +50,17 @@ export default function ModalCreateTask({ isOpen, setOpenModal }) {
                 <div className="flex gap-8">
                     <select className="bg-gray-200 w-full px-4 rounded-md py-2 text-lg font-base text-gray-400">
                         <option className='text-gray-400' value="" selected disabled>Categoria</option>
-                        <option value="">Escola</option>
-                        <option value="">Trabalho</option>
+                        <option value="Escola">Escola</option>
+                        <option value="Trabalho">Trabalho</option>
                     </select>
 
-                    <select className="bg-gray-200 w-full px-4 rounded-md py-2 text-lg font-base text-gray-400">
+                    <select id="urgencia-select" className="bg-gray-200 w-full px-4 rounded-md py-2 text-lg font-base text-gray-400">
                         <option selected disabled value="">Urgência</option>
-                        <option value="">Urgente</option>
-                        <option value="">Moderado</option>
-                        <option value="">Tranquilo</option>
+                        <option value="Urgente">Urgente</option>
+                        <option value="Moderado">Moderado</option>
+                        <option value="Tranquilo">Tranquilo</option>
                     </select>
+
                 </div>
 
                 <div className="flex gap-8">
@@ -60,7 +78,7 @@ export default function ModalCreateTask({ isOpen, setOpenModal }) {
                         </div>
                     </div>
                 </div>
-                
+
                 <button onClick={criarTarefa} className="bg-blue-500 text-white px-4 py-2 rounded-md">Criar Tarefa</button>
 
                 <div id='new-task'>

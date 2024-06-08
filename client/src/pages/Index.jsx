@@ -180,7 +180,7 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                <section className='mb-16'>
+                <section className='mb-40'>
                     <Subtitle centered>DIFERENCIAL</Subtitle>
                     <div className='mt-16 grid grid-cols-2 gap-16 text-justify justify-between'>
                         <div className='col-span-1'>

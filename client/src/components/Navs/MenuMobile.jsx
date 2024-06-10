@@ -43,15 +43,15 @@ export default function MenuMobile() {
 
 
 const MenuMobileContainer = styled.nav`
-  display: none; // Oculta o menu por padrão
+  display: none; 
   
 
   @media screen and (max-width: 768px) {
-    display: block; // Exibe o menu apenas em telas menores que 768px
+    display: block; 
     background-color: white;
     color: black;
     padding: 10px;
-    width: 200px; // Define a largura do menu lateral
+    width: 200px; 
     height: 100vh;
     position: fixed;
     z-index: 9;

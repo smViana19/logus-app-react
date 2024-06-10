@@ -146,7 +146,9 @@ export default function HomePage() {
                         <Subtitle>Baixe também nosso aplicativo mobile</Subtitle>
                         <p className='mt-4'>Baixe o nosso aplicativo e tenha acesso a todas as funcionalidades a qualquer hora e em qualquer lugar. Simplifique sua vida com a conveniência do nosso app.</p>
                         <div className='flex justify-left gap-32 mt-16'>
-                            <a href="#"><img className='w-40' src={imgGooglePlay} alt="Link para baixar o aplicativo android" /></a>
+                            <a href="#">
+                                <img className='w-40' src={imgGooglePlay} alt="Link para baixar o aplicativo android" />
+                            </a>
                             <a href="#"><img className='w-40' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
                         </div>
 
@@ -215,4 +217,3 @@ const Main = styled.main `
     margin: 16px;
   }
 `
-

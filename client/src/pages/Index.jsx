@@ -128,15 +128,16 @@ export default function HomePage() {
             </header>
 
             <Main className='mx-64'>
-                <section id='home'>
+                <Home id='home'>
                     <h1 className='text-4xl text-white font-bold text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
                     <InputPurple
                         typeInput='email'
                         placeholderInput='logus@study.com'
                         typeBtn='submit'
-                        valueBtn='Obtenha o Lógus grátis'
+                        valueBtn='Obtenha grátis'
+                        btnTextColor={'white'}
                     />
-                </section>
+                </Home>
 
                 <ContainerPrintApp />
 
@@ -215,5 +216,11 @@ const Nav = styled.nav`
 const Main = styled.main `
 @media screen and (max-width: 768px) {
     margin: 16px;
+  }
+`
+
+const Home = styled.section `
+@media screen and (max-width: 768px) {
+    
   }
 `

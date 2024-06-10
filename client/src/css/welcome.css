@@ -47,6 +47,18 @@
 
 /* -- InputPurple Component -- */
 
+/* Seletor de Mídia para Telas com Largura Máxima de 768 pixels */
+@media screen and (max-width: 768px) {
+  .input {
+    width: 100%; /* Definindo a largura como 100% quando a tela for menor que 768 pixels */
+    padding: 0px 1px;
+  }
+
+  .input-group {
+    width: 100%; /* Definindo a largura do grupo de entrada como 100% quando a tela for menor que 768 pixels */
+  }
+}
+
 .input-group {
   display: flex;
   align-items: center;
@@ -56,7 +68,7 @@
 
 .input {
   min-height: 44px;
-  width: 18%;
+  width: 28%;
   padding: 0 1rem;
   color: #fff;
   font-size: 15px;

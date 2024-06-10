@@ -9,6 +9,7 @@ import ContainerPrintApp from '../components/CardsContainers/ContainerPrintApp';
 import Subtitle from '../components/Text/Subtitulo';
 import FunctionalityItem from '../components/FunctionalityItem';
 import FooterLanding from '../components/Footer/FooterLanding';
+import styled from 'styled-components';
 
 //images
 import imgAppStore from '../assets/installAppStore.png';
@@ -19,6 +20,7 @@ import imgPomodoro from '../assets/pomodoro.png';
 
 import '../css/welcome.css';
 import Loading from '../components/Loading';
+import MenuMobile from '../components/Navs/MenuMobile';
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -83,7 +85,8 @@ export default function HomePage() {
     return (
         <div className="bg-center bg-corPrincipal selection:bg-red-500 selection:text-white bg-img">
             <header>
-                <nav className="flex justify-around py-4 nav__landing-page items-center">
+                <MenuMobile />
+                <Nav className="flex justify-around py-4 nav__landing-page items-center">
                     <ul>
                         <li><img className='w-32' src={logo} alt="Logo" /></li>
                     </ul>
@@ -121,10 +124,10 @@ export default function HomePage() {
                             {isLoggedIn && (<FaCircle size={24} color='#66ff33' />)}
                         </li>
                     </ul>
-                </nav>
+                </Nav>
             </header>
 
-            <main className='mx-64'>
+            <Main className='mx-64'>
                 <section id='home'>
                     <h1 className='text-4xl text-white font-bold text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
                     <InputPurple
@@ -194,9 +197,22 @@ export default function HomePage() {
                     </div>
                 </section>
 
-            </main>
+            </Main>
 
             <FooterLanding />
         </div>
     );
 }
+
+const Nav = styled.nav`
+  @media screen and (max-width: 768px) {
+    visibility: hidden;
+  }
+`;
+
+const Main = styled.main `
+@media screen and (max-width: 768px) {
+    margin: 16px;
+  }
+`
+

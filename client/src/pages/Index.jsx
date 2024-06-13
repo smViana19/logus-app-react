@@ -150,12 +150,13 @@ export default function HomePage() {
                             <a href="#">
                                 <img className='w-40' src={imgGooglePlay} alt="Link para baixar o aplicativo android" />
                             </a>
-                            <a href="#"><img className='w-40' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
+                            <a href="#"><img className='w-40 ' src={imgAppStore} alt="Link para baixar o aplicativo IOS" /></a>
                         </div>
 
                     </div>
                     <img className='w-1/4' src={imgMockupMobile} alt="Mockup Mobile" />
                 </section>
+
 
                 <section id='funcionalidades' className='my-32 m-auto'>
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
@@ -188,7 +189,7 @@ export default function HomePage() {
 
                 <section className='mb-40'>
                     <Subtitle centered>DIFERENCIAL</Subtitle>
-                    <div className='mt-16 grid grid-cols-2 gap-16 text-justify justify-between'>
+                    <ContainerDiferencial className='mt-16 grid grid-cols-2 gap-16 text-justify justify-between'>
                         <div className='col-span-1'>
                             <h4 className='text-center font-medium text-lg mb-4'>Suporte 24h na plataforma</h4>
                             <p>Oferecemos suporte técnico personalizado para cada cliente, sem a utilização de robôs ou inteligências artificiais. Você será atendido por um ser humano. Nosso atendimento está disponível durante o horário comercial, de segunda à sexta.</p>
@@ -197,7 +198,7 @@ export default function HomePage() {
                             <h4 className='text-center font-medium text-lg mb-4'>Funcionalidades especiais</h4>
                             <p>Nossa plataforma oferece diversas funcionalidades para alunos que possuem dificuldades de concentração ou aprendizagem.</p>
                         </div>
-                    </div>
+                    </ContainerDiferencial>
                 </section>
 
             </Main>
@@ -213,14 +214,22 @@ const Nav = styled.nav`
   }
 `;
 
-const Main = styled.main `
+const Main = styled.main`
 @media screen and (max-width: 768px) {
     margin: 16px;
   }
 `
 
-const Home = styled.section `
+const Home = styled.section`
 @media screen and (max-width: 768px) {
     
   }
+`
+
+const ContainerDiferencial = styled.div `
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 64px 16px 0 16px;
+    }
 `

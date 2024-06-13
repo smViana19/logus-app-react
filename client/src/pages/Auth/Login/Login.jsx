@@ -11,6 +11,7 @@ import * as actions from '../../../store/modules/auth/actions'
 
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 
 export default function Login(props) {
@@ -42,10 +43,10 @@ export default function Login(props) {
 
         <div className='bg-gray-100 w-full h-screen m-0 flex items-center'>
             <ToastContainer />
-            <div className="flex sm:mx-auto sm:w-full sm:max-w-xl flex-1 flex-col justify-center px-0 py-12 lg:px-16 bg-white rounded-xl">
-                <div className="sm:mx-auto ">
+            <ContainerMain className="flex mx-auto sm:max-w-xl flex-1 flex-col justify-center px-16 py-4 bg-white rounded-xl">
+                <div className="mx-auto w-40 ">
                     <Logo />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700">
+                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700 ">
                         Login
                     </h2>
                 </div>
@@ -64,11 +65,10 @@ export default function Login(props) {
                         </div>
 
                         <div>
-                            <div className="flex items-center justify-between">
                                 <InputLabel htmlFor="password" value="Senha" />
 
-                            </div>
-                            <div className="mt-2">
+                           
+                            <div>
                                 <TextInput
                                     type="password"
                                     value={password}
@@ -109,18 +109,25 @@ export default function Login(props) {
                         </div>
                     </form>
 
-                    <p className="mt-10 text-center text- text-gray-500">
-                        Ainda não possui cadastro?{' '}
-                        <Link to="/registro" className="font-bold text-txtTitulo hover:underline">
+                    <p className="mt-4 text-center text-sm text-gray-500 pb-2">
+                        Ainda não possui cadastro? {'  '}
+                        <Link to="/registro" className="font-medium text-txtTitulo hover:underline">
                             Cadastre-se
                         </Link>
                     </p>
                 </div>
 
-            </div>
+            </ContainerMain>
         </div>
-
-
 
     );
 }
+
+
+const ContainerMain = styled.div `
+    @media screen and (max-width: 768px) {
+        margin: 0;
+        height: 100vh;
+        padding: 0 24px 0 24px;
+    }
+`

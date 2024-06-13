@@ -6,8 +6,8 @@ const UserRoleSelector = ({ role, setRole }) => {
     };
 
     return (
-        <div className="flex">
-            <div className="flex mr-4">
+        <div className="flex justify-center gap-16">
+            <div className="flex">
                 <label htmlFor="aluno" className="mr-2">Aluno</label>
                 <input
                     type="radio"
@@ -19,7 +19,7 @@ const UserRoleSelector = ({ role, setRole }) => {
                 />
             </div>
 
-            <div className="flex mr-4">
+            <div className="flex">
                 <label htmlFor="professor" className="mr-2">Professor</label>
                 <input
                     type="radio"

@@ -1,6 +1,8 @@
+import styled from "styled-components";
+
 export default function BtnPrincipal({ className = '', disabled, children, ...props }) {
     return (
-        <button
+        <BntPomodoro
             {...props}
             className={
                 `justify-center w-full items-center py-2
@@ -13,6 +15,12 @@ export default function BtnPrincipal({ className = '', disabled, children, ...pr
 
         >
             {children}
-        </button>
+        </BntPomodoro>
     );
 }
+
+const BntPomodoro = styled.button `
+    @media screen and (max-width: 768px) {
+        padding: 6px;
+    }
+`

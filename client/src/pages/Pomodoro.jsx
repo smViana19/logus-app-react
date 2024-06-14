@@ -89,7 +89,7 @@ export default function Pomodoro() {
                 </div>
             </nav>
             <main>
-                <div className='flex justify-around mt-8 rounded-lg w-2/4 m-auto'>
+                <ContainerButtons className='flex justify-around mt-8 rounded-lg w-2/4 m-auto'>
                     <BtnPomodoroOpenModal onClick={abrirModal}
                         svg={
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" width="16" viewBox="0 0 512 512">
@@ -105,8 +105,8 @@ export default function Pomodoro() {
                             </svg>}
                         text={bloqueado ? 'Desbloquear tela' : 'Bloquear tela'}
                     />
-                </div>
-                <div className='w-2/6 m-auto'>
+                </ContainerButtons>
+                <ContainerProgressBar className='w-2/6 m-auto'>
                     <StyledCircularProgressbar
                         value={(1500 - tempoDecorrido) / 1500 * 100}
                         text={formatarTempo(tempoDecorrido)}
@@ -119,7 +119,7 @@ export default function Pomodoro() {
                             Reset
                         </BtnPrincipal>
                     </div>
-                </div>
+                </ContainerProgressBar>
 
                 <ModalPomodoroSound 
                     isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)}
@@ -136,12 +136,7 @@ export default function Pomodoro() {
                     </button>
                 </div>
             )}
-            <aside className='fixed right-8 top-24'>
-                <div className=' bg-white border border-gray-200 h-32 w-56 rounded-lg px-4 py-4'>
-                    <span className='font-base text-lg '>Tempo de foco hoje: </span>
-                    <span className='text-2xl font-medium text-violet-900 mt-8'>00:00</span>
-                </div>
-            </aside>
+            
         </div>
     );
 }
@@ -159,5 +154,21 @@ const StyledCircularProgressbar = styled(CircularProgressbar)`
     margin: 64px auto;
     .CircularProgressbar-text {
         fill: #2e2e2e;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 58%;
+    }
+`;
+
+const ContainerButtons = styled.div `
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+`;
+
+const ContainerProgressBar = styled.div `
+    @media screen and (max-width: 768px) {
+        width: 80%
     }
 `;

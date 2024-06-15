@@ -20,7 +20,7 @@ import imgPomodoro from '../assets/pomodoro.png';
 
 import '../css/welcome.css';
 import Loading from '../components/Loading';
-import MenuMobile from '../components/Navs/MenuMobile';
+import MenuMobileIndex from '../components/Navs/MenuMobileIndex';
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function HomePage() {
 
     const initialDescription = `
         <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-        <p class="w-3/4">A agenda integrada permite aos alunos organizarem suas atividades acadêmicas e pessoais de maneira estruturada. Com opções para adicionar lembretes de tarefas, podendo ser organizadas como urgente, moderado, e tranquilo, a agenda digital facilita o planejamento e a gestão do tempo do aluno.</p>
+        <ParagraphFuncionalidades class="w-3/4">A agenda integrada permite aos alunos organizarem suas atividades acadêmicas e pessoais de maneira estruturada. Com opções para adicionar lembretes de tarefas, podendo ser organizadas como urgente, moderado, e tranquilo, a agenda digital facilita o planejamento e a gestão do tempo do aluno.</ParagraphFuncionalidades>
     `;
 
     const [description, setDescription] = useState(initialDescription);
@@ -54,7 +54,7 @@ export default function HomePage() {
             description: `
                 <h3 class="text-lg font-semibold mb-4">Método Pomodoro</h3>
                 <p class="w-3/4 mt-4">A funcionalidade do método Pomodoro no nosso aplicativo oferece uma maneira eficiente de gerenciar o tempo de estudo. Utilizando ciclos de 25 minutos de trabalho intenso seguidos por pausas curtas, essa técnica ajuda os alunos a manterem o foco e a produtividade.</p>
-                <p class="w-3/4 mt-4">Aém disso, implementamos uma série de sons para ajudar na concentração. Alguns desses sons são:  </p>
+                <ParagraphFuncionalidades class="w-3/4 mt-4">Aém disso, implementamos uma série de sons para ajudar na concentração. Alguns desses sons são:  </ParagraphFuncionalidades>
                 <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span>  → Tem uma frequência específica para inibir sons externos, auxiliando na melhor concentração do aluno </li>
                 <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span>  → Tem uma frequência específica para inibir sons externos, auxiliando na melhor concentração do aluno </li>
             `,
@@ -65,7 +65,7 @@ export default function HomePage() {
             name: 'Pontuação',
             description: `
                 <h3 class="text-lg font-semibold mb-4">Pontuação</h3>
-                <p class="w-3/4">O sistema de pontuação incentiva os alunos a se dedicarem mais aos estudos ao recompensar suas atividades acadêmicas com pontos. Atividades como a postagem de exercícios, elaboração de resumos e entrega de trabalhos geram pontos, motivando os alunos a participarem ativamente. Quando atingem uma determinada pontuação, a escola decide as recompensas, que podem incluir reconhecimentos públicos, certificados de mérito ou pequenas premiações, refletindo o esforço e a dedicação dos alunos.</p>
+                <ParagraphFuncionalidades class="w-3/4">O sistema de pontuação incentiva os alunos a se dedicarem mais aos estudos ao recompensar suas atividades acadêmicas com pontos. Atividades como a postagem de exercícios, elaboração de resumos e entrega de trabalhos geram pontos, motivando os alunos a participarem ativamente. Quando atingem uma determinada pontuação, a escola decide as recompensas, que podem incluir reconhecimentos públicos, certificados de mérito ou pequenas premiações, refletindo o esforço e a dedicação dos alunos.</ParagraphFuncionalidades>
             `,
             image: null,
             id: 'pontuacao'
@@ -74,8 +74,8 @@ export default function HomePage() {
             name: 'Área de Postagens',
             description: `
                 <h3 class="text-lg font-semibold mb-4">Área de Postagens</h3>
-                <p class="w-3/4">A área de postagens é uma área colaborativa onde os alunos podem compartilhar resumos, atividades, apresentações e outros materiais de estudo. Essa funcionalidade promove a troca de conhecimento e recursos entre os estudantes, incentivando um ambiente de aprendizado colaborativo.</p>
-                <p class="w-3/4 mt-2">A ideia é que os alunos possam postar, por espontânea vontade, os resumos e materiais de estudo que fizerem, mas disponiblizamos uma área onde o professor possa posta as atividades e os alunos podem anexá-las</p>
+                <ParagraphFuncionalidades class="w-3/4">A área de postagens é uma área colaborativa onde os alunos podem compartilhar resumos, atividades, apresentações e outros materiais de estudo. Essa funcionalidade promove a troca de conhecimento e recursos entre os estudantes, incentivando um ambiente de aprendizado colaborativo.</ParagraphFuncionalidades>
+                <ParagraphFuncionalidades class="w-3/4 mt-2">A ideia é que os alunos possam postar, por espontânea vontade, os resumos e materiais de estudo que fizerem, mas disponiblizamos uma área onde o professor possa posta as atividades e os alunos podem anexá-las</ParagraphFuncionalidades>
             `,
             image: null,
             id: 'postagens'
@@ -85,7 +85,7 @@ export default function HomePage() {
     return (
         <div className="bg-center bg-corPrincipal selection:bg-red-500 selection:text-white bg-img">
             <header>
-                <MenuMobile />
+                <MenuMobileIndex />
                 <Nav className="flex justify-around py-4 nav__landing-page items-center">
                     <ul>
                         <li><img className='w-32' src={logo} alt="Logo" /></li>
@@ -219,8 +219,8 @@ const Nav = styled.nav`
   }
 `;
 
-const UlDeskEntrar = styled.ul `
-    @media screen and (max-width: 768px) {
+const UlDeskEntrar = styled.ul`
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `
@@ -235,9 +235,7 @@ const Main = styled.main`
 
 
 
-
-
-//Section Funcionalidades
+// Section Funcionalidades
 
 const ContainerFuncionalidades = styled.div`
   @media screen and (max-width: 768px) {
@@ -259,6 +257,13 @@ const ContainerConteudoFuncionalidade = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
   }
+`;
+
+const ParagraphFuncionalidades = styled.p`
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-bottom: 8px;
+    }
 `;
 
 

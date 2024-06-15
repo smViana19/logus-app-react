@@ -98,7 +98,7 @@ export default function HomePage() {
                             <a href="#funcionalidades">Funcionalidades</a>
                         </li>
                     </ul>
-                    <ul className='flex gap-16 items-center'>
+                    <UlDeskEntrar className='flex gap-16 items-center'>
                         <li className='text-lg'>
                             {isLoggedIn ? (
                                 <Link onClick={handleLogout} to="#">
@@ -123,12 +123,12 @@ export default function HomePage() {
                         <li>
                             {isLoggedIn && (<FaCircle size={24} color='#66ff33' />)}
                         </li>
-                    </ul>
+                    </UlDeskEntrar>
                 </Nav>
             </header>
 
             <Main className='mx-64'>
-                <Home id='home'>
+                <section id='home'>
                     <h1 className='text-4xl text-white font-bold text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
                     <InputPurple
                         typeInput='email'
@@ -137,7 +137,7 @@ export default function HomePage() {
                         valueBtn='Obtenha grátis'
                         btnTextColor={'white'}
                     />
-                </Home>
+                </section>
 
                 <ContainerPrintApp />
 
@@ -160,9 +160,9 @@ export default function HomePage() {
 
                 <section id='funcionalidades' className='my-32 m-auto'>
                     <Subtitle centered>FUNCIONALIDADES</Subtitle>
-                    <div className='gap-32 justify-between mt-16'>
+                    <ContainerFuncionalidades className='gap-32 justify-between mt-16'>
                         <div className='mb-16 col-span-2'>
-                            <ul className='flex justify-around '>
+                            <ItensFuncionalidades className='flex justify-around '>
                                 {functionalities.map(item => (
                                     <FunctionalityItem
                                         key={item.id}
@@ -177,14 +177,14 @@ export default function HomePage() {
                                         }}
                                     />
                                 ))}
-                            </ul>
+                            </ItensFuncionalidades>
                         </div>
 
-                        <div className='col-span-5 flex items-center'>
+                        <ContainerConteudoFuncionalidade className='col-span-5 flex items-center'>
                             <div dangerouslySetInnerHTML={{ __html: description }} />
                             {imageChange && <img className='ml-4 w-52' src={imageChange} alt="Imagem da funcionalidade" />}
-                        </div>
-                    </div>
+                        </ContainerConteudoFuncionalidade>
+                    </ContainerFuncionalidades>
                 </section>
 
                 <section className='mb-40'>
@@ -208,28 +208,68 @@ export default function HomePage() {
     );
 }
 
+
+// ----- RESPONSIVIDADE -----
+
+// Menu
 const Nav = styled.nav`
   @media screen and (max-width: 768px) {
     visibility: hidden;
+    width: 34px;
   }
 `;
 
+const UlDeskEntrar = styled.ul `
+    @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
+
+
+// Main
 const Main = styled.main`
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     margin: 16px;
   }
-`
+`;
 
-const Home = styled.section`
-@media screen and (max-width: 768px) {
-    
+
+
+
+
+//Section Funcionalidades
+
+const ContainerFuncionalidades = styled.div`
+  @media screen and (max-width: 768px) {
+    display: block;
   }
-`
+`;
 
-const ContainerDiferencial = styled.div `
-    @media screen and (max-width: 768px) {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 64px 16px 0 16px;
-    }
-`
+const ItensFuncionalidades = styled.ul`
+  @media screen and (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    justify-content: flex-start;
+    width: 100%;
+  }
+`;
+
+const ContainerConteudoFuncionalidade = styled.div`
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+
+
+// Section Diferencial
+
+const ContainerDiferencial = styled.div`
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 64px 16px 0 16px;
+
+  }
+`;

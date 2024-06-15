@@ -7,9 +7,9 @@ import AdminCardTop from '../../components/CardsContainers/AdminCardTop';
 export default function DashboardAdm() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-  if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
+ // if (!isLoggedIn) {
+   // return <Navigate to="/login" replace />;
+  //}
   return (
     <>
       <div className="min-h-screen w-screen bg-gray-50 flex">

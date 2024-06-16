@@ -6,6 +6,7 @@ import Logo from '../components/Logo';
 import styled from 'styled-components';
 import ModalCreateTask from '../components/Modal/ModalCreateTask';
 import LogoutButton from '../components/Botoes/LogoutBtn';
+import CalendarHeader from '../components/Calendar/CalendarHeader';
 
 const DayDiv = styled.div`
     font-size: 64px;
@@ -132,7 +133,10 @@ export default function Agenda() {
 
                     <ModalCreateTask isOpen={openModal} setOpenModal={setOpenModal} onCreateTask={handleCreateTask} />
                 </main>
+                            
             </div>
+
+            <CalendarHeader />
         </>
     );
 }

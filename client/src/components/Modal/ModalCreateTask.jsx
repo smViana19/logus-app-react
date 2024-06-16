@@ -10,11 +10,13 @@ export default function ModalCreateTask({ isOpen, setOpenModal, onCreateTask }) 
     const modalContentRef = useRef(null);
 
     function criarTarefa() {
+
         const nomeTarefa = nomeTarefaRef.current.value;
         const selectCategoria = categoriaSelectRef.current.value;
         const selectUrgencia = urgenciaSelectRef.current.value;
         const time = timeInputRef.current.value;
         const date = dateInputRef.current.value;
+
 
         // Create a task object
         const task = {
@@ -24,6 +26,7 @@ export default function ModalCreateTask({ isOpen, setOpenModal, onCreateTask }) 
             time,
             date,
         };
+
 
         // Call the onCreateTask function passed as a prop
         onCreateTask(task);
@@ -43,10 +46,12 @@ export default function ModalCreateTask({ isOpen, setOpenModal, onCreateTask }) 
     }
 
     return (
+
         <div
             className="bg-black bg-opacity-30 z-10 fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center"
             onClick={handleOverlayClick}
         >
+
             <div
                 className="w-1/2 bg-white text-center px-8 rounded-lg pt-4 pb-8 flex flex-col justify-center gap-4"
                 ref={modalContentRef}

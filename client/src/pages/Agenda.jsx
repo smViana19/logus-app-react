@@ -10,6 +10,7 @@ import CalendarHeader from '../components/Calendar/CalendarHeader';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaRegEdit } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
+import Sidebar from '../components/GoogleAgenda/Sidebar';
 
 const DayDiv = styled.div`
     font-size: 64px;
@@ -172,6 +173,9 @@ export default function Agenda() {
             </div >
 
             <CalendarHeader />
+            <div>
+                <Sidebar />
+            </div>
         </>
     );
 }

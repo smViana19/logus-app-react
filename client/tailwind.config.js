@@ -9,6 +9,10 @@ export default {
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
+
+            gridTemplateColumns: {
+                "1/5": "1fr 5fr"
+            },
             colors: {
                 //inputs
                 cinzaBgInput: '#F3F3F3',

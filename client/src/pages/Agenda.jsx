@@ -74,7 +74,7 @@ export default function Agenda() {
 //-----------------
 
     const [currentMonth, setCurrentMonth] = useState(getMonth())
-    const { monthIndex } =useContext(GlobalContext)
+    const { monthIndex, showEventModal } =useContext(GlobalContext)
     useEffect(() => {
         
         setCurrentMonth(getMonth(monthIndex));
@@ -188,7 +188,8 @@ export default function Agenda() {
 
             </div >
             <React.Fragment>
-                <EventModal />
+                {showEventModal && <EventModal /> }
+                
                 <div className='h-sreen flex-columns'>
                 <CalendarHeader />
                     <div className='flex flex-1'>

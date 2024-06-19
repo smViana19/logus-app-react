@@ -8,6 +8,7 @@ export default function ContextWrapper( props ) {
     const [monthIndex, setMonthIndex] = useState(dayjs().month()) 
     const [smallCalendarMonth, setSmallCalendarMonth] = useState(null)
     const [daySelected, setDaySelected] = useState(null)
+    const [showEventModal, setShowEventModal] = useState(false)
 
     useEffect(() =>{
       if(smallCalendarMonth !== null) {
@@ -22,7 +23,9 @@ export default function ContextWrapper( props ) {
         setSmallCalendarMonth,
         smallCalendarMonth,
         daySelected,
-        setDaySelected
+        setDaySelected,
+        showEventModal,
+        setShowEventModal
       }}>
         {props.children}
     </GlobalContext.Provider>

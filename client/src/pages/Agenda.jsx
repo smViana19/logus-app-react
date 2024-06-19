@@ -11,6 +11,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import { FaRegEdit } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import Sidebar from '../components/GoogleAgenda/Sidebar';
+import Month from '../components/GoogleAgenda/Month';
+
+import { getMonth } from '../util'
 
 const DayDiv = styled.div`
     font-size: 64px;
@@ -65,6 +68,11 @@ export default function Agenda() {
     // if (!isLoggedIn) {
     //     return <Navigate to="/login" replace />;
     // }
+
+//-----------------
+
+    const [currentMonth, setCurrentMonth] = useState(getMonth())
+     
 
     return (
         <>
@@ -171,11 +179,18 @@ export default function Agenda() {
                 </main >
 
             </div >
+            <React.Fragment>
+                <div className='h-sreen flex-columns'>
+                    <CalendarHeader />
 
-            <CalendarHeader />
-            <div>
-                <Sidebar />
-            </div>
+
+                    <div className='flex flex-1'>
+                        <Sidebar />
+                        <Month month={currentMonth}/>
+                  
+                    </div>
+                </div>
+            </React.Fragment>
         </>
     );
 }

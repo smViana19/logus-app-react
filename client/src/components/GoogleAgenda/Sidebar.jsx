@@ -1,14 +1,9 @@
-import React from "react";
-import CreateEventButton from "./CreateEventButton";
-import SmallCalendar from "./SmallCalendar";
-import Labels from "../GoogleAgenda/Labels"
+import React from 'react'
 
 export default function Sidebar() {
   return (
-    <aside className="border p-5 w-64">
-      <CreateEventButton />
-      <SmallCalendar />
-      <Labels />
-    </aside>
-  );
+    <div>
+      
+    </div>
+  )
 }

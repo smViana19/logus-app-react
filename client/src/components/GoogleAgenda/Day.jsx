@@ -39,7 +39,7 @@ export default function Day({ day, rowIdx }) {
                 </p>
             </div>
 
-            <div className="flex-1 cursor-pointer" onClick={handleDayClick}>
+            <div className="flex-1 cursor-pointer py-2" onClick={handleDayClick}>
                 {dayEvents.map((evt, idx) => (
                     <div
                         key={idx}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import NavLink from '../components/NavLink';
-import Logo from '../components/Logo';
+import NavLink from '../components/Navs/NavLink';
+import Logo from '../components/outros/Logo';
 import { Link } from 'react-router-dom';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';

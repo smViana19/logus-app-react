@@ -5,7 +5,7 @@ import isEmail from "validator/lib/isEmail";
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
 import InputError from '../../../components/Inputs/InputErro';
-import Logo from '../../../components/Logo'
+import Logo from '../../../components/outros/Logo'
 import BotaoPrincipal from '../../../components/Botoes/BtnPrincipal';
 import * as actions from '../../../store/modules/auth/actions'
 

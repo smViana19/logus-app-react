@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import NavLink from '../../components/NavLink';
-import Logo from '../../components/Logo';
+import NavLink from '../../components/Navs/NavLink';
+import Logo from '../../components/outros/Logo';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../../components/Botoes/LogoutBtn';
 

@@ -7,7 +7,7 @@ import logo from '../assets/logo.png';
 import InputPurple from '../components/Inputs/InputPurple';
 import ContainerPrintApp from '../components/CardsContainers/ContainerPrintApp';
 import Subtitle from '../components/Text/Subtitulo';
-import FunctionalityItem from '../components/FunctionalityItem';
+import FunctionalityItem from '../components/CardsContainers/FunctionalityItem';
 import FooterLanding from '../components/Footer/FooterLanding';
 import styled from 'styled-components';
 
@@ -19,7 +19,7 @@ import imgAgenda from '../assets/agenda.png';
 import imgPomodoro from '../assets/pomodoro.png';
 
 import '../css/welcome.css';
-import Loading from '../components/Loading';
+import Loading from '../components/outros/Loading';
 import MenuMobileIndex from '../components/Navs/MenuMobileIndex';
 
 export default function HomePage() {

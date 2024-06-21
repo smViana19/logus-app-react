@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NavLink from '../components/NavLink';
-import Logo from '../components/Logo';
+import NavLink from '../components/Navs/NavLink';
+import Logo from '../components/outros/Logo';
 import BtnPrincipal from '../components/Botoes/BtnPrincipal';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';

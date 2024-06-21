@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';
-import NavLink from '../components/NavLink';
-import Logo from '../components/Logo';
+import NavLink from '../components/Navs/NavLink';
+import Logo from '../components/outros/Logo';
 import styled from 'styled-components';
 import ModalCreateTask from '../components/Modal/ModalCreateTask';
 import LogoutButton from '../components/Botoes/LogoutBtn';

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Switch from '../Switch';
+import Switch from '../outros/Switch';
 
 export default function ModalCreateTask({ isOpen, setOpenModal, onCreateTask }) {
     const nomeTarefaRef = useRef(null);

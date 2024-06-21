@@ -7,7 +7,7 @@ import '../../../css/style.css';
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
 import BtnPrincipal from "../../../components/Botoes/BtnPrincipal";
-import Logo from '../../../components/Logo';
+import Logo from '../../../components/outros/Logo';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../../services/axios";
 import UserRoleSelector from "../../../components/UserSelectorRole";

@@ -15,6 +15,7 @@ import GlobalContext from '../context/GlobalContext';
 
 import { getMonth } from '../util'
 import CalendarHeader from '../components/GoogleAgenda/CalendarHeader';
+import EventModal from '../components/GoogleAgenda/EventModal';
 
 const DayDiv = styled.div`
     font-size: 64px;
@@ -73,7 +74,7 @@ export default function Agenda() {
 //-----------------
 
     const [currentMonth, setCurrentMonth] = useState(getMonth())
-    const { monthIndex } =useContext(GlobalContext)
+    const { monthIndex, showEventModal } =useContext(GlobalContext)
     useEffect(() => {
         
         setCurrentMonth(getMonth(monthIndex));
@@ -187,10 +188,10 @@ export default function Agenda() {
 
             </div >
             <React.Fragment>
+                {showEventModal && <EventModal /> }
+                
                 <div className='h-sreen flex-columns'>
-           
                 <CalendarHeader />
-
                     <div className='flex flex-1'>
                         <Sidebar />
                         <Month month={currentMonth}/>

@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavLink from '../components/Navs/NavLink';
 import Logo from '../components/outros/Logo';
-import { Link } from 'react-router-dom';
 import LogoutButton from '../components/Botoes/LogoutBtn';
-import UsuarioCard from '../components/Botoes/UsuarioCard';
-import CardCategoria from '../components/CardsContainers/CardCategoria';
-import CardMateria from '../components/CardsContainers/CardMateria'; // Certifique-se de importar seu componente CardMateria
+import CardMateria from '../components/CardsContainers/CardMateria';
 import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
 
 export default function AreaPostagens() {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-
-    // if (!isLoggedIn) {
-    //    return <Navigate to="/login" replace />;
-    // }
-
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [materias, setMaterias] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -89,7 +81,6 @@ export default function AreaPostagens() {
                                         <Logo className="block h-9 w-auto fill-current text-gray-800" />
                                     </Link>
                                 </div>
-
                                 <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative">
                                     <NavLink to='/dashboard' className='text-gray-800'>Dashboard</NavLink>
                                     <NavLink to='/dashboard/postagens' className='text-purplePrimary'
@@ -126,12 +117,14 @@ export default function AreaPostagens() {
                         {materias.length > 0 ? (
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">
-                                    <CardMateria {...materia} caminho={`dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`} />
+                                    <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
+                                        <CardMateria {...materia} />
+                                    </Link>
                                     <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
                                         <button
                                             onClick={() => setMenuVisible(menuVisible === index ? null : index)}
-                                            className="p-2 rounded-full bg-gray-200" // Definindo o background dos botões de três pontinhos
-                                            style={{ color: '#000' }} // Definindo a cor do texto para preto
+                                            className="p-2 rounded-full bg-gray-200"
+                                            style={{ color: '#000' }}
                                         >
                                             &#x22EE;
                                         </button>
@@ -143,7 +136,7 @@ export default function AreaPostagens() {
                                                             type="text"
                                                             value={editNome}
                                                             onChange={(e) => setEditNome(e.target.value)}
-                                                            className="border border-gray-300 p-2 mb-2 w-full rounded-lg text-uppercase" // Adicionando classe para texto em maiúsculas
+                                                            className="border border-gray-300 p-2 mb-2 w-full rounded-lg"
                                                         />
                                                         <button
                                                             onClick={handleSaveEdit}

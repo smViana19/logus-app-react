@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
 import LogoutButton from '../components/Botoes/LogoutBtn';
+import CardUserName from '../components/CardsContainers/CardUserName';
+import CardProfileNumbers from '../components/CardsContainers/CardProfileNumbers';
+import SchoolInfosProfile from '../components/CardsContainers/SchoolInfosProfile';
 
 
 
@@ -70,30 +73,16 @@ export default function Dashboard() {
                     </div>
                 </nav>
 
-                <UsuarioCard role={role} user={user} />
-
-                <div className='flex gap-8 mx-16'>
-                    <CardCategoria categoria={'Resumos'} />
-                    <CardCategoria categoria={'Apresentações'} customClass={'bg-white text-black'} />
-                    <CardCategoria categoria={'Atividades'} customClass={'bg-white text-black'} />
-
-                </div>
-
-                <section className='mx-16 mt-16'>
-                    <h1 className='font-semibold text-2xl mb-8'>Tarefas Urgentes</h1>
-
-                    <div className='border-b border-gray-400 flex justify-between'>
-                        <div className='flex gap-8'>
-                            <input type="checkbox" />
-                            <p className='text-lg'>Atividade de matemática sobre funções de segundo grau</p>
-                        </div>
-
-                        <span>
-                            Escola
-                            <img src="" alt="" />
-                        </span>
+                <div className='flex justify-center gap-32 mt-32 items-center'>
+                    <div className='bg-slate-300 w-32 h-32 rounded-full'>
+                        <img src="" alt="" />
                     </div>
-                </section>
+                    <div>
+                        <CardUserName/>
+                        <CardProfileNumbers />
+                        <SchoolInfosProfile/>
+                    </div>
+                </div>
 
             </div>
 

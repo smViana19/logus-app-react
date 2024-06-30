@@ -73,7 +73,7 @@ export default function Dashboard() {
                     </div>
                 </nav>
 
-                <div className='flex justify-center gap-32 mt-32 items-center'>
+                <div className='flex justify-center gap-32 mt-16 items-center mb-16'>
                     <div className='bg-slate-300 w-32 h-32 rounded-full'>
                         <img src="" alt="" />
                     </div>
@@ -82,6 +82,12 @@ export default function Dashboard() {
                         <CardProfileNumbers />
                         <SchoolInfosProfile/>
                     </div>
+                </div>
+
+                <hr />
+                <div>
+                    <h2>Publicações</h2>
+                    <h2>Salvos</h2>
                 </div>
 
             </div>

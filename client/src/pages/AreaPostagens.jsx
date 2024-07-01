@@ -248,8 +248,8 @@ export default function AreaPostagens() {
                     </section>
                 </main>
             </div>
-            /* --------------------------- MODAL ADD TAREFA
-            --------------------------- */
+
+            /* --------------------------- MODAL ADD TAREFA --------------------------- */
             {showModal && (
                 <div
                     className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"

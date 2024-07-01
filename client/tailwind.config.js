@@ -34,11 +34,13 @@ export default {
                 //backgrounds
                 purplePrimary: '#820AD1',
                 purpleDarkBg: '#533680',
+                cinzaPrincipal: '#F0F1F5',
                 //textos
                 txtPlaceholder: '#3A3A3A',
                 txtTitulo: '#533680',
                 txtLink: '',
                 txtBotao: '',
+
             },
             scale: {
                 '102': '1.02',

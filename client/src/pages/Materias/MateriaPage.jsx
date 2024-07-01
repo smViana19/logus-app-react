@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
@@ -6,12 +6,19 @@ import Logo from '../../components/outros/Logo';
 import { useParams } from 'react-router-dom';
 import LogoutButton from '../../components/Botoes/LogoutBtn';
 import BtnMateriasFilter from '../../components/Botoes/BtnMateriasFilter';
+import CardAtividade from '../../components/CardsContainers/CardAtividade'; 
+import Modal from '../../components/Modal/ModalCriarAtv'; 
 
-export default function AreaPostagens() {
+const AreaPostagens = () => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
-
     const { nomeMateria } = useParams();
+    const [atividades, setAtividades] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleAddAtividade = (novaAtividade) => {
+        setAtividades([...atividades, novaAtividade]);
+    };
 
     return (
         <>
@@ -93,9 +100,9 @@ export default function AreaPostagens() {
                             </h1>
                         </div>
                         <div className="col-span-1 grid grid-rows-3 gap-4">
-                            <BtnMateriasFilter text={'Exercícios'} />
-                            <BtnMateriasFilter text={'Exercícios'} />
-                            <BtnMateriasFilter text={'Exercícios'} />
+                            <BtnMateriasFilter text={'Resumos'} />
+                            <BtnMateriasFilter text={'Apresentações'} />
+                            <BtnMateriasFilter text={'Atividades'} />
                         </div>
                     </div>
 
@@ -103,8 +110,44 @@ export default function AreaPostagens() {
                         <span className='font-medium text-xl text-gray-600 tracking-wide'>Todas: </span>
                         <hr className="border-gray-300 h-1 w-full" />
                     </div>
+
+                    <div className='flex justify-end'>
+                        <button
+                            className='px-3 bg-purplePrimary text-white tracking-wide py-1 text-3xl rounded-full'
+                            onClick={() => setShowModal(true)}
+                        >
+                            +
+                        </button>
+                    </div>
+
+                    <div className="gap-y- flex flex-col mt-8">
+                        {atividades.length > 0 ? (
+                            atividades.map((atividade, index) => (
+                                <CardAtividade
+                                    key={index}
+                                    nome={atividade.nome}
+                                    categoria={atividade.categoria}
+                                    dataPostagem={atividade.dataPostagem}
+                                    dataEntrega={atividade.dataEntrega}
+                                    pontos={atividade.pontos}
+                                />
+                            ))
+                        ) : (
+                            <p className="col-span-3 text-center text-gray-500">
+                                Nenhuma atividade adicionada.
+                            </p>
+                        )}
+                    </div>
+
+                    <Modal
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        handleAddAtividade={handleAddAtividade}
+                    />
                 </main>
             </div>
         </>
     );
-}
+};
+
+export default AreaPostagens;

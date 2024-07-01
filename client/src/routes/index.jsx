@@ -13,7 +13,7 @@ import Agenda from '../pages/Agenda';
 import AreaPostagens from '../pages/AreaPostagens';
 import DashboardAdm from '../pages/Admin/DashboardAdm';
 import Notas from '../pages/Admin/Notas';
-import Materia01 from '../pages/Materias/Materia01'
+import MateriaPage from '../pages/Materias/MateriaPage'
 import Profile from '../pages/Profile'
 
 
@@ -31,9 +31,11 @@ export default function Rotas() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
             <Route path="/dashboard/agenda" element={<Agenda />} />
-            <Route path="/dashboard/postagens/materia01" element={<Materia01 />} />
-            <Route path="/dashboard/postagens" element={<AreaPostagens />} />
+ 
             <Route path="/dashboard/perfil" element={<Profile />} />
+            <Route path="/dashboard/postagens" element={<AreaPostagens />} />
+                {/* Rota dinâmica para página de matéria */}
+                <Route path="/dashboard/postagens/:nomeMateria" element={<MateriaPage />} />
 
 
             <Route path="/admin/dashboard" element={<DashboardAdm />} />

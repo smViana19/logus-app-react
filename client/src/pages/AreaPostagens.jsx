@@ -11,6 +11,7 @@ export default function AreaPostagens() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [materias, setMaterias] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const [newMateria, setNewMateria] = useState('');
     const [menuVisible, setMenuVisible] = useState(null);
     const [editingIndex, setEditingIndex] = useState(null);
@@ -38,6 +39,7 @@ export default function AreaPostagens() {
         setMaterias(updatedMaterias);
         localStorage.setItem('materias', JSON.stringify(updatedMaterias));
         setNewMateria('');
+        setShowModal(false);
     };
 
     const handleKeyPress = (e) => {
@@ -149,7 +151,7 @@ export default function AreaPostagens() {
                     <section className="w-4/5 m-auto">
                         <button
                             className="border border-gray-300 w-1/4 py-2 rounded-lg mt-4"
-                            onClick={() => setNewMateria('')}
+                            onClick={() => setShowModal(true)}
                         >
                             Adicionar Matéria
                         </button>
@@ -190,26 +192,24 @@ export default function AreaPostagens() {
                                                                         .value
                                                                 )
                                                             }
-                                                            className="border border-gray-300 p-2 mb-2 w-full rounded-lg outline-none"
+                                                            className="border border-gray-300 p-2 mb-2 w-full rounded-lg"
                                                         />
-                                                        <div className="flex justify-end mt-2">
-                                                            <button
-                                                                onClick={
-                                                                    handleSaveEdit
-                                                                }
-                                                                className="bg-blue-500 text-white py-1.5 px-8 rounded-lg mr-2"
-                                                            >
-                                                                Salvar
-                                                            </button>
-                                                            <button
-                                                                onClick={
-                                                                    handleCancelEdit
-                                                                }
-                                                                className="bg-red-800 text-white py-1.5 px-8 rounded-lg"
-                                                            >
-                                                                Cancelar
-                                                            </button>
-                                                        </div>
+                                                        <button
+                                                            onClick={
+                                                                handleSaveEdit
+                                                            }
+                                                            className="bg-blue-500 text-black py-2 px-4 rounded-lg ml-2"
+                                                        >
+                                                            Salvar
+                                                        </button>
+                                                        <button
+                                                            onClick={
+                                                                handleCancelEdit
+                                                            }
+                                                            className="bg-red-500 text-black py-2 px-4 rounded-lg ml-2"
+                                                        >
+                                                            Cancelar
+                                                        </button>
                                                     </div>
                                                 ) : (
                                                     <>
@@ -248,6 +248,33 @@ export default function AreaPostagens() {
                     </section>
                 </main>
             </div>
+            /* --------------------------- MODAL ADD TAREFA
+            --------------------------- */
+            {showModal && (
+                <div
+                    className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                    onClick={() => setShowModal(false)} >
+                    <div
+                        className="bg-white py-8 w-1/3 px-16 rounded-lg shadow-lg"
+                        onClick={(e) => e.stopPropagation()}  >
+                        <h2 className="text-lg mb-6">Adicionar Nova Matéria</h2>
+                        <input
+                            type="text"
+                            value={newMateria}
+                            onChange={(e) => setNewMateria(e.target.value)}
+                            onKeyPress={handleKeyPress}
+                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                            placeholder="Nome da matéria"
+                        />
+                        <button
+                            onClick={handleAddMateria}
+                            className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide" >
+                            Adicionar
+                        </button>
+                        
+                    </div>
+                </div>
+            )}
         </>
     );
 }

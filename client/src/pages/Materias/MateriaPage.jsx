@@ -7,12 +7,9 @@ import { useParams } from 'react-router-dom';
 import LogoutButton from '../../components/Botoes/LogoutBtn';
 import BtnMateriasFilter from '../../components/Botoes/BtnMateriasFilter';
 
-
 export default function AreaPostagens() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
-
-
 
     const { nomeMateria } = useParams();
 
@@ -88,17 +85,23 @@ export default function AreaPostagens() {
                     </div>
                 </nav>
 
-                <main className='px-64 py-16'>
+                <main className="px-64 py-16">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="col-span-1 bg-purple-600 h-full flex items-end rounded-xl">
-                            <h1 className="text-white text-3xl p-6 first-letter:uppercase">{nomeMateria}</h1>
+                            <h1 className="text-white text-3xl p-6 first-letter:uppercase">
+                                {nomeMateria}
+                            </h1>
                         </div>
                         <div className="col-span-1 grid grid-rows-3 gap-4">
-                            <BtnMateriasFilter text={'Exercícios'}/>
-                            <BtnMateriasFilter text={'Exercícios'}/>
-                            <BtnMateriasFilter text={'Exercícios'}/>
-
+                            <BtnMateriasFilter text={'Exercícios'} />
+                            <BtnMateriasFilter text={'Exercícios'} />
+                            <BtnMateriasFilter text={'Exercícios'} />
                         </div>
+                    </div>
+
+                    <div className="flex items-center gap-8 mt-16">
+                        <span className='font-medium text-xl text-gray-600 tracking-wide'>Todas: </span>
+                        <hr className="border-gray-300 h-1 w-full" />
                     </div>
                 </main>
             </div>

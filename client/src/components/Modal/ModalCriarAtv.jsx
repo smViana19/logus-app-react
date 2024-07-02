@@ -6,7 +6,9 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const [dataEntrega, setDataEntrega] = useState('');
     const [horaEntrega, setHoraEntrega] = useState('23:59');
     const [pontos, setPontos] = useState('0');
+    const [dataPostagem, setDataPostagem] = useState('');
 
+    // Validate input fields
     const validateInputs = () => {
         if (nome === '') {
             alert('Digite o nome do material');
@@ -27,6 +29,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         return true;
     };
 
+    // Handle focus and blur events for pontos and horaEntrega inputs
     const handleFocus = () => {
         if (pontos === '0') {
             setPontos('');
@@ -104,9 +107,9 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                             />
                         </div>
                         <div className='flex gap-8'>
-                            <select 
-                                value={categoria} // Define o valor selecionado
-                                onChange={(e) => setCategoria(e.target.value)} // Atualiza o estado 'categoria'
+                            <select
+                                value={categoria}
+                                onChange={(e) => setCategoria(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                             >
                                 <option value="" disabled>Selecione a Categoria</option>
@@ -119,39 +122,36 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 type="number"
                                 value={pontos}
                                 onChange={(e) => setPontos(e.target.value)}
-
                                 onFocus={handleFocus}
                                 onBlur={handleBlur}
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Pontos"
                             />
                         </div>
-                        <div className='flex gap-8 mt-2'>
-                            <input
-                                type="datetime-local"
-                                value={dataPostagem}
-                                onChange={(e) => setDataPostagem(e.target.value)}
-                                className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                                placeholder="Data de postagem"
-                                readOnly
-                            />
-                            <input
-                                
-                                type="date"
-                                value={dataEntrega}
-                                onChange={(e) => setDataEntrega(e.target.value)}
-                                className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                                placeholder="Data de entrega"
-                            />
-                            <input
-                                type="time"
-                                value={horaEntrega}
-                                onChange={(e) => setHoraEntrega(e.target.value)}
-                                onFocus={handleHoraFocus}
-                                onBlur={handleHoraBlur}
-                                className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                                placeholder="Hora de entrega"
-                            />
+                        <div className='mt-4'>
+                            <label htmlFor="">Digite a data e a hora de entrega do trabalho: </label>
+                            <div className='flex gap-8 mt-2'>
+                                <input
+                                    type="date"
+                                    value={dataEntrega}
+                                    onChange={(e) => setDataEntrega(e.target.value)}
+                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                    placeholder="Data de entrega"
+                                />
+                                <input
+                                    type="time"
+                                    value={horaEntrega}
+                                    onChange={(e) => setHoraEntrega(e.target.value)}
+                                    onFocus={handleHoraFocus}
+                                    onBlur={handleHoraBlur}
+                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                    placeholder="Hora de entrega"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <label className='pr-4' htmlFor="">Não tem data de entrega</label>
+                            <input type="checkbox" />
                         </div>
                         <div className="flex justify-end">
                             <button

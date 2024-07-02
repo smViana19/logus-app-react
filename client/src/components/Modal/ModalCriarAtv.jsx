@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
-=======
-import React, { useState } from 'react';
->>>>>>> 5a1ccee2e34ec427327eadb5b91faaa51e10a233
 
 const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const [nome, setNome] = useState('');
@@ -109,13 +105,8 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                         </div>
                         <div className='flex gap-8'>
                             <select 
-<<<<<<< HEAD
                                 value={categoria} // Define o valor selecionado
                                 onChange={(e) => setCategoria(e.target.value)} // Atualiza o estado 'categoria'
-=======
-                                value={categoria} 
-                                onChange={(e) => setCategoria(e.target.value)} 
->>>>>>> 5a1ccee2e34ec427327eadb5b91faaa51e10a233
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                             >
                                 <option value="" disabled>Selecione a Categoria</option>
@@ -128,18 +119,15 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 type="number"
                                 value={pontos}
                                 onChange={(e) => setPontos(e.target.value)}
-<<<<<<< HEAD
-=======
+
                                 onFocus={handleFocus}
                                 onBlur={handleBlur}
->>>>>>> 5a1ccee2e34ec427327eadb5b91faaa51e10a233
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Pontos"
                             />
                         </div>
                         <div className='flex gap-8 mt-2'>
                             <input
-<<<<<<< HEAD
                                 type="datetime-local"
                                 value={dataPostagem}
                                 onChange={(e) => setDataPostagem(e.target.value)}
@@ -148,17 +136,13 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 readOnly
                             />
                             <input
-                                type="datetime-local"
-=======
+                                
                                 type="date"
->>>>>>> 5a1ccee2e34ec427327eadb5b91faaa51e10a233
                                 value={dataEntrega}
                                 onChange={(e) => setDataEntrega(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Data de entrega"
                             />
-<<<<<<< HEAD
-=======
                             <input
                                 type="time"
                                 value={horaEntrega}
@@ -168,7 +152,6 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Hora de entrega"
                             />
->>>>>>> 5a1ccee2e34ec427327eadb5b91faaa51e10a233
                         </div>
                         <div className="flex justify-end">
                             <button

@@ -4,6 +4,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const [nome, setNome] = useState('');
     const [categoria, setCategoria] = useState('');
     const [dataEntrega, setDataEntrega] = useState('');
+    const [horaEntrega, setHoraEntrega] = useState('23:59');
     const [pontos, setPontos] = useState('0');
 
     const validateInputs = () => {
@@ -19,7 +20,10 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
             alert('Data de entrega inválida ou vazia');
             return false;
         }
-   
+        if (horaEntrega === '') {
+            alert('Hora de entrega inválida ou vazia');
+            return false;
+        }
         return true;
     };
 
@@ -35,15 +39,28 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         }
     };
 
+    const handleHoraFocus = () => {
+        if (horaEntrega === '23:59') {
+            setHoraEntrega('');
+        }
+    };
+
+    const handleHoraBlur = () => {
+        if (horaEntrega === '') {
+            setHoraEntrega('23:59');
+        }
+    };
+
     const handleSubmit = () => {
         if (!validateInputs()) return;
 
         const dataHoraClique = new Date().toISOString();
+        const dataEntregaCompleta = `${dataEntrega}T${horaEntrega}`;
 
         handleAddAtividade({
             nome,
             categoria,
-            dataEntrega,
+            dataEntrega: dataEntregaCompleta,
             pontos: parseInt(pontos),
             dataHoraClique,
         });
@@ -53,13 +70,8 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         setNome('');
         setCategoria('');
         setDataEntrega('');
+        setHoraEntrega('23:59');
         setPontos('0');
-    };
-
-    const handleCloseModal = (e) => {
-        if (e.target.id === 'modal-background') {
-            setShowModal(false);
-        }
     };
 
     return (
@@ -68,7 +80,9 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                 <div
                     id="modal-background"
                     className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
-                    onClick={handleCloseModal}
+                    onClick={(e) => {
+                        if (e.target.id === 'modal-background') setShowModal(false);
+                    }}
                 >
                     <div className="bg-white py-8 w-1/2 px-16 rounded-lg shadow-lg" onClick={(e) => e.stopPropagation()}>
                         <h2 className="text-lg mb-6">Criar Material</h2>
@@ -106,11 +120,20 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                         </div>
                         <div className='flex gap-8 mt-2'>
                             <input
-                                type="datetime-local"
+                                type="date"
                                 value={dataEntrega}
                                 onChange={(e) => setDataEntrega(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Data de entrega"
+                            />
+                            <input
+                                type="time"
+                                value={horaEntrega}
+                                onChange={(e) => setHoraEntrega(e.target.value)}
+                                onFocus={handleHoraFocus}
+                                onBlur={handleHoraBlur}
+                                className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                placeholder="Hora de entrega"
                             />
                         </div>
                         

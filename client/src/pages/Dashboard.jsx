@@ -73,9 +73,9 @@ export default function Dashboard() {
                 <UsuarioCard role={role} user={user} />
 
                 <div className='flex gap-8 mx-16'>
-                    <CardCategoria categoria={'Resumos'} />
-                    <CardCategoria categoria={'Apresentações'} customClass={'bg-white text-black'} />
-                    <CardCategoria categoria={'Atividades'} customClass={'bg-white text-black'} />
+                    <CardCategoria categoria={'Resumos'} customClass={'text-white'} />
+                    <CardCategoria categoria={'Apresentações'} customClass={'bg-white text-gray-800'} />
+                    <CardCategoria categoria={'Atividades'} customClass={'bg-white text-gray-800'} />
 
                 </div>
 

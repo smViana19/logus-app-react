@@ -1,5 +1,4 @@
-// Modal.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const [nome, setNome] = useState('');
@@ -7,6 +6,14 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const [dataPostagem, setDataPostagem] = useState('');
     const [dataEntrega, setDataEntrega] = useState('');
     const [pontos, setPontos] = useState('');
+
+    useEffect(() => {
+        if (showModal) {
+            const now = new Date();
+            const formattedDate = now.toISOString().slice(0, 16); // Formata para "yyyy-MM-ddThh:mm"
+            setDataPostagem(formattedDate);
+        }
+    }, [showModal]);
 
     const handleSubmit = () => {
         handleAddAtividade({
@@ -39,15 +46,13 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Nome do material"
                             />
-                            
                         </div>
-
                         <div className='flex gap-8'>
-                        <select 
-                            value={categoria} // Define o valor selecionado
-                            onChange={(e) => setCategoria(e.target.value)} // Atualiza o estado 'categoria'
-                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                        >
+                            <select 
+                                value={categoria} // Define o valor selecionado
+                                onChange={(e) => setCategoria(e.target.value)} // Atualiza o estado 'categoria'
+                                className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                            >
                                 <option value="" disabled>Selecione a Categoria</option>
                                 <option value="Atividade">Atividade</option>
                                 <option value="Resumo">Resumo</option>
@@ -55,12 +60,12 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 <option value="Outros">Outros</option>
                             </select>
                             <input
-                            type="number"
-                            value={pontos}
-                            onChange={(e) => setPontos(e.target.value)}
-                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                            placeholder="Pontos"
-                        />
+                                type="number"
+                                value={pontos}
+                                onChange={(e) => setPontos(e.target.value)}
+                                className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                placeholder="Pontos"
+                            />
                         </div>
                         <div className='flex gap-8 mt-2'>
                             <input
@@ -69,6 +74,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 onChange={(e) => setDataPostagem(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Data de postagem"
+                                readOnly
                             />
                             <input
                                 type="datetime-local"
@@ -77,9 +83,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 placeholder="Data de entrega"
                             />
-                            
                         </div>
-                        
                         <div className="flex justify-end">
                             <button
                                 onClick={handleSubmit}

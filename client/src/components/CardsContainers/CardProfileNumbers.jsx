@@ -9,13 +9,13 @@ const CardProfileNumbers = () => {
       </div>
 
       <div className='text-center'>
-        <p className='mb-2 '>Postagens</p>
-        <span className='font-semibold  text-center'>1,830</span>
+        <p className='mb-2 '>Atividades Entregues</p>
+        <span className='font-semibold  text-center'>132</span>
       </div>
 
       <div className='text-center'>
-        <p className='mb-2 '>Postagens</p>
-        <span className='font-semibold  text-center'>1,830</span>
+        <p className='mb-2 '>Pontuação</p>
+        <span className='font-semibold  text-center'>840 XP</span>
       </div>
     </div>
   )

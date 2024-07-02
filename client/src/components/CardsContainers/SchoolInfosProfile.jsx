@@ -9,8 +9,8 @@ export default function SchoolInfosProfile() {
       </div>
 
       <div>
-        <p className='font-semibold'>Ano Escolar</p>
-        <span>3º Ano do Ensino Médio</span>
+        <p className='font-semibold'>Turma</p>
+        <span>3B1</span>
       </div>
 
       

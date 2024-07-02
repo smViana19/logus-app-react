@@ -85,7 +85,7 @@ export default function Dashboard() {
                 </div>
 
                 <hr />
-                <div>
+                <div className='flex justify-between mx-64 mt-4 text-lg font-medium'>
                     <h2>Publicações</h2>
                     <h2>Salvos</h2>
                 </div>

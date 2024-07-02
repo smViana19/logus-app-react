@@ -56,11 +56,21 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         setPontos('0');
     };
 
+    const handleCloseModal = (e) => {
+        if (e.target.id === 'modal-background') {
+            setShowModal(false);
+        }
+    };
+
     return (
         <>
             {showModal && (
-                <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-                    <div className="bg-white py-8 w-1/2 px-16 rounded-lg shadow-lg">
+                <div
+                    id="modal-background"
+                    className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                    onClick={handleCloseModal}
+                >
+                    <div className="bg-white py-8 w-1/2 px-16 rounded-lg shadow-lg" onClick={(e) => e.stopPropagation()}>
                         <h2 className="text-lg mb-6">Criar Material</h2>
                         <div className='flex gap-8'>
                             <input

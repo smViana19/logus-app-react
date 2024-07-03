@@ -256,14 +256,10 @@ export default function AreaPostagens() {
                         <div className="flex justify-end">
                         <button
                             onClick={handleSaveEdit}
-                            className="bg-blue-500 text-white py-1.5 px-8 rounded-lg tracking-wide mr-2" >
+                            className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide mr-2" >
                             Salvar
                         </button>
-                        <button
-                            onClick={handleCancelEdit}
-                            className="bg-red-500 text-white py-1.5 px-8 rounded-lg tracking-wide" >
-                            Cancelar
-                        </button>
+                       
                     </div>
                 </div>
             </div>

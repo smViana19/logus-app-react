@@ -16,6 +16,7 @@ export default function AreaPostagens() {
     const [menuVisible, setMenuVisible] = useState(null);
     const [editingIndex, setEditingIndex] = useState(null);
     const [editNome, setEditNome] = useState('');
+    const [showEditModal, setShowEditModal] = useState(false);
 
     useEffect(() => {
         const savedMaterias = JSON.parse(localStorage.getItem('materias'));
@@ -57,6 +58,7 @@ export default function AreaPostagens() {
     const handleEditMateria = (index) => {
         setEditingIndex(index);
         setEditNome(materias[index].nome);
+        setShowEditModal(true);
     };
 
     const handleSaveEdit = () => {
@@ -68,11 +70,13 @@ export default function AreaPostagens() {
         setMaterias(updatedMaterias);
         localStorage.setItem('materias', JSON.stringify(updatedMaterias));
         setEditingIndex(null);
+        setShowEditModal(false);
     };
 
     const handleCancelEdit = () => {
         setEditingIndex(null);
         setEditNome('');
+        setShowEditModal(false);
     };
 
     return (
@@ -181,60 +185,18 @@ export default function AreaPostagens() {
                                         </button>
                                         {menuVisible === index && (
                                             <div className="absolute top-10 right-2 w-24 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                                                {editingIndex === index ? (
-                                                    <div className="flex">
-                                                        <input
-                                                            type="text"
-                                                            value={editNome}
-                                                            onChange={(e) =>
-                                                                setEditNome(
-                                                                    e.target
-                                                                        .value
-                                                                )
-                                                            }
-                                                            className="border border-gray-300 p-2 mb-2 w-full rounded-lg"
-                                                        />
-                                                        <button
-                                                            onClick={
-                                                                handleSaveEdit
-                                                            }
-                                                            className="bg-blue-500 text-black py-2 px-4 rounded-lg ml-2"
-                                                        >
-                                                            Salvar
-                                                        </button>
-                                                        <button
-                                                            onClick={
-                                                                handleCancelEdit
-                                                            }
-                                                            className="bg-red-500 text-black py-2 px-4 rounded-lg ml-2"
-                                                        >
-                                                            Cancelar
-                                                        </button>
-                                                    </div>
-                                                ) : (
-                                                    <>
-                                                        <button
-                                                            onClick={() =>
-                                                                handleEditMateria(
-                                                                    index
-                                                                )
-                                                            }
-                                                            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                                        >
-                                                            Editar
-                                                        </button>
-                                                        <button
-                                                            onClick={() =>
-                                                                handleDeleteMateria(
-                                                                    index
-                                                                )
-                                                            }
-                                                            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                                        >
-                                                            Excluir
-                                                        </button>
-                                                    </>
-                                                )}
+                                                <button
+                                                     onClick={() => handleEditMateria(index)}
+                                                     className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                                                >
+                                                    Editar
+                                                </button>
+                                                <button
+                                                     onClick={() => handleDeleteMateria(index)}
+                                                     className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                                                >
+                                                    Excluir
+                                                </button>
                                             </div>
                                         )}
                                     </div>
@@ -275,6 +237,37 @@ export default function AreaPostagens() {
                     </div>
                 </div>
             )}
+            /* --------------------------- MODAL EDIT TAREFA --------------------------- */
+            {showEditModal && (
+                <div
+                    className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                    onClick={() => setShowEditModal(false)} >
+                    <div
+                        className="bg-white py-8 w-1/3 px-16 rounded-lg shadow-lg"
+                        onClick={(e) => e.stopPropagation()}  >
+                        <h2 className="text-lg mb-6">Editar Matéria</h2>
+                        <input
+                            type="text"
+                            value={editNome}
+                            onChange={(e) => setEditNome(e.target.value)}
+                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                            placeholder="Nome da matéria"
+                        />
+                        <div className="flex justify-end">
+                        <button
+                            onClick={handleSaveEdit}
+                            className="bg-blue-500 text-white py-1.5 px-8 rounded-lg tracking-wide mr-2" >
+                            Salvar
+                        </button>
+                        <button
+                            onClick={handleCancelEdit}
+                            className="bg-red-500 text-white py-1.5 px-8 rounded-lg tracking-wide" >
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            )}  
         </>
     );
 }

@@ -7,6 +7,8 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const [horaEntrega, setHoraEntrega] = useState('23:59');
     const [pontos, setPontos] = useState('0');
     const [dataPostagem, setDataPostagem] = useState('');
+    const [semDataEntrega, setSemDataEntrega] = useState(false);
+    
 
     // Validate input fields
     const validateInputs = () => {
@@ -18,11 +20,11 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
             alert('Selecione uma categoria');
             return false;
         }
-        if (dataEntrega === '') {
+        if (!semDataEntrega && dataEntrega === '') {
             alert('Data de entrega inválida ou vazia');
             return false;
         }
-        if (horaEntrega === '') {
+        if (!semDataEntrega && (dataEntrega === '' && horaEntrega === '')) {
             alert('Hora de entrega inválida ou vazia');
             return false;
         }
@@ -66,7 +68,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         if (!validateInputs()) return;
 
         const dataHoraClique = new Date().toISOString();
-        const dataEntregaCompleta = `${dataEntrega}T${horaEntrega}`;
+        const dataEntregaCompleta = semDataEntrega ? null : `${dataEntrega}T${horaEntrega}`;
 
         handleAddAtividade({
             nome,
@@ -83,6 +85,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         setDataEntrega('');
         setHoraEntrega('23:59');
         setPontos('0');
+        setSemDataEntrega(false);
     };
 
     return (
@@ -151,7 +154,12 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                         </div>
                         <div>
                             <label className='pr-4' htmlFor="">Não tem data de entrega</label>
-                            <input type="checkbox" />
+                            <input 
+                                type="checkbox" 
+                                id="semDataEntrega" 
+                                checked={semDataEntrega} 
+                                onChange={(e) => setSemDataEntrega(e.target.checked)} 
+                             />
                         </div>
                         <div className="flex justify-end">
                             <button

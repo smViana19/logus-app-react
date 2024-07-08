@@ -216,24 +216,27 @@ export default function AreaPostagens() {
                 <div
                     className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
                     onClick={() => setShowModal(false)} >
+
                     <div
                         className="bg-white py-8 w-1/3 px-16 rounded-lg shadow-lg"
                         onClick={(e) => e.stopPropagation()}  >
+                        
                         <h2 className="text-lg mb-6">Adicionar Nova Matéria</h2>
+                        <form onSubmit={handleAddMateria}>
                         <input
                             type="text"
                             value={newMateria}
                             onChange={(e) => setNewMateria(e.target.value)}
-                            onKeyPress={handleKeyPress}
                             className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                             placeholder="Nome da matéria"
+                            required
                         />
                         <button
-                            onClick={handleAddMateria}
+                            type='submit'
                             className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide" >
                             Adicionar
                         </button>
-                        
+                        </form>
                     </div>
                 </div>
             )}

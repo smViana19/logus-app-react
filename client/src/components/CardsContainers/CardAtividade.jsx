@@ -10,13 +10,14 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos }) => {
     }); 
 
 
-    const dataEntregaFormatada = new Date(dataEntrega).toLocaleString('pt-BR', {
+    const dataEntregaFormatada = dataEntrega ? 
+    new Date(dataEntrega).toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
         year: '2-digit',
         hour: '2-digit',
         minute: '2-digit'
-    });
+    }) : "Sem data de entrega";
 
     return (
         <div className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4">

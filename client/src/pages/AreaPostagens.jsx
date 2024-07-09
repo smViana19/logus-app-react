@@ -152,15 +152,15 @@ export default function AreaPostagens() {
                 </nav>
 
                 <main>
-                    <section className="w-4/5 m-auto">
+                    <section className="sm:w-4/5 sm:block m-auto w-full flex justify-center items-center ">
                         <button
-                            className="border border-gray-300 w-1/4 py-2 rounded-lg mt-4"
+                            className="border border-gray-300 sm:w-1/4 py-2 rounded-lg mt-4"
                             onClick={() => setShowModal(true)}
                         >
                             Adicionar Matéria
                         </button>
                     </section>
-                    <section className="grid grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
+                    <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
                         {materias.length > 0 ? (
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">
@@ -211,14 +211,14 @@ export default function AreaPostagens() {
                 </main>
             </div>
 
-            /* --------------------------- MODAL ADD TAREFA --------------------------- */
+
             {showModal && (
                 <div
                     className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
                     onClick={() => setShowModal(false)} >
 
                     <div
-                        className="bg-white py-8 w-1/3 px-16 rounded-lg shadow-lg"
+                        className="bg-white py-8 lg:w-1/3 sm:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
                         onClick={(e) => e.stopPropagation()}  >
                         
                         <h2 className="text-lg mb-6">Adicionar Nova Matéria</h2>
@@ -240,13 +240,13 @@ export default function AreaPostagens() {
                     </div>
                 </div>
             )}
-            /* --------------------------- MODAL EDIT TAREFA --------------------------- */
+
             {showEditModal && (
                 <div
                     className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
                     onClick={() => setShowEditModal(false)} >
                     <div
-                        className="bg-white py-8 w-1/3 px-16 rounded-lg shadow-lg"
+                        className="bg-white py-8 lg:w-1/3 sm:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
                         onClick={(e) => e.stopPropagation()}  >
                         <h2 className="text-lg mb-6">Editar Matéria</h2>
                         <input

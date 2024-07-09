@@ -17,7 +17,6 @@ export default function AreaPostagens() {
     const [editingIndex, setEditingIndex] = useState(null);
     const [editNome, setEditNome] = useState('');
     const [showEditModal, setShowEditModal] = useState(false);
-
     useEffect(() => {
         const savedMaterias = JSON.parse(localStorage.getItem('materias'));
         if (savedMaterias) {

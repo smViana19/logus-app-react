@@ -8,6 +8,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const [pontos, setPontos] = useState('0');
     const [dataPostagem, setDataPostagem] = useState('');
     const [semDataEntrega, setSemDataEntrega] = useState(false);
+    const semDataEntregaText = "Sem data de entrega";
     
 
     // Validate input fields
@@ -132,26 +133,35 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                             />
                         </div>
                         <div className='mt-4'>
-                            <label htmlFor="">Digite a data e a hora de entrega do trabalho: </label>
-                            <div className='flex gap-8 mt-2'>
-                                <input
-                                    type="date"
-                                    value={dataEntrega}
-                                    onChange={(e) => setDataEntrega(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                                    placeholder="Data de entrega"
-                                />
-                                <input
-                                    type="time"
-                                    value={horaEntrega}
-                                    onChange={(e) => setHoraEntrega(e.target.value)}
-                                    onFocus={handleHoraFocus}
-                                    onBlur={handleHoraBlur}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                                    placeholder="Hora de entrega"
-                                />
-                            </div>
+                            {semDataEntrega ? (
+                                <p></p>
+                            ) : (
+                                <>
+                                    <label>Digite a data e a hora de entrega do trabalho: </label>
+                                    <div className='flex gap-8 mt-2'>
+                                        <input
+                                            type="date"
+                                            value={dataEntrega}
+                                            onChange={(e) => setDataEntrega(e.target.value)}
+                                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                            placeholder="Data de entrega"
+                                            disabled={semDataEntrega}
+                                        />
+                                        <input
+                                            type="time"
+                                            value={horaEntrega}
+                                            onChange={(e) => setHoraEntrega(e.target.value)}
+                                            onFocus={handleHoraFocus}
+                                            onBlur={handleHoraBlur}
+                                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                            placeholder="Hora de entrega"
+                                            disabled={semDataEntrega}
+                                        />
+                                    </div>
+                                </>
+                            )}
                         </div>
+
                         <div>
                             <label className='pr-4' htmlFor="">Não tem data de entrega</label>
                             <input 

@@ -56,7 +56,6 @@ export default function Registro() {
 
         try {
             await axios.post('http://localhost:3001/register', {
-                //TODO arrumar os campos nome e role
                 nome,
                 password,
                 email,
@@ -71,8 +70,6 @@ export default function Registro() {
             errors.forEach(error => toast.error(error));
         }
     }
-
-    // const handleClickRegister = ()
 
     return (
         <ContainerGray className="bg-gray-100 py-8">

@@ -2,12 +2,10 @@ import React from 'react'
 import MenuAdmin from '../../components/Navs/MenuAdmin'
 import AdminCardTop from '../../components/CardsContainers/AdminCardTop'
 import ReactDOM from 'react-dom';
-import NavLink from '/src/components/Navs/NavLink';
 
 
 
-
-export default function Notas() {
+export default function GradeNotas() {
 
 
 
@@ -25,8 +23,6 @@ export default function Notas() {
         <AdminCardTop />
         <h1 className='font-semibold text-2xl'>Grade de Notas</h1>
         <div>
-        <NavLink href="#" to='/admin/notas/gradenotas'>Grade de notas</NavLink>
-          
 
         </div>
       </main>

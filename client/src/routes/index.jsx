@@ -15,6 +15,7 @@ import DashboardAdm from '../pages/Admin/DashboardAdm';
 import Notas from '../pages/Admin/Notas';
 import MateriaPage from '../pages/Materias/MateriaPage'
 import Profile from '../pages/Profile'
+import GradeNotas from '../pages/Admin/GradeNotas'
 
 
 
@@ -40,6 +41,7 @@ export default function Rotas() {
 
             <Route path="/admin/dashboard" element={<DashboardAdm />} />
             <Route path="/admin/notas" element={<Notas />} />
+            <Route path='admin/notas/gradenotas' element={<GradeNotas/>} />
 
         </Routes>
 

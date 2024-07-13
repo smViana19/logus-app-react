@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import isEmail from "validator/lib/isEmail";
 import { get } from "lodash";

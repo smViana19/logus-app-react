@@ -55,12 +55,15 @@ export default function Registro() {
         if (formErrors) return;
 
         try {
-            await axios.post('/users', {
+            await axios.post('http://localhost:3001/register', {
+                //TODO arrumar os campos nome e role
                 nome,
                 password,
                 email,
                 role,
-            });
+            }).then((response) => {
+                console.log(response)
+            })
             toast.success('Registrado com sucesso!');
             navigate('/login');
         } catch (err) {
@@ -68,6 +71,8 @@ export default function Registro() {
             errors.forEach(error => toast.error(error));
         }
     }
+
+    // const handleClickRegister = ()
 
     return (
         <ContainerGray className="bg-gray-100 py-8">

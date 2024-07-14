@@ -16,9 +16,9 @@ export default function Dashboard() {
     const role = useSelector(state => state.auth.user?.role);
     const user = useSelector(state => state.auth.user?.nome);
 
-   if (!isLoggedIn) {
-      return <Navigate to="/login" replace />;
-    }
+ //  if (!isLoggedIn) {
+  //    return <Navigate to="/login" replace />;
+    //}
     return (
         <>
             <div className="min-h-screen bg-gray-50">

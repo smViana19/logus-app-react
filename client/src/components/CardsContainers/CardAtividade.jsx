@@ -1,6 +1,12 @@
 import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 const CardAtividade = ({ nome, categoria, dataEntrega, pontos }) => {
+    const { nomeMateria } = useParams();
+
+    
+    
+    
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
@@ -19,7 +25,7 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos }) => {
         }) : "";
 
     return (
-        <div className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4">
+        <Link to={`/dashboard/postagens/${nomeMateria}/${nome}`} className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4">
             <div className='flex justify-between mb-2'>
                 <div className='flex gap-16'>
                     <span className='text-lg font-medium'>{nome}</span>
@@ -32,7 +38,7 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos }) => {
                 <span className=''><span className='pr-2 tracking-wide'>{pontos}</span> pontos</span>
                 {dataEntregaFormatada && <span>Data de Entrega: {dataEntregaFormatada}</span>}
             </div>
-        </div>
+        </Link>
     );
 };
 

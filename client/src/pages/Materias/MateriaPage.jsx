@@ -20,6 +20,8 @@ const AreaPostagens = () => {
         setAtividades([...atividades, novaAtividade]);
     };
 
+ 
+
     return (
         <>
             <div className="min-h-screen bg-gray-50">

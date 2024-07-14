@@ -1,20 +1,34 @@
+// Modal.js (sem alterações adicionais necessárias)
+
+// Atividade.js
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const DetalhesAtividade = () => {
-    const { id } = useParams();
+const Atividade = () => {
+    const { nomeMateria, nomeAtiv, dataEntrega } = useParams();
 
-    // Aqui você pode buscar os detalhes da atividade usando o ID
-    // Por exemplo, você pode usar um estado local para armazenar os detalhes da atividade
-    // e uma função para buscar os detalhes a partir de uma API ou de um armazenamento local
+    console.log('nomeMateria:', nomeMateria);
+    console.log('nomeAtiv:', nomeAtiv);
+    console.log('dataEntrega:', dataEntrega);
 
     return (
-        <div>
-            <h1>Detalhes da Atividade</h1>
-            <p>ID da Atividade: {id}</p>
-            {/* Renderizar outros detalhes da atividade aqui */}
+        <div className='w-3/4 mx-auto mt-32'>
+            <div className='flex justify-between mb-2'>
+                <h2 className='text-2xl font-semibold'>Nome da Atividade: {nomeAtiv}</h2>
+                <span>Categoria</span>
+            </div>
+            <span className='text-sm uppercase text-gray-400'>Nome do autor da ativ</span>
+
+            <div className='mt-8 flex justify-between'>
+                <span>pontos</span>
+                <span>Data Entrega: {dataEntrega}</span> {/* Exibindo a data de entrega aqui */}
+            </div>
+
+            <div className='mt-32'>
+                Conteúdo
+            </div>
         </div>
     );
 };
 
-export default DetalhesAtividade;
+export default Atividade;

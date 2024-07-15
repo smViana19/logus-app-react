@@ -1,31 +1,34 @@
-// Modal.js (sem alterações adicionais necessárias)
+// Atividade.jsx
 
-// Atividade.js
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { AtividadeContext } from '../../context/AtividadeContext';
 
 const Atividade = () => {
-    const { nomeMateria, nomeAtiv, dataEntrega } = useParams();
+    const { nomeAtiv } = useParams();
+    const { state } = useLocation();
+    const { categoria } = state || {}; 
 
-    console.log('nomeMateria:', nomeMateria);
-    console.log('nomeAtiv:', nomeAtiv);
-    console.log('dataEntrega:', dataEntrega);
+    const {
+        dataEntrega,
+        pontos,
+    } = useContext(AtividadeContext);
 
     return (
         <div className='w-3/4 mx-auto mt-32'>
             <div className='flex justify-between mb-2'>
-                <h2 className='text-2xl font-semibold'>Nome da Atividade: {nomeAtiv}</h2>
-                <span>Categoria</span>
+                <h2 className='text-2xl font-semibold'>{nomeAtiv}</h2>
+                <span className='rounded-md px-4 py-1 font-medium tracking-wide text-sm text-purplePrimary bg-[#EDDDFF]'>{categoria}</span>
             </div>
-            <span className='text-sm uppercase text-gray-400'>Nome do autor da ativ</span>
+            <span className='text-sm uppercase text-gray-400'></span>
 
             <div className='mt-8 flex justify-between'>
-                <span>pontos</span>
-                <span>Data Entrega: {dataEntrega}</span> {/* Exibindo a data de entrega aqui */}
+                <span>{pontos} pontos</span>
+                <span>Data Entrega: {dataEntrega}</span>
             </div>
 
             <div className='mt-32'>
-                Conteúdo
+                Conteúdo da atividade
             </div>
         </div>
     );

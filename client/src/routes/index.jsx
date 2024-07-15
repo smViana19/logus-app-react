@@ -16,6 +16,7 @@ import Notas from '../pages/Admin/Notas';
 import MateriaPage from '../pages/Materias/MateriaPage'
 import Profile from '../pages/Profile'
 import GradeNotas from '../pages/Admin/GradeNotas'
+import { AtividadeProvider } from '../context/AtividadeContext';
 import Atividade from '../pages/Materias/Atividade'
 
 
@@ -39,8 +40,7 @@ export default function Rotas() {
             <Route path="/dashboard/postagens" element={<AreaPostagens />} />
                 {/* Rota dinâmica para página de matéria */}
                 <Route path="/dashboard/postagens/:nomeMateria" element={<MateriaPage />} />
-                <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<Atividade />} />
-
+                <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<AtividadeWrapper />} />
 
             <Route path="/admin/dashboard" element={<DashboardAdm />} />
             <Route path="/admin/notas" element={<Notas />} />
@@ -52,3 +52,12 @@ export default function Rotas() {
 
     );
 }
+
+
+const AtividadeWrapper = () => {
+    return (
+        <AtividadeProvider>
+            <Atividade />
+        </AtividadeProvider>
+    );
+};

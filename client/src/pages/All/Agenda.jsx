@@ -1,21 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';
-import NavLink from '../components/Navs/NavLink';
-import Logo from '../components/outros/Logo';
+import NavLink from '../../components/Navs/NavLink';
+import Logo from '../../components/outros/Logo';
 import styled from 'styled-components';
-import ModalCreateTask from '../components/Modal/ModalCreateTask';
-import LogoutButton from '../components/Botoes/LogoutBtn';
+import ModalCreateTask from '../../components/Modal/ModalCreateTask';
+import LogoutButton from '../../components/Botoes/LogoutBtn';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaRegEdit } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
-import Sidebar from '../components/GoogleAgenda/Sidebar';
-import Month from '../components/GoogleAgenda/Month';
-import GlobalContext from '../context/GlobalContext';
+import Sidebar from '../../components/GoogleAgenda/Sidebar';
+import Month from '../../components/GoogleAgenda/Month';
+import GlobalContext from '../../context/GlobalContext';
 
-import { getMonth } from '../util'
-import CalendarHeader from '../components/GoogleAgenda/CalendarHeader';
-import EventModal from '../components/GoogleAgenda/EventModal';
+import { getMonth } from '../../util'
+import CalendarHeader from '../../components/GoogleAgenda/CalendarHeader';
+import EventModal from '../../components/GoogleAgenda/EventModal';
 
 const DayDiv = styled.div`
     font-size: 64px;

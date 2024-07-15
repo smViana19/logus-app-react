@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCircle, FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../store/modules/auth/actions';
-import logo from '../assets/logo.png';
-import InputPurple from '../components/Inputs/InputPurple';
-import ContainerPrintApp from '../components/CardsContainers/ContainerPrintApp';
-import Subtitle from '../components/Text/Subtitulo';
-import FunctionalityItem from '../components/CardsContainers/FunctionalityItem';
-import FooterLanding from '../components/Footer/FooterLanding';
+import * as actions from '../../store/modules/auth/actions';
+import logo from '../../assets/logo.png';
+import InputPurple from '../../components/Inputs/InputPurple';
+import ContainerPrintApp from '../../components/CardsContainers/ContainerPrintApp';
+import Subtitle from '../../components/Text/Subtitulo';
+import FunctionalityItem from '../../components/CardsContainers/FunctionalityItem';
+import FooterLanding from '../../components/Footer/FooterLanding';
 import styled from 'styled-components';
 
 //images
-import imgAppStore from '../assets/installAppStore.png';
-import imgGooglePlay from '../assets/installGooglePlay.png';
-import imgMockupMobile from '../assets/mockup-home-mobile.png';
-import imgAgenda from '../assets/agenda.png';
-import imgPomodoro from '../assets/pomodoro.png';
+import imgAppStore from '../../assets/installAppStore.png';
+import imgGooglePlay from '../../assets/installGooglePlay.png';
+import imgMockupMobile from '../../assets/mockup-home-mobile.png';
+import imgAgenda from '../../assets/agenda.png';
+import imgPomodoro from '../../assets/pomodoro.png';
 
-import '../css/welcome.css';
-import Loading from '../components/outros/Loading';
-import MenuMobileIndex from '../components/Navs/MenuMobileIndex';
+import '../../css/welcome.css';
+import Loading from '../../components/outros/Loading';
+import MenuMobileIndex from '../../components/Navs/MenuMobileIndex';
 
 export default function HomePage() {
     const navigate = useNavigate();

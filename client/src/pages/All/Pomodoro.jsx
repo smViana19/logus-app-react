@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NavLink from '../components/Navs/NavLink';
-import Logo from '../components/outros/Logo';
-import BtnPrincipal from '../components/Botoes/BtnPrincipal';
+import NavLink from '../../components/Navs/NavLink';
+import Logo from '../../components/outros/Logo';
+import BtnPrincipal from '../../components/Botoes/BtnPrincipal';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
-import LogoutButton from '../components/Botoes/LogoutBtn';
-import BtnPomodoroOpenModal from '../components/Botoes/BtnPomodoroOpenModal';
-import ModalPomodoroSound from '../components/Modal/ModalPomodoroSound';
+import LogoutButton from '../../components/Botoes/LogoutBtn';
+import BtnPomodoroOpenModal from '../../components/Botoes/BtnPomodoroOpenModal';
+import ModalPomodoroSound from '../../components/Modal/ModalPomodoroSound';
 
 export default function Pomodoro() {
     const [tempoDecorrido, setTempoDecorrido] = useState(1500);
@@ -82,6 +82,7 @@ export default function Pomodoro() {
                                 <NavLink href="#" to='/dashboard/postagens' >Área de Postagens</NavLink>
                                 <NavLink href="#" to='/dashboard/agenda'>Agenda</NavLink>
                                 <NavLink href="#" to='/dashboard/pomodoro' className='text-purplePrimary'>Método Pomodoro</NavLink>
+                                <NavLink href="#" to='/dashboard/notas' className='text-purplePrimary'>Notas</NavLink>
                                 <LogoutButton />
                             </div>
                         </div>

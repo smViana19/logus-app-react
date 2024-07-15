@@ -1,5 +1,4 @@
 // Atividade.jsx
-
 import React, { useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { AtividadeContext } from '../../context/AtividadeContext';
@@ -7,12 +6,18 @@ import { AtividadeContext } from '../../context/AtividadeContext';
 const Atividade = () => {
     const { nomeAtiv } = useParams();
     const { state } = useLocation();
-    const { categoria } = state || {}; 
+    const { categoria, dataEntrega } = state || {};
 
-    const {
-        dataEntrega,
-        pontos,
-    } = useContext(AtividadeContext);
+    const { pontos } = useContext(AtividadeContext);
+
+    const dataEntregaFormatada = dataEntrega ? 
+        new Date(dataEntrega).toLocaleString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+        }) : "Sem data de entrega";
 
     return (
         <div className='w-3/4 mx-auto mt-32'>
@@ -24,7 +29,7 @@ const Atividade = () => {
 
             <div className='mt-8 flex justify-between'>
                 <span>{pontos} pontos</span>
-                <span>Data Entrega: {dataEntrega}</span>
+                <span>Data de Entrega: {dataEntregaFormatada}</span>
             </div>
 
             <div className='mt-32'>

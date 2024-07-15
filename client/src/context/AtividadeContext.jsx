@@ -1,12 +1,10 @@
-// AtividadeProvider.jsx
-
 import React, { createContext, useState } from 'react';
 
 export const AtividadeContext = createContext();
 
 export const AtividadeProvider = ({ children }) => {
     const [nome, setNome] = useState('');
-    const [categoria, setCategoria] = useState('Categoria Padrão'); // Valor inicial padrão
+    const [categoria, setCategoria] = useState(''); // Valor inicial padrão
     const [dataEntrega, setDataEntrega] = useState(null);
     const [horaEntrega, setHoraEntrega] = useState('23:59');
     const [pontos, setPontos] = useState(0);
@@ -17,6 +15,10 @@ export const AtividadeProvider = ({ children }) => {
 
     const atualizarCategoria = (novaCategoria) => {
         setCategoria(novaCategoria);
+    };
+    
+    const atualizarDataEntrega = (novaDataEntrega) => {
+        setDataEntrega(novaDataEntrega);
     };
 
     return (
@@ -40,7 +42,8 @@ export const AtividadeProvider = ({ children }) => {
                 setDetail,
                 file,
                 setFile,
-                atualizarCategoria, // Adicionando a função de atualização
+                atualizarCategoria,
+                atualizarDataEntrega // Adicionando a função de atualização
             }}
         >
             {children}

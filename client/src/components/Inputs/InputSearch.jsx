@@ -23,7 +23,7 @@ export default function InputSearch({ placeholder, className }) {
                 </svg>
             </button>
             <input
-                className="input rounded-full px-12 py-3 border-2 border-transparent focus:outline-none focus:border-blue-500 placeholder-gray-400 transition-all duration-300 shadow-md w-full text-black"
+                className="input rounded-full px-12 py-3 border-2 border-transparent focus:outline-none focus:border-purplePrimary placeholder-gray-400 transition-all duration-300 shadow-md  shadow-gray-200 w-full text-black"
                 placeholder={placeholder}
                 required
                 type="text"

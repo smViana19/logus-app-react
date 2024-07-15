@@ -34,7 +34,7 @@ export default function ListaAlunosNotas() {
                 </div>
 
                 <div>
-
+                    <span>Lista de cadastros do ano escolar selecionado</span>
                 </div>
 
 

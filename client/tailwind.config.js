@@ -19,7 +19,26 @@ export default {
         ...labelsClasses.map((lbl) => `text-${lbl}-400`)
       ],
     theme: {
+      screens: {
+        'sm': '320px',
+        // => @media (min-width: 320px) { ... }
+
+        'md': '540px',
+        // => @media (min-width: 540px) { ... }
+
+        'lg': '768px',
+        // => @media (min-width: 768px) { ... }
+        
+        'xl': '1024px',
+        // => @media (min-width: 1024px) { ... }
+
+        'xl': '1280px',
+        // => @media (min-width: 1280px) { ... }
+      },
         extend: {
+            screens: {
+              '2xl': '1440px',
+            },
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },

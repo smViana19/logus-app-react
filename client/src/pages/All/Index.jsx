@@ -88,14 +88,14 @@ export default function HomePage() {
                 <MenuMobileIndex />
                 <Nav className="flex justify-around py-4 nav__landing-page items-center">
                     <ul>
-                        <li><img className='w-32' src={logo} alt="Logo" /></li>
+                        <li><img className='w-48' src={logo} alt="Logo" /></li>
                     </ul>
                     <ul className='flex gap-16'>
-                        <li className='text-lg border-r-gray-500 border-r w-16 text-center h-8'>
-                            <a href="#home">Home</a>
+                        <li className='text-2xl border-r-gray-500 border-r w-32 text-center h-8'>
+                            <a href="#home" className='font-bold'>HOME</a>
                         </li>
-                        <li className='text-lg w-8 px-6 text-center'>
-                            <a href="#funcionalidades">Funcionalidades</a>
+                        <li className='text-2xl w-8 px-6 text-center'>
+                            <a href="#funcionalidades" className='font-bold'>FUNCIONALIDADES</a>
                         </li>
                     </ul>
                     <UlDeskEntrar className='flex gap-16 items-center'>
@@ -105,7 +105,7 @@ export default function HomePage() {
                                     <FaPowerOff />
                                 </Link>
                             ) : (
-                                <Link to="/login">Entrar</Link>
+                                <Link to="/login" className='font-semibold'>Login</Link>
                             )}
                         </li>
                         <li className='text-lg'>
@@ -115,7 +115,7 @@ export default function HomePage() {
                                 </Link>
                             ) : (
                                 <Link to="/registro"
-                                    className="font-medium text-white hover:text-neutral-500"
+                                    className="font-medium text-white hover:text-neutral-500 font-semibold"
                                     id='btnRegistrar'>Registrar</Link>
                             )}
 
@@ -129,7 +129,7 @@ export default function HomePage() {
 
             <Main className='mx-64'>
                 <section id='home'>
-                    <h1 className='text-4xl text-white font-bold text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
+                    <h1 className='text-5xl text-white font-bold text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
                     <InputPurple
                         typeInput='email'
                         placeholderInput='logus@study.com'

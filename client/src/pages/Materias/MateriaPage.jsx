@@ -36,7 +36,7 @@ const AreaPostagens = () => {
                                         <Logo className="block h-9 w-auto fill-current text-gray-800" />
                                     </Link>
                                 </div>
-                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative">
+                                <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex relative">
                                     <NavLink
                                         to="/dashboard"
                                         className="text-gray-800"
@@ -96,10 +96,10 @@ const AreaPostagens = () => {
                     </div>
                 </nav>
 
-                <main className="px-64 py-16">
+                <main className="md:px-16 lg:px-32 xl:px-64 py-16">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="col-span-1 bg-purple-600 h-full flex items-end rounded-xl">
-                            <h1 className="text-white text-3xl p-6 first-letter:uppercase">
+                            <h1 className="text-white text-3xl p-2 md:p-6 first-letter:uppercase">
                                 {nomeMateria}
                             </h1>
                         </div>

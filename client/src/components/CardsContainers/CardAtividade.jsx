@@ -51,7 +51,7 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
     return (
         <div onContextMenu={handleContextMenu} className="relative">
             <Link to={`/dashboard/postagens/${nomeMateria}/${nome}`} state={{ categoria, dataEntrega }} className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block">
-                <div className='flex justify-between mb-2'>
+                <div className='md:flex md:justify-between mb-2'>
                     <div className='flex gap-4'>
                         <span className='text-lg font-medium'>{nome}</span>
                         <span className='rounded-md px-4 py-1 font-medium tracking-wide text-sm text-purple-700 bg-purple-200'>{categoria}</span>

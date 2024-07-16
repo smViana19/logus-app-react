@@ -32,12 +32,12 @@ export default {
         'xl': '1024px',
         // => @media (min-width: 1024px) { ... }
 
-        'xl': '1280px',
+        '2xl': '1280px',
         // => @media (min-width: 1280px) { ... }
       },
         extend: {
             screens: {
-              '2xl': '1440px',
+              '3xl': '1440px',
             },
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],

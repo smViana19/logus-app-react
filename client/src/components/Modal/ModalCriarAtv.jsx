@@ -116,7 +116,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                         }}
                     >
                         <div
-                            className="bg-white py-8 w-1/2 px-16 rounded-lg shadow-lg"
+                            className="bg-white py-8 xl:w-1/2 px-16 rounded-lg shadow-lg"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <h2 className="text-lg mb-6">Criar Material</h2>

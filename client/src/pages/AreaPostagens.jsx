@@ -92,7 +92,7 @@ export default function AreaPostagens() {
                                         <Logo className="block h-9 w-auto fill-current text-gray-800" />
                                     </Link>
                                 </div>
-                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative">
+                                <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex relative">
                                     <NavLink
                                         to="/dashboard"
                                         className="text-gray-800"
@@ -153,15 +153,15 @@ export default function AreaPostagens() {
                 </nav>
 
                 <main>
-                    <section className="sm:w-4/5 sm:block m-auto w-full flex justify-center items-center ">
+                    <section className="md:w-4/5 md:block m-auto w-full flex justify-center items-center ">
                         <button
-                            className="border border-gray-300 sm:w-1/4 py-2 rounded-lg mt-4"
+                            className="border border-gray-300 md:w-1/4 py-2 rounded-lg mt-4"
                             onClick={() => setShowModal(true)}
                         >
                             Adicionar Matéria
                         </button>
                     </section>
-                    <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
+                    <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
                         {materias.length > 0 ? (
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">
@@ -219,7 +219,7 @@ export default function AreaPostagens() {
                     onClick={() => setShowModal(false)} >
 
                     <div
-                        className="bg-white py-8 lg:w-1/3 sm:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
+                        className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
                         onClick={(e) => e.stopPropagation()}  >
                         
                         <h2 className="text-lg mb-6">Adicionar Nova Matéria</h2>
@@ -247,7 +247,7 @@ export default function AreaPostagens() {
                     className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
                     onClick={() => setShowEditModal(false)} >
                     <div
-                        className="bg-white py-8 lg:w-1/3 sm:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
+                        className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
                         onClick={(e) => e.stopPropagation()}  >
                         <h2 className="text-lg mb-6">Editar Matéria</h2>
                         <input

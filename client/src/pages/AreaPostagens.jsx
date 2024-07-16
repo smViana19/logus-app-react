@@ -6,6 +6,7 @@ import Logo from '../components/outros/Logo';
 import LogoutButton from '../components/Botoes/LogoutBtn';
 import CardMateria from '../components/CardsContainers/CardMateria';
 import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function AreaPostagens() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -26,7 +27,15 @@ export default function AreaPostagens() {
         }
     }, []);
 
-    const handleAddMateria = () => {
+    const handleAddMateria = (e) => {
+        e.preventDefault();
+    
+        if (newMateria.trim() === '') {
+            toast.error('Por favor, preencha o nome da matéria.');
+            console.log("funciona")
+            return;
+        }
+    
         const updatedMaterias = [
             ...materias,
             {
@@ -38,6 +47,7 @@ export default function AreaPostagens() {
                 ],
             },
         ];
+    
         setMaterias(updatedMaterias);
         localStorage.setItem('materias', JSON.stringify(updatedMaterias));
         setNewMateria('');
@@ -230,11 +240,12 @@ export default function AreaPostagens() {
                             onChange={(e) => setNewMateria(e.target.value)}
                             className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                             placeholder="Nome da matéria"
-                            required
+                        //    required
                         />
                         <button
-                            type='submit'
-                            className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide" >
+                            type="submit"
+                            className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide"
+                        >
                             Adicionar
                         </button>
                         </form>

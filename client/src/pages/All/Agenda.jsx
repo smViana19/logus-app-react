@@ -95,7 +95,7 @@ export default function Agenda() {
                                         <Logo className="block h-9 w-auto fill-current text-gray-800" />
                                     </Link>
                                 </div>
-                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex">
                                     <NavLink to='/dashboard'>
                                         Dashboard
                                     </NavLink>

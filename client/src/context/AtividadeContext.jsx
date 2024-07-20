@@ -4,10 +4,10 @@ export const AtividadeContext = createContext();
 
 export const AtividadeProvider = ({ children }) => {
     const [nome, setNome] = useState('');
-    const [categoria, setCategoria] = useState(''); // Valor inicial padrão
+    const [categoria, setCategoria] = useState(''); 
     const [dataEntrega, setDataEntrega] = useState(null);
     const [horaEntrega, setHoraEntrega] = useState('23:59');
-    const [pontos, setPontos] = useState(0);
+    const [pontos, setPontos] = useState('0');
     const [dataPostagem, setDataPostagem] = useState(null);
     const [semDataEntrega, setSemDataEntrega] = useState(false);
     const [detail, setDetail] = useState('');
@@ -20,6 +20,14 @@ export const AtividadeProvider = ({ children }) => {
     const atualizarDataEntrega = (novaDataEntrega) => {
         setDataEntrega(novaDataEntrega);
     };
+
+    const atualizarPontos = (novaPontuacao) => {
+        setPontos(novaPontuacao)
+    }
+
+    const atualizarDetail = (newDetail) => {
+        setDetail(newDetail)
+    }
 
     return (
         <AtividadeContext.Provider
@@ -42,8 +50,12 @@ export const AtividadeProvider = ({ children }) => {
                 setDetail,
                 file,
                 setFile,
+
+
                 atualizarCategoria,
-                atualizarDataEntrega // Adicionando a função de atualização
+                atualizarDataEntrega,
+                atualizarPontos,
+                atualizarDetail,
             }}
         >
             {children}

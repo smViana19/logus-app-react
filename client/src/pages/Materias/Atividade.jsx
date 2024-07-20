@@ -1,14 +1,12 @@
-// Atividade.jsx
-import React, { useContext } from 'react';
+import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { AtividadeContext } from '../../context/AtividadeContext';
 
 const Atividade = () => {
     const { nomeAtiv } = useParams();
-    const { state } = useLocation();
-    const { categoria, dataEntrega } = state || {};
+    const location = useLocation();
+    const { categoria, dataEntrega, pontos, detail } = location.state || {};
 
-    const { pontos } = useContext(AtividadeContext);
+    console.log('Dados recebidos:', { categoria, dataEntrega, pontos, detail });
 
     const dataEntregaFormatada = dataEntrega ? 
         new Date(dataEntrega).toLocaleString('pt-BR', {
@@ -33,7 +31,7 @@ const Atividade = () => {
             </div>
 
             <div className='mt-32'>
-                Conteúdo da atividade
+                {detail}
             </div>
         </div>
     );

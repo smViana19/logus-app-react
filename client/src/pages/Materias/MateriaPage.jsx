@@ -19,9 +19,10 @@ const AreaPostagens = () => {
     const [filterStatus, setFilterStatus] = useState('all');
 
     const handleAddAtividade = (novaAtividade) => {
+        console.log(novaAtividade.pontos); // Log da pontuação
         setAtividades([...atividades, novaAtividade]);
     };
-
+    
     const handleFilterChange = (status) => {
         setFilterStatus(status);
     };
@@ -139,7 +140,7 @@ const AreaPostagens = () => {
                                     key={index}
                                     nome={atividade.nome}
                                     categoria={atividade.categoria}
-                                    dataPostagem={atividade.dataPostagem}
+                                    dataPostagem={atividade.dataHoraClique}
                                     dataEntrega={atividade.dataEntrega}
                                     pontos={atividade.pontos}
                                     file={atividade.file}

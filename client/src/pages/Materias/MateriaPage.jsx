@@ -16,12 +16,20 @@ const AreaPostagens = () => {
     const { nomeMateria } = useParams();
     const [atividades, setAtividades] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [filterStatus, setFilterStatus] = useState('all');
 
     const handleAddAtividade = (novaAtividade) => {
+        console.log(novaAtividade.pontos); // Log da pontuação
         setAtividades([...atividades, novaAtividade]);
     };
+    
+    const handleFilterChange = (status) => {
+        setFilterStatus(status);
+    };
 
- 
+    const filteredAtividades = atividades.filter(atividade => 
+        filterStatus === 'all' || atividade.categoria === filterStatus
+    );
 
     return (
         <>
@@ -104,9 +112,10 @@ const AreaPostagens = () => {
                             </h1>
                         </div>
                         <div className="col-span-1 grid grid-rows-3 gap-4">
-                            <BtnMateriasFilter text={'Resumos'} />
-                            <BtnMateriasFilter text={'Apresentações'} />
-                            <BtnMateriasFilter text={'Atividades'} />
+                            <BtnMateriasFilter text={'Resumos'} onClick={() => handleFilterChange('resumo')} />
+                            <BtnMateriasFilter text={'Apresentações'} onClick={() => handleFilterChange('apresentação')} />
+                            <BtnMateriasFilter text={'Atividades'} onClick={() => handleFilterChange('atividade')} />
+                            <BtnMateriasFilter text={'Todas'} onClick={() => handleFilterChange('all')} />
                         </div>
                     </div>
 
@@ -125,13 +134,13 @@ const AreaPostagens = () => {
                     </div>
 
                     <div className="gap-y- flex flex-col mt-8">
-                        {atividades.length > 0 ? (
-                            atividades.map((atividade, index) => (
+                        {filteredAtividades.length > 0 ? (
+                            filteredAtividades.map((atividade, index) => (
                                 <CardAtividade
                                     key={index}
                                     nome={atividade.nome}
                                     categoria={atividade.categoria}
-                                    dataPostagem={atividade.dataPostagem}
+                                    dataPostagem={atividade.dataHoraClique}
                                     dataEntrega={atividade.dataEntrega}
                                     pontos={atividade.pontos}
                                     file={atividade.file}

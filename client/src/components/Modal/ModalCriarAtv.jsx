@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AtividadeContext } from '../../context/AtividadeContext';
-import { ThemeProvider } from 'styled-components'; // Certifique-se de importar o ThemeProvider do styled-components
+import { ThemeProvider } from 'styled-components'; 
 
 const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
     const {
@@ -24,10 +24,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         setFile,
     } = useContext(AtividadeContext);
 
-    
-    // Função para lidar com o envio do formulário
     const handleSubmit = () => {
-        // Validar os inputs antes de prosseguir
         if (nome === '') {
             alert('Digite o nome do material');
             return;
@@ -41,23 +38,21 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
             return;
         }
 
-        // Preparar os dados para enviar
         const dataHoraClique = new Date().toISOString();
         const dataEntregaCompleta = semDataEntrega
             ? null
             : `${dataEntrega}T${horaEntrega}`;
 
-        // Chamar a função de adicionar atividade com os dados
         handleAddAtividade({
             nome,
             categoria,
             dataEntrega: dataEntregaCompleta,
-            pontos: parseInt(pontos),
+            pontos, 
             dataHoraClique,
-            file, // Passando o estado do arquivo
+            detail,
+            file, 
         });
 
-        // Limpar o formulário após o envio
         setNome('');
         setCategoria('');
         setDataEntrega('');
@@ -65,20 +60,18 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         setPontos('0');
         setSemDataEntrega(false);
         setDetail('');
-        setFile(null); // Limpar o estado do arquivo após envio
-        setShowModal(false); // Fechar o modal após envio
+        setFile(null);
+        setShowModal(false);
     };
 
-    // Efeito para definir a data de postagem atual
     useEffect(() => {
         if (showModal) {
             const now = new Date();
-            const formattedDate = now.toISOString().slice(0, 16); // Formata para "yyyy-MM-ddThh:mm"
+            const formattedDate = now.toISOString().slice(0, 16); 
             setDataPostagem(formattedDate);
         }
     }, [showModal, setDataPostagem]);
 
-    // Funções para lidar com o foco e blur dos inputs de pontos e hora de entrega
     const handleFocus = () => {
         if (pontos === '0') {
             setPontos('');
@@ -120,7 +113,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <h2 className="text-lg mb-6">Criar Material</h2>
-                            <div className="flex gap-8">
+                            <div >
                                 <input
                                     type="text"
                                     value={nome}
@@ -128,21 +121,38 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                     className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                     placeholder="Nome do material"
                                 />
+                               
+                            </div>
+
+                            <div className="flex gap-8">
+                            <div className='w-2/3'> 
+                                <label htmlFor="">Categoria</label>
                                 <select
-                                    value={categoria}
-                                    onChange={(e) => setCategoria(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
-                                >
-                                    <option value="" disabled>
-                                        Selecione a Categoria
-                                    </option>
-                                    <option value="Atividade">Atividade</option>
-                                    <option value="Resumo">Resumo</option>
-                                    <option value="Apresentação">
-                                        Apresentação
-                                    </option>
-                                    <option value="Outros">Outros</option>
-                                </select>
+                                        value={categoria}
+                                        onChange={(e) => setCategoria(e.target.value)}
+                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                    >
+                                        <option value="" disabled>
+                                            Selecione a Categoria
+                                        </option>
+                                        <option value="Atividade">Atividade</option>
+                                        <option value="Resumo">Resumo</option>
+                                        <option value="Apresentação">
+                                            Apresentação
+                                        </option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                            </div>
+
+                                <div>
+                                    <label htmlFor="">Pontuação: </label>
+                                    <input
+                                        value={pontos}
+                                        onChange={(e) => setPontos(e.target.value)}
+                                        onFocus={handleFocus}
+                                        onBlur={handleBlur}
+                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1" type="text" />
+                                </div>
                             </div>
 
                             <div>

@@ -56,6 +56,7 @@ export default function Dashboard() {
                                         href="#" to='/dashboard/pomodoro' >
                                         Método Pomodoro
                                     </NavLink>
+                                    <NavLink href="#" to='/dashboard/notas'>Notas</NavLink>
                                     <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
                                         href="#" to='/dashboard/perfil' >

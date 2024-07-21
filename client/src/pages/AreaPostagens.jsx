@@ -171,15 +171,15 @@ export default function AreaPostagens() {
                 </nav>
 
                 <main>
-                    <section className="md:w-4/5 md:block m-auto w-full flex justify-center items-center ">
+                    <section className="w-4/5 block m-auto ">
                         <button
-                            className="border border-gray-300 md:w-1/4 py-2 rounded-lg mt-4"
+                            className="border border-gray-300 md:w-1/3 lg:w-1/4 py-2 rounded-lg mt-4"
                             onClick={() => setShowModal(true)}
                         >
                             Adicionar Matéria
                         </button>
                     </section>
-                    <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
+                    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
                         {materias.length > 0 ? (
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">

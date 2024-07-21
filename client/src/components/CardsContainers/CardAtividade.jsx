@@ -2,33 +2,26 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) => {
+
     const { nomeMateria } = useParams();
-
     const [contextMenu, setContextMenu] = useState(null);
+    const [showModalOption, setShowModalOptions] = useState(false);
 
-    const handleContextMenu = (event) => {
-        event.preventDefault();
-        setContextMenu({
-            mouseX: event.clientX - 2,
-            mouseY: event.clientY - 4,
-        });
-    };
 
     const handleCloseContextMenu = () => {
         setContextMenu(null);
     };
 
-    const handleEdit = () => {
-        console.log('Edit activity');
-        handleCloseContextMenu();
-    
-    };
+    //função para quando clicar com o botão direito no cardAtividade
+    const handleRightClick = (event) => {
+        event.preventDefault();
+        setShowModalOptions(true);
+        console.log("clicou com btn right")
+      };
 
-    const handleDelete = () => {
-        console.log('Delete activity');
-        handleCloseContextMenu();
-    };
-
+      const handleCloseModal = () => {
+        setShowModalOptions(false);
+      };
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
@@ -47,7 +40,15 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
         }) : "";
 
     return (
-        <div onContextMenu={handleContextMenu} className="relative">
+        <div onContextMenu={handleRightClick} className="relative">
+            {showModalOption && (
+                <div
+                    className="absolute bg-white border border-black p-2"
+                    onClick={handleCloseModal}    
+                >
+                    componente exibido
+                </div>
+            )}
             <Link 
                 to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
                 state={{ categoria, dataEntrega, pontos, detail, file }} 
@@ -89,6 +90,7 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
                     </button>
                 </div>
             )}
+            
         </div>
     );
 };

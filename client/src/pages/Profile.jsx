@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import UsuarioCard from '../components/Botoes/UsuarioCard';
 import CardCategoria from '../components/CardsContainers/CardCategoria';
 import LogoutButton from '../components/Botoes/LogoutBtn';
-import CardUserName from '../components/CardsContainers/CardUserName';
-import CardProfileNumbers from '../components/CardsContainers/CardProfileNumbers';
-import SchoolInfosProfile from '../components/CardsContainers/SchoolInfosProfile';
+import CardUserName from '../components/CardsContainers/Profile/CardUserName';
+import CardProfileNumbers from '../components/CardsContainers/Profile/CardProfileNumbers';
+import SchoolInfosProfile from '../components/CardsContainers/Profile/SchoolInfosProfile';
 
 
 

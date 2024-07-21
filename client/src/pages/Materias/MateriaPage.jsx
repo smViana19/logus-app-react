@@ -10,7 +10,7 @@ import CardAtividade from '../../components/CardsContainers/CardAtividade';
 import { AtividadeProvider } from '../../context/AtividadeContext';
 import Modal from '../../components/Modal/ModalCriarAtv'; 
 
-const AreaPostagens = () => {
+const MateriaPage = () => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const { nomeMateria } = useParams();
@@ -166,4 +166,4 @@ const AreaPostagens = () => {
     );
 };
 
-export default AreaPostagens;
+export default MateriaPage;

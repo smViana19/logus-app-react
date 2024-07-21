@@ -1,4 +1,4 @@
-import CardTitle from './CardTitle';
+import CardTitle from '../CardsContainers/CardTitle';
 import '../../css/welcome.css'
 
 export default function CardFuncionalidades({text, title}) {

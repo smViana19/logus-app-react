@@ -145,6 +145,7 @@ const MateriaPage = () => {
                                     pontos={atividade.pontos}
                                     file={atividade.file}
                                     detail={atividade.detail}
+                                    onDelete={() => handleDelete(atividade.index)}
                                 />
                             ))
                         ) : (

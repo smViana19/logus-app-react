@@ -1,27 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) => {
-
+const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete }) => {
     const { nomeMateria } = useParams();
     const [contextMenu, setContextMenu] = useState(null);
     const [showModalOption, setShowModalOptions] = useState(false);
-
+    const modalRef = useRef(null);
 
     const handleCloseContextMenu = () => {
         setContextMenu(null);
     };
 
-    //função para quando clicar com o botão direito no cardAtividade
+    // Função para quando clicar com o botão direito no cardAtividade
     const handleRightClick = (event) => {
         event.preventDefault();
         setShowModalOptions(true);
-        console.log("clicou com btn right")
-      };
+        console.log("clicou com btn right");
+    };
 
-      const handleCloseModal = () => {
+    const handleCloseModal = () => {
         setShowModalOptions(false);
-      };
+    };
+
+    // Função para detectar cliques fora do modal
+    const handleClickOutside = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            handleCloseModal();
+        }
+    };
+
+    // Adiciona o ouvinte de eventos quando o modal é exibido
+    useEffect(() => {
+        if (showModalOption) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        // Remove o ouvinte de eventos na desmontagem do componente
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showModalOption]);
+
+    const handleDelete = () => {
+        onDelete();
+        handleCloseModal();
+    };
+
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
@@ -42,12 +68,14 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
     return (
         <div onContextMenu={handleRightClick} className="relative">
             {showModalOption && (
-                <div
-                    className="absolute bg-white border border-black p-2"
-                    onClick={handleCloseModal}    
+                <ul
+                    ref={modalRef}
+                    className="absolute top-2 right-2 bg-white px-2 rounded-md py-2 shadow-lg"
+                    onClick={handleCloseModal}
                 >
-                    componente exibido
-                </div>
+                    <li className='py-1 px-6 border-b border-gray-100 cursor-pointer'>Editar</li>
+                    <li className='py-1 px-6 cursor-pointer' onClick={handleDelete}>Excluir</li>
+                </ul>
             )}
             <Link 
                 to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
@@ -68,7 +96,7 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
                 </div>
 
                 {file && (
-                    <div className='mt-2 p-2 border border-gray-300 rounded-md '>
+                    <div className='mt-2 p-2 border border-gray-300 rounded-md'>
                         <a href={URL.createObjectURL(file)} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
                             Ver ou baixar arquivo: {file.name}
                         </a>
@@ -90,7 +118,6 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
                     </button>
                 </div>
             )}
-            
         </div>
     );
 };

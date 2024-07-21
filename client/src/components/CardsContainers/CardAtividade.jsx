@@ -1,4 +1,3 @@
-// CardAtividade.jsx
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
@@ -22,13 +21,12 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
     const handleEdit = () => {
         console.log('Edit activity');
         handleCloseContextMenu();
-        // Adicione aqui a lógica para editar a atividade
+    
     };
 
     const handleDelete = () => {
         console.log('Delete activity');
         handleCloseContextMenu();
-        // Adicione aqui a lógica para excluir a atividade
     };
 
     const dataPostagem = new Date().toLocaleString('pt-BR', {
@@ -50,7 +48,11 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
 
     return (
         <div onContextMenu={handleContextMenu} className="relative">
-            <Link to={`/dashboard/postagens/${nomeMateria}/${nome}`} state={{ categoria, dataEntrega }} className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block">
+            <Link 
+                to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
+                state={{ categoria, dataEntrega, pontos, detail, file }} 
+                className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block"
+            >
                 <div className='md:flex md:justify-between mb-2'>
                     <div className='flex gap-4'>
                         <span className='text-lg font-medium'>{nome}</span>

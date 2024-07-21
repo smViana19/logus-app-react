@@ -4,9 +4,9 @@ import { useLocation, useParams } from 'react-router-dom';
 const Atividade = () => {
     const { nomeAtiv } = useParams();
     const location = useLocation();
-    const { categoria, dataEntrega, pontos, detail } = location.state || {};
+    const { categoria, dataEntrega, pontos, detail, file } = location.state || {};
 
-    console.log('Dados recebidos:', { categoria, dataEntrega, pontos, detail });
+    console.log('Dados recebidos:', { categoria, dataEntrega, pontos, detail, file });
 
     const dataEntregaFormatada = dataEntrega ? 
         new Date(dataEntrega).toLocaleString('pt-BR', {
@@ -33,6 +33,14 @@ const Atividade = () => {
             <div className='mt-32'>
                 {detail}
             </div>
+
+            {file && (
+                <div className='mt-2 p-2 border border-gray-300 rounded-md'>
+                    <a href={URL.createObjectURL(file)} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                        Ver ou baixar arquivo: {file.name}
+                    </a>
+                </div>
+            )}
         </div>
     );
 };

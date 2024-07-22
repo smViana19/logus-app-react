@@ -7,6 +7,7 @@ import LogoutButton from '../components/Botoes/LogoutBtn';
 import CardMateria from '../components/CardsContainers/CardMateria';
 import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
 import { toast, ToastContainer } from 'react-toastify';
+import MenuMobile from '../components/Navs/MenuMobile';
 
 export default function AreaPostagens() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -94,6 +95,7 @@ export default function AreaPostagens() {
         <>
             <div className="min-h-screen bg-gray-50">
                 <nav className="bg-white border-b border-gray-100">
+                    <MenuMobile/>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
                             <div className="flex">
@@ -173,7 +175,7 @@ export default function AreaPostagens() {
                 <main>
                     <section className="w-4/5 block m-auto ">
                         <button
-                            className="border border-gray-300 md:w-1/3 lg:w-1/4 py-2 rounded-lg mt-4"
+                            className="border border-gray-300 w-3/4 sm:w-2/3 md:w-1/3 lg:w-1/4 py-2 rounded-lg mt-4"
                             onClick={() => setShowModal(true)}
                         >
                             Adicionar Matéria

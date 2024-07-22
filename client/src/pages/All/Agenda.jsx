@@ -12,6 +12,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Sidebar from '../../components/GoogleAgenda/Sidebar';
 import Month from '../../components/GoogleAgenda/Month';
 import GlobalContext from '../../context/GlobalContext';
+import MenuMobile from '../../components/Navs/MenuMobile';
 
 import { getMonth } from '../../util'
 import CalendarHeader from '../../components/GoogleAgenda/CalendarHeader';
@@ -86,6 +87,7 @@ export default function Agenda() {
         <>
              <div className="min-h-screen bg-gray-50 relative">
             <nav className="bg-white border-b border-gray-100">
+                <MenuMobile/>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
@@ -94,7 +96,7 @@ export default function Agenda() {
                                     <Logo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div className="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
                                 <NavLink href="#" to='/dashboard'>Dashboard</NavLink>
                                 <NavLink href="#" to='/dashboard/postagens' >Área de Postagens</NavLink>
                                 <NavLink href="#" to='/dashboard/agenda'  className='text-purplePrimary'>Agenda</NavLink>

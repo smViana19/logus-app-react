@@ -1,17 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import ModalEditarAtv from '../../components/Modal/ModalEditarAtv'; 
 
-const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete }) => {
+const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit }) => {
     const { nomeMateria } = useParams();
-    const [contextMenu, setContextMenu] = useState(null);
     const [showModalOption, setShowModalOptions] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const modalRef = useRef(null);
 
-    const handleCloseContextMenu = () => {
-        setContextMenu(null);
-    };
-
-    // Função para quando clicar com o botão direito no cardAtividade
     const handleRightClick = (event) => {
         event.preventDefault();
         setShowModalOptions(true);
@@ -22,30 +18,33 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onD
         setShowModalOptions(false);
     };
 
-    // Função para detectar cliques fora do modal
     const handleClickOutside = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
-            handleCloseModal();
+            handleCloseModal(); 
         }
     };
 
-    // Adiciona o ouvinte de eventos quando o modal é exibido
     useEffect(() => {
         if (showModalOption) {
             document.addEventListener('mousedown', handleClickOutside);
         } else {
             document.removeEventListener('mousedown', handleClickOutside);
         }
-
-        // Remove o ouvinte de eventos na desmontagem do componente
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [showModalOption]);
 
-    const handleDelete = () => {
-        onDelete();
+    const handleEdit = () => {
+        setShowEditModal(true); // Abrir o modal de edição
         handleCloseModal();
+    };
+
+    const handleDelete = () => {
+        if (window.confirm('Tem certeza que deseja excluir esta atividade?')) {
+            onDelete();
+            handleCloseModal();
+        }
     };
 
     const dataPostagem = new Date().toLocaleString('pt-BR', {
@@ -73,7 +72,7 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onD
                     className="absolute top-2 right-2 bg-white px-2 rounded-md py-2 shadow-lg"
                     onClick={handleCloseModal}
                 >
-                    <li className='py-1 px-6 border-b border-gray-100 cursor-pointer'>Editar</li>
+                    <li className='py-1 px-6 border-b border-gray-100 cursor-pointer' onClick={handleEdit}>Editar</li>
                     <li className='py-1 px-6 cursor-pointer' onClick={handleDelete}>Excluir</li>
                 </ul>
             )}
@@ -104,19 +103,16 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onD
                 )}
             </Link>
 
-            {contextMenu !== null && (
-                <div
-                    className="absolute bg-white shadow-lg rounded-md p-2"
-                    style={{ top: contextMenu.mouseY, left: contextMenu.mouseX }}
-                    onMouseLeave={handleCloseContextMenu}
-                >
-                    <button onClick={handleEdit} className="block px-4 py-2 text-left text-black hover:bg-gray-200 w-full">
-                        Editar
-                    </button>
-                    <button onClick={handleDelete} className="block px-4 py-2 text-left text-black hover:bg-gray-200 w-full">
-                        Excluir
-                    </button>
-                </div>
+            {showEditModal && (
+                <ModalEditarAtv
+                    showModal={showEditModal}
+                    setShowModal={setShowEditModal}
+                    atividade={{ nome, categoria, dataEntrega, pontos, detail, file }}
+                    handleEditAtividade={(updatedAtividade) => {
+                        onEdit(updatedAtividade);
+                        setShowEditModal(false);
+                    }}
+                />
             )}
         </div>
     );

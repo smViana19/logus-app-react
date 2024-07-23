@@ -36,6 +36,7 @@ const MateriaPage = () => {
     };
 
     const handleFilterChange = (status) => {
+        console.log(`Filter status changed to: ${status}`);
         setFilterStatus(status);
     };
 
@@ -51,9 +52,13 @@ const MateriaPage = () => {
         setAtividades(updatedAtividades);
     };
 
-    const filteredAtividades = atividades.filter(atividade => 
-        filterStatus === 'all' || atividade.categoria === filterStatus
-    );
+    const filteredAtividades = atividades.filter(atividade => {
+        console.log(`Filtering atividades:`, atividade);
+        return filterStatus === 'all' || atividade.categoria.toLowerCase() === filterStatus;
+    });
+
+    console.log(`Atividades:`, atividades);
+    console.log(`Filtered Atividades:`, filteredAtividades);
 
     return (
         <>
@@ -124,7 +129,6 @@ const MateriaPage = () => {
                                     </NavLink>
                                     <NavLink href="#" to='/dashboard/notas'>Notas</NavLink>
                                     <NavLink
-                                        // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
                                         href="#" to='/dashboard/perfil' >
                                         <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
                                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -144,7 +148,7 @@ const MateriaPage = () => {
                                 {nomeMateria}
                             </h1>
                         </div>
-                        <div className="col-span-1 grid grid-rows-3 gap-4">
+                        <div className="col-span-1 grid grid-rows-4 gap-4">
                             <BtnMateriasFilter text={'Resumos'} onClick={() => handleFilterChange('resumo')} />
                             <BtnMateriasFilter text={'Apresentações'} onClick={() => handleFilterChange('apresentação')} />
                             <BtnMateriasFilter text={'Atividades'} onClick={() => handleFilterChange('atividade')} />

@@ -18,17 +18,14 @@ const MateriaPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
-
     useEffect(() => {
         const storedAtividades = localStorage.getItem('atividades');
-        console.log('Stored atividades:', storedAtividades);
         if (storedAtividades) {
             setAtividades(JSON.parse(storedAtividades));
         }
     }, []);
 
     useEffect(() => {
-        console.log('Saving atividades to localStorage:', atividades);
         localStorage.setItem('atividades', JSON.stringify(atividades));
     }, [atividades]);
 
@@ -37,7 +34,6 @@ const MateriaPage = () => {
     };
 
     const handleFilterChange = (status) => {
-        console.log(`Filter status changed to: ${status}`);
         setFilterStatus(status);
     };
 
@@ -53,23 +49,26 @@ const MateriaPage = () => {
         setAtividades(updatedAtividades);
     };
 
+    // Depuração: Adicione um console.log para verificar o filtro
+    console.log('Filter Status:', filterStatus);
+    console.log('Atividades:', atividades);
+
     const filteredAtividades = atividades.filter((atividade) => {
-        console.log(`Checking atividade: ${atividade.categoria}`);
+        console.log('Filtering atividade:', atividade);
         if (filterStatus === 'all') {
             return true;
         }
         return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
     });
 
-    console.log('Atividades:', atividades);
+    // Depuração: Adicione um console.log para verificar o resultado do filtro
     console.log('Filtered Atividades:', filteredAtividades);
 
     return (
-        <>
         <AtividadeProvider>
             <div className="min-h-screen bg-gray-50">
                 <nav className="bg-white border-b border-gray-100">
-                <MenuMobile/>
+                    <MenuMobile />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
                             <div className="flex">
@@ -79,21 +78,14 @@ const MateriaPage = () => {
                                     </Link>
                                 </div>
                                 <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex relative">
-                                    <NavLink
-                                        to="/dashboard"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard" className="text-gray-800">
                                         Dashboard
                                     </NavLink>
                                     <NavLink
                                         to="/dashboard/postagens"
                                         className="text-purplePrimary"
-                                        onMouseEnter={() =>
-                                            setDropdownVisible(true)
-                                        }
-                                        onMouseLeave={() =>
-                                            setDropdownVisible(false)
-                                        }
+                                        onMouseEnter={() => setDropdownVisible(true)}
+                                        onMouseLeave={() => setDropdownVisible(false)}
                                     >
                                         Área de Postagens
                                     </NavLink>
@@ -119,21 +111,14 @@ const MateriaPage = () => {
                                             </Link>
                                         </div>
                                     )}
-                                    <NavLink
-                                        to="/dashboard/agenda"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard/agenda" className="text-gray-800">
                                         Agenda
                                     </NavLink>
-                                    <NavLink
-                                        to="/dashboard/pomodoro"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard/pomodoro" className="text-gray-800">
                                         Método Pomodoro
                                     </NavLink>
-                                    <NavLink href="#" to='/dashboard/notas'>Notas</NavLink>
-                                    <NavLink
-                                        href="#" to='/dashboard/perfil' >
+                                    <NavLink href="#" to="/dashboard/notas">Notas</NavLink>
+                                    <NavLink href="#" to="/dashboard/perfil">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
                                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
                                         </svg>
@@ -204,8 +189,7 @@ const MateriaPage = () => {
                     />
                 </main>
             </div>
-            </AtividadeProvider>
-        </>
+        </AtividadeProvider>
     );
 };
 

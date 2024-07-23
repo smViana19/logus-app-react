@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
 import Logo from '../../components/outros/Logo';
-import { useParams } from 'react-router-dom';
 import LogoutButton from '../../components/Botoes/LogoutBtn';
 import BtnMateriasFilter from '../../components/Botoes/BtnMateriasFilter';
 import CardAtividade from '../../components/CardsContainers/CardAtividade'; 
@@ -19,13 +18,37 @@ const MateriaPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
+    // Carregar atividades do localStorage quando o componente é montado
+    useEffect(() => {
+        const storedAtividades = localStorage.getItem('atividades');
+        if (storedAtividades) {
+            setAtividades(JSON.parse(storedAtividades));
+        }
+    }, []);
+
+    // Salvar atividades no localStorage sempre que atividades são atualizadas
+    useEffect(() => {
+        localStorage.setItem('atividades', JSON.stringify(atividades));
+    }, [atividades]);
+
     const handleAddAtividade = (novaAtividade) => {
-        console.log(novaAtividade.pontos); // Log da pontuação
         setAtividades([...atividades, novaAtividade]);
     };
-    
+
     const handleFilterChange = (status) => {
         setFilterStatus(status);
+    };
+
+    const handleDelete = (index) => {
+        const updatedAtividades = atividades.filter((_, i) => i !== index);
+        setAtividades(updatedAtividades);
+    };
+
+    const handleEdit = (index, updatedAtividade) => {
+        const updatedAtividades = atividades.map((atv, i) =>
+            i === index ? updatedAtividade : atv
+        );
+        setAtividades(updatedAtividades);
     };
 
     const filteredAtividades = atividades.filter(atividade => 
@@ -155,7 +178,8 @@ const MateriaPage = () => {
                                     pontos={atividade.pontos}
                                     file={atividade.file}
                                     detail={atividade.detail}
-                                    onDelete={() => handleDelete(atividade.index)}
+                                    onDelete={() => handleDelete(index)}
+                                    onEdit={(updatedAtividade) => handleEdit(index, updatedAtividade)}
                                 />
                             ))
                         ) : (

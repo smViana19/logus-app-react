@@ -18,16 +18,17 @@ const MateriaPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
-    // Carregar atividades do localStorage quando o componente é montado
+
     useEffect(() => {
         const storedAtividades = localStorage.getItem('atividades');
+        console.log('Stored atividades:', storedAtividades);
         if (storedAtividades) {
             setAtividades(JSON.parse(storedAtividades));
         }
     }, []);
 
-    // Salvar atividades no localStorage sempre que atividades são atualizadas
     useEffect(() => {
+        console.log('Saving atividades to localStorage:', atividades);
         localStorage.setItem('atividades', JSON.stringify(atividades));
     }, [atividades]);
 
@@ -52,13 +53,16 @@ const MateriaPage = () => {
         setAtividades(updatedAtividades);
     };
 
-    const filteredAtividades = atividades.filter(atividade => {
-        console.log(`Filtering atividades:`, atividade);
-        return filterStatus === 'all' || atividade.categoria.toLowerCase() === filterStatus;
+    const filteredAtividades = atividades.filter((atividade) => {
+        console.log(`Checking atividade: ${atividade.categoria}`);
+        if (filterStatus === 'all') {
+            return true;
+        }
+        return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
     });
 
-    console.log(`Atividades:`, atividades);
-    console.log(`Filtered Atividades:`, filteredAtividades);
+    console.log('Atividades:', atividades);
+    console.log('Filtered Atividades:', filteredAtividades);
 
     return (
         <>

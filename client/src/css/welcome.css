@@ -113,3 +113,44 @@
 header{
     color: white;
 }
+
+
+.dark .bg-gray-50 {
+  background-color: #292929; 
+}
+
+.dark .bg-white {
+  background-color: #2d2d2d;
+}
+
+.dark .text-black {
+  color: #d4d4d4; 
+}
+
+.dark .text-white {
+  color: #1a1a1a; 
+}
+
+.dark .border-gray-50 {
+  border-color: #2d2d2d; 
+}
+
+.dark .border-gray-400 {
+  border-color: #4a4a4a; 
+}
+
+.dark .shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.dark .shadow-gray-50 {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.dark .dark:bg-gray-800 {
+  background-color: #2d2d2d; 
+}
+
+.dark .dark:text-gray-800 {
+  color: #e5e5e5;
+}

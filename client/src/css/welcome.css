@@ -115,6 +115,9 @@ header{
 }
 
 
+
+/*-- dark mode --*/
+  
 .dark .bg-gray-50 {
   background-color: #292929; 
 }

@@ -24,20 +24,24 @@ export default function Dashboard() {
             <div className="min-h-screen bg-gray-50">
                 <nav className="bg-white border-b border-gray-100">
                 <MenuMobile/>
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between h-16">
+                    <div className="flex justify-between h-16 px-32">
 
-                            <div className="flex">
-                                <div className="shrink-0 flex items-center">
+
+                        <div className="flex items-center">
                                     <Link to="/">
                                         <Logo className="block h-9 w-auto fill-current text-gray-800" />
                                     </Link>
                                 </div>
 
+
+                            <div className="flex justify-around">
+                                
+
                                 <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex">
                                     <NavLink className='text-purplePrimary'
                                         // borderPage={currentRoute === '/' ? '1px solid black' : 'none'}
                                         href="#" >
+                                           
                                         Dashboard
                                     </NavLink>
 
@@ -58,7 +62,14 @@ export default function Dashboard() {
                                         Método Pomodoro
                                     </NavLink>
                                     <NavLink href="#" to='/dashboard/notas'>Notas</NavLink>
-                                    <NavLink
+                                    
+                                </div>
+                                <div className='flex justify-between'>
+                               
+                                </div>
+                            </div>
+                            <div className='flex justify-center gap-16'>
+                            <NavLink
                                         // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
                                         href="#" to='/dashboard/perfil' >
                                         <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
@@ -66,10 +77,9 @@ export default function Dashboard() {
                                         </svg>
                                     </NavLink>
                                     <LogoutButton />
-                                </div>
                             </div>
                         </div>
-                    </div>
+               
                 </nav>
 
                 <UsuarioCard role={role} user={user} />

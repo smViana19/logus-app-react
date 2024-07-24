@@ -69,35 +69,50 @@ export default function Pomodoro() {
 
     return (
         <div className="min-h-screen bg-gray-50 relative">
-            <nav className="bg-white border-b border-gray-100">
-            <MenuMobile/>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between h-16">
-                        <div className="flex">
-                            <div className="shrink-0 flex items-center">
-                                <Link to="/">
-                                    <Logo className="block h-9 w-auto fill-current text-gray-800" />
-                                </Link>
+            <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
+                    <MenuMobile />
+                    <div className="flex justify-between py-2 px-32">
+                        <div className="flex items-center">
+                            <Link to="/">
+                                <Logo className="block h-12 w-auto fill-current" />
+                            </Link>
+                        </div>
+
+                        <div className="flex justify-around">
+                            <div className="space-x-8  lg:flex">
+                                <NavLink to="/dashboard" className="">
+                                    Dashboard
+                                </NavLink>
+                                <NavLink to="/dashboard/postagens" className="">
+                                    Área de Postagens
+                                </NavLink>
+                                <NavLink to="/dashboard/agenda" className="">
+                                    Agenda
+                                </NavLink>
+                                <NavLink to="/dashboard/pomodoro" className="">
+                                    Método Pomodoro
+                                </NavLink>
+                                <NavLink to="/dashboard/notas" className="">
+                                    Notas
+                                </NavLink>
                             </div>
-                            <div className="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
-                                <NavLink href="#" to='/dashboard'>Dashboard</NavLink>
-                                <NavLink href="#" to='/dashboard/postagens' >Área de Postagens</NavLink>
-                                <NavLink href="#" to='/dashboard/agenda'>Agenda</NavLink>
-                                <NavLink href="#" to='/dashboard/pomodoro' className='text-purplePrimary'>Método Pomodoro</NavLink>
-                                <NavLink href="#" to='/dashboard/notas' className='text-purplePrimary'>Notas</NavLink>
-                                <NavLink
-                                        // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" to='/dashboard/perfil' >
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
-                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                                        </svg>
-                                    </NavLink>
-                                    <LogoutButton />
-                            </div>
+                            <div className="flex justify-between"></div>
+                        </div>
+                        <div className="flex justify-center gap-16">
+                            <NavLink to="/dashboard/perfil" className="">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="14"
+                                    width="12.25"
+                                    viewBox="0 0 448 512"
+                                >
+                                    <path className='fill-gray-400' d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                </svg>
+                            </NavLink>
+                            <LogoutButton />
                         </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
             <main>
                 <ContainerButtons className='flex justify-around mt-8 rounded-lg w-2/4 m-auto'>
                     <BtnPomodoroOpenModal onClick={abrirModal}

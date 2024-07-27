@@ -36,7 +36,7 @@ export default function Rotas() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
             <Route path="/dashboard/agenda" element={<Agenda />} />
-            <Route path="/dashboard/notas/gradenotas" element={<VisualizarNotas />} />
+            <Route path="/dashboard/notas" element={<VisualizarNotas />} />
  
             <Route path="/dashboard/perfil" element={<Profile />} />
             <Route path="/dashboard/postagens" element={<AreaPostagens />} />

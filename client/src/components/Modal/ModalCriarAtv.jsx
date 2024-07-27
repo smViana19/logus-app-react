@@ -109,16 +109,17 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                         }}
                     >
                         <div
-                            className="bg-white py-8 xl:w-1/2 px-16 rounded-lg shadow-lg"
+                            className="bg-white py-8 xl:w-3/5 px-16 rounded-lg shadow-lg"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <h2 className="text-lg mb-6">Criar Material</h2>
+                            <h2 className="text-xl mb-8 font-medium">Criar Material</h2>
                             <div >
+                                <label htmlFor="">Nome </label>
                                 <input
                                     type="text"
                                     value={nome}
                                     onChange={(e) => setNome(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
                                     placeholder="Nome do material"
                                 />
                                
@@ -145,7 +146,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                             </div>
 
                                 <div>
-                                    <label htmlFor="">Pontuação: </label>
+                                    <label htmlFor="">Pontuação </label>
                                     <input
                                         value={pontos}
                                         onChange={(e) => setPontos(e.target.value)}
@@ -156,15 +157,16 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                             </div>
 
                             <div>
+                                <label htmlFor="">Descrição</label>
                                 <textarea
-                                    placeholder="Detalhes..."
+                                    placeholder=""
                                     value={detail}
                                     onChange={(e) => setDetail(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-lg h-48 px-4 py-2 outline-none"
+                                    className="w-full border border-gray-300 rounded-lg h-48 px-4 py-2 outline-none mt-1"
                                 ></textarea>
                             </div>
 
-                            <div className="flex gap-8 mt-4">
+                            <div className="flex gap-8 mt-4 mb-6">
                                 <input
                                     onChange={(e) => setFile(e.target.files[0])}
                                     type="file"

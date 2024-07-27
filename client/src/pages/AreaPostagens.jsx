@@ -7,6 +7,7 @@ import LogoutButton from '../components/Botoes/LogoutBtn';
 import CardMateria from '../components/CardsContainers/CardMateria';
 import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
 import { toast, ToastContainer } from 'react-toastify';
+import MenuMobile from '../components/Navs/MenuMobile';
 
 export default function AreaPostagens() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -93,93 +94,60 @@ export default function AreaPostagens() {
     return (
         <>
             <div className="min-h-screen bg-gray-50">
-                <nav className="bg-white border-b border-gray-100">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between h-16">
-                            <div className="flex">
-                                <div className="shrink-0 flex items-center">
-                                    <Link to="/">
-                                        <Logo className="block h-9 w-auto fill-current text-gray-800" />
-                                    </Link>
-                                </div>
-                                <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex relative">
-                                    <NavLink
-                                        to="/dashboard"
-                                        className="text-gray-800"
-                                    >
-                                        Dashboard
-                                    </NavLink>
-                                    <NavLink
-                                        to="/dashboard/postagens"
-                                        className="text-purplePrimary"
-                                        onMouseEnter={() =>
-                                            setDropdownVisible(true)
-                                        }
-                                        onMouseLeave={() =>
-                                            setDropdownVisible(false)
-                                        }
-                                    >
-                                        Área de Postagens
-                                    </NavLink>
-                                    {dropdownVisible && (
-                                        <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                                            <Link
-                                                to="/dashboard/postagens/resumo"
-                                                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                            >
-                                                Resumo
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/postagens/slide"
-                                                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                            >
-                                                Slide
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/postagens/atividade"
-                                                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                            >
-                                                Atividade
-                                            </Link>
-                                        </div>
-                                    )}
-                                    <NavLink
-                                        to="/dashboard/agenda"
-                                        className="text-gray-800"
-                                    >
-                                        Agenda
-                                    </NavLink>
-                                    <NavLink
-                                        to="/dashboard/pomodoro"
-                                        className="text-gray-800"
-                                    >
-                                        Método Pomodoro
-                                    </NavLink>
-                                    <NavLink href="#" to='/dashboard/notas'>Notas</NavLink>
-                                    <NavLink
-                                        // borderPage={currentRoute === '/agenda' ? '1px solid black' : 'none'}
-                                        href="#" to='/dashboard/perfil' >
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
-                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                                        </svg>
-                                    </NavLink>
-                                    <LogoutButton />
-                                </div>
+            <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
+                    <MenuMobile />
+                    <div className="flex justify-between py-2 px-32">
+                        <div className="flex items-center">
+                            <Link to="/">
+                                <Logo className="block h-12 w-auto fill-current" />
+                            </Link>
+                        </div>
+
+                        <div className="flex justify-around">
+                            <div className="space-x-8  lg:flex">
+                                <NavLink to="/dashboard" className="">
+                                    Dashboard
+                                </NavLink>
+                                <NavLink to="/dashboard/postagens" className="">
+                                    Área de Postagens
+                                </NavLink>
+                                <NavLink to="/dashboard/agenda" className="">
+                                    Agenda
+                                </NavLink>
+                                <NavLink to="/dashboard/pomodoro" className="">
+                                    Método Pomodoro
+                                </NavLink>
+                                <NavLink to="/dashboard/notas" className="">
+                                    Notas
+                                </NavLink>
                             </div>
+                            <div className="flex justify-between"></div>
+                        </div>
+                        <div className="flex justify-center gap-16">
+                            <NavLink to="/dashboard/perfil" className="">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="14"
+                                    width="12.25"
+                                    viewBox="0 0 448 512"
+                                >
+                                    <path className='fill-gray-400' d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                </svg>
+                            </NavLink>
+                            <LogoutButton />
                         </div>
                     </div>
                 </nav>
-
                 <main>
-                    <section className="md:w-4/5 md:block m-auto w-full flex justify-center items-center ">
+                    <section className="w-4/5 block m-auto ">
                         <button
-                            className="border border-gray-300 md:w-1/4 py-2 rounded-lg mt-4"
+                            className="border border-gray-300 w-3/4 sm:w-2/3 md:w-1/3 lg:w-1/4 py-2 rounded-lg mt-4"
                             onClick={() => setShowModal(true)}
                         >
                             Adicionar Matéria
                         </button>
                     </section>
-                    <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
+                    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
                         {materias.length > 0 ? (
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">

@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
 import Logo from '../../components/outros/Logo';
-import { useParams } from 'react-router-dom';
 import LogoutButton from '../../components/Botoes/LogoutBtn';
 import BtnMateriasFilter from '../../components/Botoes/BtnMateriasFilter';
 import CardAtividade from '../../components/CardsContainers/CardAtividade'; 
 import { AtividadeProvider } from '../../context/AtividadeContext';
 import Modal from '../../components/Modal/ModalCriarAtv'; 
+import MenuMobile from '../../components/Navs/MenuMobile';
 
-const AreaPostagens = () => {
+const MateriaPage = () => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const { nomeMateria } = useParams();
@@ -18,24 +18,57 @@ const AreaPostagens = () => {
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
+    useEffect(() => {
+        const storedAtividades = localStorage.getItem('atividades');
+        if (storedAtividades) {
+            setAtividades(JSON.parse(storedAtividades));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('atividades', JSON.stringify(atividades));
+    }, [atividades]);
+
     const handleAddAtividade = (novaAtividade) => {
-        console.log(novaAtividade.pontos); // Log da pontuação
         setAtividades([...atividades, novaAtividade]);
     };
-    
+
     const handleFilterChange = (status) => {
         setFilterStatus(status);
     };
 
-    const filteredAtividades = atividades.filter(atividade => 
-        filterStatus === 'all' || atividade.categoria === filterStatus
-    );
+    const handleDelete = (index) => {
+        const updatedAtividades = atividades.filter((_, i) => i !== index);
+        setAtividades(updatedAtividades);
+    };
+
+    const handleEdit = (index, updatedAtividade) => {
+        const updatedAtividades = atividades.map((atv, i) =>
+            i === index ? updatedAtividade : atv
+        );
+        setAtividades(updatedAtividades);
+    };
+
+    // Depuração: Adicione um console.log para verificar o filtro
+    console.log('Filter Status:', filterStatus);
+    console.log('Atividades:', atividades);
+
+    const filteredAtividades = atividades.filter((atividade) => {
+        console.log('Filtering atividade:', atividade);
+        if (filterStatus === 'all') {
+            return true;
+        }
+        return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
+    });
+
+    // Depuração: Adicione um console.log para verificar o resultado do filtro
+    console.log('Filtered Atividades:', filteredAtividades);
 
     return (
-        <>
         <AtividadeProvider>
             <div className="min-h-screen bg-gray-50">
                 <nav className="bg-white border-b border-gray-100">
+                    <MenuMobile />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
                             <div className="flex">
@@ -45,21 +78,14 @@ const AreaPostagens = () => {
                                     </Link>
                                 </div>
                                 <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex relative">
-                                    <NavLink
-                                        to="/dashboard"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard" className="text-gray-800">
                                         Dashboard
                                     </NavLink>
                                     <NavLink
                                         to="/dashboard/postagens"
                                         className="text-purplePrimary"
-                                        onMouseEnter={() =>
-                                            setDropdownVisible(true)
-                                        }
-                                        onMouseLeave={() =>
-                                            setDropdownVisible(false)
-                                        }
+                                        onMouseEnter={() => setDropdownVisible(true)}
+                                        onMouseLeave={() => setDropdownVisible(false)}
                                     >
                                         Área de Postagens
                                     </NavLink>
@@ -85,17 +111,17 @@ const AreaPostagens = () => {
                                             </Link>
                                         </div>
                                     )}
-                                    <NavLink
-                                        to="/dashboard/agenda"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard/agenda" className="text-gray-800">
                                         Agenda
                                     </NavLink>
-                                    <NavLink
-                                        to="/dashboard/pomodoro"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard/pomodoro" className="text-gray-800">
                                         Método Pomodoro
+                                    </NavLink>
+                                    <NavLink href="#" to="/dashboard/notas">Notas</NavLink>
+                                    <NavLink href="#" to="/dashboard/perfil">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
+                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                                        </svg>
                                     </NavLink>
                                     <LogoutButton />
                                 </div>
@@ -111,7 +137,7 @@ const AreaPostagens = () => {
                                 {nomeMateria}
                             </h1>
                         </div>
-                        <div className="col-span-1 grid grid-rows-3 gap-4">
+                        <div className="col-span-1 grid grid-rows-4 gap-4">
                             <BtnMateriasFilter text={'Resumos'} onClick={() => handleFilterChange('resumo')} />
                             <BtnMateriasFilter text={'Apresentações'} onClick={() => handleFilterChange('apresentação')} />
                             <BtnMateriasFilter text={'Atividades'} onClick={() => handleFilterChange('atividade')} />
@@ -145,6 +171,8 @@ const AreaPostagens = () => {
                                     pontos={atividade.pontos}
                                     file={atividade.file}
                                     detail={atividade.detail}
+                                    onDelete={() => handleDelete(index)}
+                                    onEdit={(updatedAtividade) => handleEdit(index, updatedAtividade)}
                                 />
                             ))
                         ) : (
@@ -161,9 +189,8 @@ const AreaPostagens = () => {
                     />
                 </main>
             </div>
-            </AtividadeProvider>
-        </>
+        </AtividadeProvider>
     );
 };
 
-export default AreaPostagens;
+export default MateriaPage;

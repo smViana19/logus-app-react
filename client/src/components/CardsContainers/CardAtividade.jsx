@@ -1,34 +1,50 @@
-// CardAtividade.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import ModalEditarAtv from '../../components/Modal/ModalEditarAtv'; 
 
-const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) => {
+const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit }) => {
     const { nomeMateria } = useParams();
+    const [showModalOption, setShowModalOptions] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
+    const modalRef = useRef(null);
 
-    const [contextMenu, setContextMenu] = useState(null);
-
-    const handleContextMenu = (event) => {
+    const handleRightClick = (event) => {
         event.preventDefault();
-        setContextMenu({
-            mouseX: event.clientX - 2,
-            mouseY: event.clientY - 4,
-        });
+        setShowModalOptions(true);
+        console.log("clicou com btn right");
     };
 
-    const handleCloseContextMenu = () => {
-        setContextMenu(null);
+    const handleCloseModal = () => {
+        setShowModalOptions(false);
     };
+
+    const handleClickOutside = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            handleCloseModal(); 
+        }
+    };
+
+    useEffect(() => {
+        if (showModalOption) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showModalOption]);
 
     const handleEdit = () => {
-        console.log('Edit activity');
-        handleCloseContextMenu();
-        // Adicione aqui a lógica para editar a atividade
+        setShowEditModal(true); // Abrir o modal de edição
+        handleCloseModal();
     };
 
     const handleDelete = () => {
-        console.log('Delete activity');
-        handleCloseContextMenu();
-        // Adicione aqui a lógica para excluir a atividade
+        if (window.confirm('Tem certeza que deseja excluir esta atividade?')) {
+            onDelete();
+            handleCloseModal();
+        }
     };
 
     const dataPostagem = new Date().toLocaleString('pt-BR', {
@@ -49,8 +65,22 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
         }) : "";
 
     return (
-        <div onContextMenu={handleContextMenu} className="relative">
-            <Link to={`/dashboard/postagens/${nomeMateria}/${nome}`} state={{ categoria, dataEntrega }} className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block">
+        <div onContextMenu={handleRightClick} className="relative">
+            {showModalOption && (
+                <ul
+                    ref={modalRef}
+                    className="absolute top-2 right-2 bg-white px-2 rounded-md py-2 shadow-lg"
+                    onClick={handleCloseModal}
+                >
+                    <li className='py-1 px-6 border-b border-gray-100 cursor-pointer' onClick={handleEdit}>Editar</li>
+                    <li className='py-1 px-6 cursor-pointer' onClick={handleDelete}>Excluir</li>
+                </ul>
+            )}
+            <Link 
+                to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
+                state={{ categoria, dataEntrega, pontos, detail, file }} 
+                className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block"
+            >
                 <div className='md:flex md:justify-between mb-2'>
                     <div className='flex gap-4'>
                         <span className='text-lg font-medium'>{nome}</span>
@@ -65,7 +95,7 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
                 </div>
 
                 {file && (
-                    <div className='mt-2 p-2 border border-gray-300 rounded-md '>
+                    <div className='mt-2 p-2 border border-gray-300 rounded-md'>
                         <a href={URL.createObjectURL(file)} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
                             Ver ou baixar arquivo: {file.name}
                         </a>
@@ -73,19 +103,16 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail }) =
                 )}
             </Link>
 
-            {contextMenu !== null && (
-                <div
-                    className="absolute bg-white shadow-lg rounded-md p-2"
-                    style={{ top: contextMenu.mouseY, left: contextMenu.mouseX }}
-                    onMouseLeave={handleCloseContextMenu}
-                >
-                    <button onClick={handleEdit} className="block px-4 py-2 text-left text-black hover:bg-gray-200 w-full">
-                        Editar
-                    </button>
-                    <button onClick={handleDelete} className="block px-4 py-2 text-left text-black hover:bg-gray-200 w-full">
-                        Excluir
-                    </button>
-                </div>
+            {showEditModal && (
+                <ModalEditarAtv
+                    showModal={showEditModal}
+                    setShowModal={setShowEditModal}
+                    atividade={{ nome, categoria, dataEntrega, pontos, detail, file }}
+                    handleEditAtividade={(updatedAtividade) => {
+                        onEdit(updatedAtividade);
+                        setShowEditModal(false);
+                    }}
+                />
             )}
         </div>
     );

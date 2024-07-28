@@ -53,7 +53,7 @@ export default {
                 cinzaBordaInput: '#DCDCDC',
                 //backgrounds
                 purplePrimary: '#820AD1',
-                purpleDarkBg: '#533680',
+                purpleDark: '#5A1B8D',
                 cinzaPrincipal: '#F0F1F5',
                 //textos
                 txtPlaceholder: '#3A3A3A',

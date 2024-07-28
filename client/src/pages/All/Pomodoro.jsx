@@ -132,15 +132,15 @@ export default function Pomodoro() {
                     />
                 </ContainerButtons>
                 <ContainerProgressBar className='w-2/6 m-auto'>
-                    <StyledCircularProgressbar
+                    <StyledCircularProgressbar className='dark:text-zinc-100'
                         value={(1500 - tempoDecorrido) / 1500 * 100}
                         text={formatarTempo(tempoDecorrido)}
                     />
-                    <div className='grid grid-flow-row-dense grid-cols-5 gap-4'>
-                        <BtnPrincipal className='start-btn py-3 rounded-xl text-xl col-span-4' onClick={alternarCronometro}>
+                    <div className='grid grid-flow-row-dense grid-cols-5 gap-4 '>
+                        <BtnPrincipal className='start-btn py-3 rounded-xl text-xl col-span-4 dark:text-zinc-100' onClick={alternarCronometro}>
                             {cronometroExecutando ? 'Pause' : 'Start'}
                         </BtnPrincipal>
-                        <BtnPrincipal className='rounded-xl' onClick={resetarCronometro}>
+                        <BtnPrincipal className='rounded-xl  dark:text-zinc-100' onClick={resetarCronometro}>
                             Reset
                         </BtnPrincipal>
                     </div>
@@ -151,10 +151,10 @@ export default function Pomodoro() {
                 />
             </main>
             {bloqueado && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center z-50">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center z-50  dark:text-zinc-100">
                     <span className="text-white text-2xl mb-4">Tela Bloqueada</span>
                     <button
-                        className="bg-white text-black px-4 py-2 rounded-lg"
+                        className="bg-white text-black px-4 py-2 rounded-lg dark:text-zinc-100 dark:bg-zinc-800"
                         onClick={alternarBloqueio}
                     >
                         Desbloquear Tela

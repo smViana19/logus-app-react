@@ -13,6 +13,7 @@ const labelsClasses = [
 
 export default {
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+    darkMode: "class",
     safelist: [
         ...labelsClasses.map((lbl) => `bg-${lbl}-500`),
         ...labelsClasses.map((lbl) => `bg-${lbl}-200`),
@@ -68,6 +69,9 @@ export default {
                 '5xl': '3rem',
                 '6xl': '4rem',
           
+              },
+              rotate: {
+                '360': '360deg'
               },
 
               

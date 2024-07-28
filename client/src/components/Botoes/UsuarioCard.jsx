@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function UsuarioCard({ role, user }) {
     return (
-        <div className="bg-white dark:bg-gray-900 rounded-xl mx-16 my-8 p-8 flex justify-between">
+        <div className="bg-white dark:bg-zinc-900  dark:shadow-zinc-900  rounded-xl mx-16 my-8 p-8 flex justify-between shadow-md shadow-gray-100 ">
             <div>
                 <div className="flex gap-16 mb-8 items-center">
                     <h1 className="font-bold text-3xl text-black dark:text-white">

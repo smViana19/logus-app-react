@@ -140,7 +140,7 @@ export default function AreaPostagens() {
                             Adicionar Matéria
                         </button>
                     </section>
-                    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8">
+                    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8 ">
                         {materias.length > 0 ? (
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">
@@ -158,22 +158,24 @@ export default function AreaPostagens() {
                                                         : index
                                                 )
                                             }
-                                            className="p-2 rounded-full bg-gray-200"
+                                            className="p-2 rounded-full bg-gray-200 dark:bg-zinc-800 "
                                             style={{ color: '#000' }}
                                         >
                                             &#x22EE;
                                         </button>
                                         {menuVisible === index && (
-                                            <div className="absolute top-10 right-2 w-24 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                                            <div className="absolute top-10 right-2 w-24 bg-white border border-gray-200 dark:border-zinc-600 rounded-lg shadow-lg z-50 ">
                                                 <button
                                                      onClick={() => handleEditMateria(index)}
-                                                     className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                                                     className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100
+                                                      dark:hover:bg-zinc-900 dark:text-zinc-100"
                                                 >
                                                     Editar
                                                 </button>
                                                 <button
                                                      onClick={() => handleDeleteMateria(index)}
-                                                     className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                                                     className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100
+                                                      dark:text-zinc-100 dark:hover:bg-zinc-900"
                                                 >
                                                     Excluir
                                                 </button>
@@ -183,7 +185,7 @@ export default function AreaPostagens() {
                                 </div>
                             ))
                         ) : (
-                            <p className="col-span-4 text-center text-gray-500">
+                            <p className="col-span-4 text-center text-gray-500 dark:text-zinc-200">
                                 Nenhuma matéria criada.
                             </p>
                         )}
@@ -198,22 +200,22 @@ export default function AreaPostagens() {
                     onClick={() => setShowModal(false)} >
 
                     <div
-                        className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
+                        className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left dark:bg-zinc-800"
                         onClick={(e) => e.stopPropagation()}  >
                         
-                        <h2 className="text-lg mb-6">Adicionar Nova Matéria</h2>
+                        <h2 className="text-lg mb-6 dark:text-white">Adicionar Nova Matéria</h2>
                         <form onSubmit={handleAddMateria}>
                         <input
                             type="text"
                             value={newMateria}
                             onChange={(e) => setNewMateria(e.target.value)}
-                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 "
                             placeholder="Nome da matéria"
                         //    required
                         />
                         <button
                             type="submit"
-                            className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide"
+                            className="bg-purplePrimary dark:bg-purpleDark text-white py-1.5 px-8 rounded-lg tracking-wide dark:text-zinc-200"
                         >
                             Adicionar
                         </button>
@@ -229,7 +231,7 @@ export default function AreaPostagens() {
                     <div
                         className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
                         onClick={(e) => e.stopPropagation()}  >
-                        <h2 className="text-lg mb-6">Editar Matéria</h2>
+                        <h2 className="text-lg mb-6 dark:text-white">Editar Matéria</h2>
                         <input
                             type="text"
                             value={editNome}
@@ -240,7 +242,7 @@ export default function AreaPostagens() {
                         <div className="flex justify-end">
                         <button
                             onClick={handleSaveEdit}
-                            className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide mr-2" >
+                            className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide mr-2 dark:text-zinc-200 dark:bg-purpleDark" >
                             Salvar
                         </button>
                        

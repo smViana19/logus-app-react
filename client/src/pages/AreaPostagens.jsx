@@ -95,8 +95,9 @@ export default function AreaPostagens() {
     return (
         <>
             <div className="min-h-screen bg-gray-50 dark:bg-zinc-800 dark:text-white">
-            <nav className="bg-white shadow-gray-100 shadow-md dark:bg-zinc-800 ">
-                <MenuMobile />
+            <MenuMobile />
+            <nav className="bg-white shadow-gray-100 shadow-md dark:bg-zinc-800 max-xl:hidden">
+                
                 <div className="flex justify-between py-2 px-16">
                     <div className="flex items-center">
                         <Link to="/">
@@ -131,16 +132,16 @@ export default function AreaPostagens() {
                     </div>
                 </div>
             </nav>
-                <main>
-                    <section className="w-4/5 block m-auto ">
+                <main className='pt-16'>
+                    <section className="w-4/5 block mx-auto">
                         <button
-                            className="border border-gray-300 w-3/4 sm:w-2/3 md:w-1/3 lg:w-1/4 py-2 rounded-lg mt-4"
+                            className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 "
                             onClick={() => setShowModal(true)}
                         >
                             Adicionar Matéria
                         </button>
                     </section>
-                    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8 ">
+                    <section className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 3xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8 ">
                         {materias.length > 0 ? (
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">
@@ -200,7 +201,7 @@ export default function AreaPostagens() {
                     onClick={() => setShowModal(false)} >
 
                     <div
-                        className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left dark:bg-zinc-800"
+                        className="bg-white 2xl:w-1/2 py-8 lg:w-4/6 w-full lg:px-16 px-4 rounded-lg shadow-lg lg:text-left dark:bg-zinc-800 max-lg:mx-8 max-md:mx-4"
                         onClick={(e) => e.stopPropagation()}  >
                         
                         <h2 className="text-lg mb-6 dark:text-white">Adicionar Nova Matéria</h2>
@@ -226,10 +227,10 @@ export default function AreaPostagens() {
 
             {showEditModal && (
                 <div
-                    className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                    className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50  max-lg:px-4"
                     onClick={() => setShowEditModal(false)} >
                     <div
-                        className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg text-center lg:text-left"
+                        className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg lg:text-left max-lg:px-4"
                         onClick={(e) => e.stopPropagation()}  >
                         <h2 className="text-lg mb-6 dark:text-white">Editar Matéria</h2>
                         <input
@@ -239,7 +240,7 @@ export default function AreaPostagens() {
                             className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                             placeholder="Nome da matéria"
                         />
-                        <div className="flex justify-end">
+                        <div className="flex ">
                         <button
                             onClick={handleSaveEdit}
                             className="bg-purplePrimary text-white py-1.5 px-8 rounded-lg tracking-wide mr-2 dark:text-zinc-200 dark:bg-purpleDark" >

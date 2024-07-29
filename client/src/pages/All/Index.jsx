@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+    import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCircle, FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
@@ -86,19 +86,20 @@ export default function HomePage() {
         <div className="bg-center bg-corPrincipal selection:bg-red-500 selection:text-white bg-img">
             <header>
                 <MenuMobileIndex />
-                <Nav className="flex justify-around py-4 nav__landing-page items-center">
+                <Nav className="flex justify-between px-16 py-4 items-center">
                     <ul>
-                        <li><img className='w-48' src={logo} alt="Logo" /></li>
+                        <li><img className='w-32' src={logo} alt="Logo" /></li>
                     </ul>
-                    <ul className='flex gap-16'>
-                        <li className='text-2xl border-r-gray-500 border-r w-32 text-center h-8'>
-                            <a href="#home" className='font-bold'>HOME</a>
+                    <div className='flex gap-12 list-none'>
+                        <li className='text-xl text-center h-8'>
+                            <a href="#home" className=''>HOME</a>
                         </li>
-                        <li className='text-2xl w-8 px-6 text-center'>
-                            <a href="#funcionalidades" className='font-bold'>FUNCIONALIDADES</a>
+                        <span className='border-r border-gray-100'></span>
+                        <li className='text-xl text-center'>
+                            <a href="#funcionalidades" className=''>FUNCIONALIDADES</a>
                         </li>
-                    </ul>
-                    <UlDeskEntrar className='flex gap-16 items-center'>
+                    </div>
+                    <UlDeskEntrar className='flex gap-8 items-center'>
                         <li className='text-lg'>
                             {isLoggedIn ? (
                                 <Link onClick={handleLogout} to="#">
@@ -129,7 +130,7 @@ export default function HomePage() {
 
             <Main className='mx-64'>
                 <section id='home'>
-                    <h1 className='text-5xl text-white font-bold text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
+                    <h1 className='text-4xl text-white font-medium text-center mt-48 mb-32'>Conectando mentes, expandindo horizontes.</h1>
                     <InputPurple
                         typeInput='email'
                         placeholderInput='logus@study.com'

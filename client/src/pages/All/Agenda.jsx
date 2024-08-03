@@ -85,8 +85,8 @@ export default function Agenda() {
 
     return (
         <>
-             <div className="min-h-screen bg-gray-50 relative">
-             <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
+             <div className="min-h-screen bg-gray-50 relative dark:bg-zinc-800 dark:text-white">
+             <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50 dark:bg-zinc-800">
                     <MenuMobile />
                     <div className="flex justify-between py-2 px-32">
                         <div className="flex items-center">

@@ -47,7 +47,10 @@ export default function Dashboard() {
                             <NavLink className="text-black" to="/dashboard/postagens">Área de Postagens</NavLink>
                             <NavLink className="text-black" to="/dashboard/agenda">Agenda</NavLink>
                             <NavLink className="text-black" to="/dashboard/pomodoro">Método Pomodoro</NavLink>
-                            <NavLink className="text-black" to="/dashboard/notas">Notas</NavLink>
+                            {/*APARECERÁ APENAS PARA O PROFESSOR E PARA O DIRETOR*/}
+                            {(role === 'professor' || role === 'diretor') && (
+                                <NavLink className="text-black" to="/dashboard/notas">Notas</NavLink>
+                            )}
                         </div>
                     </div>
                     

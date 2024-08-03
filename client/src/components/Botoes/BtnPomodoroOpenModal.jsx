@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export default function BtnPomodoroOpenModal({ text, svg, onClick }) {
     return (
-        <BtnFoco onClick={onClick} className='cursor-pointer flex gap-5 items-center bg-white w-1/4 justify-center py-1 rounded-lg border border-gray-100 shadow-sm'>
+        <BtnFoco onClick={onClick} className='cursor-pointer flex gap-4 items-center bg-white px-10 justify-center py-1 rounded-lg border border-gray-100 shadow-sm dark:text-zinc-100 dark:border-zinc-600'>
            {svg}
             <span className=''>{text}</span>
         </BtnFoco>

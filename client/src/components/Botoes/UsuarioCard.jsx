@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function UsuarioCard({ role, user }) {
     return (
-        <div className="bg-white dark:bg-zinc-900  dark:shadow-zinc-900  rounded-xl mx-16 my-8 p-8 flex justify-between shadow-sm shadow-gray-100 ">
-            <div>
+        <div className="bg-white dark:bg-zinc-900  dark:shadow-zinc-900  rounded-xl xl:mx-16 mt-0 mb-8 md:p-8 py-8 lg:flex lg:justify-between shadow-sm shadow-gray-100 ">
+            <div className="mb-12 lg:mb-0 px-8">
                 <div className="flex gap-16 mb-8 items-center">
                     <h1 className="font-bold text-3xl text-black dark:text-white">
                         Olá, {user}
@@ -12,7 +12,7 @@ export default function UsuarioCard({ role, user }) {
                         {role}
                     </span>
                 </div>
-                <div className="mb-2 flex items-center gap-2">
+                <div className="mb-2 lg:flex lg:items-center gap-2">
                     <img src="" alt=""/>
                     <span className="text-black dark:text-white">
                         COTEMIG - Colégio e Faculdade
@@ -25,9 +25,9 @@ export default function UsuarioCard({ role, user }) {
                 </div>
             </div>
 
-            <div className="flex text-center gap-16">
+            <div className="flex justify-center text-center gap-4 sm:gap-8  md:gap-16">
                 <div>
-                    <p className="text-lg mb-8 text-black dark:text-white">Entregues</p>
+                    <p className="text-lg mb-14 sm:mb-8 text-black dark:text-white">Entregues</p>
                     <h3 className="font-semibold text-2xl text-black dark:text-white">24</h3>
                 </div>
                 <div>

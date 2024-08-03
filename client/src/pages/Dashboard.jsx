@@ -32,8 +32,9 @@ export default function Dashboard() {
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-zinc-800">
-            <nav className="bg-white shadow-gray-100 shadow-md dark:bg-zinc-800 ">
-                <MenuMobile />
+            <MenuMobile />
+            <nav className="bg-white shadow-gray-100 shadow-md dark:bg-zinc-800 max-xl:hidden">
+                
                 <div className="flex justify-between py-2 px-16">
                     <div className="flex items-center">
                         <Link to="/">
@@ -89,43 +90,44 @@ export default function Dashboard() {
                     </div>
                 </div>
             </nav>
+            <main className='pt-24'>
+                <UsuarioCard role={role} user={user} />
 
-            <UsuarioCard role={role} user={user} />
-
-            <div className="flex gap-8 mx-16">
-                <CardCategoria
-                    categoria={'Resumos'}
-                    customClass={'bg-white text-black'}
-                />
-                <CardCategoria
-                    categoria={'Apresentações'}
-                    customClass={'bg-white text-black'}
-                />
-                <CardCategoria
-                    categoria={'Atividades'}
-                    customClass={'bg-white text-black'}
-                />
-            </div>
-
-            <section className="mx-16 mt-16">
-                <h1 className="font-semibold text-2xl mb-8 text-black">
-                    Tarefas Urgentes
-                </h1>
-
-                <div className="border-b flex justify-between border-gray-400">
-                    <div className="flex gap-8 items-center">
-                        <input type="checkbox" />
-                        <p className="text-lg text-black">
-                            Atividade de matemática sobre funções de segundo grau
-                        </p>
-                    </div>
-
-                    <span className="text-lg text-black">
-                        Escola
-                        <img src="" alt="" />
-                    </span>
+                <div className="flex md:gap-8  gap-4 md:mx-16 overflow-x-auto">
+                    <CardCategoria
+                        categoria={'Resumos'}
+                        customClass={'bg-white text-black'}
+                    />
+                    <CardCategoria
+                        categoria={'Apresentações'}
+                        customClass={'bg-white text-black'}
+                    />
+                    <CardCategoria
+                        categoria={'Atividades'}
+                        customClass={'bg-white text-black'}
+                    />
                 </div>
-            </section>
+
+                <section className="mx-16 mt-16">
+                    <h1 className="font-semibold text-2xl mb-8 text-black">
+                        Tarefas Urgentes
+                    </h1>
+
+                    <div className="border-b flex justify-between border-gray-400">
+                        <div className="flex gap-8 items-center">
+                            <input type="checkbox" />
+                            <p className="text-lg text-black">
+                                Atividade de matemática sobre funções de segundo grau
+                            </p>
+                        </div>
+
+                        <span className="text-lg text-black">
+                            Escola
+                            <img src="" alt="" />
+                        </span>
+                    </div>
+                </section>
+            </main>
         </div>
     );
 }

@@ -23,11 +23,15 @@ const CardMateria = ({ banner, nome, atividades }) => {
                 </div>
                 <ul className='px-2 mt-2 pb-2'>
                     <li className='font-semibold mb-2'>Pendentes:</li>
-                    {atividades.map((atividade, index) => (
-                        <li key={index} className='flex justify-between text-sm pb-2'>
-                            {atividade.nome} <span className='text-gray-600'>{atividade.data}</span>
-                        </li>
-                    ))}
+                    {(atividades && Array.isArray(atividades) && atividades.length > 0) ? (
+                        atividades.map((atividade, index) => (
+                            <li key={index} className='flex justify-between text-sm pb-2'>
+                                {atividade.nome} <span className='text-black-600'>{atividade.data}</span>
+                            </li>
+                        ))
+                    ) : (
+                        <li className='text-sm text-gray-600'>Nenhuma atividade pendente.</li>
+                    )}
                     <li className='flex justify-between text-sm pb-1 mt-2'>
                         <a href='' className='border-b border-gray-300'>Ver mais ...</a>
                     </li>

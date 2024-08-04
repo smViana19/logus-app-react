@@ -5,36 +5,108 @@ import NavLink from '../../components/Navs/NavLink';
 import Logo from '../../components/outros/Logo';
 import LogoutButton from '../../components/Botoes/LogoutBtn';
 import BtnMateriasFilter from '../../components/Botoes/BtnMateriasFilter';
-import CardAtividade from '../../components/CardsContainers/CardAtividade'; 
+import CardAtividade from '../../components/CardsContainers/CardAtividade';
 import { AtividadeProvider } from '../../context/AtividadeContext';
-import Modal from '../../components/Modal/ModalCriarAtv'; 
+import Modal from '../../components/Modal/ModalCriarAtv';
 import MenuMobile from '../../components/Navs/MenuMobile';
+import axios from "../../../services/axios";
+import { get } from "lodash";
+import { toast, ToastContainer } from 'react-toastify';
+
+
 
 const MateriaPage = () => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const { nomeMateria } = useParams();
     const [atividades, setAtividades] = useState([]);
+    const [newAtividade, setNewAtividade] = useState('');
+    const [newPontos, setNewPontos] = useState('');
+    const [newCategoria, setNewCategoria] = useState('');
+    const [newDetalhes, setNewDetalhes] = useState('');
+    const [newDataEntrega, setNewDataEntrega] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
+    /*  useEffect(() => {
+          const storedAtividades = localStorage.getItem('atividades');
+          if (storedAtividades) {
+              setAtividades(JSON.parse(storedAtividades));
+          }
+      }, []);
+  
+      useEffect(() => {
+          localStorage.setItem('atividades', JSON.stringify(atividades));
+      }, [atividades]);
+  */
+
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjI3MzI0MTUsImV4cCI6MTcyMzMzNzIxNX0.0HUIkZKp8L7RwIzx92aT4AGdIl1hE0Al79aXhHAnrng";
+
     useEffect(() => {
-        const storedAtividades = localStorage.getItem('atividades');
-        if (storedAtividades) {
-            setAtividades(JSON.parse(storedAtividades));
+        async function fetchAtividades() {
+            try {
+                const response = await axios.get('http://localhost:3000/subject-materials/', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                setAtividades(response.data);
+            } catch (err) {
+                toast.error('Erro ao carregar atividades')
+            }
         }
-    }, []);
+        fetchAtividades();
+    }, [token]);
 
-    useEffect(() => {
-        localStorage.setItem('atividades', JSON.stringify(atividades));
-    }, [atividades]);
+    /*
+        const handleAddAtividade = (novaAtividade) => {
+            setAtividades([...atividades, novaAtividade]);
+        };
+        */
 
-    const handleAddAtividade = (novaAtividade) => {
-        setAtividades([...atividades, novaAtividade]);
-    };
 
-     
-    const handleFilterChange = (status) => {
+    async function handleAddAtividade (e) {
+        e.preventDefault()
+
+        if (newAtividade.trim()===''){
+            toast.error('Por favor, preencha o nome da atividade.');
+            console.log("funciona")
+            return;
+        }        
+
+        try{
+            const response = await axios.post('http://localhost:3000/subject-materials', {
+                nome: newAtividade,
+                pontos: newPontos,
+                categoria: newCategoria,
+                detalhes: newDetalhes,
+                data_entrega: newDataEntrega
+            },{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            const createdAtividade = response.data;
+            setAtividades([...atividades, createdAtividade]);
+            setNewAtividade('');
+            setNewPontos('');
+            setNewCategoria('');
+            setNewDetalhes('');
+            setNewDataEntrega('');
+            setShowModal(false);
+            toast.success('Atividade adicionada com sucesso!');
+        } catch (err){
+            const errors = get(err, 'response.data.errors', []);
+            errors.forEach(error => toast.error(error));
+        }
+        }
+
+    
+
+
+    /*const handleFilterChange = (status) => {
         setFilterStatus(status);
     };
 
@@ -61,6 +133,20 @@ const MateriaPage = () => {
         }
         return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
     });
+    */
+
+
+
+
+    const filteredAtividades = filterStatus === 'all' 
+    ? atividades 
+    : atividades.filter((atividade) => {
+        console.log('Filtering atividade:', atividade);
+        return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
+    });
+
+
+
 
     // Depuração: Adicione um console.log para verificar o resultado do filtro
     console.log('Filtered Atividades:', filteredAtividades);
@@ -121,7 +207,7 @@ const MateriaPage = () => {
                                     <NavLink href="#" to="/dashboard/notas">Notas</NavLink>
                                     <NavLink href="#" to="/dashboard/perfil">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
-                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                                         </svg>
                                     </NavLink>
                                     <LogoutButton />

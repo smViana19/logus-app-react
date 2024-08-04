@@ -14,14 +14,19 @@ const Atividade = () => {
         file: null
     });
 
+
+    /*
     useEffect(() => {
         const storedData = localStorage.getItem(`atividade-${nomeAtiv}`);
         if (storedData) {
             setData(JSON.parse(storedData));
         }
     }, [nomeAtiv]);
+    */
 
-    const dataEntregaFormatada = data.dataEntrega ? 
+
+
+    const dataEntregaFormatada = data.dataEntrega ?
         new Date(data.dataEntrega).toLocaleString('pt-BR', {
             day: '2-digit',
             month: '2-digit',

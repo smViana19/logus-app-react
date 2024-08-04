@@ -33,6 +33,7 @@ const MateriaPage = () => {
         setAtividades([...atividades, novaAtividade]);
     };
 
+     
     const handleFilterChange = (status) => {
         setFilterStatus(status);
     };

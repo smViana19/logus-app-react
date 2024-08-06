@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/logo.png';
+import NavLink from './NavLink';
+import { Link } from 'react-router-dom';
 
 export default function MenuMobile() {
 
@@ -27,13 +29,15 @@ export default function MenuMobile() {
             {
                 menuOpen &&
                 <MenuMobileContainer>
-                    <img className='mt-20 w-32 m-auto mb-16' src={Logo} alt="" />
+                    <Link to="/">
+                        <img className='mt-20 w-32 m-auto mb-16' src={Logo} alt="" />
+                    </Link>
                     <ul >
 
-                        <li className='py-4'>Home</li>
-                        <li className='py-4'>Funcionalidades</li>
-                        <li className='py-4'>Entrar</li>
-                        <li className='py-4'>Cadastrar</li>
+                        <li className='py-4'><NavLink className="text-black" to="/dashboard">Dashboard</NavLink></li>
+                        <li className='py-4'><NavLink className="text-black" to="/dashboard/postagens">Área de Postagens</NavLink></li>
+                        <li className='py-4'><NavLink className="text-black" to="/dashboard/agenda">Agenda</NavLink></li>
+                        <li className='py-4'><NavLink className="text-black" to="/dashboard/pomodoro">Método Pomodoro</NavLink></li>
 
                     </ul>
                 </MenuMobileContainer>

@@ -132,6 +132,7 @@ export default function AreaPostagens() {
         setEditingIndex(index);
         setEditNome(materias[index].nome);
         setShowEditModal(true);
+        setMenuVisible(null);
     };
 
     /* const handleSaveEdit = () => {
@@ -229,9 +230,10 @@ export default function AreaPostagens() {
                                     </Link>
                                     <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
                                         <button
-                                            onClick={() => setMenuVisible(menuVisible === index ? null : index)}
-                                            className="p-2 rounded-full bg-gray-200 dark:bg-zinc-800"
+                                            onClick={() => !showEditModal && setMenuVisible(menuVisible === index ? null : index)}
+                                            className={`p-2 rounded-full ${showEditModal ? 'bg-gray-300 dark:bg-zinc-700 cursor-not-allowed' : 'bg-gray-200 dark:bg-zinc-800'}`}
                                             style={{ color: '#000' }}
+                                            disabled={showEditModal} // Desativa o botão se o modal de edição estiver aberto
                                         >
                                             &#x22EE;
                                         </button>
@@ -252,6 +254,7 @@ export default function AreaPostagens() {
                                             </div>
                                         )}
                                     </div>
+
                                 </div>
                             ))
                         ) : (

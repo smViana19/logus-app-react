@@ -101,7 +101,7 @@ export default function HomePage() {
                     </ul>
                     <div className='flex gap-12 list-none'>
                         <li className='text-xl text-center h-8'>
-                            <a href="#home" className=''>HOME</a>
+                            <a href="#home" className=''>HOME</a>   
                         </li>
                         <span className='border-r border-gray-100'></span>
                         <li className='text-xl text-center'>

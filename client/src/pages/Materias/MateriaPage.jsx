@@ -50,6 +50,7 @@ const MateriaPage = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
+                console.log('Dados retornados:', response.data)
                 setAtividades(response.data);
             } catch (err) {
                 toast.error('Erro ao carregar atividades')
@@ -65,8 +66,7 @@ const MateriaPage = () => {
         */
 
 
-    async function handleAddAtividade (e) {
-        e.preventDefault()
+    async function handleAddAtividade () {
 
         if (newAtividade.trim()===''){
             toast.error('Por favor, preencha o nome da atividade.');
@@ -87,6 +87,8 @@ const MateriaPage = () => {
                     'Authorization': `Bearer ${token}`
                 }
             });
+            console.log('Dados retornados:', response.data)
+
 
             const createdAtividade = response.data;
             setAtividades([...atividades, createdAtividade]);

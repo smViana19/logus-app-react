@@ -1,8 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AtividadeContext } from '../../context/AtividadeContext';
-import { ThemeProvider } from 'styled-components'; 
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { ThemeProvider } from 'styled-components';
 
-const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjM0NzYxNjcsImV4cCI6MTcyNDA4MDk2N30.OjaHmamHwWCnGcIlyk-YZO7bHecxlWpZRWZKTM-Gkfs";
+
+
+const Modal = ({ showModal, setShowModal }) => {
     const {
         nome,
         setNome,
@@ -22,55 +27,64 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
         setDetail,
         file,
         setFile,
+        atividades,
+        setAtividades
     } = useContext(AtividadeContext);
-
-    const handleSubmit = () => {
-        if (nome === '') {
-            alert('Digite o nome do material');
-            return;
-        }
-        if (categoria === '') {
-            alert('Selecione uma categoria');
-            return;
-        }
-        if (!semDataEntrega && (dataEntrega === '' || horaEntrega === '')) {
-            alert('Data ou hora de entrega inválida');
-            return;
-        }
-
-        const dataHoraClique = new Date().toISOString();
-        const dataEntregaCompleta = semDataEntrega
-            ? null
-            : `${dataEntrega}T${horaEntrega}`;
-
-        handleAddAtividade({
-            nome,
-            categoria,
-            dataEntrega: dataEntregaCompleta,
-            pontos, 
-            dataHoraClique,
-            detail,
-            file, 
-        });
-
-        setNome('');
-        setCategoria('');
-        setDataEntrega('');
-        setHoraEntrega('23:59');
-        setPontos('0');
-        setSemDataEntrega(false);
-        setDetail('');
-        setFile(null);
-        setShowModal(false);
-    };
 
     useEffect(() => {
         if (showModal) {
             const now = new Date();
-            const formattedDate = now.toISOString().slice(0, 16); 
+            const formattedDate = now.toISOString().slice(0, 16);
             setDataPostagem(formattedDate);
         }
     }, [showModal, setDataPostagem]);
+
+    const handleAddAtividade = async () => {
+        if (nome.trim() === '') {
+            toast.error('Por favor, preencha o nome da atividade.');
+            return;
+        }
+        if (categoria.trim() === '') {
+            toast.error('Selecione uma categoria.');
+            return;
+        }
+
+        const dataEntregaCompleta = semDataEntrega
+            ? null
+            : `${dataEntrega}T${horaEntrega}`;
+
+        try {
+            const response = await axios.post('http://localhost:3000/subject-materials', {
+                nome,
+                categoria,
+                pontos,
+                detalhes: detail,
+                data_entrega: dataEntregaCompleta
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            console.log('Dados retornados:', response.data);
+
+            const createdAtividade = response.data;
+            setAtividades([...atividades, createdAtividade]);
+            setNome('');
+            setCategoria('');
+            setDataEntrega('');
+            setHoraEntrega('23:59');
+            setPontos('0');
+            setSemDataEntrega(false);
+            setDetail('');
+            setFile(null);
+            setShowModal(false);
+            toast.success('Atividade adicionada com sucesso!');
+        } catch (err) {
+            toast.error('Erro ao adicionar atividade.');
+        }
+    };
 
     const handleFocus = () => {
         if (pontos === '0') {
@@ -104,8 +118,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                         id="modal-background"
                         className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
                         onClick={(e) => {
-                            if (e.target.id === 'modal-background')
-                                setShowModal(false);
+                            if (e.target.id === 'modal-background') setShowModal(false);
                         }}
                     >
                         <div
@@ -113,7 +126,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <h2 className="text-xl mb-8 font-medium">Criar Material</h2>
-                            <div >
+                            <div>
                                 <label htmlFor="">Nome </label>
                                 <input
                                     type="text"
@@ -122,13 +135,12 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                     className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
                                     placeholder="Nome do material"
                                 />
-                               
                             </div>
 
                             <div className="flex gap-8">
-                            <div className='w-2/3'> 
-                                <label htmlFor="">Categoria</label>
-                                <select
+                                <div className='w-2/3'>
+                                    <label htmlFor="">Categoria</label>
+                                    <select
                                         value={categoria}
                                         onChange={(e) => setCategoria(e.target.value)}
                                         className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
@@ -138,12 +150,10 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         </option>
                                         <option value="Atividade">Atividade</option>
                                         <option value="Resumo">Resumo</option>
-                                        <option value="Apresentação">
-                                            Apresentação
-                                        </option>
+                                        <option value="Apresentação">Apresentação</option>
                                         <option value="Outros">Outros</option>
                                     </select>
-                            </div>
+                                </div>
 
                                 <div>
                                     <label htmlFor="">Pontuação </label>
@@ -152,7 +162,9 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         onChange={(e) => setPontos(e.target.value)}
                                         onFocus={handleFocus}
                                         onBlur={handleBlur}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1" type="text" />
+                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                        type="text"
+                                    />
                                 </div>
                             </div>
 
@@ -180,13 +192,9 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         type="checkbox"
                                         id="semDataEntrega"
                                         checked={semDataEntrega}
-                                        onChange={(e) =>
-                                            setSemDataEntrega(e.target.checked)
-                                        }
+                                        onChange={(e) => setSemDataEntrega(e.target.checked)}
                                     />
-                                    <span className="ml-2">
-                                        Não tem data de entrega
-                                    </span>
+                                    <span className="ml-2">Não tem data de entrega</span>
                                 </label>
                             </div>
 
@@ -195,17 +203,13 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                     <input
                                         type="date"
                                         value={dataEntrega}
-                                        onChange={(e) =>
-                                            setDataEntrega(e.target.value)
-                                        }
+                                        onChange={(e) => setDataEntrega(e.target.value)}
                                         className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
                                     />
                                     <input
                                         type="time"
                                         value={horaEntrega}
-                                        onChange={(e) =>
-                                            setHoraEntrega(e.target.value)
-                                        }
+                                        onChange={(e) => setHoraEntrega(e.target.value)}
                                         onFocus={handleHoraFocus}
                                         onBlur={handleHoraBlur}
                                         className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
@@ -215,7 +219,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
 
                             <div className="flex justify-end mt-6">
                                 <button
-                                    onClick={handleSubmit}
+                                    onClick={handleAddAtividade}
                                     className="bg-purple-600 text-white py-2 px-6 rounded-lg hover:bg-purple-700"
                                 >
                                     Adicionar

@@ -53,11 +53,20 @@ export default function HomePage() {
             name: 'Método Pomodoro',
             description: `
                 <h3 class="text-lg font-semibold mb-4">Método Pomodoro</h3>
-                <p class="w-3/4 mt-4">A funcionalidade do método Pomodoro no nosso aplicativo oferece uma maneira eficiente de gerenciar o tempo de estudo. Utilizando ciclos de 25 minutos de trabalho intenso seguidos por pausas curtas, essa técnica ajuda os alunos a manterem o foco e a produtividade.</p>
-                <ParagraphFuncionalidades class="w-3/4 mt-4">Aém disso, implementamos uma série de sons para ajudar na concentração. Alguns desses sons são:  </ParagraphFuncionalidades>
-                <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span>  → Tem uma frequência específica para inibir sons externos, auxiliando na melhor concentração do aluno </li>
-                <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span>  → Tem uma frequência específica para inibir sons externos, auxiliando na melhor concentração do aluno </li>
-            `,
+                <p class="w-3/4 mt-4">
+                Com essa funcionalidade integrada, você pode maximizar sua produtividade e manter um ritmo constante de trabalho, otimizando
+                 seus estudos de maneira eficiente. Além disso, você terá acesso a estatísticas detalhadas sobre o tempo</p>
+                 de estudo com o Método Pomodoro, o que facilita a organização e o acompanhamento do seu progresso acadêmico. </p>
+                  O Método Pomodoro é uma técnica eficaz para gerenciar o tempo de estudo, utilizando ciclos de 25 minutos de foco intenso,</p>
+                seguidos por curtas pausas. Essa abordagem ajuda os alunos a manterem a concentração e a produtividade. Para potencializar  </p> 
+                ainda mais o seu foco, implementamos uma série de sons que auxiliam na concentração, incluindo opções como:</p>
+                <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span> → Emite uma frequência que bloqueia sons externos, promovendo uma melhor concentração.</li>
+                <li class='mt-4 ml-4'><span class='font-semibold'>Chuva</span> → Sons de chuva que ajudam a abafar ruídos externos, facilitando o foco nos estudos.</li>
+                <li class='mt-4 ml-4'><span class='font-semibold'>Rio</span> → Sons de água corrente que criam uma atmosfera tranquila e inibem distrações sonoras.</li>
+                <li class='mt-4 ml-4'><span class='font-semibold'>Biblioteca</span> → Ambiência de uma biblioteca, com sons suaves que favorecem um ambiente de concentração.</li>
+                <li class='mt-4 ml-4'><span class='font-semibold'>Cafeteria</span> → Sons de fundo de uma cafeteria, proporcionando uma sensação de companhia e ajudando a manter o foco.</li>
+
+            `, //<ParagraphFuncionalidades class="w-3/4 mt-4">Aém disso, implementamos uma série de sons para ajudar na concentração. Alguns desses sons são:  </ParagraphFuncionalidades>
             image: imgPomodoro,
             id: 'pomodoro'
         },
@@ -193,13 +202,15 @@ export default function HomePage() {
                     <ContainerDiferencial className='mt-16 grid grid-cols-2 gap-16 text-justify justify-between'>
                         <div className='col-span-1'>
                             <h4 className='text-center font-medium text-lg mb-4'>Suporte 24h na plataforma</h4>
-                            <p>Oferecemos suporte técnico personalizado para cada cliente, sem a utilização de robôs ou inteligências artificiais. Você será atendido por um ser humano. Nosso atendimento está disponível durante o horário comercial, de segunda à sexta.</p>
+                            <p>
+                            Oferecemos suporte técnico personalizado, onde cada cliente é atendido por uma pessoa real, sem o uso de robôs ou inteligências artificiais. Nosso atendimento é totalmente humanizado e está disponível durante o horário comercial, de segunda a sexta-feira.</p>
                         </div>
                         <div className='col-span-1'>
                             <h4 className='text-center font-medium text-lg mb-4'>Funcionalidades especiais</h4>
-                            <p>Nossa plataforma oferece diversas funcionalidades para alunos que possuem dificuldades de concentração ou aprendizagem.</p>
+                            <p>Nossa plataforma foi desenvolvida para atender às necessidades de alunos que enfrentam desafios de concentração ou aprendizagem. Oferecemos uma variedade de funcionalidades personalizadas para apoiar o desenvolvimento desses estudantes, ajudando-os a superar obstáculos e alcançar seu pleno potencial.</p>
                         </div>
-                    </ContainerDiferencial>
+                        </ContainerDiferencial>
+                    
                 </section>
 
             </Main>

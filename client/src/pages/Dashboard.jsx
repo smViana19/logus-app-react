@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavLink from '../components/Navs/NavLink';
@@ -15,26 +14,33 @@ export default function Dashboard() {
     const user = useSelector((state) => state.auth.user?.nome);
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-
+    useEffect(() => {
+        // Verificar o tema armazenado no localStorage ao carregar a página
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setIsDarkMode(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setIsDarkMode(false);
+        }
+    }, []);
 
     const handleThemeChange = () => {
         if (isDarkMode) {
-          document.documentElement.classList.remove("dark");
-          localStorage.theme = "light";
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem('theme', 'light');
         } else {
-          document.documentElement.classList.add("dark");
-          localStorage.theme = "dark";
+            document.documentElement.classList.add("dark");
+            localStorage.setItem('theme', 'dark');
         }
         setIsDarkMode(!isDarkMode);
-      };
- 
-      
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-zinc-800">
             <MenuMobile />
             <nav className="bg-white shadow-gray-100 shadow-md dark:bg-zinc-800 max-xl:hidden">
-                
                 <div className="flex justify-between py-2 px-16">
                     <div className="flex items-center">
                         <Link to="/">
@@ -48,7 +54,6 @@ export default function Dashboard() {
                             <NavLink className="text-black" to="/dashboard/postagens">Área de Postagens</NavLink>
                             <NavLink className="text-black" to="/dashboard/agenda">Agenda</NavLink>
                             <NavLink className="text-black" to="/dashboard/pomodoro">Método Pomodoro</NavLink>
-                            {/*APARECERÁ APENAS PARA O PROFESSOR E PARA O DIRETOR*/}
                             {(role === 'professor' || role === 'diretor') && (
                                 <NavLink className="text-black" to="/dashboard/notas">Notas</NavLink>
                             )}
@@ -134,4 +139,3 @@ export default function Dashboard() {
         </div>
     );
 }
-

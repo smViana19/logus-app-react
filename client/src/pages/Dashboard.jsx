@@ -101,7 +101,7 @@ export default function Dashboard() {
             <main className='pt-24'>
                 <UsuarioCard role={role} user={user} />
 
-                <div className="flex md:gap-8  gap-4 md:mx-16 overflow-x-auto">
+                <div className="flex md:gap-8 gap-4 md:mx-16 overflow-x-auto">
                     <CardCategoria
                         categoria={'Resumos'}
                         customClass={'bg-white text-black'}
@@ -116,20 +116,20 @@ export default function Dashboard() {
                     />
                 </div>
 
-                <section className="mx-16 mt-16">
+                <section className="md:mx-8 lg:mx-16 mt-16">
                     <h1 className="font-semibold text-2xl mb-8 text-black">
                         Tarefas Urgentes
                     </h1>
 
-                    <div className="border-b flex justify-between border-gray-400">
+                    <div className="border-b flex justify-between gap-8 border-gray-400">
                         <div className="flex gap-8 items-center">
                             <input type="checkbox" />
-                            <p className="text-lg text-black">
+                            <p className="md:text-lg text-black">
                                 Atividade de matemática sobre funções de segundo grau
                             </p>
                         </div>
 
-                        <span className="text-lg text-black">
+                        <span className="text-lg text-black mr-4">
                             Escola
                             <img src="" alt="" />
                         </span>

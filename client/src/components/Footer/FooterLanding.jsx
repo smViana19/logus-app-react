@@ -11,7 +11,7 @@ export default function FooterLanding() {
     return (
         <footer className='bg-[#5E4485]'>
             <div className='py-8'>
-                <div className='flex justify-around items-start text-white'>
+                <div className='lg:flex lg:justify-around lg:items-start grid grid-cols-2 md:gap-12 gap-y-8 text-white'>
                     
                    
                     <div className='flex flex-col items-start'>
@@ -54,7 +54,7 @@ export default function FooterLanding() {
                         <h3 className='font-semibold mb-4'>CONTATOS</h3>
                         <div className='flex items-center mb-2'>
                         <img src={enviar} alt="Facebook" className="w-6 h-6"/>
-                            <a href="mailto:faleconosco@logus.com" className='ml-2'>faleconosco@logus.com</a>
+                            <a href="mailto:faleconosco@logus.com" className='ml-2 text-xs'>faleconosco@logus.com</a>
                         </div>
                         <div className='flex items-center'>
                         <img src={telefone} alt="Facebook" className="w-6 h-6"/>

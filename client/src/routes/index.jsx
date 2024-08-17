@@ -47,7 +47,7 @@ export default function Rotas() {
            
            
            <Route path="/admin/dashboard" element={<DashboardAdm />} />
-           <Route path="//admin/notas/grade" element={<ListaAlunosNotas />} />
+           <Route path="/admin/notas/grade" element={<ListaAlunosNotas />} />
             <Route path="/admin/notas" element={<Notas />} />
                 <Route path='admin/notas/gradenotas/::aluno' element={<GradeNotas/>} />
 

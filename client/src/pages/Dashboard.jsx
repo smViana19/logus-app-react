@@ -14,6 +14,12 @@ export default function Dashboard() {
     const user = useSelector((state) => state.auth.user?.nome);
     const [isDarkMode, setIsDarkMode] = useState(false);
 
+
+    //NAO MEXE NESSA PORRA CARALHO JA E A QUINQUAGESIMA VEZ QUE EU COLOCO ESSA LOGICA AQ !!!!!!!
+       if (!isLoggedIn) {
+          return <Navigate to="/login" replace />;
+        }
+
     useEffect(() => {
         // Verificar o tema armazenado no localStorage ao carregar a página
         const savedTheme = localStorage.getItem('theme');

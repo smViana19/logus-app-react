@@ -3,3 +3,7 @@ export const LOGIN_SUCESS = 'LOGIN_SUCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const PERSIST_REHYDRATE = 'persist/REHYDRATE';
+
+
+export const SELECT_SUBJECT = 'SELECT_SUBJECT'
+export const CLEAR_SUBJECT = 'CLEAR_SUBJECT'

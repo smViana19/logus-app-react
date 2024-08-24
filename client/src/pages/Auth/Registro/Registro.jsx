@@ -55,7 +55,7 @@ export default function Registro() {
         if (formErrors) return;
 
         try {
-            await axios.post('http://localhost:3001/register', {
+            await axios.post('http://localhost:3000/users', {
                 nome,
                 password,
                 email,

@@ -5,47 +5,116 @@ import NavLink from '../../components/Navs/NavLink';
 import Logo from '../../components/outros/Logo';
 import LogoutButton from '../../components/Botoes/LogoutBtn';
 import BtnMateriasFilter from '../../components/Botoes/BtnMateriasFilter';
-import CardAtividade from '../../components/CardsContainers/CardAtividade'; 
+import CardAtividade from '../../components/CardsContainers/CardAtividade';
 import { AtividadeProvider } from '../../context/AtividadeContext';
-import Modal from '../../components/Modal/ModalCriarAtv'; 
+import Modal from '../../components/Modal/ModalCriarAtv';
 import MenuMobile from '../../components/Navs/MenuMobile';
+import axios from "../../../services/axios";
+import { get } from "lodash";
+import { toast, ToastContainer } from 'react-toastify';
+
+
 
 const MateriaPage = () => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const { nomeMateria } = useParams();
     const [atividades, setAtividades] = useState([]);
+    const [newAtividade, setNewAtividade] = useState('');
+    const [newPontos, setNewPontos] = useState('');
+    const [newCategoria, setNewCategoria] = useState('');
+    const [newDetalhes, setNewDetalhes] = useState('');
+    const [newDataEntrega, setNewDataEntrega] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
+    /*  useEffect(() => {
+          const storedAtividades = localStorage.getItem('atividades');
+          if (storedAtividades) {
+              setAtividades(JSON.parse(storedAtividades));
+          }
+      }, []);
+  
+      useEffect(() => {
+          localStorage.setItem('atividades', JSON.stringify(atividades));
+      }, [atividades]);
+  */
+
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjQ1MTE0MjEsImV4cCI6MTcyNTExNjIyMX0._T5ZL-NrDayekuy2uo0bW3y7wvOPY_ZP64_Xr_C1bu0";
+
     useEffect(() => {
-        const storedAtividades = localStorage.getItem('atividades');
-        console.log(storedAtividades);
-        if (storedAtividades) {
-            setAtividades(JSON.parse(storedAtividades));
+        async function fetchAtividades() {
+            try {
+                const response = await axios.get('http://localhost:3000/materias/material/', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                console.log('Dados retornados:', response.data)
+                setAtividades(response.data);
+            } catch (err) {
+                toast.error('Erro ao carregar atividades')
+            }
         }
-    }, []);
+        fetchAtividades();
+    }, [token]);
 
-    useEffect(() => {
-        console.log(atividades);
-        localStorage.setItem('atividades', JSON.stringify(atividades));
-    }, [atividades]);
+    /*
+        const handleAddAtividade = (novaAtividade) => {
+            setAtividades([...atividades, novaAtividade]);
+        };
+        */
 
-    const handleAddAtividade = (novaAtividade) => {
-        const updatedAtividades = [...atividades, novaAtividade];
-        setAtividades(updatedAtividades);
-        localStorage.setItem('atividades', JSON.stringify(updatedAtividades));
-    };
 
-    const handleFilterChange = (status) => {
-        console.log(status);
+    async function handleAddAtividade () {
+
+        if (newAtividade.trim()===''){
+            toast.error('Por favor, preencha o nome da atividade.');
+            console.log("funciona")
+            return;
+        }        
+
+        try{
+            const response = await axios.post('http://localhost:3000/materias/material/', {
+                nome: newAtividade,
+                pontos: newPontos,
+                categoria: newCategoria,
+                detalhes: newDetalhes,
+                data_entrega: newDataEntrega
+            },{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            console.log('Dados retornados:', response.data)
+
+
+            const createdAtividade = response.data;
+            setAtividades([...atividades, createdAtividade]);
+            setNewAtividade('');
+            setNewPontos('');
+            setNewCategoria('');
+            setNewDetalhes('');
+            setNewDataEntrega('');
+            setShowModal(false);
+            toast.success('Atividade adicionada com sucesso!');
+        } catch (err){
+            const errors = get(err, 'response.data.errors', []);
+            errors.forEach(error => toast.error(error));
+        }
+        }
+
+    
+
+
+    /*const handleFilterChange = (status) => {
         setFilterStatus(status);
     };
 
     const handleDelete = (index) => {
         const updatedAtividades = atividades.filter((_, i) => i !== index);
         setAtividades(updatedAtividades);
-        localStorage.setItem('atividades', JSON.stringify(updatedAtividades));
     };
 
     const handleEdit = (index, updatedAtividade) => {
@@ -53,26 +122,42 @@ const MateriaPage = () => {
             i === index ? updatedAtividade : atv
         );
         setAtividades(updatedAtividades);
-        localStorage.setItem('atividades', JSON.stringify(updatedAtividades));
     };
 
+    // Depuração: Adicione um console.log para verificar o filtro
+    console.log('Filter Status:', filterStatus);
+    console.log('Atividades:', atividades);
+
     const filteredAtividades = atividades.filter((atividade) => {
-        console.log(atividade.categoria);
+        console.log('Filtering atividade:', atividade);
         if (filterStatus === 'all') {
             return true;
         }
         return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
     });
+    */
 
-    console.log(atividades);
-    console.log(filteredAtividades);
+
+
+
+    const filteredAtividades = filterStatus === 'all' 
+    ? atividades 
+    : atividades.filter((atividade) => {
+        console.log('Filtering atividade:', atividade);
+        return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
+    });
+
+
+
+
+    // Depuração: Adicione um console.log para verificar o resultado do filtro
+    console.log('Filtered Atividades:', filteredAtividades);
 
     return (
-        <>
         <AtividadeProvider>
             <div className="min-h-screen bg-gray-50">
                 <nav className="bg-white border-b border-gray-100">
-                <MenuMobile/>
+                    <MenuMobile />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
                             <div className="flex">
@@ -82,21 +167,14 @@ const MateriaPage = () => {
                                     </Link>
                                 </div>
                                 <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex relative">
-                                    <NavLink
-                                        to="/dashboard"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard" className="text-gray-800">
                                         Dashboard
                                     </NavLink>
                                     <NavLink
                                         to="/dashboard/postagens"
                                         className="text-purplePrimary"
-                                        onMouseEnter={() =>
-                                            setDropdownVisible(true)
-                                        }
-                                        onMouseLeave={() =>
-                                            setDropdownVisible(false)
-                                        }
+                                        onMouseEnter={() => setDropdownVisible(true)}
+                                        onMouseLeave={() => setDropdownVisible(false)}
                                     >
                                         Área de Postagens
                                     </NavLink>
@@ -122,23 +200,16 @@ const MateriaPage = () => {
                                             </Link>
                                         </div>
                                     )}
-                                    <NavLink
-                                        to="/dashboard/agenda"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard/agenda" className="text-gray-800">
                                         Agenda
                                     </NavLink>
-                                    <NavLink
-                                        to="/dashboard/pomodoro"
-                                        className="text-gray-800"
-                                    >
+                                    <NavLink to="/dashboard/pomodoro" className="text-gray-800">
                                         Método Pomodoro
                                     </NavLink>
-                                    <NavLink href="#" to='/dashboard/notas'>Notas</NavLink>
-                                    <NavLink
-                                        href="#" to='/dashboard/perfil' >
+                                    <NavLink href="#" to="/dashboard/notas">Notas</NavLink>
+                                    <NavLink href="#" to="/dashboard/perfil">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
-                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                                         </svg>
                                     </NavLink>
                                     <LogoutButton />
@@ -207,8 +278,7 @@ const MateriaPage = () => {
                     />
                 </main>
             </div>
-            </AtividadeProvider>
-        </>
+        </AtividadeProvider>
     );
 };
 

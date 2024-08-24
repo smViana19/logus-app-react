@@ -32,12 +32,12 @@ export default function AreaPostagens() {
         }
     }, []);*/
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjI3MzI0MTUsImV4cCI6MTcyMzMzNzIxNX0.0HUIkZKp8L7RwIzx92aT4AGdIl1hE0Al79aXhHAnrng";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjQ1MTE0MjEsImV4cCI6MTcyNTExNjIyMX0._T5ZL-NrDayekuy2uo0bW3y7wvOPY_ZP64_Xr_C1bu0";
 
     useEffect(() => {
         async function fetchMaterias() {
             try {
-                const response = await axios.get('http://localhost:3000/subjects/', {
+                const response = await axios.get('http://localhost:3000/materias/', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -63,7 +63,7 @@ export default function AreaPostagens() {
         }
 
         try {
-            const response = await axios.post('http://localhost:3000/subjects/', {
+            const response = await axios.post('http://localhost:3000/materias/', {
                 nome: newMateria
             }, {
                 headers: {
@@ -116,7 +116,7 @@ export default function AreaPostagens() {
 
     const handleDeleteMateria = async (index, id) => {
         try {
-            await axios.delete(`http://localhost:3000/subjects/${id}`, {
+            await axios.delete(`http://localhost:3000/materias//${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -132,7 +132,6 @@ export default function AreaPostagens() {
         setEditingIndex(index);
         setEditNome(materias[index].nome);
         setShowEditModal(true);
-        setMenuVisible(null);
     };
 
     /* const handleSaveEdit = () => {
@@ -153,7 +152,7 @@ export default function AreaPostagens() {
         };
 
         try {
-            const response = await axios.put(`http://localhost:3000/subjects/${materias[editingIndex].id}`, updatedMateria);
+            const response = await axios.put(`http://localhost:3000/materias/${materias[editingIndex].id}`, updatedMateria);
             const updatedMaterias = [...materias];
             updatedMaterias[editingIndex] = response.data;
             setMaterias(updatedMaterias);
@@ -230,10 +229,9 @@ export default function AreaPostagens() {
                                     </Link>
                                     <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
                                         <button
-                                            onClick={() => !showEditModal && setMenuVisible(menuVisible === index ? null : index)}
-                                            className={`p-2 rounded-full ${showEditModal ? 'bg-gray-300 dark:bg-zinc-700 cursor-not-allowed' : 'bg-gray-200 dark:bg-zinc-800'}`}
+                                            onClick={() => setMenuVisible(menuVisible === index ? null : index)}
+                                            className="p-2 rounded-full bg-gray-200 dark:bg-zinc-800"
                                             style={{ color: '#000' }}
-                                            disabled={showEditModal} // Desativa o botão se o modal de edição estiver aberto
                                         >
                                             &#x22EE;
                                         </button>
@@ -254,7 +252,6 @@ export default function AreaPostagens() {
                                             </div>
                                         )}
                                     </div>
-
                                 </div>
                             ))
                         ) : (

@@ -225,7 +225,12 @@ export default function AreaPostagens() {
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">
                                     <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
-                                        <CardMateria {...materia} />
+                                        <CardMateria
+                                            banner={materia.banner}
+                                            nome={materia.nome} 
+                                            atividades={materia.atividades}
+                                            subject={materia}
+                                        />
                                     </Link>
                                     <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
                                         <button

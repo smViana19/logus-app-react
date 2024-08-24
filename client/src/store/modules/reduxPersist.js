@@ -6,7 +6,7 @@ export default (reducers) => {
         {
             key: 'LOGUS',
             storage,
-            whitelist: ['auth'],
+            whitelist: ['auth', 'subject'],
         },
         reducers
     );

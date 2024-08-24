@@ -151,7 +151,7 @@ const MateriaPage = () => {
 
 
     // Depuração: Adicione um console.log para verificar o resultado do filtro
-    console.log('Filtered Atividades:', filteredAtividades);
+   // console.log('Filtered Atividades:', filteredAtividades);
 
     return (
         <AtividadeProvider>

@@ -3,6 +3,8 @@ import { AtividadeContext } from '../../context/AtividadeContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjQ1MTE0MjEsImV4cCI6MTcyNTExNjIyMX0._T5ZL-NrDayekuy2uo0bW3y7wvOPY_ZP64_Xr_C1bu0";
 
@@ -30,6 +32,7 @@ const Modal = ({ showModal, setShowModal }) => {
         atividades,
         setAtividades
     } = useContext(AtividadeContext);
+    const subjectId = useSelector(state => state.subject.selectedSubjectId);
 
     useEffect(() => {
         if (showModal) {
@@ -55,6 +58,7 @@ const Modal = ({ showModal, setShowModal }) => {
 
         try {
             const response = await axios.post('http://localhost:3000/materias/material/', {
+                subject_id: subjectId,
                 nome,
                 categoria,
                 pontos,

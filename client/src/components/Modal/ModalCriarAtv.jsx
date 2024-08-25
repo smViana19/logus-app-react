@@ -6,9 +6,6 @@ import { ThemeProvider } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjQ1MTE0MjEsImV4cCI6MTcyNTExNjIyMX0._T5ZL-NrDayekuy2uo0bW3y7wvOPY_ZP64_Xr_C1bu0";
-
-
 const Modal = ({ showModal, setShowModal }) => {
     const {
         nome,
@@ -30,9 +27,10 @@ const Modal = ({ showModal, setShowModal }) => {
         file,
         setFile,
         atividades,
-        setAtividades
+        setAtividades,
     } = useContext(AtividadeContext);
     const subjectId = useSelector(state => state.subject.selectedSubjectId);
+    const token = useSelector((state) => state.auth.token);
 
     useEffect(() => {
         if (showModal) {
@@ -56,20 +54,25 @@ const Modal = ({ showModal, setShowModal }) => {
             ? null
             : `${dataEntrega}T${horaEntrega}`;
 
+
         try {
-            const response = await axios.post('http://localhost:3000/materias/material/', {
-                subject_id: subjectId,
-                nome,
-                categoria,
-                pontos,
-                detalhes: detail,
-                data_entrega: dataEntregaCompleta,
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+            const response = await axios.post(
+                'http://localhost:3000/materias/material/',
+                {
+                    subject_id: subjectId,
+                    nome,
+                    categoria,
+                    pontos,
+                    detalhes: detail,
+                    data_entrega: dataEntregaCompleta,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            );
+
 
             console.log('Dados retornados:', response.data);
 
@@ -142,7 +145,7 @@ const Modal = ({ showModal, setShowModal }) => {
                             </div>
 
                             <div className="flex gap-8">
-                                <div className='w-2/3'>
+                                <div className="w-2/3">
                                     <label htmlFor="">Categoria</label>
                                     <select
                                         value={categoria}

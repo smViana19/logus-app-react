@@ -7,7 +7,7 @@ import facebook from '../../assets/facebook.png';
 import enviar from '../../assets/enviar.png';
 import telefone from '../../assets/telefone.png';
 
-export default function FooterLanding() {
+export default function LandingPageFooter() {
     return (
         <footer className='bg-[#5E4485]'>
             <div className='py-8'>

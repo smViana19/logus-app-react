@@ -6,11 +6,11 @@ import styled from "styled-components";
 import '../../../css/style.css';
 import InputLabel from '../../../components/Inputs/InputLabel';
 import TextInput from '../../../components/Inputs/TextInput';
-import BtnPrincipal from "../../../components/Botoes/BtnPrincipal";
-import Logo from '../../../components/outros/Logo';
+import DefaultButton from "../../../components/Buttons/DefaultButton.jsx";
+import Logo from '../../../components/Logo/Logo.jsx';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../../services/axios";
-import UserRoleSelector from "../../../components/UserSelectorRole";
+import UserRoleSelector from "../../../components/RadioButton/RoleRadioButton.jsx";
 
 export default function Registro() {
     // const id = useSelector(state => state.auth.user.id);
@@ -127,9 +127,9 @@ export default function Registro() {
                     </div>
                     <UserRoleSelector role={role} setRole={setRole} />
                     <div className="flex items-center justify-center mt-8">
-                        <BtnPrincipal type='submit'>
+                        <DefaultButton type='submit'>
                             Cadastrar
-                        </BtnPrincipal>
+                        </DefaultButton>
                     </div>
                     <div className="flex justify-center mt-5">
                         <span className="text-sm text-gray-500">Já possui uma conta?{' '}

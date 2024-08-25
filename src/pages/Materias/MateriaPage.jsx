@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
-import Logo from '../../components/outros/Logo';
-import LogoutButton from '../../components/Botoes/LogoutBtn';
-import BtnMateriasFilter from '../../components/Botoes/BtnMateriasFilter';
-import CardAtividade from '../../components/CardsContainers/CardAtividade';
+import Logo from '../../components/Logo/Logo.jsx';
+import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
+import SubjectFiltersButton from '../../components/Buttons/SubjectFiltersButton.jsx';
+import TaskCard from '../../components/CardsContainers/TaskCard.jsx';
 import { AtividadeProvider } from '../../context/AtividadeContext';
 import Modal from '../../components/Modal/ModalCriarAtv';
 import MenuMobile from '../../components/Navs/MenuMobile';
@@ -163,11 +163,11 @@ const MateriaPage = () => {
                             </h1>
                         </div>
                         <div className="col-span-1 grid grid-rows-4 gap-4">
-                            <BtnMateriasFilter text={'Resumos'} onClick={() => handleFilterChange('resumo')} />
-                            <BtnMateriasFilter text={'Apresentações'}
-                                               onClick={() => handleFilterChange('apresentação')} />
-                            <BtnMateriasFilter text={'Atividades'} onClick={() => handleFilterChange('atividade')} />
-                            <BtnMateriasFilter text={'Todas'} onClick={() => handleFilterChange('all')} />
+                            <SubjectFiltersButton text={'Resumos'} onClick={() => handleFilterChange('resumo')} />
+                            <SubjectFiltersButton text={'Apresentações'}
+                                                  onClick={() => handleFilterChange('apresentação')} />
+                            <SubjectFiltersButton text={'Atividades'} onClick={() => handleFilterChange('atividade')} />
+                            <SubjectFiltersButton text={'Todas'} onClick={() => handleFilterChange('all')} />
                         </div>
                     </div>
 
@@ -188,7 +188,7 @@ const MateriaPage = () => {
                     <div className="gap-y- flex flex-col mt-8">
                         {filteredAtividades.length > 0 ? (
                             filteredAtividades.map((atividade, index) => (
-                                <CardAtividade
+                                <TaskCard
                                     key={index}
                                     nome={atividade.nome}
                                     categoria={atividade.categoria}

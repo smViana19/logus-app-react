@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ModalEditarAtv from '../../components/Modal/ModalEditarAtv'; 
 
-const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit }) => {
+const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit }) => {
     const { nomeMateria } = useParams();
     const [showModalOption, setShowModalOptions] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
@@ -118,4 +118,4 @@ const CardAtividade = ({ nome, categoria, dataEntrega, pontos, file, detail, onD
     );
 };
 
-export default CardAtividade;
+export default TaskCard;

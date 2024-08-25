@@ -6,9 +6,9 @@ import * as actions from '../../store/modules/auth/actions';
 import logo from '../../assets/logo.png';
 import InputPurple from '../../components/Inputs/InputPurple';
 import ContainerPrintApp from '../../components/CardsContainers/ContainerPrintApp';
-import Subtitle from '../../components/Text/Subtitulo';
+import Subtitle from '../../components/Text/Subtitle.jsx';
 import FunctionalityItem from '../../components/CardsContainers/FunctionalityItem';
-import FooterLanding from '../../components/Footer/FooterLanding';
+import LandingPageFooter from '../../components/Footer/LandingPageFooter.jsx';
 import styled from 'styled-components';
 
 //images
@@ -19,7 +19,6 @@ import imgAgenda from '../../assets/agenda.png';
 import imgPomodoro from '../../assets/pomodoro.png';
 
 import '../../css/welcome.css';
-import Loading from '../../components/outros/Loading';
 import MenuMobileIndex from '../../components/Navs/MenuMobileIndex';
 
 export default function HomePage() {
@@ -215,7 +214,7 @@ export default function HomePage() {
 
             </Main>
 
-            <FooterLanding />
+            <LandingPageFooter />
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import MenuAdmin from '../../components/Navs/MenuAdmin';
-import AdminCardTop from '../../components/CardsContainers/AdminCardTop';
+import AdminCard from '../../components/CardsContainers/AdminCard.jsx';
 
 export default function DashboardAdm() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
@@ -19,7 +19,7 @@ export default function DashboardAdm() {
           fillSelectedDashobard={'#820ad1'}
         />
         <main className="flex-1 p-4">
-          <AdminCardTop />
+          <AdminCard />
         </main>
       </div>
     </>

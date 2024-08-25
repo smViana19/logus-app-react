@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuAdmin from '../../components/Navs/MenuAdmin';
-import AdminCardTop from '../../components/CardsContainers/AdminCardTop';
+import AdminCard from '../../components/CardsContainers/AdminCard.jsx';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ export default function Notas() {
             />
 
             <main className="flex-1 p-4">
-                <AdminCardTop />
+                <AdminCard />
                 <h1 className="font-semibold text-2xl">Grade de Notas</h1>
 
                 <div className="mt-16">

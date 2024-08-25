@@ -25,15 +25,7 @@ export default function AreaPostagens() {
     const [showEditModal, setShowEditModal] = useState(false);
 
 
-    /*useEffect(() => {
-        const savedMaterias = JSON.parse(localStorage.getItem('materias'));
-        if (savedMaterias) {
-            setMaterias(savedMaterias);
-        }
-    }, []);*/
-
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjQ1MTE0MjEsImV4cCI6MTcyNTExNjIyMX0._T5ZL-NrDayekuy2uo0bW3y7wvOPY_ZP64_Xr_C1bu0";
-
+    const token = useSelector((state) => state.auth.token);
     useEffect(() => {
         async function fetchMaterias() {
             try {
@@ -49,7 +41,7 @@ export default function AreaPostagens() {
         }
 
         fetchMaterias();
-    }, [token]);
+    }, []);
 
 
 
@@ -102,18 +94,6 @@ export default function AreaPostagens() {
         setShowModal(false);
     };
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            handleAddMateria();
-        }
-    };
-
-    // const handleDeleteMateria = (index) => {
-    //     const updatedMaterias = materias.filter((_, i) => i !== index);
-    //     setMaterias(updatedMaterias);
-    //     localStorage.setItem('materias', JSON.stringify(updatedMaterias));
-    // };
-
     const handleDeleteMateria = async (index, id) => {
         try {
             await axios.delete(`http://localhost:3000/materias//${id}`, {
@@ -134,17 +114,6 @@ export default function AreaPostagens() {
         setShowEditModal(true);
     };
 
-    /* const handleSaveEdit = () => {
-         const updatedMaterias = [...materias];
-         updatedMaterias[editingIndex] = {
-             ...updatedMaterias[editingIndex],
-             nome: editNome,
-         };
-         setMaterias(updatedMaterias);
-         localStorage.setItem('materias', JSON.stringify(updatedMaterias));
-         setEditingIndex(null);
-         setShowEditModal(false);
-     };*/
 
     const handleSaveEdit = async () => {
         const updatedMateria = {
@@ -162,12 +131,6 @@ export default function AreaPostagens() {
         } catch (err) {
             toast.error('Erro ao editar matéria.');
         }
-    };
-
-    const handleCancelEdit = () => {
-        setEditingIndex(null);
-        setEditNome('');
-        setShowEditModal(false);
     };
 
 

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavLink from '../components/Navs/NavLink';
-import Logo from '../components/outros/Logo';
-import UsuarioCard from '../components/Botoes/UsuarioCard';
-import CardCategoria from '../components/CardsContainers/CardCategoria';
-import LogoutButton from '../components/Botoes/LogoutBtn';
+import Logo from '../components/Logo/Logo.jsx';
+import UserCard from '../components/CardsContainers/UserCard.jsx';
+import CategoryCard from '../components/CardsContainers/CategoryCard.jsx';
+import LogoutButton from '../components/Buttons/LogoutButton.jsx';
 import MenuMobile from '../components/Navs/MenuMobile';
 
 export default function Dashboard() {
@@ -105,18 +105,18 @@ export default function Dashboard() {
                 </div>
             </nav>
             <main className='pt-24'>
-                <UsuarioCard role={role} user={user} />
+                <UserCard role={role} user={user} />
 
                 <div className="flex md:gap-8 gap-4 md:mx-16 overflow-x-auto">
-                    <CardCategoria
+                    <CategoryCard
                         categoria={'Resumos'}
                         customClass={'bg-white text-black'}
                     />
-                    <CardCategoria
+                    <CategoryCard
                         categoria={'Apresentações'}
                         customClass={'bg-white text-black'}
                     />
-                    <CardCategoria
+                    <CategoryCard
                         categoria={'Atividades'}
                         customClass={'bg-white text-black'}
                     />

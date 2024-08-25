@@ -1,5 +1,5 @@
 import React from 'react';
-import BtnProfile from '../../Botoes/BtnProfile';
+import BtnProfile from '../../Buttons/ProfileButton.jsx';
 
 const CardUserName = () => {
     return (

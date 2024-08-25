@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavLink from '../components/Navs/NavLink';
-import Logo from '../components/outros/Logo';
-import LogoutButton from '../components/Botoes/LogoutBtn';
-import CardMateria from '../components/CardsContainers/CardMateria';
+import Logo from '../components/Logo/Logo.jsx';
+import LogoutButton from '../components/Buttons/LogoutButton.jsx';
+import SubjectCard from '../components/CardsContainers/SubjectCard.jsx';
 import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
 import { toast, ToastContainer } from 'react-toastify';
 import MenuMobile from '../components/Navs/MenuMobile';
@@ -188,7 +188,7 @@ export default function AreaPostagens() {
                             materias.map((materia, index) => (
                                 <div key={index} className="relative">
                                     <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
-                                        <CardMateria
+                                        <SubjectCard
                                             banner={materia.banner}
                                             nome={materia.nome} 
                                             atividades={materia.atividades}

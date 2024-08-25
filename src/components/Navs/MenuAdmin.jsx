@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importando o Link do react-router-dom
-import Logo from '../outros/Logo';
+import Logo from '../Logo/Logo.jsx';
 import { useSelector } from 'react-redux'; // Importando o componente Logo
 
 export default function MenuAdmin({ selectProfessor, selectNotas, textSelectedProfessor, textSelectedNotas, selectDashboard, textSelectedDashboard, fillSelectedDashobard, fillSelectedProfessor, fillSelectedNotas }) {

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
-import Logo from '../../components/outros/Logo';
-import BtnPrincipal from '../../components/Botoes/BtnPrincipal';
+import Logo from '../../components/Logo/Logo.jsx';
+import DefaultButton from '../../components/Buttons/DefaultButton.jsx';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
-import LogoutButton from '../../components/Botoes/LogoutBtn';
-import BtnPomodoroOpenModal from '../../components/Botoes/BtnPomodoroOpenModal';
+import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
+import OpenModalPomodoroButton from '../../components/Buttons/OpenModalPomodoroButton.jsx';
 import ModalPomodoroSound from '../../components/Modal/ModalPomodoroSound';
-import AdminCardTop from '../../components/CardsContainers/AdminCardTop';
+import AdminCard from '../../components/CardsContainers/AdminCard.jsx';
 import MenuMobile from '../../components/Navs/MenuMobile';
 
 export default function Pomodoro() {

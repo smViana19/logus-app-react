@@ -1,12 +1,12 @@
-// CardMateria.js
+// SubjectCard.js
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux'
-import { selectSubject } from '../../store/modules/subject/action'
+import { selectSubject } from '@/store/modules/subject/action.js'
 
-const CardMateria = ({ banner, nome, atividades, subject }) => {
+const SubjectCard = ({ banner, nome, atividades, subject }) => {
     const caminho = `/dashboard/postagens/${nome
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
@@ -52,4 +52,4 @@ const CardMateria = ({ banner, nome, atividades, subject }) => {
 };
 
 
-export default CardMateria;
+export default SubjectCard;

@@ -11,15 +11,15 @@ import ForgotPassword from '../pages/Auth/ForgotPassword';
 import Pomodoro from '../pages/All/Pomodoro';
 import Agenda from '../pages/All/Agenda';
 import AreaPostagens from '../pages/AreaPostagens';
-import DashboardAdm from '../pages/Admin/DashboardAdm';
-import Notas from '../pages/Admin/Notas';
+import DashboardAdm from '../pages/AdminPage/DashboardAdm';
+import Notas from '../pages/AdminPage/Notas';
 import MateriaPage from '../pages/Materias/MateriaPage'
 import Profile from '../pages/Profile'
-import GradeNotas from '../pages/Admin/GradeNotas'
+import GradeNotas from '../pages/AdminPage/GradeNotas'
 import { AtividadeProvider } from '../context/AtividadeContext';
 import Atividade from '../pages/Materias/Atividade'
 import VisualizarNotas from '../pages/Aluno/VisualizarNotas'
-import ListaAlunosNotas from '../pages/Admin/ListAlunosNotas';
+import ListaAlunosNotas from '../pages/AdminPage/ListAlunosNotas';
 
 
 

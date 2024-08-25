@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function BtnPrincipal({ className = '', disabled, children, ...props }) {
+export default function DefaultButton({ className = '', disabled, children, ...props }) {
     return (
         <BntPomodoro
             {...props}

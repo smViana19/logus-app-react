@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MenuAdmin from '../../components/Navs/MenuAdmin';
-import AdminCardTop from '../../components/CardsContainers/AdminCardTop';
+import AdminCard from '../../components/CardsContainers/AdminCard.jsx';
 
 export default function GradeNotas() {
     const [openStage, setOpenStage] = useState(null);
@@ -109,7 +109,7 @@ export default function GradeNotas() {
             />
 
             <main className="flex-1 p-4">
-                <AdminCardTop />
+                <AdminCard />
                 <h1 className="font-semibold text-2xl mb-16">Grade de Notas</h1>
                 <div>
                     {renderButton(1)}

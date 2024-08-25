@@ -1,6 +1,6 @@
 import React from 'react'
 import TextInput from '../../components/Inputs/TextInput'
-import BtnPrincipal from '../../components/Botoes/BtnPrincipal'
+import DefaultButton from '../../components/Buttons/DefaultButton.jsx'
 
 export default function ForgotPassword() {
 
@@ -24,9 +24,9 @@ export default function ForgotPassword() {
                         </TextInput>
                     </div>
                     
-                    <BtnPrincipal>
+                    <DefaultButton>
                         Enviar
-                    </BtnPrincipal>
+                    </DefaultButton>
                 </div>
 
 

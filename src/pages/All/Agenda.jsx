@@ -2,21 +2,21 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
-import Logo from '../../components/outros/Logo';
+import Logo from '../../components/Logo/Logo.jsx';
 import styled from 'styled-components';
 import ModalCreateTask from '../../components/Modal/ModalCreateTask';
-import LogoutButton from '../../components/Botoes/LogoutBtn';
+import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaRegEdit } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
-import Sidebar from '../../components/GoogleAgenda/Sidebar';
-import Month from '../../components/GoogleAgenda/Month';
+import Sidebar from '../../components/Schedule/Sidebar';
+import Month from '../../components/Schedule/Month';
 import GlobalContext from '../../context/GlobalContext';
 import MenuMobile from '../../components/Navs/MenuMobile';
 
 import { getMonth } from '../../util'
-import CalendarHeader from '../../components/GoogleAgenda/CalendarHeader';
-import EventModal from '../../components/GoogleAgenda/EventModal';
+import CalendarHeader from '../../components/Schedule/CalendarHeader';
+import EventModal from '../../components/Schedule/EventModal';
 
 const DayDiv = styled.div`
     font-size: 64px;

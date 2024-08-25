@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
-import Logo from '../../components/outros/Logo';
-import BtnPrincipal from '../../components/Botoes/BtnPrincipal';
+import Logo from '../../components/Logo/Logo.jsx';
+import DefaultButton from '../../components/Buttons/DefaultButton.jsx';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
-import LogoutButton from '../../components/Botoes/LogoutBtn';
-import BtnPomodoroOpenModal from '../../components/Botoes/BtnPomodoroOpenModal';
+import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
+import OpenModalPomodoroButton from '../../components/Buttons/OpenModalPomodoroButton.jsx';
 import ModalPomodoroSound from '../../components/Modal/ModalPomodoroSound';
 import MenuMobile from '../../components/Navs/MenuMobile';
 
@@ -111,7 +111,7 @@ export default function Pomodoro() {
             </nav>
             <main>
                 <ContainerButtons className="flex justify-around mt-8 rounded-lg w-2/4 m-auto">
-                    <BtnPomodoroOpenModal
+                    <OpenModalPomodoroButton
                         onClick={abrirModal}
                         svg={
                             <svg
@@ -128,7 +128,7 @@ export default function Pomodoro() {
                         }
                         text={'Modo Foco'}
                     />
-                    <BtnPomodoroOpenModal
+                    <OpenModalPomodoroButton
                         onClick={alternarBloqueio}
                         svg={
                             <svg
@@ -153,18 +153,18 @@ export default function Pomodoro() {
                         text={formatarTempo(tempoDecorrido)}
                     />
                     <div className="grid grid-flow-row-dense grid-cols-5 gap-4">
-                        <BtnPrincipal
+                        <DefaultButton
                             className="start-btn py-3 rounded-xl text-xl col-span-4 dark:text-zinc-100"
                             onClick={alternarCronometro}
                         >
                             {cronometroExecutando ? 'Pause' : modoDescanso ? 'Começar Descanso' : 'Start'}
-                        </BtnPrincipal>
-                        <BtnPrincipal
+                        </DefaultButton>
+                        <DefaultButton
                             className="rounded-xl dark:text-zinc-100"
                             onClick={resetarCronometro}
                         >
                             Reset
-                        </BtnPrincipal>
+                        </DefaultButton>
                     </div>
                 </ContainerProgressBar>
 

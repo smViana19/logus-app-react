@@ -9,14 +9,14 @@ import CardAtividade from '../../components/CardsContainers/CardAtividade';
 import { AtividadeProvider } from '../../context/AtividadeContext';
 import Modal from '../../components/Modal/ModalCriarAtv';
 import MenuMobile from '../../components/Navs/MenuMobile';
-import axios from "../../../services/axios";
-import { get } from "lodash";
+import axios from '../../../services/axios';
+import { get } from 'lodash';
 import { toast, ToastContainer } from 'react-toastify';
-
 
 
 const MateriaPage = () => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const token = useSelector((state) => state.auth.token);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const { nomeMateria } = useParams();
     const [atividades, setAtividades] = useState([]);
@@ -28,66 +28,38 @@ const MateriaPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
-    /*  useEffect(() => {
-          const storedAtividades = localStorage.getItem('atividades');
-          if (storedAtividades) {
-              setAtividades(JSON.parse(storedAtividades));
-          }
-      }, []);
-  
-      useEffect(() => {
-          localStorage.setItem('atividades', JSON.stringify(atividades));
-      }, [atividades]);
-  */
-
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNjYWN4YXZpZXJAZ21haWwuY29tIiwicm9sZSI6ImRpcmV0b3IiLCJpYXQiOjE3MjQ1MTE0MjEsImV4cCI6MTcyNTExNjIyMX0._T5ZL-NrDayekuy2uo0bW3y7wvOPY_ZP64_Xr_C1bu0";
-
     useEffect(() => {
         async function fetchAtividades() {
             try {
-                const response = await axios.get('http://localhost:3000/materias/material/', {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                console.log('Dados retornados:', response.data)
+                const response = await axios.get('http://localhost:3000/materias/material/');
+                console.log('Dados retornados:', response.data);
                 setAtividades(response.data);
             } catch (err) {
-                toast.error('Erro ao carregar atividades')
+                toast.error('Erro ao carregar atividades');
             }
         }
+
         fetchAtividades();
     }, [token]);
 
-    /*
-        const handleAddAtividade = (novaAtividade) => {
-            setAtividades([...atividades, novaAtividade]);
-        };
-        */
 
+    async function handleAddAtividade() {
 
-    async function handleAddAtividade () {
-
-        if (newAtividade.trim()===''){
+        if (newAtividade.trim() === '') {
             toast.error('Por favor, preencha o nome da atividade.');
-            console.log("funciona")
+            console.log('funciona');
             return;
-        }        
+        }
 
-        try{
+        try {
             const response = await axios.post('http://localhost:3000/materias/material/', {
                 nome: newAtividade,
                 pontos: newPontos,
                 categoria: newCategoria,
                 detalhes: newDetalhes,
-                data_entrega: newDataEntrega
-            },{
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
+                data_entrega: newDataEntrega,
             });
-            console.log('Dados retornados:', response.data)
+            console.log('Dados retornados:', response.data);
 
 
             const createdAtividade = response.data;
@@ -99,59 +71,20 @@ const MateriaPage = () => {
             setNewDataEntrega('');
             setShowModal(false);
             toast.success('Atividade adicionada com sucesso!');
-        } catch (err){
+        } catch (err) {
             const errors = get(err, 'response.data.errors', []);
             errors.forEach(error => toast.error(error));
         }
-        }
-
-    
+    }
 
 
-    /*const handleFilterChange = (status) => {
-        setFilterStatus(status);
-    };
+    const filteredAtividades = filterStatus === 'all'
+        ? atividades
+        : atividades.filter((atividade) => {
+            console.log('Filtering atividade:', atividade);
+            return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
+        });
 
-    const handleDelete = (index) => {
-        const updatedAtividades = atividades.filter((_, i) => i !== index);
-        setAtividades(updatedAtividades);
-    };
-
-    const handleEdit = (index, updatedAtividade) => {
-        const updatedAtividades = atividades.map((atv, i) =>
-            i === index ? updatedAtividade : atv
-        );
-        setAtividades(updatedAtividades);
-    };
-
-    // Depuração: Adicione um console.log para verificar o filtro
-    console.log('Filter Status:', filterStatus);
-    console.log('Atividades:', atividades);
-
-    const filteredAtividades = atividades.filter((atividade) => {
-        console.log('Filtering atividade:', atividade);
-        if (filterStatus === 'all') {
-            return true;
-        }
-        return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
-    });
-    */
-
-
-
-
-    const filteredAtividades = filterStatus === 'all' 
-    ? atividades 
-    : atividades.filter((atividade) => {
-        console.log('Filtering atividade:', atividade);
-        return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
-    });
-
-
-
-
-    // Depuração: Adicione um console.log para verificar o resultado do filtro
-   // console.log('Filtered Atividades:', filteredAtividades);
 
     return (
         <AtividadeProvider>
@@ -179,7 +112,8 @@ const MateriaPage = () => {
                                         Área de Postagens
                                     </NavLink>
                                     {dropdownVisible && (
-                                        <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                                        <div
+                                            className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
                                             <Link
                                                 to="/dashboard/postagens/resumo"
                                                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
@@ -208,8 +142,10 @@ const MateriaPage = () => {
                                     </NavLink>
                                     <NavLink href="#" to="/dashboard/notas">Notas</NavLink>
                                     <NavLink href="#" to="/dashboard/perfil">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
-                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25"
+                                             viewBox="0 0 448 512">
+                                            <path
+                                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                                         </svg>
                                     </NavLink>
                                     <LogoutButton />
@@ -228,20 +164,21 @@ const MateriaPage = () => {
                         </div>
                         <div className="col-span-1 grid grid-rows-4 gap-4">
                             <BtnMateriasFilter text={'Resumos'} onClick={() => handleFilterChange('resumo')} />
-                            <BtnMateriasFilter text={'Apresentações'} onClick={() => handleFilterChange('apresentação')} />
+                            <BtnMateriasFilter text={'Apresentações'}
+                                               onClick={() => handleFilterChange('apresentação')} />
                             <BtnMateriasFilter text={'Atividades'} onClick={() => handleFilterChange('atividade')} />
                             <BtnMateriasFilter text={'Todas'} onClick={() => handleFilterChange('all')} />
                         </div>
                     </div>
 
                     <div className="flex items-center gap-8 mt-16">
-                        <span className='font-medium text-xl text-gray-600 tracking-wide'>Todas: </span>
+                        <span className="font-medium text-xl text-gray-600 tracking-wide">Todas: </span>
                         <hr className="border-gray-300 h-1 w-full" />
                     </div>
 
-                    <div className='flex justify-end'>
+                    <div className="flex justify-end">
                         <button
-                            className='px-3 bg-purplePrimary text-white tracking-wide py-1 text-3xl rounded-full'
+                            className="px-3 bg-purplePrimary text-white tracking-wide py-1 text-3xl rounded-full"
                             onClick={() => setShowModal(true)}
                         >
                             +

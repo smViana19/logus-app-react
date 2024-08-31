@@ -15,15 +15,6 @@ const Atividade = () => {
     });
 
 
-    /*
-    useEffect(() => {
-        const storedData = localStorage.getItem(`atividade-${nomeAtiv}`);
-        if (storedData) {
-            setData(JSON.parse(storedData));
-        }
-    }, [nomeAtiv]);
-    */
-
 
 
     const dataEntregaFormatada = data.dataEntrega ?

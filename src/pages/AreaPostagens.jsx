@@ -189,7 +189,7 @@ export default function AreaPostagens() {
                                 <div key={index} className="relative">
                                     <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
                                         <SubjectCard
-                                            banner={materia.banner}
+                                            banner={bannerMateria}
                                             nome={materia.nome} 
                                             atividades={materia.atividades}
                                             subject={materia}

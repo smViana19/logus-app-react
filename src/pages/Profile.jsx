@@ -12,6 +12,7 @@ import CardProfileNumbers from '../components/CardsContainers/Profile/CardProfil
 import SchoolInfosProfile from '../components/CardsContainers/Profile/SchoolInfosProfile';
 import MenuMobile from '../components/Navs/MenuMobile';
 import CardProfile from '../components/CardsContainers/Profile/CardProfile';
+import RowNota from '../components/CardsContainers/Profile/RowNota';
 
 
 export default function Dashboard() {
@@ -20,15 +21,15 @@ export default function Dashboard() {
     const role = useSelector(state => state.auth.user?.role);
     const user = useSelector(state => state.auth.user?.nome);
 
-  //  if (!isLoggedIn) {
+    //  if (!isLoggedIn) {
     //   return <Navigate to="/login" replace />;
     //}
 
-    
+
     return (
         <>
             <div className="min-h-screen bg-gray-50">
-            <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
+                <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
                     <MenuMobile />
                     <div className="flex justify-between py-2 px-32">
                         <div className="flex items-center">
@@ -74,10 +75,52 @@ export default function Dashboard() {
                 </nav>
 
 
-            <div className='mt-16'>
-                <CardProfile
-                user={user}/>
-            </div>
+                <div className='mt-16  mx-32'>
+                    <CardProfile
+                        user={user} />
+
+
+                    <div className='mt-16 mx-32'>
+                        <div className='bg-purplePrimary px-8 py-3 rounded-xl text-white flex justify-between items-center'>
+                            <span>1º Trimestre</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512">
+                                <path className='fill-white' d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                            </svg>
+                        </div>
+
+
+                        <div className='border border-gray-200 rounded-x mt-6 px-4 rounded-xl py-4'>
+                            <RowNota
+                                subject={'Matemáta'}
+                                firstScore={'7.0'}
+                                secondScore={'12.0'}
+
+                            />
+
+                            <RowNota
+                                subject={'Matemáta'}
+                                firstScore={'7.0'}
+                                secondScore={'12.0'}
+
+                            />
+
+                            <RowNota
+                                subject={'Matemáta'}
+                                firstScore={'7.0'}
+                                secondScore={'12.0'}
+
+                            />
+
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
 
             </div>
 

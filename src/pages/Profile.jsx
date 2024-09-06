@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 import UserCard from '../components/CardsContainers/UserCard.jsx';
 import CategoryCard from '../components/CardsContainers/CategoryCard.jsx';
 import LogoutButton from '../components/Buttons/LogoutButton.jsx';
-import CardUserName from '../components/CardsContainers/Profile/CardUserName';
-import CardProfileNumbers from '../components/CardsContainers/Profile/CardProfileNumbers';
+import CardUserName from '../components/CardsContainers/Profile/SubCard';
+import CardProfileNumbers from '../components/CardsContainers/Profile/CardProfile';
 import SchoolInfosProfile from '../components/CardsContainers/Profile/SchoolInfosProfile';
 import MenuMobile from '../components/Navs/MenuMobile';
+import CardProfile from '../components/CardsContainers/Profile/CardProfile';
 
 
 export default function Dashboard() {
@@ -72,22 +73,11 @@ export default function Dashboard() {
                     </div>
                 </nav>
 
-                <div className='flex justify-center gap-32 mt-16 items-center mb-16'>
-                    <div className='bg-slate-300 w-32 h-32 rounded-full'>
-                        <img src="" alt="" />
-                    </div>
-                    <div>
-                        <CardUserName/>
-                        <CardProfileNumbers />
-                        <SchoolInfosProfile/>
-                    </div>
-                </div>
 
-                <hr />
-                <div className='flex justify-between mx-64 mt-4 text-lg font-medium'>
-                    <h2>Publicações</h2>
-                    <h2>Salvos</h2>
-                </div>
+            <div className='mt-16'>
+                <CardProfile
+                user={user}/>
+            </div>
 
             </div>
 

@@ -96,7 +96,7 @@ export default function AreaPostagens() {
 
     const handleDeleteMateria = async (index, id) => {
         try {
-            await axios.delete(`http://localhost:3000/materias//${id}`, {
+            await axios.delete(`http://localhost:3000/materias/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

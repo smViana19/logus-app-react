@@ -18,26 +18,6 @@ import { getMonth } from '../../util'
 import CalendarHeader from '../../components/Schedule/CalendarHeader';
 import EventModal from '../../components/Schedule/EventModal';
 
-const DayDiv = styled.div`
-    font-size: 64px;
-    font-weight: 500;
-`;
-
-const ContainerDate = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 24px;
-`;
-
-const ContainerAllDate = styled.section`
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 32px;
-    margin-bottom: 88px; 
-`;
-
 
 export default function Agenda() {
     const [openModal, setOpenModal] = useState(false);
@@ -109,9 +89,7 @@ export default function Agenda() {
                                 <NavLink to="/dashboard/pomodoro" className="">
                                     Método Pomodoro
                                 </NavLink>
-                                <NavLink to="/dashboard/notas" className="">
-                                    Notas
-                                </NavLink>
+                               
                             </div>
                             <div className="flex justify-between"></div>
                         </div>

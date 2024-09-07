@@ -18,7 +18,6 @@ import Profile from '../pages/Profile'
 import GradeNotas from '../pages/AdminPage/GradeNotas'
 import { AtividadeProvider } from '../context/AtividadeContext';
 import Atividade from '../pages/Materias/Atividade'
-import VisualizarNotas from '../pages/Aluno/VisualizarNotas'
 import ListaAlunosNotas from '../pages/AdminPage/ListAlunosNotas';
 
 
@@ -36,7 +35,6 @@ export default function Rotas() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
             <Route path="/dashboard/agenda" element={<Agenda />} />
-            <Route path="/dashboard/notas" element={<VisualizarNotas />} />
  
             <Route path="/dashboard/perfil" element={<Profile />} />
             <Route path="/dashboard/postagens" element={<AreaPostagens />} />

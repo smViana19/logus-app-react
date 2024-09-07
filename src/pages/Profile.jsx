@@ -53,9 +53,7 @@ export default function Dashboard() {
                                 <NavLink to="/dashboard/pomodoro" className="">
                                     Método Pomodoro
                                 </NavLink>
-                                <NavLink to="/dashboard/notas" className="">
-                                    Notas
-                                </NavLink>
+                              
                             </div>
                         </div>
                         <div className="flex justify-center gap-16">

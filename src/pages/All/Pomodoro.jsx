@@ -90,7 +90,6 @@ export default function Pomodoro() {
                             <NavLink to="/dashboard/postagens">Área de Postagens</NavLink>
                             <NavLink to="/dashboard/agenda">Agenda</NavLink>
                             <NavLink to="/dashboard/pomodoro">Método Pomodoro</NavLink>
-                            <NavLink to="/dashboard/notas">Notas</NavLink>
                         </div>
                         <div className="flex justify-between"></div>
                     </div>

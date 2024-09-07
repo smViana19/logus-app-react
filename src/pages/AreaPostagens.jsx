@@ -153,7 +153,6 @@ export default function AreaPostagens() {
                                 <NavLink className="text-black" to="/dashboard/postagens">Área de Postagens</NavLink>
                                 <NavLink className="text-black" to="/dashboard/agenda">Agenda</NavLink>
                                 <NavLink className="text-black" to="/dashboard/pomodoro">Método Pomodoro</NavLink>
-                                <NavLink className="text-black" to="/dashboard/notas">Notas</NavLink>
                             </div>
                         </div>
 

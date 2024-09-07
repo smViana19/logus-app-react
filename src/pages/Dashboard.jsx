@@ -59,23 +59,11 @@ export default function Dashboard() {
                 </div>
 
                 <section className="md:mx-8 lg:mx-16 mt-16">
-                    <h1 className="font-semibold text-2xl mb-8 text-black">
-                        Tarefas Urgentes
-                    </h1>
+                   <h1>Recados</h1>
 
-                    <div className="border-b flex justify-between gap-8 border-gray-400">
-                        <div className="flex gap-8 items-center">
-                            <input type="checkbox" />
-                            <p className="md:text-lg text-black">
-                                Atividade de matemática sobre funções de segundo grau
-                            </p>
-                        </div>
-
-                        <span className="text-lg text-black mr-4">
-                            Escola
-                            <img src="" alt="" />
-                        </span>
-                    </div>
+                   <div>
+                    
+                   </div>
                 </section>
             </main>
         </div>

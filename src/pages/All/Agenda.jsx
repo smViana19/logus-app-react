@@ -7,13 +7,10 @@ import styled from 'styled-components';
 import ModalCreateTask from '../../components/Modal/ModalCreateTask';
 import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
 import { toast, ToastContainer } from 'react-toastify';
-import { FaRegEdit } from "react-icons/fa";
-import { FaTrashAlt } from "react-icons/fa";
 import Sidebar from '../../components/Schedule/Sidebar';
 import Month from '../../components/Schedule/Month';
 import GlobalContext from '../../context/GlobalContext';
 import MenuMobile from '../../components/Navs/MenuMobile';
-
 import { getMonth } from '../../util'
 import CalendarHeader from '../../components/Schedule/CalendarHeader';
 import EventModal from '../../components/Schedule/EventModal';

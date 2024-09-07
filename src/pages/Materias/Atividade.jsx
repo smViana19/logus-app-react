@@ -14,9 +14,7 @@ const Atividade = () => {
         file: null
     });
 
-
-
-
+    // Formata a data de entrega
     const dataEntregaFormatada = data.dataEntrega ?
         new Date(data.dataEntrega).toLocaleString('pt-BR', {
             day: '2-digit',
@@ -25,6 +23,15 @@ const Atividade = () => {
             hour: '2-digit',
             minute: '2-digit'
         }) : "Sem data de entrega";
+
+    // Função para tratar o arquivo anexado
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setData(prevData => ({
+            ...prevData,
+            file
+        }));
+    };
 
     return (
         <div className='w-3/4 mx-auto mt-32'>
@@ -41,6 +48,18 @@ const Atividade = () => {
 
             <div className='mt-32'>
                 {data.detail}
+            </div>
+
+            <div className='mt-8'>
+                <label className='block mb-2 text-sm font-medium text-gray-700'>Anexar arquivo:</label>
+                <input
+                    type='file'
+                    onChange={handleFileChange}
+                    className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700'
+                />
+                {data.file && (
+                    <p className='mt-2 text-sm text-gray-500'>Arquivo selecionado: {data.file.name}</p>
+                )}
             </div>
         </div>
     );

@@ -150,7 +150,7 @@ export default function HomePage() {
 
                 <ContainerPrintApp />
 
-                <section className='container__app-mobile mt-24 flex'>
+                <section className='container__app-mobile mt-24 mb-10 2xl:flex grid grid-cols-1 '>
 
                     <div className='mt-40'>
                         <Subtitle>Baixe também nosso aplicativo mobile</Subtitle>
@@ -163,7 +163,7 @@ export default function HomePage() {
                         </div>
 
                     </div>
-                    <img className='w-1/4' src={imgMockupMobile} alt="Mockup Mobile" />
+                    <img className='w-1/3' src={imgMockupMobile} alt="Mockup Mobile" />
                 </section>
 
 

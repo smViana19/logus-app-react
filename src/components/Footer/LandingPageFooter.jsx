@@ -11,7 +11,7 @@ export default function LandingPageFooter() {
     return (
         <footer className='bg-[#5E4485]'>
             <div className='py-8'>
-                <div className='lg:flex lg:justify-around lg:items-start grid grid-cols-2 md:gap-12 gap-y-8 text-white'>
+                <div className='lg:flex lg:justify-around lg:items-start md:grid md:grid-cols-2 md:gap-12 grid grid-cols-1 ml-10 gap-y-8 text-white'>
                     
                    
                     <div className='flex flex-col items-start'>

@@ -7,7 +7,7 @@ export default function MenuMobileIndex() {
 
     return (
         <>
-            <ContainerNav className='bg-purplePrimary py-4 px-4 fixed w-full z-10 md:hidden flex justify-end'>
+            <ContainerNav className='bg-purplePrimary py-4 px-4 fixed w-full z-10 lg:hidden flex justify-end'>
                 <ul className='flex gap-8 items-center'>
                     <li>Entrar</li>
                     <li>Cadastrar</li>

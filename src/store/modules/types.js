@@ -7,3 +7,6 @@ export const PERSIST_REHYDRATE = 'persist/REHYDRATE';
 
 export const SELECT_SUBJECT = 'SELECT_SUBJECT'
 export const CLEAR_SUBJECT = 'CLEAR_SUBJECT'
+
+export const SELECT_MATERIAL = 'SELECT_MATERIAL'
+export const CLEAR_MATERIAL = 'CLEAR_MATERIAL'

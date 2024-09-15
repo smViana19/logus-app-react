@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import axios from 'axios'; // Importar o Axios
+import { useSelector } from 'react-redux';
+
 
 const Atividade = () => {
     const { nomeAtiv } = useParams();
     const location = useLocation();
-    const { categoria, dataEntrega, pontos, detail } = location.state || {};
+    const { categoria, data_entrega, pontos, detail } = location.state || {};
+
+    const materialId = useSelector(state => state.material.selectedMaterialId);
+    console.log(`id atividade: ${materialId}`)
+
 
     const [data, setData] = useState({
         categoria: '',
@@ -14,7 +21,6 @@ const Atividade = () => {
         file: null
     });
 
-    // Formata a data de entrega
     const dataEntregaFormatada = data.dataEntrega ?
         new Date(data.dataEntrega).toLocaleString('pt-BR', {
             day: '2-digit',
@@ -24,13 +30,40 @@ const Atividade = () => {
             minute: '2-digit'
         }) : "Sem data de entrega";
 
-    // Função para tratar o arquivo anexado
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         setData(prevData => ({
             ...prevData,
             file
         }));
+    };
+
+    // Função para enviar a entrega
+    const handleSubmit = async (event) => {
+        event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+
+        if (!data.file) {
+            alert('Por favor, selecione um arquivo para enviar.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', data.file);
+        formData.append('data_entrega', new Date().toISOString());
+        formData.append('subject_material_id', materialId); 
+        formData.append('user_id', 1); 
+
+        try {
+            await axios.post('/api/submit-activity', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            alert('Arquivo enviado com sucesso!');
+        } catch (error) {
+            console.error('Erro ao enviar o arquivo:', error);
+            alert('Erro ao enviar o arquivo. Tente novamente.');
+        }
     };
 
     return (
@@ -50,17 +83,25 @@ const Atividade = () => {
                 {data.detail}
             </div>
 
-            <div className='mt-8'>
-                <label className='block mb-2 text-sm font-medium text-gray-700'>Anexar arquivo:</label>
-                <input
-                    type='file'
-                    onChange={handleFileChange}
-                    className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700'
-                />
-                {data.file && (
-                    <p className='mt-2 text-sm text-gray-500'>Arquivo selecionado: {data.file.name}</p>
-                )}
-            </div>
+            <form onSubmit={handleSubmit}>
+                <div className='mt-8'>
+                    <label className='block mb-2 text-sm font-medium text-gray-700'>Anexar arquivo:</label>
+                    <input
+                        type='file'
+                        onChange={handleFileChange}
+                        className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700'
+                    />
+                    {data.file && (
+                        <p className='mt-2 text-sm text-gray-500'>Arquivo selecionado: {data.file.name}</p>
+                    )}
+                </div>
+                <button
+                    type='submit'
+                    className='mt-8 px-4 py-2 bg-purplePrimary text-white rounded'
+                >
+                    Enviar
+                </button>
+            </form>
         </div>
     );
 };

@@ -31,6 +31,7 @@ const MateriaPage = () => {
 
     const subjectId = useSelector(state => state.subject.selectedSubjectId);
     console.log(`id materia: ${subjectId}`)
+   
 
      useEffect(() => {
          async function fetchAtividades() {

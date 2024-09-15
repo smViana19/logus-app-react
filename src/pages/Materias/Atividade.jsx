@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import axios from 'axios'; // Importar o Axios
+import axios from 'axios';
 import { useSelector } from 'react-redux';
-
 
 const Atividade = () => {
     const { nomeAtiv } = useParams();
@@ -12,13 +11,15 @@ const Atividade = () => {
     const materialId = useSelector(state => state.material.selectedMaterialId);
     console.log(`id atividade: ${materialId}`)
 
+    const userId = useSelector(state => state.auth.user.id);
+    console.log(`user id: ${userId}`)
 
     const [data, setData] = useState({
-        categoria: '',
-        dataEntrega: '',
-        pontos: '',
-        detail: '',
-        file: null
+        categoria: location.state.categoria,
+        dataEntrega: location.state.data_entrega,
+        pontos: location.state.pontos,
+        detail: location.state.detail,
+        files: [] // Alterado para aceitar múltiplos arquivos
     });
 
     const dataEntregaFormatada = data.dataEntrega ?
@@ -30,11 +31,12 @@ const Atividade = () => {
             minute: '2-digit'
         }) : "Sem data de entrega";
 
+    // Função para manipular múltiplos arquivos
     const handleFileChange = (event) => {
-        const file = event.target.files[0];
+        const files = event.target.files; // Pega todos os arquivos selecionados
         setData(prevData => ({
             ...prevData,
-            file
+            files: Array.from(files) // Converte a FileList para um array
         }));
     };
 
@@ -42,27 +44,30 @@ const Atividade = () => {
     const handleSubmit = async (event) => {
         event.preventDefault(); // Evita o comportamento padrão de envio do formulário
 
-        if (!data.file) {
-            alert('Por favor, selecione um arquivo para enviar.');
+        if (data.files.length === 0) {
+            alert('Por favor, selecione ao menos um arquivo para enviar.');
             return;
         }
 
         const formData = new FormData();
-        formData.append('file', data.file);
+        // Adicionar múltiplos arquivos ao FormData
+        data.files.forEach(file => {
+            formData.append('files', file); // 'files' é o nome do campo no backend
+        });
         formData.append('data_entrega', new Date().toISOString());
         formData.append('subject_material_id', materialId); 
-        formData.append('user_id', 1); 
+        formData.append('user_id', userId); 
 
         try {
-            await axios.post('/api/submit-activity', formData, {
+            await axios.post(`http://localhost:3000/materias/material/submit/`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            alert('Arquivo enviado com sucesso!');
+            alert('Arquivos enviados com sucesso!');
         } catch (error) {
-            console.error('Erro ao enviar o arquivo:', error);
-            alert('Erro ao enviar o arquivo. Tente novamente.');
+            console.error('Erro ao enviar os arquivos:', error);
+            alert('Erro ao enviar os arquivos. Tente novamente.');
         }
     };
 
@@ -85,14 +90,15 @@ const Atividade = () => {
 
             <form onSubmit={handleSubmit}>
                 <div className='mt-8'>
-                    <label className='block mb-2 text-sm font-medium text-gray-700'>Anexar arquivo:</label>
+                    <label className='block mb-2 text-sm font-medium text-gray-700'>Anexar arquivos:</label>
                     <input
                         type='file'
+                        multiple // Adicionar o atributo multiple para aceitar vários arquivos
                         onChange={handleFileChange}
                         className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700'
                     />
-                    {data.file && (
-                        <p className='mt-2 text-sm text-gray-500'>Arquivo selecionado: {data.file.name}</p>
+                    {data.files.length > 0 && (
+                        <p className='mt-2 text-sm text-gray-500'>Arquivos selecionados: {data.files.map(file => file.name).join(', ')}</p>
                     )}
                 </div>
                 <button

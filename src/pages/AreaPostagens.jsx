@@ -24,10 +24,10 @@ export default function AreaPostagens() {
     const [showEditModal, setShowEditModal] = useState(false);
 
     
-    if (isLoading) {
+/*    if (isLoading) {
         return <div>Carregando...</div>;
        }
-  
+ */ 
        if (!isLoggedIn) {
        return <Navigate to="/login" replace />;
       }

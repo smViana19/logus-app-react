@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
 import Logo from '../../components/Logo/Logo.jsx';
 import DefaultButton from '../../components/Buttons/DefaultButton.jsx';
@@ -10,11 +10,13 @@ import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
 import OpenModalPomodoroButton from '../../components/Buttons/OpenModalPomodoroButton.jsx';
 import ModalPomodoroSound from '../../components/Modal/ModalPomodoroSound';
 import MenuMobile from '../../components/Navs/MenuMobile';
+import { useSelector } from 'react-redux';
 
 const TEMPO_TRABALHO = 1500; // 25 minutos
 const TEMPO_DESCANSO = 300; // 5 minutos
 
 export default function Pomodoro() {
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [tempoDecorrido, setTempoDecorrido] = useState(TEMPO_TRABALHO);
     const [intervaloId, setIntervaloId] = useState(null);
     const [cronometroExecutando, setCronometroExecutando] = useState(false);
@@ -45,6 +47,10 @@ export default function Pomodoro() {
             setIntervaloId(null);
         }
     }, [cronometroExecutando, modoDescanso]);
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    }
 
     const alternarCronometro = () => {
         setCronometroExecutando((prevExecutando) => !prevExecutando);

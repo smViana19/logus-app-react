@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import NavLink from '../components/Navs/NavLink';
 import Logo from '../components/Logo/Logo.jsx';
 import LogoutButton from '../components/Buttons/LogoutButton.jsx';
@@ -24,6 +24,10 @@ export default function AreaPostagens() {
     const [editNome, setEditNome] = useState('');
     const [showEditModal, setShowEditModal] = useState(false);
 
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    }
 
     const token = useSelector((state) => state.auth.token);
     useEffect(() => {

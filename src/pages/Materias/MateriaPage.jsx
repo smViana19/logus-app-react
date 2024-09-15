@@ -27,9 +27,10 @@ const MateriaPage = () => {
     const [newDataEntrega, setNewDataEntrega] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
+    
 
     const subjectId = useSelector(state => state.subject.selectedSubjectId);
-
+    console.log(`id materia: ${subjectId}`)
 
      useEffect(() => {
          async function fetchAtividades() {
@@ -80,6 +81,21 @@ const MateriaPage = () => {
             errors.forEach(error => toast.error(error));
         }
     }
+
+    const handleDeleteAtividade = async (index, id) => {
+        try {
+            await axios.delete(`http://localhost:3000/materias/material/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            setAtividades((prevAtividades) => prevAtividades.filter((_, i) => i !== index));
+            console.log('Dados retornados:', response.data);
+            toast.success('Atividade excluída com sucesso!');
+        } catch (err) {
+            toast.error('Erro ao excluir Atividade.');
+        }
+    };
 
 
     const filteredAtividades = filterStatus === 'all'
@@ -201,8 +217,9 @@ const MateriaPage = () => {
                                     pontos={atividade.pontos}
                                     file={atividade.file}
                                     detail={atividade.detail}
-                                    onDelete={() => handleDelete(index)}
+                                    onDelete={() => handleDeleteAtividade(index, atividade.id)}
                                     onEdit={(updatedAtividade) => handleEdit(index, updatedAtividade)}
+                                    material={atividade}                                
                                 />
                             ))
                         ) : (

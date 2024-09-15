@@ -1,11 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ModalEditarAtv from '../../components/Modal/ModalEditarAtv'; 
+import { useDispatch } from 'react-redux'
+import { selectMaterial } from '@/store/modules/submit/action.js'
 
-const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit }) => {
+
+
+const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit, material }) => {
     const { nomeMateria } = useParams();
     const [showModalOption, setShowModalOptions] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
+    
+    const dispatch = useDispatch();
+    const handleSelectMaterial = () => {
+        dispatch(selectMaterial(material.id))
+    }
+
     const modalRef = useRef(null);
 
     const handleRightClick = (event) => {
@@ -40,6 +50,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         handleCloseModal();
     };
 
+    
     const handleDelete = () => {
         if (window.confirm('Tem certeza que deseja excluir esta atividade?')) {
             onDelete();
@@ -47,6 +58,20 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         }
     };
 
+   /* const updatedAtvs = [
+        ...atividade,
+        {
+            nome: newAtividade,
+            categoria: '',
+            dataEntrega: '',
+            pontos: '',
+            detail: '',
+            file: null
+        },
+    ];
+
+    
+*/
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
@@ -80,6 +105,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                 to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
                 state={{ categoria, dataEntrega, pontos, detail, file }} 
                 className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block"
+                onClick={handleSelectMaterial}
             >
                 <div className='md:flex md:justify-between mb-2'>
                     <div className='flex gap-4'>

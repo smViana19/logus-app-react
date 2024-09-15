@@ -3,16 +3,18 @@ import { useSelector } from 'react-redux';
 import UserCard from '../components/CardsContainers/UserCard.jsx';
 import CategoryCard from '../components/CardsContainers/CategoryCard.jsx';
 import Navbar from '@/components/Navs/NavBar.jsx';
+import { Navigate } from 'react-router-dom';
+
 export default function Dashboard() {
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-    const role = useSelector((state) => state.auth.user?.role);
-    const user = useSelector((state) => state.auth.user?.nome);
+
+    const { isLoggedIn, isLoading, user, role } = useSelector((state) => ({
+        isLoggedIn: state.auth.isLoggedIn,
+        isLoading: state.auth.isLoading,
+        user: state.auth.user?.nome,
+        role: state.auth.user?.role,
+    }));
+
     const [isDarkMode, setIsDarkMode] = useState(false);
-
-
-       if (!isLoggedIn) {
-          return <Navigate to="/login" replace />;
-        }
 
     useEffect(() => {
         // Verificar o tema armazenado no localStorage ao carregar a página
@@ -26,12 +28,20 @@ export default function Dashboard() {
         }
     }, []);
 
+    if (isLoading) {
+        return <div>Carregando...</div>;
+    }
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    }
+
     const handleThemeChange = () => {
         if (isDarkMode) {
-            document.documentElement.classList.remove("dark");
+            document.documentElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
         } else {
-            document.documentElement.classList.add("dark");
+            document.documentElement.classList.add('dark');
             localStorage.setItem('theme', 'dark');
         }
         setIsDarkMode(!isDarkMode);
@@ -39,8 +49,8 @@ export default function Dashboard() {
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-zinc-800">
-            <Navbar role={role} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode}/>
-            <main className='pt-24'>
+            <Navbar role={role} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
+            <main className="pt-24">
                 <UserCard role={role} user={user} />
 
                 <div className="flex md:gap-8 gap-4 md:mx-16 overflow-x-auto">
@@ -59,11 +69,11 @@ export default function Dashboard() {
                 </div>
 
                 <section className="md:mx-8 lg:mx-16 mt-16">
-                   <h1>Recados</h1>
+                    <h1>Recados</h1>
 
-                   <div>
-                    
-                   </div>
+                    <div>
+
+                    </div>
                 </section>
             </main>
         </div>

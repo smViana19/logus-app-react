@@ -156,7 +156,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                             Selecione a Categoria
                                         </option>
                                         <option value="Atividade">Atividade</option>
-                                        <option value="Resumo">Resumo</option>
+                                        <option value="Resumos">Resumo</option>
                                         <option value="Apresentação">Apresentação</option>
                                         <option value="Outros">Outros</option>
                                     </select>

@@ -15,8 +15,8 @@ const UserRoleSelector = ({ role, setRole }) => {
                     type="radio"
                     name="tipo"
                     id="aluno"
-                    value="aluno"
-                    checked={role === 'aluno'}
+                    value="estudante"
+                    checked={role === 'estudante'}
                     onChange={handleRoleChange}
                 />
             </div>

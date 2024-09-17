@@ -28,13 +28,13 @@ export default function Dashboard() {
         }
     }, []);
 
- //   if (isLoading) {
- //       return <div>Carregando...</div>;
- //   }
+   if (isLoading) {
+       return <div>Carregando...</div>;
+   }
 
-  //  if (!isLoggedIn) {
-  //      return <Navigate to="/login" replace />;
-  //  }
+   if (!isLoggedIn) {
+          return <Navigate to="/login" replace />;
+    }
 
     const handleThemeChange = () => {
         if (isDarkMode) {

@@ -158,7 +158,7 @@ export default function AreaPostagens() {
             localStorage.setItem('theme', 'dark');
         }
         setIsDarkMode(!isDarkMode);
-    };
+    }; 
 
 
     return (

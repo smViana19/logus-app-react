@@ -28,9 +28,9 @@ export default function AreaPostagens() {
         return <div>Carregando...</div>;
        }
  */ 
-       if (!isLoggedIn) {
-       return <Navigate to="/login" replace />;
-      }
+        if (!isLoggedIn) {
+            return <Navigate to="/login" replace />;
+        }
 
 
     const token = useSelector((state) => state.auth.token);
@@ -135,11 +135,37 @@ export default function AreaPostagens() {
         }
     };
 
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        // Verificar o tema armazenado no localStorage ao carregar a página
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setIsDarkMode(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setIsDarkMode(false);
+        }
+    }, []);
+
+    const handleThemeChange = () => {
+        if (isDarkMode) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        setIsDarkMode(!isDarkMode);
+    };
+
+
     return (
         <>
             <div className="min-h-screen bg-gray-50 dark:bg-zinc-800 dark:text-white">
                 <MenuMobile />
-                <Navbar /> 
+                <Navbar handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} /> 
                 <main className='pt-16'>
                     <section className="w-4/5 block mx-auto">
                         <button

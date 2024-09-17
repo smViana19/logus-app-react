@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import NavLink from '../../components/Navs/NavLink';
+import NavBar from '../../components/Navs/NavBar'; // Alterado para importar NavBar
 import Logo from '../../components/Logo/Logo.jsx';
 import DefaultButton from '../../components/Buttons/DefaultButton.jsx';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -79,40 +79,38 @@ export default function Pomodoro() {
         setOpenModal(true);
     };
 
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        // Verificar o tema armazenado no localStorage ao carregar a página
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setIsDarkMode(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setIsDarkMode(false);
+        }
+    }, []);
+
+    const handleThemeChange = () => {
+        if (isDarkMode) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        setIsDarkMode(!isDarkMode);
+    };
+
     return (
         <div className="min-h-screen bg-gray-50 relative">
             <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
                 <MenuMobile />
-                <div className="flex justify-between py-2 px-32">
-                    <div className="flex items-center">
-                        <Link to="/">
-                            <Logo className="block h-12 w-auto fill-current" />
-                        </Link>
-                    </div>
 
-                    <div className="flex justify-around">
-                        <div className="space-x-8 lg:flex">
-                            <NavLink to="/dashboard">Dashboard</NavLink>
-                            <NavLink to="/dashboard/postagens">Área de Postagens</NavLink>
-                            <NavLink to="/dashboard/agenda">Agenda</NavLink>
-                            <NavLink to="/dashboard/pomodoro">Método Pomodoro</NavLink>
-                        </div>
-                        <div className="flex justify-between"></div>
-                    </div>
-                    <div className="flex justify-center gap-16">
-                        <NavLink to="/dashboard/perfil">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                height="14"
-                                width="12.25"
-                                viewBox="0 0 448 512"
-                            >
-                                <path className='fill-gray-400' d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                            </svg>
-                        </NavLink>
-                        <LogoutButton />
-                    </div>
-                </div>
+                    <NavBar  handleThemeChange={handleThemeChange} isDarkMode={isDarkMode}/>
+
             </nav>
             <main>
                 <ContainerButtons className="flex justify-around mt-8 rounded-lg w-2/4 m-auto">

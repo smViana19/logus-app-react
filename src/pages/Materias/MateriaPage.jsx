@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import NavLink from '../../components/Navs/NavLink';
+import Navbar from '@/components/Navs/NavBar.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
 import SubjectFiltersButton from '../../components/Buttons/SubjectFiltersButton.jsx';
@@ -27,26 +28,26 @@ const MateriaPage = () => {
     const [newDataEntrega, setNewDataEntrega] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
-    
+
 
     const subjectId = useSelector(state => state.subject.selectedSubjectId);
     console.log(`id materia: ${subjectId}`)
-   
 
-     useEffect(() => {
-         async function fetchAtividades() {
-             try {
-                 const response = await axios.get(`http://localhost:3000/materias/material/${subjectId}`);
-                 console.log('Dados retornados:', response.data);
-                 setAtividades(response.data);
-             } catch (err) {
-                 toast.error('Erro ao carregar atividades');
-             }
-         }
- 
-         fetchAtividades(subjectId);
-     }, [token]);
- 
+
+    useEffect(() => {
+        async function fetchAtividades() {
+            try {
+                const response = await axios.get(`http://localhost:3000/materias/material/${subjectId}`);
+                console.log('Dados retornados:', response.data);
+                setAtividades(response.data);
+            } catch (err) {
+                toast.error('Erro ao carregar atividades');
+            }
+        }
+
+        fetchAtividades(subjectId);
+    }, [token]);
+
 
 
     async function handleAddAtividade() {
@@ -105,6 +106,30 @@ const MateriaPage = () => {
             console.log('Filtering atividade:', atividade);
             return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
         });
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        // Verificar o tema armazenado no localStorage ao carregar a página
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setIsDarkMode(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setIsDarkMode(false);
+        }
+    }, []);
+
+    const handleThemeChange = () => {
+        if (isDarkMode) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        setIsDarkMode(!isDarkMode);
+    };
 
 
     return (
@@ -112,68 +137,7 @@ const MateriaPage = () => {
             <div className="min-h-screen bg-gray-50">
                 <nav className="bg-white border-b border-gray-100">
                     <MenuMobile />
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between h-16">
-                            <div className="flex">
-                                <div className="shrink-0 flex items-center">
-                                    <Link to="/">
-                                        <Logo className="block h-9 w-auto fill-current text-gray-800" />
-                                    </Link>
-                                </div>
-                                <div className="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex relative">
-                                    <NavLink to="/dashboard" className="text-gray-800">
-                                        Dashboard
-                                    </NavLink>
-                                    <NavLink
-                                        to="/dashboard/postagens"
-                                        className="text-purplePrimary"
-                                        onMouseEnter={() => setDropdownVisible(true)}
-                                        onMouseLeave={() => setDropdownVisible(false)}
-                                    >
-                                        Área de Postagens
-                                    </NavLink>
-                                    {dropdownVisible && (
-                                        <div
-                                            className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                                            <Link
-                                                to="/dashboard/postagens/resumo"
-                                                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                            >
-                                                Resumo
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/postagens/slide"
-                                                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                            >
-                                                Slide
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/postagens/atividade"
-                                                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                                            >
-                                                Atividade
-                                            </Link>
-                                        </div>
-                                    )}
-                                    <NavLink to="/dashboard/agenda" className="text-gray-800">
-                                        Agenda
-                                    </NavLink>
-                                    <NavLink to="/dashboard/pomodoro" className="text-gray-800">
-                                        Método Pomodoro
-                                    </NavLink>
-                                    <NavLink href="#" to="/dashboard/notas">Notas</NavLink>
-                                    <NavLink href="#" to="/dashboard/perfil">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25"
-                                            viewBox="0 0 448 512">
-                                            <path
-                                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                                        </svg>
-                                    </NavLink>
-                                    <LogoutButton />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Navbar handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
                 </nav>
 
                 <main className="md:px-16 lg:px-32 xl:px-64 py-16">
@@ -220,7 +184,7 @@ const MateriaPage = () => {
                                     detail={atividade.detail}
                                     onDelete={() => handleDeleteAtividade(index, atividade.id)}
                                     onEdit={(updatedAtividade) => handleEdit(index, updatedAtividade)}
-                                    material={atividade}                                
+                                    material={atividade}
                                 />
                             ))
                         ) : (

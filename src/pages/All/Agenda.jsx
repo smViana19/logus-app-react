@@ -1,12 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, Link } from 'react-router-dom';
-import NavBar from '../../components/Navs/NavBar';  // Importando o NavBar
-import Logo from '../../components/Logo/Logo.jsx';
-import styled from 'styled-components';
-import ModalCreateTask from '../../components/Modal/ModalCreateTask';
-import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
-import { toast, ToastContainer } from 'react-toastify';
+import { Navigate } from 'react-router-dom';
+import NavBar from '../../components/Navs/NavBar';
+import { toast } from 'react-toastify';
 import Sidebar from '../../components/Schedule/Sidebar';
 import Month from '../../components/Schedule/Month';
 import GlobalContext from '../../context/GlobalContext';

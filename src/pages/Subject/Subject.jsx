@@ -15,7 +15,7 @@ import { get } from 'lodash';
 import { toast, ToastContainer } from 'react-toastify';
 
 
-const MateriaPage = () => {
+const Subject = () => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const token = useSelector((state) => state.auth.token);
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -205,4 +205,4 @@ const MateriaPage = () => {
     );
 };
 
-export default MateriaPage;
+export default Subject;

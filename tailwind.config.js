@@ -2,50 +2,50 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 const labelsClasses = [
-    "indigo",
-    "gray",
-    "green",
-    "blue",
-    "red",
-    "purple",
-  ];
+    'indigo',
+    'gray',
+    'green',
+    'blue',
+    'red',
+    'purple',
+];
 
 
 export default {
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-    darkMode: "class",
+    darkMode: 'class',
     safelist: [
         ...labelsClasses.map((lbl) => `bg-${lbl}-500`),
         ...labelsClasses.map((lbl) => `bg-${lbl}-200`),
-        ...labelsClasses.map((lbl) => `text-${lbl}-400`)
-      ],
+        ...labelsClasses.map((lbl) => `text-${lbl}-400`),
+    ],
     theme: {
-      screens: {
-        'sm': '320px',
-        // => @media (min-width: 320px) { ... }
+        screens: {
+            'sm': '320px',
+            // => @media (min-width: 320px) { ... }
 
-        'md': '540px',
-        // => @media (min-width: 540px) { ... }
+            'md': '540px',
+            // => @media (min-width: 540px) { ... }
 
-        'lg': '768px',
-        // => @media (min-width: 768px) { ... }
-        
-        'xl': '1024px',
-        // => @media (min-width: 1024px) { ... }
+            'lg': '768px',
+            // => @media (min-width: 768px) { ... }
 
-        '2xl': '1280px',
-        // => @media (min-width: 1280px) { ... }
-      },
+            'xl': '1024px',
+            // => @media (min-width: 1024px) { ... }
+
+            '2xl': '1280px',
+            // => @media (min-width: 1280px) { ... }
+        },
         extend: {
             screens: {
-              '3xl': '1440px',
+                '3xl': '1440px',
             },
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
 
             gridTemplateColumns: {
-                "1/5": "1fr 5fr"
+                '1/5': '1fr 5fr',
             },
             colors: {
                 //inputs
@@ -62,19 +62,29 @@ export default {
                 txtBotao: '',
 
             },
+            container: {
+                center: true,
+                padding: {
+                    DEFAULT: '1rem',
+                    sm: '2rem',
+                    lg: '4rem',
+                    xl: '5rem',
+                    '2xl': '6rem',
+                },
+            },
             scale: {
                 '102': '1.02',
-              },
-              fontSize: {
+            },
+            fontSize: {
                 '5xl': '3rem',
                 '6xl': '4rem',
-          
-              },
-              rotate: {
-                '360': '360deg'
-              },
 
-              
+            },
+            rotate: {
+                '360': '360deg',
+            },
+
+
         },
     },
     plugins: [],

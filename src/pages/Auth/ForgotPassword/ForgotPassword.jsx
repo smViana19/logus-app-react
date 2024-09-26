@@ -1,6 +1,6 @@
 import React from 'react'
-import TextInput from '../../components/Inputs/TextInput'
-import DefaultButton from '../../components/Buttons/DefaultButton.jsx'
+import TextInput from '../../../components/Inputs/TextInput.jsx'
+import DefaultButton from '../../../components/Buttons/DefaultButton.jsx'
 
 export default function ForgotPassword() {
 

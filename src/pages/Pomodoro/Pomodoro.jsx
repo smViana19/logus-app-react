@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import NavBar from '../../components/Navs/NavBar'; // Alterado para importar NavBar
+import NavBar from '../../components/Navs/NavBar.jsx'; // Alterado para importar NavBar
 import Logo from '../../components/Logo/Logo.jsx';
 import DefaultButton from '../../components/Buttons/DefaultButton.jsx';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -8,8 +8,8 @@ import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
 import OpenModalPomodoroButton from '../../components/Buttons/OpenModalPomodoroButton.jsx';
-import ModalPomodoroSound from '../../components/Modal/ModalPomodoroSound';
-import MenuMobile from '../../components/Navs/MenuMobile';
+import ModalPomodoroSound from '../../components/Modal/ModalPomodoroSound.jsx';
+import MenuMobile from '../../components/Navs/MenuMobile.jsx';
 import { useSelector } from 'react-redux';
 
 const TEMPO_TRABALHO = 1500; // 25 minutos

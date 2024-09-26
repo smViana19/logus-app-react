@@ -11,7 +11,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
     persistedReducers(rootReducer),
-    applyMiddleware(sagaMiddleware)
+    applyMiddleware(sagaMiddleware),
 );
 
 sagaMiddleware.run(rootSaga);

@@ -12,11 +12,11 @@ import Pomodoro from '../pages/Pomodoro/Pomodoro.jsx';
 import Schedule from '../pages/Schedule/Schedule.jsx';
 import PostsArea from '../pages/PostsArea/PostsArea.jsx';
 import AdminDashboard from '../pages/Admin/AdminDashboard/AdminDashboard.jsx';
-import MateriaPage from '../pages/Materias/MateriaPage';
+import Subject from '../pages/Subject/Subject.jsx';
 import Profile from '../pages/Profile/Profile.jsx';
 import AdminSchoolGrade from '../pages/Admin/AdminGrade/AdminSchoolGrade.jsx';
 import { AtividadeProvider } from '../context/AtividadeContext';
-import Atividade from '../pages/Materias/Atividade';
+import Atividade from '../pages/Subject/Atividade';
 import AdminSchool from '../pages/Admin/AdminSchool/AdminSchool.jsx';
 
 
@@ -35,7 +35,7 @@ export default function Rotas() {
 
         <Route path="/dashboard/perfil" element={<Profile />} />
         <Route path="/dashboard/postagens" element={<PostsArea />} />
-        <Route path="/dashboard/postagens/:nomeMateria" element={<MateriaPage />} />
+        <Route path="/dashboard/postagens/:nomeMateria" element={<Subject />} />
         <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<AtividadeWrapper />} />
 
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import MenuAdmin from '../../components/Navs/MenuAdmin';
-import AdminCard from '../../components/CardsContainers/AdminCard.jsx';
+import MenuAdmin from '../../../components/Navs/MenuAdmin.jsx';
+import AdminCard from '../../../components/CardsContainers/AdminCard.jsx';
 
-export default function DashboardAdm() {
+export default function AdminDashboard() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
  // if (!isLoggedIn) {

@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import Navbar from '@/components/Navs/NavBar.jsx';
-import Logo from '../components/Logo/Logo.jsx';
-import LogoutButton from '../components/Buttons/LogoutButton.jsx';
-import SubjectCard from '../components/CardsContainers/SubjectCard.jsx';
-import bannerMateria from '../assets/Banners/bannerMaterias.jpg';
+import Logo from '../../components/Logo/Logo.jsx';
+import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
+import SubjectCard from '../../components/CardsContainers/SubjectCard.jsx';
+import bannerMateria from '../../assets/Banners/bannerMaterias.jpg';
 import { toast, ToastContainer } from 'react-toastify';
-import MenuMobile from '../components/Navs/MenuMobile';
-import axios from "../../services/axios";
+import MenuMobile from '../../components/Navs/MenuMobile.jsx';
+import axios from "../../../services/axios.js";
 import { get } from "lodash";
-import UserCard from '../components/CardsContainers/UserCard.jsx';
+import UserCard from '../../components/CardsContainers/UserCard.jsx';
 
-export default function AreaPostagens() {
+export default function PostsArea() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [materias, setMaterias] = useState([]);

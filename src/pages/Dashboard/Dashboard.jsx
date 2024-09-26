@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import UserCard from '../components/CardsContainers/UserCard.jsx';
-import CategoryCard from '../components/CardsContainers/CategoryCard.jsx';
+import UserCard from '../../components/CardsContainers/UserCard.jsx';
+import CategoryCard from '../../components/CardsContainers/CategoryCard.jsx';
 import Navbar from '@/components/Navs/NavBar.jsx';
 import { Navigate } from 'react-router-dom';
 
@@ -17,7 +17,6 @@ export default function Dashboard() {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
-        // Verificar o tema armazenado no localStorage ao carregar a página
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.documentElement.classList.add('dark');

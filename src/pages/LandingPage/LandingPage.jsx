@@ -2,12 +2,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCircle, FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../store/modules/auth/actions';
+import * as actions from '../../store/modules/auth/actions.js';
 import logo from '../../assets/logo.png';
-import InputPurple from '../../components/Inputs/InputPurple';
-import ContainerPrintApp from '../../components/CardsContainers/ContainerPrintApp';
+import InputPurple from '../../components/Inputs/InputPurple.jsx';
+import ContainerPrintApp from '../../components/CardsContainers/ContainerPrintApp.jsx';
 import Subtitle from '../../components/Text/Subtitle.jsx';
-import FunctionalityItem from '../../components/CardsContainers/FunctionalityItem';
+import FunctionalityItem from '../../components/CardsContainers/FunctionalityItem.jsx';
 import LandingPageFooter from '../../components/Footer/LandingPageFooter.jsx';
 import styled from 'styled-components';
 
@@ -19,9 +19,9 @@ import imgAgenda from '../../assets/agenda.png';
 import imgPomodoro from '../../assets/pomodoro.png';
 
 import '../../css/welcome.css';
-import MenuMobileIndex from '../../components/Navs/MenuMobileIndex';
+import MenuMobileIndex from '../../components/Navs/MenuMobileIndex.jsx';
 
-export default function HomePage() {
+export default function LandingPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn);

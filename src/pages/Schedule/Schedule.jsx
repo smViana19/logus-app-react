@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import NavBar from '../../components/Navs/NavBar';
+import NavBar from '../../components/Navs/NavBar.jsx';
 import { toast } from 'react-toastify';
-import Sidebar from '../../components/Schedule/Sidebar';
-import Month from '../../components/Schedule/Month';
-import GlobalContext from '../../context/GlobalContext';
-import MenuMobile from '../../components/Navs/MenuMobile';
-import { getMonth } from '../../util';
-import CalendarHeader from '../../components/Schedule/CalendarHeader';
-import EventModal from '../../components/Schedule/EventModal';
+import Sidebar from '../../components/Schedule/Sidebar.jsx';
+import Month from '../../components/Schedule/Month.jsx';
+import GlobalContext from '../../context/GlobalContext.jsx';
+import MenuMobile from '../../components/Navs/MenuMobile.jsx';
+import { getMonth } from '../../util.js';
+import CalendarHeader from '../../components/Schedule/CalendarHeader.jsx';
+import EventModal from '../../components/Schedule/EventModal.jsx';
 
-export default function Agenda() {
+export default function Schedule() {
     const [openModal, setOpenModal] = useState(false);
     const [tasks, setTasks] = useState([]);
     const [editingTask, setEditingTask] = useState(null);

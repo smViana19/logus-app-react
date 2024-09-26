@@ -1,10 +1,8 @@
 import React from 'react';
-import MenuAdmin from '../../components/Navs/MenuAdmin';
-import AdminCard from '../../components/CardsContainers/AdminCard.jsx';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+import MenuAdmin from '../../../components/Navs/MenuAdmin.jsx';
+import AdminCard from '../../../components/CardsContainers/AdminCard.jsx';
 
-export default function ListaAlunosNotas() {
+export default function AdminSchool() {
     return (
         <div className="min-h-screen w-screen bg-gray-50 flex">
             <MenuAdmin

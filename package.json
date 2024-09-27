@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@mui/base": "^5.0.0-beta.40",
+    "apexcharts": "^3.53.0",
     "axios": "^1.6.8",
     "date-fns": "^3.6.0",
     "date-fns-tz": "^3.1.3",

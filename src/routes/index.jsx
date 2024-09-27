@@ -18,6 +18,7 @@ import AdminSchoolGrade from '../pages/Admin/AdminGrade/AdminSchoolGrade.jsx';
 import { AtividadeProvider } from '../context/AtividadeContext';
 import Atividade from '../pages/Subject/Atividade';
 import AdminSchool from '../pages/Admin/AdminSchool/AdminSchool.jsx';
+import Layout from '@/components/Layout/Layout.jsx';
 
 
 export default function Rotas() {
@@ -29,11 +30,19 @@ export default function Rotas() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
+
+        <Route path="/dashboard" element={<Layout />} >
+          <Route index element={<Dashboard />} />
+          <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
+          <Route path="/dashboard/perfil" element={<Profile />} />
+
+        </Route>
+
+
+
+
         <Route path="/dashboard/agenda" element={<Schedule />} />
 
-        <Route path="/dashboard/perfil" element={<Profile />} />
         <Route path="/dashboard/postagens" element={<PostsArea />} />
         <Route path="/dashboard/postagens/:nomeMateria" element={<Subject />} />
         <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<AtividadeWrapper />} />

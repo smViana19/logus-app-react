@@ -30,13 +30,9 @@ export default function Dashboard() {
 
   return (
       <>
-        <div className="min-h-screen bg-gray-50">
-          <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
-            <MenuMobile />
-            <Navbar />
-          </nav>
+        <div className="h-screen bg-gray-50 dark:bg-gray-800 ">
 
-          <div className="my-16 mx-32 ">
+          <div className="mx-32 my-5">
             <CardProfile user={user} />
 
             {/* Card 1 */}

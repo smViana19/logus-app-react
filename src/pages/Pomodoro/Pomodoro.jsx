@@ -79,39 +79,9 @@ export default function Pomodoro() {
         setOpenModal(true);
     };
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    useEffect(() => {
-        // Verificar o tema armazenado no localStorage ao carregar a página
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            setIsDarkMode(true);
-        } else {
-            document.documentElement.classList.remove('dark');
-            setIsDarkMode(false);
-        }
-    }, []);
-
-    const handleThemeChange = () => {
-        if (isDarkMode) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-        setIsDarkMode(!isDarkMode);
-    };
 
     return (
         <div className="min-h-screen bg-gray-50 relative">
-            <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50">
-                <MenuMobile />
-
-                    <NavBar  handleThemeChange={handleThemeChange} isDarkMode={isDarkMode}/>
-
-            </nav>
             <main>
                 <ContainerButtons className="flex justify-around mt-8 rounded-lg w-2/4 m-auto">
                     <OpenModalPomodoroButton

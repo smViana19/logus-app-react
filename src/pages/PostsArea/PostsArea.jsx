@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navs/NavBar.jsx';
-import Logo from '../../components/Logo/Logo.jsx';
-import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
 import SubjectCard from '../../components/CardsContainers/SubjectCard.jsx';
 import bannerMateria from '../../assets/Banners/bannerMaterias.jpg';
 import { toast, ToastContainer } from 'react-toastify';
 import MenuMobile from '../../components/Navs/MenuMobile.jsx';
-import axios from "../../../services/axios.js";
-import { get } from "lodash";
-import UserCard from '../../components/CardsContainers/UserCard.jsx';
+import axios from '../../../services/axios.js';
+import { get } from 'lodash';
 
 export default function PostsArea() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -27,12 +24,7 @@ export default function PostsArea() {
 /*    if (isLoading) {
         return <div>Carregando...</div>;
        }
- */ 
-        if (!isLoggedIn) {
-            return <Navigate to="/login" replace />;
-        }
-
-
+ */
     const token = useSelector((state) => state.auth.token);
     useEffect(() => {
         async function fetchMaterias() {
@@ -80,23 +72,6 @@ export default function PostsArea() {
             errors.forEach(error => toast.error(error));
         }
 
-        const updatedMaterias = [
-            ...materias,
-            {
-                nome: newMateria,
-                banner: bannerMateria,
-                atividades: [
-                    { nome: 'Atividade de Geografia Analítica', data: '04/06' }
-                ],
-            },
-        ];
-
-        setMaterias(updatedMaterias);
-        localStorage.setItem('materias', JSON.stringify(updatedMaterias));
-        setNewMateria('');
-        setShowModal(false);
-    };
-
     const handleDeleteMateria = async (index, id) => {
         try {
             await axios.delete(`http://localhost:3000/materias/${id}`, {
@@ -134,32 +109,6 @@ export default function PostsArea() {
             toast.error('Erro ao editar matéria.');
         }
     };
-
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    useEffect(() => {
-        // Verificar o tema armazenado no localStorage ao carregar a página
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            setIsDarkMode(true);
-        } else {
-            document.documentElement.classList.remove('dark');
-            setIsDarkMode(false);
-        }
-    }, []);
-
-    const handleThemeChange = () => {
-        if (isDarkMode) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-        setIsDarkMode(!isDarkMode);
-    }; 
-
 
     return (
         <>
@@ -287,4 +236,5 @@ export default function PostsArea() {
             <ToastContainer />
         </>
     );
+  }
 }

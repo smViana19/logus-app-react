@@ -31,22 +31,15 @@ export default function Rotas() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/registro" element={<Registro />} />
 
-        <Route path="/dashboard" element={<Layout />} >
+        <Route path="/dashboard" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
           <Route path="/dashboard/perfil" element={<Profile />} />
-
+          <Route path="/dashboard/postagens" element={<PostsArea />} />
+          <Route path="/dashboard/postagens/:nomeMateria" element={<Subject />} />
+          <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<AtividadeWrapper />} />
+          <Route path="/dashboard/agenda" element={<Schedule />} />
         </Route>
-
-
-
-
-        <Route path="/dashboard/agenda" element={<Schedule />} />
-
-        <Route path="/dashboard/postagens" element={<PostsArea />} />
-        <Route path="/dashboard/postagens/:nomeMateria" element={<Subject />} />
-        <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<AtividadeWrapper />} />
-
 
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/notas/grade" element={<AdminSchool />} />

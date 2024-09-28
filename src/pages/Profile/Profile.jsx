@@ -30,7 +30,7 @@ export default function Dashboard() {
 
   return (
       <>
-        <div className="h-screen bg-gray-50 dark:bg-gray-800 ">
+        <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
 
           <div className="mx-32 my-5">
             <CardProfile user={user} />

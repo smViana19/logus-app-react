@@ -1,19 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-
-
 export default function OpenModalPomodoroButton({ text, svg, onClick }) {
-    return (
-        <BtnFoco onClick={onClick} className='cursor-pointer flex gap-4 items-center bg-white px-10 justify-center py-1 rounded-lg border border-gray-100 shadow-sm dark:text-zinc-100 dark:border-zinc-600'>
-           {svg}
-            <span className=''>{text}</span>
-        </BtnFoco>
-    )
+  return (
+      <button
+          onClick={onClick}
+          className="cursor-pointer flex gap-4 items-center bg-white px-10 justify-center py-1 rounded-lg border border-gray-100 shadow-sm dark:text-zinc-100 dark:border-zinc-600 w-full md:w-40 md:px-8"
+      >
+        {svg}
+        <span>{text}</span>
+      </button>
+  );
 }
-
-const BtnFoco = styled.button `
-    @media screen and (max-width: 768px) {
-        width: 40%;
-        padding: 4px 8px 4px 8px;
-    }
-`

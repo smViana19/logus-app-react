@@ -55,39 +55,9 @@ export default function Schedule() {
     setCurrentMonth(getMonth(monthIndex));
   }, [monthIndex]);
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    // Verificar o tema armazenado no localStorage ao carregar a página
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
-    } else {
-      document.documentElement.classList.remove('dark');
-      setIsDarkMode(false);
-    }
-  }, []);
-
-  const handleThemeChange = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
       <>
-        <div className="min-h-screen bg-gray-50 relative dark:bg-zinc-800 dark:text-white">
-          <nav className="bg-white border-b border-gray-50 shadow-md shadow-gray-50 dark:bg-zinc-800">
-            <MenuMobile />
-            <NavBar handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
-          </nav>
-
+        <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
           <main>
             <React.Fragment>
               {showEventModal && <EventModal />}

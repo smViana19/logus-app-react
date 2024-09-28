@@ -1,9 +1,10 @@
 import Sidebar from '@/components/Sidebar/Sidebar.jsx';
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header/Header.jsx';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '@/components/Spinners/Spinner.jsx';
+import * as actions from '@/store/modules/auth/actions.js';
 
 const Layout = () => {
 
@@ -15,7 +16,8 @@ const Layout = () => {
   }));
 
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -37,6 +39,11 @@ const Layout = () => {
     }
     setIsDarkMode(!isDarkMode);
   };
+  const handleLogout = e => {
+    e.preventDefault();
+    dispatch(actions.loginFailure());
+    navigate('/');
+  };
 
   if (isLoading) {
     return (
@@ -51,12 +58,14 @@ const Layout = () => {
   }
 
   return (
-      <div>
+      <div >
         <div className="flex">
           <Sidebar />
-          <div className="w-full ml-16 md:ml-56">
-            <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
-            <Outlet />
+          <div className="flex flex-col w-full">
+            <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode}  handleLogout={handleLogout}/>
+            <div className="flex-grow p-4 bg-gray-50">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>

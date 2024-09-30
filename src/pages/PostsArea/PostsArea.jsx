@@ -1,4 +1,4 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SubjectCard from '../../components/CardsContainers/SubjectCard.jsx';
 import bannerMateria from '../../assets/Banners/bannerMaterias.jpg';
 import { toast, ToastContainer } from 'react-toastify';
@@ -6,10 +6,9 @@ import axios from '../../../services/axios.js';
 import { get } from 'lodash';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import Spinner from '@/components/Spinners/Spinner.jsx';
 
 export default function PostsArea() {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const [dropdownVisible, setDropdownVisible] = useState(false);
   const [materias, setMaterias] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [newMateria, setNewMateria] = useState('');
@@ -17,30 +16,27 @@ export default function PostsArea() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editNome, setEditNome] = useState('');
   const [showEditModal, setShowEditModal] = useState(false);
-
-
-  /*    if (isLoading) {
-          return <div>Carregando...</div>;
-         }
-
-   */
-  if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
-
-
+  const [isLoading, setIsLoading] = useState(true);
   const token = useSelector((state) => state.auth.token);
+
+
   useEffect(() => {
     async function fetchMaterias() {
+      setIsLoading(true);
       try {
         const response = await axios.get('http://localhost:3000/materias/', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
         });
+        setIsLoading(false);
         setMaterias(response.data);
       } catch (err) {
+        setIsLoading(false);
         toast.error('Erro ao carregar matérias.');
+
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -91,7 +87,7 @@ export default function PostsArea() {
     localStorage.setItem('materias', JSON.stringify(updatedMaterias));
     setNewMateria('');
     setShowModal(false);
-  };
+  }
 
   const handleDeleteMateria = async (index, id) => {
     try {
@@ -131,18 +127,33 @@ export default function PostsArea() {
     }
   };
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
       <>
         <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
           <main className="pt-16">
             <section className="w-4/5 block mx-auto">
-              <button
-                  className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 "
-                  onClick={() => setShowModal(true)}
-              >
-                Adicionar Matéria
-              </button>
+              {materias.length > 0 ? (
+                  <button
+                      className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 "
+                      onClick={() => setShowModal(true)}
+                  >
+                    Adicionar Matéria
+                  </button>
+              ) : (
+                  <button
+                      className="hidden border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 "
+                      onClick={() => setShowModal(true)}
+                  >
+                    Adicionar Matéria
+                  </button>
+              )}
             </section>
+
+
             <section
                 className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 3xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8 ">
               {materias.length > 0 ? (
@@ -186,7 +197,7 @@ export default function PostsArea() {
                   ))
               ) : (
                   <p className="col-span-4 text-center text-gray-500 dark:text-zinc-200">
-                    Nenhuma matéria criada.
+                    Não foi possivel encontrar as matérias.
                   </p>
               )}
             </section>

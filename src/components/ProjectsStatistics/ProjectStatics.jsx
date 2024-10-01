@@ -62,7 +62,7 @@ const ProjectStatics = () => {
       },
     },
     xaxis: {
-      categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+      categories: ['01 Trimestre', '02 Trimestre', '03 Trimestre', '04 February', '05 February', '06 February', '07 February'],
       labels: {
         show: false,
       },
@@ -100,7 +100,7 @@ const ProjectStatics = () => {
     <div className="w-full bg-white shadow rounded-xl p-4 md:p-6">
       <div className="flex justify-between">
         <div>
-          <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">Grafico de notas</h5>
+          <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">Gráfico de notas</h5>
           <p className="text-base font-normal text-gray-500 dark:text-gray-400">Nota geral</p>
         </div>
         <div

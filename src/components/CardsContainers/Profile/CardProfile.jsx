@@ -2,12 +2,12 @@ import React from 'react';
 import SubCard from './SubCard';
 import img from '../../../assets/logo.png';
 
-const CardProfile = ({ user }) => {
+const CardProfile = ({ user, role }) => {
     return (
         <div className="rounded-2xl bg-white py-8 px-12 shadow-md shadow-gray-200">
             <div className="flex gap-2 mb-10">
                 <span className="w-1.5 bg-purplePrimary rounded-full"></span>
-                <span className=''>Aluno</span>
+                <span className=''>{role}</span>
             </div>
 
             <div className="flex items-center gap-16">

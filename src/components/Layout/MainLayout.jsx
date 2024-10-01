@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '@/components/Spinners/Spinner.jsx';
 import * as actions from '@/store/modules/auth/actions.js';
 
-const Layout = () => {
+const MainLayout = () => {
 
   const { isLoggedIn, isLoading, user, role } = useSelector((state) => ({
     isLoggedIn: state.auth.isLoggedIn,
@@ -73,4 +73,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default MainLayout;

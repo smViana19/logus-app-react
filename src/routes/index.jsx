@@ -18,7 +18,7 @@ import AdminSchoolGrade from '../pages/Admin/AdminGrade/AdminSchoolGrade.jsx';
 import { AtividadeProvider } from '../context/AtividadeContext';
 import Atividade from '../pages/Subject/Atividade';
 import AdminSchool from '../pages/Admin/AdminSchool/AdminSchool.jsx';
-import Layout from '@/components/Layout/Layout.jsx';
+import MainLayout from '@/components/Layout/MainLayout.jsx';
 
 
 export default function Rotas() {
@@ -31,7 +31,7 @@ export default function Rotas() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/registro" element={<Registro />} />
 
-        <Route path="/dashboard" element={<Layout />}>
+        <Route path="/dashboard" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="/dashboard/pomodoro" element={<Pomodoro />} />
           <Route path="/dashboard/perfil" element={<Profile />} />

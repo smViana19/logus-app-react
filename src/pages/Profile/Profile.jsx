@@ -33,7 +33,7 @@ export default function Dashboard() {
         <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:text-white">
 
           <div className="mx-48 my-5">
-            <CardProfile user={user} />
+            <CardProfile user={user} role={role} />
 
             {/* Card 1 */}
             <div onClick={() => toggleCard(1)} className="mt-16">

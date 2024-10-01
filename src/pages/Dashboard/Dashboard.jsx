@@ -21,8 +21,7 @@ export default function Dashboard() {
 
         <div>
           <div className="flex justify-between items-center py-4 mt-5">
-            <h1 className="text-lg font-semibold dark:text-white ml-2">Projetos recentes</h1>
-            <p className="text-sm underline text-indigo-600">Veja todos</p>
+            <h1 className="text-lg font-semibold dark:text-white ml-2">Útlimas atividades</h1>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">

@@ -29,7 +29,7 @@ const SubjectCard = ({ banner, nome, atividades, subject }) => {
                     backgroundPosition: 'center',
                     backgroundSize: 'cover'
                 }}>
-                    <span className='text-2xl font-semibold text-white px-4'>{nome}</span>
+                    <span className='text-2xl font-semibold text-white px-4 dark:text-white'>{nome}</span>
                 </div>
                 <ul className='px-2 mt-2 pb-2'>
                     <li className='font-semibold mb-2'>Pendentes:</li>

@@ -127,9 +127,8 @@ export default function PostsArea() {
     }
   };
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+  if (isLoading) return <Spinner />;
+
 
   return (
       <>

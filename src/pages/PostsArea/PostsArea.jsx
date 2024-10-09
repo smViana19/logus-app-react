@@ -137,14 +137,14 @@ export default function PostsArea() {
             <section className="w-4/5 block mx-auto">
               {materias.length > 0 ? (
                   <button
-                      className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 "
+                      className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 dark:text-white"
                       onClick={() => setShowModal(true)}
                   >
                     Adicionar Matéria
                   </button>
               ) : (
                   <button
-                      className="hidden border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 "
+                      className="hidden border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 dark:text-white "
                       onClick={() => setShowModal(true)}
                   >
                     Adicionar Matéria
@@ -169,7 +169,7 @@ export default function PostsArea() {
                         <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
                           <button
                               onClick={() => setMenuVisible(menuVisible === index ? null : index)}
-                              className="p-2 rounded-full bg-gray-200 dark:bg-zinc-800"
+                              className="p-2 rounded-full bg-gray-200 dark:bg-white"
                               style={{ color: '#000' }}
                           >
                             &#x22EE;
@@ -205,14 +205,14 @@ export default function PostsArea() {
 
         {showModal && (
             <div
-                className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 "
                 onClick={() => setShowModal(false)}>
 
               <div
                   className="bg-white 2xl:w-1/2 py-8 lg:w-4/6 w-full lg:px-16 px-4 rounded-lg shadow-lg lg:text-left dark:bg-zinc-800 max-lg:mx-8 max-md:mx-4"
                   onClick={(e) => e.stopPropagation()}>
 
-                <h2 className="text-lg mb-6 dark:text-white">Adicionar Nova Matéria</h2>
+                <h2 className='text-lg mb-6 dark:text-white'>Adicionar Nova Matéria</h2>
                 <form onSubmit={handleAddMateria}>
                   <input
                       type="text"
@@ -221,7 +221,7 @@ export default function PostsArea() {
                       className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 "
                       placeholder="Nome da matéria"
                   />
-                  <button
+                  <button 
                       type="submit"
                       className="bg-purplePrimary dark:bg-purpleDark text-white py-1.5 px-8 rounded-lg tracking-wide dark:text-zinc-200"
                   >

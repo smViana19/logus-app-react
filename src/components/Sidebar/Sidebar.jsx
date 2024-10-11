@@ -15,7 +15,7 @@ const Sidebar = () => {
     { id: 3, path: '/dashboard/agenda', name: 'Agenda', icon: LuCalendar },
     { id: 4, path: '/dashboard/pomodoro', name: 'Pomodoro', icon: LuClock },
     { id: 5, path: '/dashboard/perfil', name: 'Perfil', icon: LuUserCircle },
-    { id: 6, path: '/dashboard', name: 'Configuraçoes', icon: IoSettingsOutline },
+    { id: 6, path: '/dashboard/settings', name: 'Configuraçoes', icon: IoSettingsOutline },
   ];
   return (
       <div

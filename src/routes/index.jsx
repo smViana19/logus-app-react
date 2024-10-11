@@ -19,7 +19,7 @@ import { AtividadeProvider } from '../context/AtividadeContext';
 import Atividade from '../pages/Subject/Atividade';
 import AdminSchool from '../pages/Admin/AdminSchool/AdminSchool.jsx';
 import MainLayout from '@/components/Layout/MainLayout.jsx';
-
+import Settings from '../pages/Settings/Settings'
 
 export default function Rotas() {
 
@@ -39,6 +39,8 @@ export default function Rotas() {
           <Route path="/dashboard/postagens/:nomeMateria" element={<Subject />} />
           <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<AtividadeWrapper />} />
           <Route path="/dashboard/agenda" element={<Schedule />} />
+          <Route path="/dashboard/settings" element={<Settings />} />
+
         </Route>
 
         <Route path="/admin/dashboard" element={<AdminDashboard />} />

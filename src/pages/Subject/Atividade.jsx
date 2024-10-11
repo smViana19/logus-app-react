@@ -110,7 +110,6 @@ const Atividade = () => {
           </p>
           <span className="text-gray-600">Entrega: {dataEntregaFormatada}</span>
           <p className="mt-8">{data.descricao}asdfasdfasdf</p>{' '}
-          {/*NÃO TA FUNCIONADNO*/}
           {/* MOSTRAR O ARQUIVO AQUI */}
         </div>
       </div>
@@ -119,14 +118,16 @@ const Atividade = () => {
         className="bg-white p-8 rounded mx-16 mt-16 border border-gray-200"
         onSubmit={handleSubmit}
       >
-		<h1 className='mb-8 font-medium'>Enviar Atividade</h1>
+        {' '}
+        {/* DIRETOR E PROFESSOR NÃO PODE TER ESSA PARTE / MOSTRAR AS ATIVIDADES ENTREGUES E QM ENTREGOU P ELES */}
+        <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div className="">
-          <InputFile/>
+          <InputFile />
           <input
             type="file"
             multiple // Adicionar o atributo multiple para aceitar vários arquivos
             onChange={handleFileChange}
-            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700"
+            className="block mt-16 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700"
           />
           {data.files.length > 0 && (
             <p className="mt-2 text-sm text-gray-500">
@@ -143,47 +144,7 @@ const Atividade = () => {
         </button>
       </form>
 
-      {/*
-      <div className="flex justify-between mb-2">
-        <h2 className="text-2xl font-semibold">{nomeAtiv}</h2>
-        <span className="rounded-md px-4 flex items-center font-medium tracking-wide text-sm text-purplePrimary bg-[#EDDDFF]">
-          {data.categoria}
-        </span>
-      </div>
-      <span className="text-sm uppercase text-gray-400"></span>
-
-      <div className="mt-8 flex justify-between">
-        <span>{data.pontos} pontos</span>
-        <span>Data de Entrega: {dataEntregaFormatada}</span>
-      </div>
-
-      <div className="mt-32">{data.detail}</div>
-
-      <form onSubmit={handleSubmit}>
-        <div className="mt-8">
-          <label className="block mb-2 text-sm font-medium text-gray-700">
-            Anexar arquivos:
-          </label>
-          <input
-            type="file"
-            multiple // Adicionar o atributo multiple para aceitar vários arquivos
-            onChange={handleFileChange}
-            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700"
-          />
-          {data.files.length > 0 && (
-            <p className="mt-2 text-sm text-gray-500">
-              Arquivos selecionados:{' '}
-              {data.files.map((file) => file.name).join(', ')}
-            </p>
-          )}
-        </div>
-        <button
-          type="submit"
-          className="mt-8 px-4 py-2 bg-purplePrimary text-white rounded"
-        >
-          Enviar
-        </button>
-      </form>*/}
+     
     </div>
   );
 };

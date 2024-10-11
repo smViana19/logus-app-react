@@ -122,7 +122,7 @@ const Atividade = () => {
         {/* DIRETOR E PROFESSOR NÃO PODE TER ESSA PARTE / MOSTRAR AS ATIVIDADES ENTREGUES E QM ENTREGOU P ELES */}
         <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div className="">
-          <InputFile />
+         {/* <InputFile onChange={handleFileChange}/>*/}
           <input
             type="file"
             multiple // Adicionar o atributo multiple para aceitar vários arquivos

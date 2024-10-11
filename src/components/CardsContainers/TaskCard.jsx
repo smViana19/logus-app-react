@@ -104,13 +104,13 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
             <Link 
                 to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
                 state={{ categoria, dataEntrega, pontos, detail, file }} 
-                className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block"
+                className="bg-white border border-gray-100 py-4 px-8 rounded-md mb-4 block"
                 onClick={handleSelectMaterial}
             >
                 <div className='md:flex md:justify-between mb-2'>
-                    <div className='flex gap-4'>
-                        <span className='text-lg font-medium'>{nome}</span>
-                        <span className='rounded-md px-4 py-1 font-medium tracking-wide text-sm text-purple-700 bg-purple-200'>{categoria}</span>
+                    <div className='flex gap-6'>
+                        <span className='font-medium first-letter:uppercase'>{nome}</span>
+                        <span className='rounded px-4 py-1 font-medium text-xs text-purple-700 bg-purple-200'>{categoria}</span>
                     </div>
                     <span>Data de Postagem: {dataPostagem}</span>
                 </div>
@@ -118,7 +118,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                 <div className='flex flex-col gap-1 py-2'>
                     <span><span className='pr-2 tracking-wide'>{pontos}</span> pontos</span>
                     {dataEntregaFormatada && <span>Data de Entrega: {dataEntregaFormatada}</span>}
-                </div>
+                </div> {/* NÃO TA FUNCIONANDO?? */}
 
                 {file && (
                     <div className='mt-2 p-2 border border-gray-300 rounded-md'>

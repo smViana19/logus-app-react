@@ -72,7 +72,7 @@ const Atividade = () => {
   };
 
   return (
-      <div className="w-3/4 mx-auto mt-32">
+      <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
         <div className="flex justify-between mb-2">
           <h2 className="text-2xl font-semibold">{nomeAtiv}</h2>
           <span

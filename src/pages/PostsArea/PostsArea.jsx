@@ -135,70 +135,113 @@ export default function PostsArea() {
         <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
           <main className="pt-16">
             <section className="w-4/5 block mx-auto">
-              {materias.length > 0 ? (
-                  <button
-                      className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 dark:text-white"
-                      onClick={() => setShowModal(true)}
-                  >
-                    Adicionar Matéria
-                  </button>
-              ) : (
-                  <button
-                      className="hidden border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 dark:text-white "
-                      onClick={() => setShowModal(true)}
-                  >
-                    Adicionar Matéria
-                  </button>
-              )}
+              <button
+                  className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 dark:text-white"
+                  onClick={() => setShowModal(true)}
+              >
+                Adicionar Matéria
+              </button>
+              {/*{materias.length > 0 ? (*/}
+              {/*    <button*/}
+              {/*        className="border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 dark:text-white"*/}
+              {/*        onClick={() => setShowModal(true)}*/}
+              {/*    >*/}
+              {/*      Adicionar Matéria*/}
+              {/*    </button>*/}
+              {/*) : (*/}
+              {/*    <button*/}
+              {/*        className="hidden border border-gray-300 px-16 xl:px-24 max-lg:w-full py-2 rounded-lg mt-4 dark:text-white "*/}
+              {/*        onClick={() => setShowModal(true)}*/}
+              {/*    >*/}
+              {/*      Adicionar Matéria*/}
+              {/*    </button>*/}
+              {/*)}*/}
             </section>
 
 
-            <section
-                className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 3xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8 ">
-              {materias.length > 0 ? (
-                  materias.map((materia, index) => (
-                      <div key={index} className="relative">
-                        <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
-                          <SubjectCard
-                              banner={bannerMateria}
-                              nome={materia.nome}
-                              atividades={materia.atividades}
-                              subject={materia}
-                          />
-                        </Link>
-                        <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
-                          <button
-                              onClick={() => setMenuVisible(menuVisible === index ? null : index)}
-                              className="p-2 rounded-full bg-gray-200 dark:bg-white"
-                              style={{ color: '#000' }}
-                          >
-                            &#x22EE;
-                          </button>
-                          {menuVisible === index && (
-                              <div
-                                  className="absolute top-10 right-2 w-24 bg-white border border-gray-200 dark:border-zinc-600 rounded-lg shadow-lg z-50">
-                                <button
-                                    onClick={() => handleEditMateria(index)}
-                                    className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:hover:bg-zinc-900 dark:text-zinc-100"
-                                >
-                                  Editar
-                                </button>
-                                <button
-                                    onClick={() => handleDeleteMateria(index, materia.id)}
-                                    className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:text-zinc-100 dark:hover:bg-zinc-900"
-                                >
-                                  Excluir
-                                </button>
-                              </div>
-                          )}
-                        </div>
+            <section className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 3xl:grid-cols-4 gap-x-8 gap-y-16 w-4/5 justify-center mx-auto mt-8 ">
+              {materias.map((materia, index) => (
+              <div key={index} className="relative">
+                <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
+                  <SubjectCard
+                      banner={bannerMateria}
+                      nome={materia.nome}
+                      atividades={materia.atividades}
+                      subject={materia}
+                  />
+                </Link>
+                <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
+                  <button
+                      onClick={() => setMenuVisible(menuVisible === index ? null : index)}
+                      className="p-2 rounded-full bg-gray-200 dark:bg-white"
+                      style={{ color: '#000' }}
+                  >
+                    &#x22EE;
+                  </button>
+                  {menuVisible === index && (
+                      <div
+                          className="absolute top-10 right-2 w-24 bg-white border border-gray-200 dark:border-zinc-600 rounded-lg shadow-lg z-50">
+                        <button
+                            onClick={() => handleEditMateria(index)}
+                            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:hover:bg-zinc-900 dark:text-zinc-100"
+                        >
+                          Editar
+                        </button>
+                        <button
+                            onClick={() => handleDeleteMateria(index, materia.id)}
+                            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:text-zinc-100 dark:hover:bg-zinc-900"
+                        >
+                          Excluir
+                        </button>
                       </div>
-                  ))
-              ) : (
-                  <p className="col-span-4 text-center text-gray-500 dark:text-zinc-200">
-                    Não foi possivel encontrar as matérias.
-                  </p>
-              )}
+                  )}
+                </div>
+              </div>
+              ))}
+              {/*{materias.length > 0 ? (*/}
+              {/*    materias.map((materia, index) => (*/}
+              {/*        <div key={index} className="relative">*/}
+              {/*          <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>*/}
+              {/*            <SubjectCard*/}
+              {/*                banner={bannerMateria}*/}
+              {/*                nome={materia.nome}*/}
+              {/*                atividades={materia.atividades}*/}
+              {/*                subject={materia}*/}
+              {/*            />*/}
+              {/*          </Link>*/}
+              {/*          <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">*/}
+              {/*            <button*/}
+              {/*                onClick={() => setMenuVisible(menuVisible === index ? null : index)}*/}
+              {/*                className="p-2 rounded-full bg-gray-200 dark:bg-white"*/}
+              {/*                style={{ color: '#000' }}*/}
+              {/*            >*/}
+              {/*              &#x22EE;*/}
+              {/*            </button>*/}
+              {/*            {menuVisible === index && (*/}
+              {/*                <div*/}
+              {/*                    className="absolute top-10 right-2 w-24 bg-white border border-gray-200 dark:border-zinc-600 rounded-lg shadow-lg z-50">*/}
+              {/*                  <button*/}
+              {/*                      onClick={() => handleEditMateria(index)}*/}
+              {/*                      className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:hover:bg-zinc-900 dark:text-zinc-100"*/}
+              {/*                  >*/}
+              {/*                    Editar*/}
+              {/*                  </button>*/}
+              {/*                  <button*/}
+              {/*                      onClick={() => handleDeleteMateria(index, materia.id)}*/}
+              {/*                      className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:text-zinc-100 dark:hover:bg-zinc-900"*/}
+              {/*                  >*/}
+              {/*                    Excluir*/}
+              {/*                  </button>*/}
+              {/*                </div>*/}
+              {/*            )}*/}
+              {/*          </div>*/}
+              {/*        </div>*/}
+              {/*    ))*/}
+              {/*) : (*/}
+              {/*    <p className="col-span-4 text-center text-gray-500 dark:text-zinc-200">*/}
+              {/*      Não foi possivel encontrar as matérias.*/}
+              {/*    </p>*/}
+              {/*)}*/}
             </section>
           </main>
         </div>

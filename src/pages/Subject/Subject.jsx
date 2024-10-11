@@ -136,12 +136,11 @@ const Subject = () => {
         <div className="min-h-screen bg-gray-50">
           <nav className="bg-white border-b border-gray-100">
             <MenuMobile />
-            <Navbar handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
           </nav>
 
-          <main className="md:px-16 lg:px-32 xl:px-64 py-16">
+          <main className="md:px-16 mt-4 lg:px-32 xl:px-64 py-16">
             <div className="grid grid-cols-2 gap-4">
-              <div className="col-span-1 bg-purple-600 h-full flex items-end rounded-xl">
+              <div className="col-span-1 bg-purple-600 h-full flex items-end rounded-md">
                 <h1 className="text-white text-3xl p-2 md:p-6 first-letter:uppercase">
                   {nomeMateria}
                 </h1>

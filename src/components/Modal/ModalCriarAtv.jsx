@@ -129,7 +129,7 @@ const Modal = ({ showModal, setShowModal }) => {
                         }}
                     >
                         <div
-                            className="bg-white py-8 xl:w-3/5 px-16 rounded-lg shadow-lg"
+                            className="bg-white py-8 xl:w-3/5 px-16 rounded-md shadow-lg"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <h2 className="text-xl mb-8 font-medium">Criar Material</h2>
@@ -139,7 +139,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                     type="text"
                                     value={nome}
                                     onChange={(e) => setNome(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                    className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
                                     placeholder="Nome do material"
                                 />
                             </div>
@@ -150,7 +150,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                     <select
                                         value={categoria}
                                         onChange={(e) => setCategoria(e.target.value)}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
                                     >
                                         <option value="" disabled>
                                             Selecione a Categoria
@@ -169,7 +169,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                         onChange={(e) => setPontos(e.target.value)}
                                         onFocus={handleFocus}
                                         onBlur={handleBlur}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
                                         type="text"
                                     />
                                 </div>
@@ -181,7 +181,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                     placeholder=""
                                     value={detail}
                                     onChange={(e) => setDetail(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-lg h-48 px-4 py-2 outline-none mt-1"
+                                    className="w-full border border-gray-300 rounded-md h-48 px-4 py-2 outline-none mt-1"
                                 ></textarea>
                             </div>
 
@@ -211,7 +211,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                         type="date"
                                         value={dataEntrega}
                                         onChange={(e) => setDataEntrega(e.target.value)}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none"
                                     />
                                     <input
                                         type="time"
@@ -219,7 +219,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                         onChange={(e) => setHoraEntrega(e.target.value)}
                                         onFocus={handleHoraFocus}
                                         onBlur={handleHoraBlur}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none"
                                     />
                                 </div>
                             )}
@@ -227,7 +227,7 @@ const Modal = ({ showModal, setShowModal }) => {
                             <div className="flex justify-end mt-6">
                                 <button
                                     onClick={handleAddAtividade}
-                                    className="bg-purple-600 text-white py-2 px-6 rounded-lg hover:bg-purple-700"
+                                    className="bg-purple-600 text-white py-2 px-6 rounded-md hover:bg-purple-700"
                                 >
                                     Adicionar
                                 </button>

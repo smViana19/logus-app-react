@@ -37,7 +37,7 @@ export default function Dashboard() {
 
             {/* Card 1 */}
             <div onClick={() => toggleCard(1)} className="mt-16">
-              <div className="bg-purplePrimary dark:bg-purpleDark dark:text-white px-8 py-3 rounded-lg text-white flex justify-between items-center">
+              <div className="bg-purplePrimary dark:bg-purpleDark dark:text-white px-8 py-3 rounded text-white flex justify-between items-center">
                 <span>1º Trimestre</span>
                 <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512">
                   <path className="fill-white"
@@ -54,7 +54,7 @@ export default function Dashboard() {
 
             {/* Card 2 */}
             <div onClick={() => toggleCard(2)} className="mt-8 ">
-              <div className="bg-purplePrimary dark:bg-purpleDark dark:text-white px-8 py-3 rounded-lg text-white flex justify-between items-center">
+              <div className="bg-purplePrimary dark:bg-purpleDark dark:text-white px-8 py-3 rounded text-white flex justify-between items-center">
                 <span>2º Trimestre</span>
                 <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512">
                   <path className="fill-white" d={openCardId === 2 ? 'M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z' : 'M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'} />
@@ -68,8 +68,8 @@ export default function Dashboard() {
             </div>
 
             <div onClick={() => toggleCard(3)} className="mt-8 ">
-              <div className="bg-purplePrimary dark:bg-purpleDark dark:text-white px-8 py-3 rounded-lg text-white flex justify-between items-center">
-                <span>2º Trimestre</span>
+              <div className="bg-purplePrimary dark:bg-purpleDark dark:text-white px-8 py-3 rounded text-white flex justify-between items-center">
+                <span>3º Trimestre</span>
                 <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512">
                   <path className="fill-white"
                         d={openCardId === 3 ? 'M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z' : 'M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'} />

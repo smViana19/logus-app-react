@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InputFile = ({onChange}) => {
+const InputFile = ({onChange, nameFile}) => {
   const [dragging, setDragging] = useState(false);
 
   const handleDragOver = (e) => {
@@ -57,7 +57,7 @@ const InputFile = ({onChange}) => {
           </div>
           <div class="grid gap-2">
             <h4 class="text-center text-gray-900 text-sm font-medium leading-snug mb-2">
-              Drag and Drop your file here or
+              Arraste ou solte seu arquivo
             </h4>
             <div class="flex items-center justify-center">
               <label>
@@ -91,11 +91,11 @@ const InputFile = ({onChange}) => {
                 </g>
               </svg>
               <div class="grid gap-1">
-                <h4 class="text-gray-900 text-sm font-normal font-['Inter'] leading-snug">
-                  nome do documento
+                <h4 class="text-gray-900 text-sm  leading-snug">
+                  {nameFile}
                 </h4>
-                <h5 class="text-gray-400   text-xs font-normal font-['Inter'] leading-[18px]">
-                  Upload complete
+                <h5 class="text-gray-400 text-xs leading-[18px]">
+                  Upload completo
                 </h5>
               </div>
             </div>

@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import NavLink from '../../components/Navs/NavLink';
-import Navbar from '@/components/Navs/NavBar.jsx';
-import Logo from '../../components/Logo/Logo.jsx';
-import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
+import { useParams } from 'react-router-dom';
 import SubjectFiltersButton from '../../components/Buttons/SubjectFiltersButton.jsx';
 import TaskCard from '../../components/CardsContainers/TaskCard.jsx';
 import { AtividadeProvider } from '../../context/AtividadeContext';
@@ -12,7 +8,7 @@ import Modal from '../../components/Modal/ModalCriarAtv';
 import MenuMobile from '../../components/Navs/MenuMobile';
 import axios from '../../../services/axios';
 import { get } from 'lodash';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 const Subject = () => {
@@ -76,7 +72,7 @@ const Subject = () => {
       setNewDetalhes('');
       setNewDataEntrega('');
       setShowModal(false);
-      toast.success('Atividade adicionada com sucesso!');
+      toast.success('SendTaskSubject adicionada com sucesso!');
     } catch (err) {
       const errors = get(err, 'response.data.errors', []);
       errors.forEach(error => toast.error(error));
@@ -92,9 +88,9 @@ const Subject = () => {
       });
       setAtividades((prevAtividades) => prevAtividades.filter((_, i) => i !== index));
       console.log('Dados retornados:', response.data);
-      toast.success('Atividade excluída com sucesso!');
+      toast.success('SendTaskSubject excluída com sucesso!');
     } catch (err) {
-      toast.error('Erro ao excluir Atividade.');
+      toast.error('Erro ao excluir SendTaskSubject.');
     }
   };
 

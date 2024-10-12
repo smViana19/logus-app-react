@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import InputFile from '../../components/Inputs/InputFile';
 
-const Atividade = () => {
+const SendTaskSubject = () => {
   const { nomeAtiv } = useParams();
   const location = useLocation();
   const { categoria, data_entrega, pontos, detail, descricao } =
@@ -122,19 +122,7 @@ const Atividade = () => {
         {/* DIRETOR E PROFESSOR NÃO PODE TER ESSA PARTE / MOSTRAR AS ATIVIDADES ENTREGUES E QM ENTREGOU P ELES */}
         <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div className="">
-         {/* <InputFile onChange={handleFileChange}/>*/}
-          <input
-            type="file"
-            multiple // Adicionar o atributo multiple para aceitar vários arquivos
-            onChange={handleFileChange}
-            className="block mt-16 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purplePrimary file:text-white hover:file:bg-purple-700"
-          />
-          {data.files.length > 0 && (
-            <p className="mt-2 text-sm text-gray-500">
-              Arquivos selecionados:{' '}
-              {data.files.map((file) => file.name).join(', ')}
-            </p>
-          )}
+          <InputFile onChange={handleFileChange} nameFile={data.files.length > 0 ? data.files.map((file) => file.name).join(', ') : ''} />
         </div>
         <button
           type="submit"
@@ -149,4 +137,4 @@ const Atividade = () => {
   );
 };
 
-export default Atividade;
+export default SendTaskSubject;

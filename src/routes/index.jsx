@@ -16,7 +16,7 @@ import Subject from '../pages/Subject/Subject.jsx';
 import Profile from '../pages/Profile/Profile.jsx';
 import AdminSchoolGrade from '../pages/Admin/AdminGrade/AdminSchoolGrade.jsx';
 import { AtividadeProvider } from '../context/AtividadeContext';
-import Atividade from '../pages/Subject/Atividade';
+import SendTaskSubject from '../pages/Subject/SendTaskSubject.jsx';
 import AdminSchool from '../pages/Admin/AdminSchool/AdminSchool.jsx';
 import MainLayout from '@/components/Layout/MainLayout.jsx';
 import Settings from '../pages/Settings/Settings'
@@ -57,7 +57,7 @@ export default function Rotas() {
 const AtividadeWrapper = () => {
   return (
       <AtividadeProvider>
-        <Atividade />
+        <SendTaskSubject />
       </AtividadeProvider>
   );
 };

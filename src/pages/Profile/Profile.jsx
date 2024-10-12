@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import NavLink from '../../components/Navs/NavLink.jsx';
-import Navbar from '@/components/Navs/NavBar.jsx';
-import Logo from '../../components/Logo/Logo.jsx';
-import { Link } from 'react-router-dom';
-import LogoutButton from '../../components/Buttons/LogoutButton.jsx';
-import MenuMobile from '../../components/Navs/MenuMobile.jsx';
 import CardProfile from '../../components/CardsContainers/Profile/CardProfile.jsx';
 import RowNota from '../../components/CardsContainers/Profile/RowNota.jsx';
 

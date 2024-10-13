@@ -1,7 +1,5 @@
 import React from 'react';
-import ProjectStatics from '@/components/ProjectsStatistics/ProjectStatics.jsx';
-import Plataform from '@/components/Plataform/Plataform.jsx';
-import ProjectCard from '@/components/CardsContainers/ProjectCard.jsx';
+
 
 export default function Dashboard() {
   const projects = [

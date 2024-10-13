@@ -11,17 +11,8 @@ export default function AdminDashboard() {
     return <Navigate to="/login" replace />;
   }
   return (
-      <>
-        <div className="min-h-screen w-screen bg-gray-50 flex">
-          <MenuAdmin
-              selectDashboard={'bg-[#B4ADEA] border-r-2 border-l-2 border-purplePrimary'}
-              textSelectedDashboard={'text-purplePrimary'}
-              fillSelectedDashobard={'#820ad1'}
-          />
-          <main className="flex-1 p-4">
-            <AdminCard />
-          </main>
-        </div>
-      </>
+    <div className='p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300'>
+      aaa
+    </div>
   );
 }

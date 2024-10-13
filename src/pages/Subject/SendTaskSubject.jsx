@@ -80,9 +80,9 @@ const SendTaskSubject = () => {
   };
 
   return (
-    <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
-      <div className="grid grid-cols-[50px_1fr] items-start gap-8 mx-16">
-        <div className="bg-gray-200 rounded-full p-3 flex justify-center items-center">
+    <div className="sm:p-5 min-h-screen  sm:ml-20 lg:ml-64 mt-8  md:mt-16  md:ml-64 lg:mt-8 transition-all duration-300 flex justify-between max-sm:mt-20 sm:justify-around flex-col">
+      <div className="grid sm:grid-cols-[50px_1fr] items-start gap-8 mx-20 sm:mx-16">
+        <div className="bg-gray-200 rounded-full sm:flex hidden p-2 justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="20"
@@ -101,7 +101,7 @@ const SendTaskSubject = () => {
             <h1 className="first-letter:uppercase text-xl font-medium mb-2">
               {nomeAtiv}
             </h1>
-            <span className="rounded-md px-4 flex items-center font-medium text-sm text-purplePrimary bg-[#EDDDFF]">
+            <span className="rounded-md sm:px-4 px-2 md:h-8 flex items-center font-medium sm:text-sm text-xs text-purplePrimary bg-[#EDDDFF]">
               {data.categoria}
             </span>
           </div>
@@ -115,24 +115,29 @@ const SendTaskSubject = () => {
       </div>
 
       <form
-        className="bg-white p-8 rounded mx-16 mt-16 border border-gray-200"
+        className="bg-white p-8 max-sm:ml-14 rounded border border-gray-100 "
         onSubmit={handleSubmit}
       >
         {' '}
         {/* DIRETOR E PROFESSOR NÃO PODE TER ESSA PARTE / MOSTRAR AS ATIVIDADES ENTREGUES E QM ENTREGOU P ELES */}
         <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div className="">
-          <InputFile onChange={handleFileChange} nameFile={data.files.length > 0 ? data.files.map((file) => file.name).join(', ') : ''} />
+          <InputFile
+            onChange={handleFileChange}
+            nameFile={
+              data.files.length > 0
+                ? data.files.map((file) => file.name).join(', ')
+                : ''
+            }
+          />
         </div>
         <button
           type="submit"
-          className="mt-8 px-4 py-2 bg-purplePrimary text-white rounded"
+          className="sm:mt-8 mt-4 sm:px-32 px-8 max-sm:w-full sm:py-2 py-1 bg-purplePrimary text-white rounded"
         >
           Enviar
         </button>
       </form>
-
-     
     </div>
   );
 };

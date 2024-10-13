@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import MyRoute from './MyRoute'; // Se você ainda quiser usar MyRoute
 import Login from '../pages/Auth/Login/Login';
 import LandingPage from '../pages/LandingPage/LandingPage.jsx';
-
 import Registro from '../pages/Auth/Registro/Registro';
 import Dashboard from '../pages/Dashboard/Dashboard.jsx';
 import ForgotPassword from '../pages/Auth/ForgotPassword/ForgotPassword.jsx';
@@ -14,12 +13,14 @@ import PostsArea from '../pages/PostsArea/PostsArea.jsx';
 import AdminDashboard from '../pages/Admin/AdminDashboard/AdminDashboard.jsx';
 import Subject from '../pages/Subject/Subject.jsx';
 import Profile from '../pages/Profile/Profile.jsx';
-import AdminSchoolGrade from '../pages/Admin/AdminGrade/AdminSchoolGrade.jsx';
 import { AtividadeProvider } from '../context/AtividadeContext';
 import SendTaskSubject from '../pages/Subject/SendTaskSubject.jsx';
-import AdminSchool from '../pages/Admin/AdminSchool/AdminSchool.jsx';
 import MainLayout from '@/components/Layout/MainLayout.jsx';
 import Settings from '../pages/Settings/Settings'
+import AdminInstitutional from '../pages/Admin/AdminInstitutional/AdminInstitutional';
+import AdminReport from '../pages/Admin/AdminReport/AdminReport';
+import AdminTeachers from '../pages/Admin/AdminTeachers/AdminTeachers';
+import AdminStudents from '../pages/Admin/AdminStudents/AdminStudents';
 
 export default function Rotas() {
 
@@ -44,8 +45,10 @@ export default function Rotas() {
       </Route>
       <Route path='/admin' element={<MainLayout />}>
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/notas/grade" element={<AdminSchool />} />
-        <Route path="/admin/notas" element={<AdminSchoolGrade />} />
+        <Route path="/admin/alunos" element={<AdminStudents />} />
+        <Route path="/admin/professores" element={<AdminTeachers />} />
+        <Route path="/admin/relatorios" element={<AdminReport />} />
+        <Route path="/admin/institucional" element={<AdminInstitutional />} />
       </Route>
 
 

@@ -47,9 +47,9 @@ const MainLayout = () => {
 
   if (isLoading) {
     return (
-        <div>
-          <Spinner />
-        </div>
+      <div>
+        <Spinner />
+      </div>
     );
   }
 
@@ -58,17 +58,17 @@ const MainLayout = () => {
   }
 
   return (
-      <div >
-        <div className="flex">
-          <Sidebar />
-          <div className="flex flex-col w-full">
-            <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode}  handleLogout={handleLogout}/>
-            <div className="flex-grow p-4 bg-gray-50">
-              <Outlet />
-            </div>
+    <div >
+      <div className="flex">
+        <Sidebar role={role} />
+        <div className="flex flex-col w-full">
+          <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} handleLogout={handleLogout} />
+          <div className="flex-grow p-4 bg-gray-50">
+            <Outlet />
           </div>
         </div>
       </div>
+    </div>
 
   );
 };

@@ -77,7 +77,7 @@ export default function Pomodoro() {
           className="min-h-screen bg-gray-50 relative sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
         <main>
           <ContainerButtons
-              className="flex flex-col md:flex-row justify-around mt-8 rounded-lg w-11/12 md:w-2/4 lg:w-1/3 xl:w-1/4 mx-auto space-y-4 md:space-y-0 md:space-x-2  ">
+              className="flex justify-center gap-8 ">
             <OpenModalPomodoroButton
                 onClick={abrirModal}
                 svg={
@@ -119,15 +119,15 @@ export default function Pomodoro() {
                 value={(modoDescanso ? TEMPO_DESCANSO : TEMPO_TRABALHO - tempoDecorrido) / (modoDescanso ? TEMPO_DESCANSO : TEMPO_TRABALHO) * 100}
                 text={formatarTempo(tempoDecorrido)}
             />
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
               <DefaultButton
-                  className="start-btn py-3 rounded-xl text-xl col-span-4 dark:text-zinc-100 lg:text-2xl lg:py-4 min-w-[200px] w-full md:w-auto"
+                  className="start-btn rounded-xl text-lg col-span-4 dark:text-zinc-100 lg:text-xl lg:py-3 min-w-[240px] w-full md:w-auto"
                   onClick={alternarCronometro}
               >
                 {cronometroExecutando ? 'Pause' : modoDescanso ? 'Começar Descanso' : 'Start'}
               </DefaultButton>
               <DefaultButton
-                  className="start-btn py-3 rounded-xl text-xl col-span-4 dark:text-zinc-100 lg:text-2xl lg:py-4 min-w-[200px] w-full md:w-auto"
+                  className="start-btn py-3 rounded-xl text-lg col-span-4 dark:text-zinc-100 lg:text-xl lg:py-3 min-w-[240px] w-full md:w-auto"
                   onClick={resetarCronometro}
               >
                 Reset

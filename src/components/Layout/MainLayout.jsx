@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '@/components/Spinners/Spinner.jsx';
 import * as actions from '@/store/modules/auth/actions.js';
 
-const Layout = () => {
+const MainLayout = () => {
 
   const { isLoggedIn, isLoading, user, role } = useSelector((state) => ({
     isLoggedIn: state.auth.isLoggedIn,
@@ -47,9 +47,9 @@ const Layout = () => {
 
   if (isLoading) {
     return (
-        <div>
-          <Spinner />
-        </div>
+      <div>
+        <Spinner />
+      </div>
     );
   }
 
@@ -58,19 +58,19 @@ const Layout = () => {
   }
 
   return (
-      <div >
-        <div className="flex">
-          <Sidebar />
-          <div className="flex flex-col w-full">
-            <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode}  handleLogout={handleLogout}/>
-            <div className="flex-grow p-4 bg-gray-50">
-              <Outlet />
-            </div>
+    <div >
+      <div className="flex">
+        <Sidebar role={role} />
+        <div className="flex flex-col w-full">
+          <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} handleLogout={handleLogout} />
+          <div className="flex-grow sm:p-4 bg-gray-50">
+            <Outlet />
           </div>
         </div>
       </div>
+    </div>
 
   );
 };
 
-export default Layout;
+export default MainLayout;

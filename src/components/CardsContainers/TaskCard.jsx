@@ -4,6 +4,7 @@ import ModalEditarAtv from '../../components/Modal/ModalEditarAtv';
 import { useDispatch } from 'react-redux';
 import { selectMaterial } from '@/store/modules/submit/action'; // Importar a action correta para selecionar a atividade
 import { useSelector } from 'react-redux';
+import { selectMaterial } from '@/store/modules/submit/action.js';
 
 const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit, material }) => {
     const { nomeMateria } = useParams();
@@ -20,6 +21,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     };
     const idAtividade = material.id
  
+    };
 
     const modalRef = useRef(null);
 
@@ -27,6 +29,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         console.log(material.id)
         event.preventDefault();
         setShowModalOptions(true);
+        console.log("Clicou com botão direito.");
     };
 
     const handleCloseModal = () => {
@@ -63,6 +66,22 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         }
     };
 
+
+   /* const updatedAtvs = [
+        ...atividade,
+        {
+            nome: newAtividade,
+            categoria: '',
+            dataEntrega: '',
+            pontos: '',
+            detail: '',
+            file: null
+        },
+    ];
+
+    
+*/
+    console.log("Data de Entrega:", dataEntrega);
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
@@ -72,13 +91,18 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     });
 
     const dataEntregaFormatada = dataEntrega ? 
-        new Date(dataEntrega).toLocaleString('pt-BR', {
-            day: '2-digit',
-            month: '2-digit',
-            year: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit'
-        }) : "";
+    (() => {
+        const data = new Date(dataEntrega);
+        return isNaN(data.getTime()) ? "Data de entrega inválida" : 
+            data.toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+    })() 
+    : "Data de entrega não definida";
 
     return (
         <div onContextMenu={handleRightClick} className="relative">
@@ -95,13 +119,13 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
             <Link 
                 to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
                 state={{ categoria, dataEntrega, pontos, detail, file }} 
-                className="bg-cinzaPrincipal py-4 px-8 rounded-lg mb-4 block"
+                className="bg-white border border-gray-100 py-4 px-8 rounded-md mb-4 block"
                 onClick={handleSelectMaterial}
             >
                 <div className='md:flex md:justify-between mb-2'>
-                    <div className='flex gap-4'>
-                        <span className='text-lg font-medium'>{nome}</span>
-                        <span className='rounded-md px-4 py-1 font-medium tracking-wide text-sm text-purple-700 bg-purple-200'>{categoria}</span>
+                    <div className='flex gap-6'>
+                        <span className='font-medium first-letter:uppercase'>{nome}</span>
+                        <span className='rounded px-4 py-1 font-medium text-xs text-purple-700 bg-purple-200'>{categoria}</span>
                     </div>
                     <span>Data de Postagem: {dataPostagem}</span>
                 </div>
@@ -135,7 +159,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         </div>
     );
     
-};
+
 
 
 export default TaskCard;

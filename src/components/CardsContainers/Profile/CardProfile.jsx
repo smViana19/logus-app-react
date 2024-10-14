@@ -2,12 +2,12 @@ import React from 'react';
 import SubCard from './SubCard';
 import img from '../../../assets/logo.png';
 
-const CardProfile = ({ user }) => {
+const CardProfile = ({ user, role }) => {
     return (
-        <div className="rounded-2xl bg-whitepy-8 px-12 shadow-md shadow-gray-200 bg-white py-8">
+        <div className="rounded-md bg-white py-8 px-12 shadow-md shadow-gray-200">
             <div className="flex gap-2 mb-10">
                 <span className="w-1.5 bg-purplePrimary rounded-full"></span>
-                <span>Aluno</span>
+                <span className=''>{role}</span>
             </div>
 
             <div className="flex items-center gap-16">
@@ -21,12 +21,13 @@ const CardProfile = ({ user }) => {
                 </svg>
 
                 <div className="">
-                    <p className="text-xl">{user}</p>
+                    <p className="text-xl first-letter:uppercase">{user}</p>
 
                     <div className="flex gap-16 mt-4">
                         <SubCard />
                         <SubCard />
                         <SubCard />
+                        
                     </div>
                 </div>
             </div>

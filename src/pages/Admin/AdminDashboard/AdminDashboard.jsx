@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import InfoCard from '../../../components/CardsContainers/InfoCard';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminDashboard() {
+  const navigate = useNavigate()
   const user = useSelector((state) => state.auth.user?.nome);
   const projects = [
     {
@@ -42,7 +44,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
         {projects &&
           projects.map((project, index) => (
-            <InfoCard key={index} info={project} />
+            <InfoCard key={index} info={project} onClick={() => navigate(project.path)} />
           ))}
       </div>
     </div>

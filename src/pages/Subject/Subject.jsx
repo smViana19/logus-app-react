@@ -11,9 +11,7 @@ import { get } from 'lodash';
 import { toast } from 'react-toastify';
 
 const Subject = () => {
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const token = useSelector((state) => state.auth.token);
-    const [dropdownVisible, setDropdownVisible] = useState(false);
     const { nomeMateria } = useParams();
     const [atividades, setAtividades] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -63,36 +61,36 @@ const Subject = () => {
         }
     };
 
-  const filteredAtividades = filterStatus === 'all'
-      ? atividades
-      : atividades.filter((atividade) => {
-        console.log('Filtering atividade:', atividade);
-        return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
-      });
-  const [isDarkMode, setIsDarkMode] = useState(false);
+    const filteredAtividades = filterStatus === 'all'
+        ? atividades
+        : atividades.filter((atividade) => {
+            console.log('Filtering atividade:', atividade);
+            return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
+        });
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useEffect(() => {
-    // Verificar o tema armazenado no localStorage ao carregar a página
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
-    } else {
-      document.documentElement.classList.remove('dark');
-      setIsDarkMode(false);
-    }
-  }, []);
+    useEffect(() => {
+        // Verificar o tema armazenado no localStorage ao carregar a página
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setIsDarkMode(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setIsDarkMode(false);
+        }
+    }, []);
 
-  const handleThemeChange = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    setIsDarkMode(!isDarkMode);
-  };
+    const handleThemeChange = () => {
+        if (isDarkMode) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        setIsDarkMode(!isDarkMode);
+    };
 
 
     return (

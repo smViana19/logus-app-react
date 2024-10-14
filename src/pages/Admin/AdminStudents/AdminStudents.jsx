@@ -76,7 +76,7 @@ const AdminStudents = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const token = useSelector((state) => state.auth.token);
     useEffect(() => {
-        const fetchMaterias = async () => {
+        const fetchStudents = async () => {
             try {
                 const response = await axios.get('/users/', {
                     headers: {
@@ -89,7 +89,7 @@ const AdminStudents = () => {
                 toast.error("Erro ao carregar alunos.")
             }
         };
-        fetchMaterias();
+        fetchStudents();
     }, []);
 
     const indexOfLastStudent = currentPage * PAGE_SIZE;

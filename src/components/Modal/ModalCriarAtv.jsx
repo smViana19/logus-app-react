@@ -3,8 +3,7 @@ import { AtividadeContext } from '../../context/AtividadeContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 
 const Modal = ({ showModal, setShowModal }) => {
     const {
@@ -54,7 +53,6 @@ const Modal = ({ showModal, setShowModal }) => {
             ? null
             : `${dataEntrega}T${horaEntrega}`;
 
-
         try {
             const response = await axios.post(
                 'http://localhost:3000/materias/material/',
@@ -73,11 +71,11 @@ const Modal = ({ showModal, setShowModal }) => {
                 },
             );
 
-
             console.log('Dados retornados:', response.data);
 
             const createdAtividade = response.data;
             setAtividades([...atividades, createdAtividade]);
+           
             setNome('');
             setCategoria('');
             setDataEntrega('');
@@ -86,7 +84,7 @@ const Modal = ({ showModal, setShowModal }) => {
             setSemDataEntrega(false);
             setDetail('');
             setFile(null);
-            setShowModal(false);
+            setShowModal(false); 
             toast.success('Atividade adicionada com sucesso!');
         } catch (err) {
             toast.error('Erro ao adicionar atividade.');

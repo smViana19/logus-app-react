@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ModalEditarAtv from '../../components/Modal/ModalEditarAtv'; 
-import { useDispatch } from 'react-redux'
-import { selectMaterial } from '@/store/modules/submit/action.js'
-
-
+import { useDispatch } from 'react-redux';
+import { selectMaterial } from '@/store/modules/submit/action.js';
 
 const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit, material }) => {
     const { nomeMateria } = useParams();
@@ -13,15 +11,15 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     
     const dispatch = useDispatch();
     const handleSelectMaterial = () => {
-        dispatch(selectMaterial(material.id))
-    }
+        dispatch(selectMaterial(material.id));
+    };
 
     const modalRef = useRef(null);
 
     const handleRightClick = (event) => {
         event.preventDefault();
         setShowModalOptions(true);
-        console.log("clicou com btn right");
+        console.log("Clicou com botão direito.");
     };
 
     const handleCloseModal = () => {
@@ -50,7 +48,6 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         handleCloseModal();
     };
 
-    
     const handleDelete = () => {
         if (window.confirm('Tem certeza que deseja excluir esta atividade?')) {
             onDelete();
@@ -72,6 +69,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
 
     
 */
+    console.log("Data de Entrega:", dataEntrega);
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
@@ -81,13 +79,18 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     });
 
     const dataEntregaFormatada = dataEntrega ? 
-        new Date(dataEntrega).toLocaleString('pt-BR', {
-            day: '2-digit',
-            month: '2-digit',
-            year: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit'
-        }) : "";
+    (() => {
+        const data = new Date(dataEntrega);
+        return isNaN(data.getTime()) ? "Data de entrega inválida" : 
+            data.toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+    })() 
+    : "Data de entrega não definida";
 
     return (
         <div onContextMenu={handleRightClick} className="relative">
@@ -118,7 +121,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                 <div className='flex flex-col gap-1 py-2'>
                     <span><span className='pr-2 tracking-wide'>{pontos}</span> pontos</span>
                     {dataEntregaFormatada && <span>Data de Entrega: {dataEntregaFormatada}</span>}
-                </div> {/* NÃO TA FUNCIONANDO?? */}
+                </div>
 
                 {file && (
                     <div className='mt-2 p-2 border border-gray-300 rounded-md'>

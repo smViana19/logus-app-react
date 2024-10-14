@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import ModalEditarAtv from '../../components/Modal/ModalEditarAtv'; 
+import ModalEditarAtv from '../../components/Modal/ModalEditarAtv';
 import { useDispatch } from 'react-redux';
 import { selectMaterial } from '@/store/modules/submit/action'; // Importar a action correta para selecionar a atividade
 import { useSelector } from 'react-redux';
-import { selectMaterial } from '@/store/modules/submit/action.js';
 
 const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit, material }) => {
     const { nomeMateria } = useParams();
@@ -12,7 +11,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     const [showEditModal, setShowEditModal] = useState(false);
     const [selectedMaterialId, setSelectedMaterialId] = useState(null); // Estado para armazenar o ID da atividade
 
-    
+
     const dispatch = useDispatch();
 
     const handleSelectMaterial = () => {
@@ -20,8 +19,8 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         setSelectedMaterialId(material.id)
     };
     const idAtividade = material.id
- 
-    };
+
+
 
     const modalRef = useRef(null);
 
@@ -38,7 +37,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
 
     const handleClickOutside = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
-            handleCloseModal(); 
+            handleCloseModal();
         }
     };
 
@@ -67,20 +66,20 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     };
 
 
-   /* const updatedAtvs = [
-        ...atividade,
-        {
-            nome: newAtividade,
-            categoria: '',
-            dataEntrega: '',
-            pontos: '',
-            detail: '',
-            file: null
-        },
-    ];
-
+    /* const updatedAtvs = [
+         ...atividade,
+         {
+             nome: newAtividade,
+             categoria: '',
+             dataEntrega: '',
+             pontos: '',
+             detail: '',
+             file: null
+         },
+     ];
     
-*/
+     
+    */
     console.log("Data de Entrega:", dataEntrega);
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
@@ -90,19 +89,19 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         minute: '2-digit'
     });
 
-    const dataEntregaFormatada = dataEntrega ? 
-    (() => {
-        const data = new Date(dataEntrega);
-        return isNaN(data.getTime()) ? "Data de entrega inválida" : 
-            data.toLocaleString('pt-BR', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-    })() 
-    : "Data de entrega não definida";
+    const dataEntregaFormatada = dataEntrega ?
+        (() => {
+            const data = new Date(dataEntrega);
+            return isNaN(data.getTime()) ? "Data de entrega inválida" :
+                data.toLocaleString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+        })()
+        : "Data de entrega não definida";
 
     return (
         <div onContextMenu={handleRightClick} className="relative">
@@ -116,9 +115,9 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                     <li className='py-1 px-6 cursor-pointer' onClick={handleDelete}>Excluir</li>
                 </ul>
             )}
-            <Link 
-                to={`/dashboard/postagens/${nomeMateria}/${nome}`} 
-                state={{ categoria, dataEntrega, pontos, detail, file }} 
+            <Link
+                to={`/dashboard/postagens/${nomeMateria}/${nome}`}
+                state={{ categoria, dataEntrega, pontos, detail, file }}
                 className="bg-white border border-gray-100 py-4 px-8 rounded-md mb-4 block"
                 onClick={handleSelectMaterial}
             >
@@ -158,9 +157,9 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
             )}
         </div>
     );
-    
 
 
+};
 
 export default TaskCard;
 

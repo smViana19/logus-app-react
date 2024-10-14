@@ -14,6 +14,7 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
   const [selectedSound, setSelectedSound] = useState('Nenhum');
   const [soundInstance, setSoundInstance] = useState(null);
   const [volume, setVolume] = useState(1);
+  const [isPlaying, setIsPlaying] = useState(false); // To track if sound is playing
 
   const playSound = (soundFile, soundName) => {
     if (soundInstance) {
@@ -21,6 +22,7 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
         soundInstance.stop();
         setSoundInstance(null);
         setSelectedSound('Nenhum');
+        setIsPlaying(false);
         return;
       } else {
         soundInstance.stop();
@@ -31,10 +33,14 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
       src: [soundFile],
       html5: true,
       volume: volume,
-      onplay: () => setSoundInstance(sound),
+      onplay: () => {
+        setSoundInstance(sound);
+        setIsPlaying(true);
+      },
       onend: () => {
         setSoundInstance(null);
         setSelectedSound('Nenhum');
+        setIsPlaying(false);
       },
     });
 
@@ -47,7 +53,6 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
     Sea: seaSound,
     Library: librarySound,
   };
-
   const soundIcons = {
     Rain: (
       <svg
@@ -109,17 +114,30 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
                 setSelectedSound(sound);
                 playSound(sounds[sound], sound);
               }}
-              className="flex px-8 gap-8 items-center py-3 border-b border-gray-200 dark:border-zinc-700 hover:bg-gray-100 dark:hover:bg-zinc-700 cursor-pointer"
+              className="flex px-8 justify-between items-center py-3 border-b border-gray-100 dark:border-zinc-700 hover:bg-gray-100 dark:hover:bg-zinc-700 cursor-pointer"
             >
-              {soundIcons[sound]}
-              <span className="text-gray-700 font-medium dark:text-white">
-                {sound}
-              </span>
+              <div className="flex  items-center gap-8">
+                {soundIcons[sound]}
+                <span className="text-gray-700 font-medium dark:text-white">
+                  {sound}
+                </span>
+              </div>
+
+              {isPlaying && selectedSound === sound && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="14"
+                  width="12.25"
+                  viewBox="0 0 448 512"
+                >
+                  <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+                </svg>
+              )}
             </li>
           ))}
         </ul>
 
-        <div className="px-4 pt-4">
+        <div className="px-4 pt-6">
           <label className="text-gray-700  dark:text-white">
             Volume: {Math.round(volume * 100)}
           </label>
@@ -148,7 +166,7 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
                   soundInstance.volume(newVolume);
                 }
               }}
-              className="w-full rounded-lg overflow-hidden appearance-none bg-gray-300 dark:bg-gray-800 h-4 "
+              className="w-full rounded-lg overflow-hidden appearance-none bg-gray-300 dark:bg-zinc-600 h-4 "
             />
           </span>
 

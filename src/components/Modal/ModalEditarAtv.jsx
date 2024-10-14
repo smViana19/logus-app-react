@@ -72,7 +72,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
             {showModal && (
                 <div
                     id="modal-background"
-                    className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                    className="fixed inset-0 z-10 flex items-center justify-center bg-gray-800 bg-opacity-50"
                     onClick={(e) => e.target.id === 'modal-background' && setShowModal(false)}
                 >
                     <div className="bg-white py-8 xl:w-3/5 px-16 rounded-lg shadow-lg" onClick={(e) => e.stopPropagation()}>

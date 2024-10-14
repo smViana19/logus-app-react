@@ -121,18 +121,7 @@ export default function Pomodoro() {
           <ModalPomodoroSound isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)} />
         </main>
 
-        {bloqueado && (
-            <div
-                className="fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center z-50 dark:text-zinc-100">
-              <span className="text-white text-2xl mb-4">Tela Bloqueada</span>
-              <button
-                  className="bg-white text-black px-4 py-2 rounded-lg dark:text-zinc-100 dark:bg-zinc-800"
-                  onClick={alternarBloqueio}
-              >
-                Desbloquear Tela
-              </button>
-            </div>
-        )}
+        
       </div>
   );
 }

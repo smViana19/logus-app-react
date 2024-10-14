@@ -1,53 +1,53 @@
 import React, { useState } from 'react';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import rainSound from '../../assets/audios/rainSound.mp3';
 
 export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
+  const handleClose = (e) => {
+    if (e.target.id === 'modalOverlay') {
+      setOpenModal(false);
+      stopSound(); // Para o som ao fechar a modal
+    }
+  };
+
   const [selectedSound, setSelectedSound] = useState('Nenhum');
   const [soundInstance, setSoundInstance] = useState(null);
 
-  const sounds = {
-    Nenhum: null,
-    Chuva: rainSound,
-    'Ruido Branco': '/path/to/study-sound.mp3',
-    Rio: '/path/to/river-sound.mp3',
-    // Add other sounds as necessary
-  };
-
   const playSound = (soundFile, soundName) => {
     if (soundInstance) {
-      soundInstance.stop();
+      if (selectedSound === soundName) {
+        soundInstance.stop(); 
+        setSoundInstance(null);
+        setSelectedSound('Nenhum'); 
+        return; 
+      } else {
+        soundInstance.stop(); 
+      }
     }
-
-    if (soundFile) {
-      const sound = new Howl({
-        src: [soundFile],
-        html5: true,
-      });
-      
-      sound.play();
-      setSoundInstance(sound);
-    } else {
-      setSoundInstance(null);
-    }
-    
-    setSelectedSound(soundName);
-  };
-
-  const handleClose = (e) => {
-    if (e.target.id === 'modalOverlay') {
-      stopSound();
-      setOpenModal(false);
-    }
+  
+    const sound = new Howl({
+      src: [soundFile],
+      html5: true, 
+    });
+  
+    sound.play();
+    setSoundInstance(sound); 
+    setSelectedSound(soundName); 
   };
 
   const stopSound = () => {
     if (soundInstance) {
       soundInstance.stop();
-      setSoundInstance(null);
+      setSoundInstance(null); 
+      setSelectedSound('Nenhum');
     }
   };
 
+  const sounds = {
+    Rain: rainSound, 
+    Study: '/path/to/study-sound.mp3',  
+  };
+  
   if (!isOpen) return null;
 
   return (
@@ -60,14 +60,16 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
         <h3 className="text-center text-lg text-gray-700 font-medium pb-4 pt-6">
           Sons
         </h3>
+
         <ul className="">
           {Object.keys(sounds).map((sound) => (
             <li
               key={sound}
-              onClick={() => playSound(sounds[sound], sound)}
-              className={`flex px-8 gap-8 items-center py-3 border-b border-gray-200 hover:bg-gray-100 cursor-pointer ${
-                selectedSound === sound ? 'bg-gray-200' : ''
-              }`}
+              onClick={() => {
+                setSelectedSound(sound);
+                playSound(sounds[sound], sound); 
+              }}
+              className="flex px-8 gap-8 items-center py-3 border-b border-gray-200 hover:bg-gray-100 cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +83,8 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
             </li>
           ))}
         </ul>
-        <button
+
+        <button 
           className="bg-purplePrimary w-full rounded-b-xl py-3 text-white transition"
           onClick={() => {
             stopSound();
@@ -93,4 +96,5 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
       </div>
     </div>
   );
+
 }

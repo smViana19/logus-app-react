@@ -1,39 +1,44 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const InfoCard = ({ info }) => {
+const InfoCard = ({ info, path }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(info.path)
-  }
-
+    navigate(info.path);
+  };
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-lg space-y-4 dark:bg-gray-800">
-      <header>
-        <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-100">
-          {info.title}
-        </h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          {info.description}
-        </p>
-      </header>
+    <div
+      className="p-6 bg-white rounded-xl shadow-lg space-y-4 dark:bg-gray-800"
+      onClick={handleNavigate}
+    >
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-gray-600 dark:text-gray-100">{info.title}</h1>
+          <span className="font-semibold text-2xl">{info.total}</span>
+        </div>
 
-      <div className="flex justify-between items-center">
-        <p className="text-sm text-gray-500 dark:text-gray-300">
-          Total: <span className="font-bold">{info.total}</span>
-        </p>
+        <span className="bg-[#EDDDFF] p-3 rounded-lg">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="18"
+            width="21.5"
+            viewBox="0 0 640 512"
+          >
+            <path
+              className="fill-purplePrimary"
+              d={info.svg}
+            />
+
+          </svg>
+        </span>
       </div>
 
-      <footer>
-        <button
-          className="w-full p-2 text-center text-white bg-purplePrimary rounded-lg hover:bg-purpleDark"
-          onClick={handleNavigate}
-        >
-          Ver mais
-        </button>
-      </footer>
+     
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+          {info.description}
+        </p>
     </div>
   );
 };

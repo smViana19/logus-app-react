@@ -1,27 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ModalEditarAtv from '../../components/Modal/ModalEditarAtv'; 
-import { useDispatch } from 'react-redux'
-import { selectMaterial } from '@/store/modules/submit/action.js'
-
-
+import { useDispatch } from 'react-redux';
+import { selectMaterial } from '@/store/modules/submit/action'; // Importar a action correta para selecionar a atividade
+import { useSelector } from 'react-redux';
 
 const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit, material }) => {
     const { nomeMateria } = useParams();
     const [showModalOption, setShowModalOptions] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [selectedMaterialId, setSelectedMaterialId] = useState(null); // Estado para armazenar o ID da atividade
+
     
     const dispatch = useDispatch();
+
     const handleSelectMaterial = () => {
-        dispatch(selectMaterial(material.id))
-    }
+        dispatch(selectMaterial(material.id));
+        setSelectedMaterialId(material.id)
+    };
+    const idAtividade = material.id
+ 
 
     const modalRef = useRef(null);
 
     const handleRightClick = (event) => {
+        console.log(material.id)
         event.preventDefault();
         setShowModalOptions(true);
-        console.log("clicou com btn right");
     };
 
     const handleCloseModal = () => {
@@ -46,11 +51,11 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     }, [showModalOption]);
 
     const handleEdit = () => {
-        setShowEditModal(true); // Abrir o modal de edição
+        dispatch(selectMaterial(material.id)); // Armazena o ID da atividade no Redux
+        setShowEditModal(true); // Abre o modal de edição
         handleCloseModal();
     };
 
-    
     const handleDelete = () => {
         if (window.confirm('Tem certeza que deseja excluir esta atividade?')) {
             onDelete();
@@ -58,20 +63,6 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
         }
     };
 
-   /* const updatedAtvs = [
-        ...atividade,
-        {
-            nome: newAtividade,
-            categoria: '',
-            dataEntrega: '',
-            pontos: '',
-            detail: '',
-            file: null
-        },
-    ];
-
-    
-*/
     const dataPostagem = new Date().toLocaleString('pt-BR', {
         day: '2-digit',
         month: '2-digit',
@@ -138,10 +129,15 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                         onEdit(updatedAtividade);
                         setShowEditModal(false);
                     }}
+                    IdAtv={idAtividade}
                 />
             )}
         </div>
     );
+    
 };
 
+
 export default TaskCard;
+
+

@@ -44,8 +44,8 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     }, [showModalOption]);
 
     const handleEdit = () => {
-        dispatch(selectMaterial(material)); // Armazena a atividade no Redux
-        setShowEditModal(true); // Abre o modal de edição
+        dispatch(selectMaterial(material)); 
+        setShowEditModal(true); 
         handleCloseModal();
     };
 
@@ -69,7 +69,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
               const data = new Date(dataEntrega);
               return isNaN(data.getTime())
                   ? 'Data de entrega inválida'
-                  : data.toLocaleString('pt-BR', {
+                  :  data.toLocaleString('pt-BR', {
                         day: '2-digit',
                         month: '2-digit',
                         year: 'numeric',
@@ -77,7 +77,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                         minute: '2-digit'
                     });
           })()
-        : 'Data de entrega não definida';
+        : '';
 
     return (
         <div onContextMenu={handleRightClick} className="relative">
@@ -101,21 +101,21 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                 className="bg-white border border-gray-100 py-4 px-8 rounded-md mb-4 block"
                 onClick={handleSelectMaterial}
             >
-                <div className="md:flex md:justify-between mb-2">
+                <div className="md:flex md:justify-between">
                     <div className="flex gap-6">
                         <span className="font-medium first-letter:uppercase">{nome}</span>
                         <span className="rounded px-4 py-1 font-medium text-xs text-purple-700 bg-purple-200">
                             {categoria}
                         </span>
                     </div>
-                    <span>Data de Postagem: {dataPostagem}</span>
+                    <span>{dataEntregaFormatada}</span>
                 </div>
 
-                <div className="flex flex-col gap-1 py-2">
-                    <span>
-                        <span className="pr-2 tracking-wide">{pontos}</span> pontos
+                <div className="flex flex-col gap-1">
+                    <span className='text-sm text-gray-500 '>
+                        <span className="pr-2 text-sm text-gray-500 tracking-wide">{pontos}</span>pontos
                     </span>
-                    {dataEntregaFormatada && <span>Data de Entrega: {dataEntregaFormatada}</span>}
+                  
                 </div>
 
                 {file && (

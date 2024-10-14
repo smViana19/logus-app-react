@@ -1,1 +1,2 @@
 src/assets/audios/rain.mp3 filter=lfs diff=lfs merge=lfs -text
+src/assets/audios/rainSound.mp3 filter=lfs diff=lfs merge=lfs -text

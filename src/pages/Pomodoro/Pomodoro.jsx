@@ -62,12 +62,9 @@ export default function Pomodoro() {
     return `${minutos < 10 ? '0' : ''}${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
   };
 
-<<<<<<< HEAD
-=======
   const alternarBloqueio = () => {
     setBloqueado((prevBloqueado) => !prevBloqueado);
   };
->>>>>>> 86a1f6a68f2a277bd3abd7dd817c2d7cbd65870e
 
   const abrirModal = () => {
     console.log('Abrindo modal');
@@ -98,9 +95,7 @@ export default function Pomodoro() {
                 }
                 text={'Modo Foco'}
             />
-<<<<<<< HEAD
-           
-=======
+
             <OpenModalPomodoroButton
                 onClick={alternarBloqueio}
                 svg={
@@ -118,7 +113,7 @@ export default function Pomodoro() {
                 }
                 text={bloqueado ? 'Desbloquear tela' : 'Bloquear tela'}
             />
->>>>>>> 86a1f6a68f2a277bd3abd7dd817c2d7cbd65870e
+
           </ContainerButtons>
           <ContainerProgressBar className="w-11/12 md:w-2/6 mx-auto">
             <StyledCircularProgressbar
@@ -144,9 +139,7 @@ export default function Pomodoro() {
 
           <ModalPomodoroSound isOpen={openModal} setOpenModal={() => setOpenModal(!openModal)} />
         </main>
-<<<<<<< HEAD
-    
-=======
+
         {bloqueado && (
             <div
                 className="fixed inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center z-50 dark:text-zinc-100">
@@ -159,7 +152,6 @@ export default function Pomodoro() {
               </button>
             </div>
         )}
->>>>>>> 86a1f6a68f2a277bd3abd7dd817c2d7cbd65870e
       </div>
   );
 }

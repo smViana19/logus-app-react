@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Howl, Howler } from 'howler';
-import rainSound from '../../assets/audios/rain.mp3';
+import rainSound from '../../assets/audios/rainSound.mp3';
 
 export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
   const handleClose = (e) => {

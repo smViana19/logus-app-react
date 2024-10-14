@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import InfoCard from '../../../components/CardsContainers/InfoCard';
 import InstitutionalCard from '../../../components/CardsContainers/InstitutionalCard';
 import AdminInstitutionalModal from '../../../components/Modal/AdminInsitutionalModal/AdminInstitutionalModal';
+import { useNavigate } from 'react-router-dom';
 
 const AdminInstitutional = () => {
+    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
@@ -11,10 +13,9 @@ const AdminInstitutional = () => {
 
 
     const info = [
-        { title: "Anos letivos", description: "Crie e gerencie os anos letivos" },
-        { title: "Turmas", description: "Crie e gerencie as turmas" },
-        { title: "Niveis escolares", description: "Crie e gerencie os niveis escolares" },
-        { title: "Series", description: "Crie e gerencie as series" }
+        { title: "Postagens", description: "Crie e gerencie as postagens da instituição", path: '/admin/institucional/postagens' },
+        { title: "Turmas", description: "Crie e gerencie as turmas", path: '/admin/institucional/turmas' },
+        { title: "Series", description: "Crie e gerencie as series", path: '/admin/institucional/series' },
     ]
 
     return (
@@ -23,11 +24,8 @@ const AdminInstitutional = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8'>
                 {info &&
                     info.map((project, index) => (
-                        <InfoCard key={index} info={project} onClick={toggleModal} />
+                        <InfoCard key={index} info={project} onClick={() => navigate(project.path)} />
                     ))}
-                {isModalOpen && (
-                    <AdminInstitutionalModal toggleModal={toggleModal} />
-                )}
             </div>
         </div>
     );

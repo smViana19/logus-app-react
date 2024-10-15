@@ -39,7 +39,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
-      <h1 className="text-xl font-semibold">Dashboard Administrador</h1>
+      <h1 className="text-xl font-semibold dark:text-white">Dashboard Administrador</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
         {projects &&

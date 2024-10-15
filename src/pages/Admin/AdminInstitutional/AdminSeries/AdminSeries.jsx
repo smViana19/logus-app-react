@@ -100,13 +100,13 @@ const AdminSeries = () => {
   };
 
   return (
-    <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
-      <form onSubmit={handleSubmit} className="bg-white mb-8 p-8">
+    <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:text-white">
+      <form onSubmit={handleSubmit} className="bg-white dark:bg-neutral-800 mb-8 p-8">
         <div className="py-4 flex flex-col gap-2">
           <label>Ano Escolar</label>
           <select
             onChange={(e) => setSchoolYear(e.target.value)}
-            className="border border-gray-200 px-2 py-1 rounded"
+            className="border border-gray-200 dark:bg-neutral-800 dark:border-neutral-600 px-2 py-1 rounded"
             name=""
             id=""
           >
@@ -127,13 +127,13 @@ const AdminSeries = () => {
           <label>Nome da Turma</label>
           <input
             onChange={(e) => setSerieName(e.tareget.value)}
-            className="border border-gray-200 px-2 py-1 rounded"
+            className="border border-gray-200 px-2 dark:bg-neutral-800 py-1 rounded dark:border-neutral-600"
             type="text"
             placeholder="Ex: 3B1"
           />
         </div>
 
-        <h2 className="font-semibold mt-4 border-t border-gray-200 py-2">
+        <h2 className="font-semibold mt-4 border-t border-gray-200  py-2">
           Ano Letivo
         </h2>
         <div className="py-4 grid grid-cols-2 gap-8">
@@ -141,21 +141,21 @@ const AdminSeries = () => {
             <label htmlFor="">Data de Inicio</label>
             <input
               onChange={(e) => setInitialDate(e.target.value)}
-              className="border border-gray-200 px-2 py-1 rounded w-full"
+              className="border border-gray-200 px-2 py-1 dark:bg-neutral-800 dark:border-neutral-600 rounded w-full"
               type="date"
             />
           </span>
           <span className="flex flex-col">
             <label htmlFor="">Data de Conclusão</label>
             <input
-              className="border border-gray-200 px-2 py-1 rounded w-full"
+              className="border border-gray-200 dark:bg-neutral-800 dark:border-neutral-600 px-2 py-1 rounded w-full"
               type="date"
               onChange={(e) => setFinalDate(e.target.value)}
             />
           </span>
         </div>
         <button
-          className="bg-purplePrimary py-2 px-32 rounded text-white mt-4"
+          className="bg-purplePrimary py-2 px-32 rounded dark:text-white text-white mt-4"
           type="submit"
         >
           Cadastrar

@@ -14,7 +14,7 @@ const AdminInstitutional = () => {
 
     const info = [
         { title: "Postagens", description: "Crie e gerencie as postagens da instituição", path: '/admin/institucional/postagens' },
-        { title: "Turmas", description: "Crie e gerencie suas turmas", path: '/admin/institucional/series' },
+        { title: "Turmas", description: "Crie e gerencie suas turmas", path: '/admin/institucional/turmas' },
     ]
 
     return (
@@ -27,7 +27,7 @@ const AdminInstitutional = () => {
                     ))}
             </div>
 
-           
+
         </div>
     );
 }

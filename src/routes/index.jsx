@@ -55,10 +55,9 @@ export default function Rotas() {
         <Route path="/admin/relatorios" element={<AdminReport />} />
         <Route path="/admin/institucional" element={<AdminInstitutional />} />
         <Route path="/admin/institucional/postagens" element={<AdminPosts />} />
-        <Route path="/admin/institucional/series" element={<AdminSeries />} />
-        <Route path="/admin/institucional/turmas" element={<AdminTurmas />} />
-        <Route path='/admin/blog' element={<AdminBlog />}/>
-        <Route path='/admin/blog/add' element={<AddPageBlog />}/>
+        <Route path="/admin/institucional/turmas" element={<AdminSeries />} />
+        <Route path='/admin/blog' element={<AdminBlog />} />
+        <Route path='/admin/blog/add' element={<AddPageBlog />} />
 
       </Route>
 

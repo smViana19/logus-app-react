@@ -2,9 +2,8 @@ import React from 'react';
 
 const InfoCard = ({ info, onClick }) => {
   return (
-
-    
     <div
+      className="p-6 bg-white rounded-xl shadow-lg space-y-4 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 transition-all"
       onClick={onClick}
     >
       <div className="flex items-center justify-between">

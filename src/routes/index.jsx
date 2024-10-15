@@ -24,6 +24,8 @@ import AdminStudents from '../pages/Admin/AdminStudents/AdminStudents';
 import AdminTurmas from '../pages/Admin/AdminTurmas/AdminTurmas';
 import AdminSeries from '../pages/Admin/AdminInstitutional/AdminSeries/AdminSeries';
 import AdminPosts from '../pages/Admin/AdminPosts/AdminPosts';
+import AdminBlog from '../pages/Admin/AdminBlog/AdminBlog';
+import AddPageBlog from '../pages/Admin/AdminBlog/AddPageBlog';
 
 export default function Rotas() {
 
@@ -55,6 +57,9 @@ export default function Rotas() {
         <Route path="/admin/institucional/postagens" element={<AdminPosts />} />
         <Route path="/admin/institucional/series" element={<AdminSeries />} />
         <Route path="/admin/institucional/turmas" element={<AdminTurmas />} />
+        <Route path='/admin/blog' element={<AdminBlog />}/>
+        <Route path='/admin/blog/add' element={<AddPageBlog />}/>
+
       </Route>
 
 

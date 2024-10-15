@@ -158,7 +158,7 @@ const AdminSeries = () => {
           className="bg-purplePrimary py-2 px-32 rounded dark:text-white text-white mt-4"
           type="submit"
         >
-          Cadastrar
+          Cadastrars
         </button>
       </form>
     </div>

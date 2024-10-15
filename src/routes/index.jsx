@@ -22,7 +22,7 @@ import AdminReport from '../pages/Admin/AdminReport/AdminReport';
 import AdminTeachers from '../pages/Admin/AdminTeachers/AdminTeachers';
 import AdminStudents from '../pages/Admin/AdminStudents/AdminStudents';
 import AdminTurmas from '../pages/Admin/AdminTurmas/AdminTurmas';
-import AdminSeries from '../pages/AdminSeries/AdminSeries';
+import AdminSeries from '../pages/Admin/AdminInstitutional/AdminSeries/AdminSeries';
 import AdminPosts from '../pages/Admin/AdminPosts/AdminPosts';
 
 export default function Rotas() {

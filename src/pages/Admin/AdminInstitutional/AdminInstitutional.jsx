@@ -27,6 +27,8 @@ const AdminInstitutional = () => {
                         <InfoCard key={index} info={project} onClick={() => navigate(project.path)} />
                     ))}
             </div>
+
+           
         </div>
     );
 }

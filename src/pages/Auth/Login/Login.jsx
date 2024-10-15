@@ -47,7 +47,7 @@ export default function Login(props) {
             className="flex mx-auto sm:max-w-xl flex-1 flex-col justify-center px-16 py-4 bg-white rounded-xl">
           <div className="mx-auto w-40 ">
             <Logo />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700 ">
+            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700 dark:text-zinc-100 ">
               Login
             </h2>
           </div>
@@ -55,7 +55,7 @@ export default function Login(props) {
           <div className="mt-10 ">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <InputLabel htmlFor="email" value="Email" />
+                <InputLabel htmlFor="email" value="Email" className="dark:text-zinc-100" />
                 <TextInput
                     value={email}
                     type="email"
@@ -66,7 +66,7 @@ export default function Login(props) {
               </div>
 
               <div>
-                <InputLabel htmlFor="password" value="Senha" />
+                <InputLabel htmlFor="password" value="Senha" className="dark:text-zinc-100" />
                 <div>
                   <TextInput
                       type="password"
@@ -83,15 +83,15 @@ export default function Login(props) {
 
               </div>
               <div>
-                <BotaoPrincipal type="submit">
+                <BotaoPrincipal type="submit" className='dark:text-zinc-100'>
                   Login
                 </BotaoPrincipal>
               </div>
             </form>
 
-            <p className="mt-4 text-center text-sm text-gray-500 pb-2">
+            <p className="mt-4 text-center text-sm text-gray-500 pb-2 dark:text-zinc-100">
               Ainda não possui cadastro? {'  '}
-              <Link to="/registro" className="font-medium text-txtTitulo hover:underline">
+              <Link to="/registro" className="font-medium text-txtTitulo hover:underline dark:text-purplePrimary">
                 Cadastre-se
               </Link>
             </p>

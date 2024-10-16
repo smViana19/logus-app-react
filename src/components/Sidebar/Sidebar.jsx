@@ -29,12 +29,7 @@ const Sidebar = ({ role }) => {
     { id: 3, path: '/dashboard/agenda', name: 'Agenda', icon: LuCalendar },
     { id: 4, path: '/dashboard/pomodoro', name: 'Pomodoro', icon: LuClock },
     { id: 5, path: '/dashboard/perfil', name: 'Perfil', icon: LuUserCircle },
-    {
-      id: 6,
-      path: '/dashboard/settings',
-      name: 'Configuraçoes',
-      icon: IoSettingsOutline,
-    },
+
   ];
 
   const DIRETOR_SIDEBAR_LINKS = [

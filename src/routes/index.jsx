@@ -16,7 +16,6 @@ import Profile from '../pages/Profile/Profile.jsx';
 import { AtividadeProvider } from '../context/AtividadeContext';
 import SendTaskSubject from '../pages/Subject/SendTaskSubject.jsx';
 import MainLayout from '@/components/Layout/MainLayout.jsx';
-import Settings from '../pages/Settings/Settings'
 import AdminInstitutional from '../pages/Admin/AdminInstitutional/AdminInstitutional';
 import AdminReport from '../pages/Admin/AdminReport/AdminReport';
 import AdminTeachers from '../pages/Admin/AdminTeachers/AdminTeachers';
@@ -44,7 +43,6 @@ export default function Rotas() {
         <Route path="/dashboard/postagens/:nomeMateria" element={<Subject />} />
         <Route path="/dashboard/postagens/:nomeMateria/:nomeAtiv" element={<AtividadeWrapper />} />
         <Route path="/dashboard/agenda" element={<Schedule />} />
-        <Route path="/dashboard/settings" element={<Settings />} />
 
       </Route>
       <Route path='/admin' element={<MainLayout />}>

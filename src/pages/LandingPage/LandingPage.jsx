@@ -4,33 +4,15 @@ import { FaCircle, FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../store/modules/auth/actions.js';
 import logo from '../../assets/logo.png';
-import InputPurple from '../../components/Inputs/InputPurple.jsx';
-import ContainerPrintApp from '../../components/CardsContainers/ContainerPrintApp.jsx';
-import Subtitle from '../../components/Text/Subtitle.jsx';
-import FunctionalityItem from '../../components/CardsContainers/FunctionalityItem.jsx';
-import styled from 'styled-components';
-
-import imgAgenda from '../../assets/agenda.png';
-import imgPomodoro from '../../assets/pomodoro.png';
 import imageLanding from '../../assets/imageLanding.svg';
 
-import '../../css/welcome.css';
-import MenuMobileIndex from '../../components/Navs/MenuMobileIndex.jsx';
-import Sidebar from '../../components/Schedule/Sidebar.jsx';
+
 
 export default function LandingPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  const initialDescription = `
-        <h3 class="text-lg font-semibold mb-4">Agenda</h3>
-        <ParagraphFuncionalidades class="w-3/4">A agenda integrada permite aos alunos organizarem suas atividades acadêmicas e pessoais de maneira estruturada. Com opções para adicionar lembretes de tarefas, podendo ser organizadas como urgente, moderado, e tranquilo, a agenda digital facilita o planejamento e a gestão do tempo do aluno.</ParagraphFuncionalidades>
-    `;
-
-  const [description, setDescription] = useState(initialDescription);
-  const [imageChange, setImageChange] = useState(imgAgenda);
-  const [hoveredItem, setHoveredItem] = useState(null);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -38,54 +20,6 @@ export default function LandingPage() {
     navigate('/');
   };
 
-  const functionalities = [
-    {
-      name: 'Agenda',
-      description: initialDescription,
-      image: imgAgenda,
-      id: 'agenda',
-    },
-    {
-      name: 'Método Pomodoro',
-      description: `
-                <h3 class="text-lg font-semibold mb-4">Método Pomodoro</h3>
-                <p class="w-3/4 mt-4">
-                Com essa funcionalidade integrada, você pode maximizar sua produtividade e manter um ritmo constante de trabalho, otimizando
-                 seus estudos de maneira eficiente. Além disso, você terá acesso a estatísticas detalhadas sobre o tempo</p>
-                 de estudo com o Método Pomodoro, o que facilita a organização e o acompanhamento do seu progresso acadêmico. </p>
-                  O Método Pomodoro é uma técnica eficaz para gerenciar o tempo de estudo, utilizando ciclos de 25 minutos de foco intenso,</p>
-                seguidos por curtas pausas. Essa abordagem ajuda os alunos a manterem a concentração e a produtividade. Para potencializar  </p> 
-                ainda mais o seu foco, implementamos uma série de sons que auxiliam na concentração, incluindo opções como:</p>
-                <li class='mt-4 ml-4'><span class='font-semibold'>Ruído Branco</span> → Emite uma frequência que bloqueia sons externos, promovendo uma melhor concentração.</li>
-                <li class='mt-4 ml-4'><span class='font-semibold'>Chuva</span> → Sons de chuva que ajudam a abafar ruídos externos, facilitando o foco nos estudos.</li>
-                <li class='mt-4 ml-4'><span class='font-semibold'>Rio</span> → Sons de água corrente que criam uma atmosfera tranquila e inibem distrações sonoras.</li>
-                <li class='mt-4 ml-4'><span class='font-semibold'>Biblioteca</span> → Ambiência de uma biblioteca, com sons suaves que favorecem um ambiente de concentração.</li>
-                <li class='mt-4 ml-4'><span class='font-semibold'>Cafeteria</span> → Sons de fundo de uma cafeteria, proporcionando uma sensação de companhia e ajudando a manter o foco.</li>
-
-            `, //<ParagraphFuncionalidades class="w-3/4 mt-4">Aém disso, implementamos uma série de sons para ajudar na concentração. Alguns desses sons são:  </ParagraphFuncionalidades>
-      image: imgPomodoro,
-      id: 'pomodoro',
-    },
-    {
-      name: 'Pontuação',
-      description: `
-                <h3 class="text-lg font-semibold mb-4">Pontuação</h3>
-                <ParagraphFuncionalidades class="w-3/4">O sistema de pontuação incentiva os alunos a se dedicarem mais aos estudos ao recompensar suas atividades acadêmicas com pontos. Atividades como a postagem de exercícios, elaboração de resumos e entrega de trabalhos geram pontos, motivando os alunos a participarem ativamente. Quando atingem uma determinada pontuação, a escola decide as recompensas, que podem incluir reconhecimentos públicos, certificados de mérito ou pequenas premiações, refletindo o esforço e a dedicação dos alunos.</ParagraphFuncionalidades>
-            `,
-      image: null,
-      id: 'pontuacao',
-    },
-    {
-      name: 'Área de Postagens',
-      description: `
-                <h3 class="text-lg font-semibold mb-4">Área de Postagens</h3>
-                <ParagraphFuncionalidades class="w-3/4">A área de postagens é uma área colaborativa onde os alunos podem compartilhar resumos, atividades, apresentações e outros materiais de estudo. Essa funcionalidade promove a troca de conhecimento e recursos entre os estudantes, incentivando um ambiente de aprendizado colaborativo.</ParagraphFuncionalidades>
-                <ParagraphFuncionalidades class="w-3/4 mt-2">A ideia é que os alunos possam postar, por espontânea vontade, os resumos e materiais de estudo que fizerem, mas disponiblizamos uma área onde o professor possa posta as atividades e os alunos podem anexá-las</ParagraphFuncionalidades>
-            `,
-      image: null,
-      id: 'postagens',
-    },
-  ];
 
   return (
     <>

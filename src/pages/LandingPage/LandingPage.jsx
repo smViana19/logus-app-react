@@ -111,22 +111,31 @@ export default function LandingPage() {
                   Star
                 </a>
               </div>
-              <Link
-                to="/login"
-                class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
-              >
-                Log in
-              </Link>
+
               <div>
                 {isLoggedIn ? (
                   <Link
                     class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
                     to="/dashboard"
                   >
-                    Go to Dashboard
+                    Entrar
                   </Link>
                 ) : (
-                  <Link to="/registro" class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800" >Register</Link>
+                  <>
+                    <Link
+                      to="/login"
+                      class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                    >
+                      Log in
+                    </Link>
+
+                    <Link
+                      to="/registro"
+                      class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
+                    >
+                      Register
+                    </Link>
+                  </>
                 )}
               </div>
 
@@ -240,7 +249,7 @@ export default function LandingPage() {
 
             <span
               href="https://www.figma.com/community/file/1125744163617429490"
-              class="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:w-auto focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              class="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:w-auto focus:outline-none hover:bg-gray-100 hover:text-purplePrimary cursor-pointer focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
             >
               Primeiro Acesso
             </span>
@@ -875,13 +884,12 @@ export default function LandingPage() {
 
       <section class="bg-gray-50 dark:bg-gray-800">
         <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
-          <div class="max-w-screen-sm mx-auto text-center">
-            <h2 class="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
-              Start your free trial today
+          <div class="max-w-screen-md mx-auto text-center">
+            <h2 class="mb-8 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
+              Como comprar nossa plataforma?
             </h2>
-            <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">
-              Try Landwind Platform for 30 days. No credit card required.
-            </p>
+            <p class="mb-8 font-light text-gray-500 dark:text-gray-400 md:text-lg text-justify">
+            Oferecemos planos de pagamento baseados em assinaturas anuais, com um valor único ajustado conforme o número de alunos que a escola atende. Além disso, disponibilizamos uma versão trial gratuita de 30 dias, para que você possa explorar a plataforma e avaliar se ela atende às necessidades da sua instituição.            </p>
             <a
               href="#"
               class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
@@ -1028,33 +1036,18 @@ export default function LandingPage() {
           </div>
           <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div class="text-center">
-            <a
-              href="#"
+            <span
               class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white"
             >
               <img
-                src="./images/logo.svg"
-                class="h-6 mr-3 sm:h-9"
+                src={logo}
+                class="h-6 sm:h-16 my-8"
                 alt="Landwind Logo"
               />
-              Landwind
-            </a>
+       
+            </span>
             <span class="block text-sm text-center text-gray-500 dark:text-gray-400">
-              © 2021-2022 Landwind™. All Rights Reserved. Built with{' '}
-              <a
-                href="https://flowbite.com"
-                class="text-purple-600 hover:underline dark:text-purple-500"
-              >
-                Flowbite
-              </a>{' '}
-              and{' '}
-              <a
-                href="https://tailwindcss.com"
-                class="text-purple-600 hover:underline dark:text-purple-500"
-              >
-                Tailwind CSS
-              </a>
-              .
+              © 2024 Lógus
             </span>
             <ul class="flex justify-center mt-5 space-x-5">
               <li>
@@ -1153,76 +1146,8 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      <div className="bg-center bg-corPrincipal selection:bg-red-500 selection:text-white bg-img">
-        <header>
-          <MenuMobileIndex />
-          <Nav className="flex justify-between px-16 py-4 items-center">
-            <ul>
-              <li>
-                <img className="w-32" src={logo} alt="Logo" />
-              </li>
-            </ul>
-            <div className="flex gap-12 list-none">
-              <li className="text-xl text-center h-8">
-                <a href="#home" className="">
-                  HOME
-                </a>
-              </li>
-              <span className="border-r border-gray-100"></span>
-              <li className="text-xl text-center">
-                <a href="#funcionalidades" className="">
-                  FUNCIONALIDADES
-                </a>
-              </li>
-            </div>
-            <UlDeskEntrar className="flex gap-8 items-center">
-              <li className="text-lg">
-                {isLoggedIn ? (
-                  <Link onClick={handleLogout} to="#">
-                    <FaPowerOff />
-                  </Link>
-                ) : (
-                  <Link to="/login" className="font-semibold">
-                    Login
-                  </Link>
-                )}
-              </li>
-              <li className="text-lg">
-                {isLoggedIn ? (
-                  <Link to="/dashboard">
-                    <FaUserCircle />
-                  </Link>
-                ) : (
-                  <Link
-                    to="/registro"
-                    className="font-medium text-white hover:text-neutral-500 font-semibold"
-                    id="btnRegistrar"
-                  >
-                    Registrar
-                  </Link>
-                )}
-              </li>
-              <li>{isLoggedIn && <FaCircle size={24} color="#66ff33" />}</li>
-            </UlDeskEntrar>
-          </Nav>
-        </header>
-      </div>
+
     </>
   );
 }
 
-// ----- RESPONSIVIDADE -----
-
-// Menu
-const Nav = styled.nav`
-  @media screen and (max-width: 768px) {
-    visibility: hidden;
-    width: 34px;
-  }
-`;
-
-const UlDeskEntrar = styled.ul`
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;

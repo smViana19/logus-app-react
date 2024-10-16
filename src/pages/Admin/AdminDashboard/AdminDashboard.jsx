@@ -124,10 +124,10 @@ export default function AdminDashboard() {
       <div className="">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
-            <h1 className="text-gray-800 text-xl font-bold sm:text-2xl">
+            <h1 className="text-gray-800 text-xl font-bold sm:text-2xl dark:text-zinc-100">
               Gestão Escolar
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-2 dark:text-zinc-400">
               Selecione a turma que deseja visualizar
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function AdminDashboard() {
         </div>
 
         <select
-          className="px-8 border border-gray-200 rounded mt-4 py-1"
+          className="px-8 border border-gray-200 rounded mt-4 py-1 dark:bg-zinc-800 dark:text-zinc-100 dark:border-gray-600"
           name=""
           id=""
         >
@@ -172,7 +172,7 @@ export default function AdminDashboard() {
         {isTableStudentsOpen && (
           <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
             <table className="w-full table-auto text-sm text-left">
-              <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+              <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100">
                 <tr>
                   <th className="py-3 px-6">Nome Completo</th>
                   <th className="py-3 px-6">Email</th>
@@ -181,7 +181,7 @@ export default function AdminDashboard() {
                   <th className="py-3 px-6"></th>
                 </tr>
               </thead>
-              <tbody className="text-gray-600 divide-y">
+              <tbody className="text-gray-600 divide-y dark:text-zinc-400">
                 {tableItems.map((item, idx) => (
                   <tr key={idx}>
                     <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
       {isTableTeachersOpen && (
         <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
           <table className="w-full table-auto text-sm text-left">
-            <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+            <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100">
               <tr>
                 <th className="py-3 px-6">Nome Completo</th>
                 <th className="py-3 px-6">Email</th>
@@ -230,7 +230,7 @@ export default function AdminDashboard() {
                 <th className="py-3 px-6"></th>
               </tr>
             </thead>
-            <tbody className="text-gray-600 divide-y">
+            <tbody className="text-gray-600 divide-y dark:text-zinc-400">
               {tableItems.map((item, idx) => (
                 <tr key={idx}>
                   <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>

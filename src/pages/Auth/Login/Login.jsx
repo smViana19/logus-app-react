@@ -10,8 +10,10 @@ import BotaoPrincipal from '../../../components/Buttons/DefaultButton.jsx';
 import * as actions from '../../../store/modules/auth/actions';
 
 import { Await, Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { act, useState } from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 
 export default function Login(props) {
@@ -22,18 +24,30 @@ export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const mySwal = withReactContent(Swal);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formErrors = false;
 
+    if (email.length === 0 || password.length === 0) {
+      mySwal.fire({
+        title: 'Campos vazios',
+        text: 'Preencha os campos em vazios.',
+        icon: 'warning'
+      })
+      return
+    }
     if (!isEmail(email) || password.length < 6) {
-      toast.error('Email ou senha invalidos');
+      mySwal.fire({
+        title: 'Erro',
+        text: 'Email ou senha inválidos.',
+        icon: 'error'
+      })
       return;
     }
 
     if (formErrors) return;
-
     dispatch(actions.loginRequest({ email, password, prevPath }));
     navigate(prevPath);
 

@@ -158,130 +158,130 @@ export default function PostsArea() {
 
   return (
     <>
-      <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
-        <main className="">
-          <section className="flex justify-end mx-auto">
-            <button
-              className="bg-purplePrimary  hover:bg-purple-600 transition-all duration-300 text-white xl:px-24 max-lg:w-full py-2 rounded mt-4 dark:text-black"
-              onClick={() => setShowModal(true)}
-            >
-              Adicionar Matéria
-            </button>
-          </section>
-          {materias.length > 0 ? (
-            <section className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 3xl:grid-cols-4 gap-x-8 gap-y-16 justify-center mx-auto mt-8 ">
-              {materias.map((materia, index) => (
-                <div key={index} className="relative">
-                  <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
-                    <SubjectCard
-                      banner={bannerMateria}
-                      nome={materia.nome}
-                      atividades={materia.atividades}
-                      subject={materia}
-                    />
-                  </Link>
-                  <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
-                    <button
-                      onClick={() => setMenuVisible(menuVisible === index ? null : index)}
-                      className="px-3 py-2 rounded-full bg-gray-100 dark:bg-zinc-800"
-                      style={{ color: '#000' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" height="14" width="3.5" viewBox="0 0 128 512">
-                        <path className='fill-purplePrimary' d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" /></svg>
-                    </button>
-                    {menuVisible === index && (
-                      <div
-                        className="absolute top-10 right-2 w-24 bg-white border border-gray-200 dark:border-zinc-600 rounded shadow-lg z-50">
-                        <button
-                          onClick={() => handleEditMateria(index)}
-                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:hover:bg-zinc-900 dark:text-zinc-100"
-                        >
-                          Editar
-                        </button>
-                        <button
-                          onClick={() => handleDeleteMateria(index, materia.id)}
-                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:text-zinc-100 dark:hover:bg-zinc-900"
-                        >
-                          Excluir
-                        </button>
-                      </div>
-                    )}
-                  </div>
+    <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
+      <main className="">
+        <section className="flex justify-end mx-auto">
+          <button
+            className="bg-purplePrimary  hover:bg-purple-600 transition-all duration-300 text-white xl:px-24 max-lg:w-full py-2 rounded mt-4 dark:text-black"
+            onClick={() => setShowModal(true)}
+          >
+            Adicionar Matéria
+          </button>
+        </section>
+        {materias.length > 0 ? (
+          <section className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 3xl:grid-cols-4 gap-x-8 gap-y-16 justify-center mx-auto mt-8 ">
+            {materias.map((materia, index) => (
+              <div key={index} className="relative">
+                <Link to={`/dashboard/postagens/${materia.nome.toLowerCase().replace(' ', '')}`}>
+                  <SubjectCard
+                    banner={bannerMateria}
+                    nome={materia.nome}
+                    atividades={materia.atividades}
+                    subject={materia}
+                  />
+                </Link>
+                <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
+                  <button
+                    onClick={() => setMenuVisible(menuVisible === index ? null : index)}
+                    className="px-3 py-2 rounded-full bg-gray-100 dark:bg-zinc-800"
+                    style={{ color: '#000' }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" height="14" width="3.5" viewBox="0 0 128 512">
+                      <path className='fill-purplePrimary' d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" /></svg>
+                  </button>
+                  {menuVisible === index && (
+                    <div
+                      className="absolute top-10 right-2 w-24 bg-white border border-gray-200 dark:border-zinc-600 rounded shadow-lg z-50">
+                      <button
+                        onClick={() => handleEditMateria(index)}
+                        className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:hover:bg-zinc-900 dark:text-zinc-100"
+                      >
+                        Editar
+                      </button>
+                      <button
+                        onClick={() => handleDeleteMateria(index, materia.id)}
+                        className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:text-zinc-100 dark:hover:bg-zinc-900"
+                      >
+                        Excluir
+                      </button>
+                    </div>
+                  )}
                 </div>
-              ))}
-            </section>
-          ) : (
-            <p className="text-center text-gray-600 dark:text-gray-300 mt-8 text-xl">
-              Não foi possível encontrar as matérias.
-            </p>
-          )}
-        </main>
-      </div>
-
-      {showModal && (
-        <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
-          onClick={() => setShowModal(false)}>
-
-          <div
-            className="bg-white 2xl:w-1/2 py-8 lg:w-4/6 w-full lg:px-16 px-4 rounded-md shadow-lg lg:text-left dark:bg-zinc-800 max-lg:mx-8 max-md:mx-4"
-            onClick={(e) => e.stopPropagation()}>
-
-            <h2 className='text-lg mb-6 dark:text-white'>Nova Matéria</h2>
-            <form onSubmit={handleAddMateria}>
-              <input
-                type="text"
-                value={newMateria}
-                onChange={(e) => setNewMateria(e.target.value)}
-                className="border border-gray-300 p-2 mb-4 w-full rounded outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 "
-                placeholder="Nome da matéria"
-              />
-              <div className='flex justify-end mt-2'>
-                <button
-                  type="submit"
-                  className="bg-purplePrimary dark:bg-purpleDark text-white py-1.5 px-8 rounded tracking-wide dark:text-zinc-200"
-                >
-                  Adicionar
-                </button>
               </div>
-            </form>
-          </div>
-        </div>
-      )}
+            ))}
+          </section>
+        ) : (
+          <p className="text-center text-gray-600 dark:text-gray-300 mt-8 text-xl">
+            Não foi possível encontrar as matérias.
+          </p>
+        )}
+      </main>
+    </div>
 
-      {showEditModal && (
+    {showModal && (
+      <div
+        className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
+        onClick={() => setShowModal(false)}>
+
         <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50  max-lg:px-4 z-50"
-          onClick={() => setShowEditModal(false)}>
-          <div
-            className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg lg:text-left max-lg:px-4"
-            onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-lg mb-6 dark:text-white">Editar Matéria</h2>
+          className="bg-white 2xl:w-1/2 py-8 lg:w-4/6 w-full lg:px-16 px-4 rounded-md shadow-lg lg:text-left dark:bg-zinc-800 max-lg:mx-8 max-md:mx-4"
+          onClick={(e) => e.stopPropagation()}>
+
+          <h2 className='text-lg mb-6 dark:text-white'>Nova Matéria</h2>
+          <form onSubmit={handleAddMateria}>
             <input
               type="text"
-              value={editNome}
-              onChange={(e) => setEditNome(e.target.value)}
-              className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100"
+              value={newMateria}
+              onChange={(e) => setNewMateria(e.target.value)}
+              className="border border-gray-300 p-2 mb-4 w-full rounded outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 "
               placeholder="Nome da matéria"
             />
-            <div className="flex justify-center gap-x-4">
+            <div className='flex justify-end mt-2'>
               <button
-                onClick={handleSaveEdit}
-                className="bg-purplePrimary dark:bg-purpleDark text-white py-1.5 px-8 rounded-lg tracking-wide dark:text-zinc-200"
+                type="submit"
+                className="bg-purplePrimary dark:bg-purpleDark text-white py-1.5 px-8 rounded tracking-wide dark:text-zinc-200"
               >
-                Salvar
-              </button>
-              <button
-                onClick={() => setShowEditModal(false)}
-                className="bg-gray-500 text-white py-1.5 px-8 rounded-lg tracking-wide"
-              >
-                Cancelar
+                Adicionar
               </button>
             </div>
+          </form>
+        </div>
+      </div>
+    )}
+
+    {showEditModal && (
+      <div
+        className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50  max-lg:px-4 z-50"
+        onClick={() => setShowEditModal(false)}>
+        <div
+          className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg lg:text-left max-lg:px-4"
+          onClick={(e) => e.stopPropagation()}>
+          <h2 className="text-lg mb-6 dark:text-white">Editar Matéria</h2>
+          <input
+            type="text"
+            value={editNome}
+            onChange={(e) => setEditNome(e.target.value)}
+            className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100"
+            placeholder="Nome da matéria"
+          />
+          <div className="flex justify-center gap-x-4">
+            <button
+              onClick={handleSaveEdit}
+              className="bg-purplePrimary dark:bg-purpleDark text-white py-1.5 px-8 rounded-lg tracking-wide dark:text-zinc-200"
+            >
+              Salvar
+            </button>
+            <button
+              onClick={() => setShowEditModal(false)}
+              className="bg-gray-500 text-white py-1.5 px-8 rounded-lg tracking-wide"
+            >
+              Cancelar
+            </button>
           </div>
         </div>
-      )}
-      <ToastContainer />
-    </>
+      </div>
+    )}
+    <ToastContainer />
+  </>
   );
 }

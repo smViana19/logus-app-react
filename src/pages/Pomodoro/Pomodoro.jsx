@@ -68,6 +68,8 @@ export default function Pomodoro() {
     setOpenModal(true);
   };
 
+  
+
 
   return (
       <div
@@ -98,7 +100,6 @@ export default function Pomodoro() {
           </ContainerButtons>
           <ContainerProgressBar className="w-11/12 md:w-2/6 mx-auto">
             <StyledCircularProgressbar
-                className="dark:text-zinc-100"
                 value={(modoDescanso ? TEMPO_DESCANSO : TEMPO_TRABALHO - tempoDecorrido) / (modoDescanso ? TEMPO_DESCANSO : TEMPO_TRABALHO) * 100}
                 text={formatarTempo(tempoDecorrido)}
             />

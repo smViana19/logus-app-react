@@ -207,13 +207,13 @@ export default function AdminDashboard() {
                     <td className="text-right px-6 whitespace-nowrap">
                       <a
                         href="javascript:void()"
-                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-purplePrimary"
                       >
                         Edit
                       </a>
                       <button
                         onClick={handleOpenModalDelete}
-                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-rose-700"
                       >
                         Delete
                       </button>
@@ -269,8 +269,8 @@ export default function AdminDashboard() {
       )}
 
 	  <div className='flex justify-between  pt-8 border-t border-gray-300 mb-8 mt-12 '>
-		<h2 className='font-semibold text-xl'>Blog e Notícias</h2>
-		<Link className='px-16 py-2 bg-purplePrimary text-white rounded' to='/admin/blog/add'>Criar</Link>
+		<h2 className='font-semibold text-xl dark:text-zinc-100'>Blog e Notícias</h2>
+		<Link className='px-16 py-2 bg-purplePrimary text-white rounded dark:text-zinc-100' to='/admin/blog/add'>Criar</Link>
 	  </div>
 
 	  <div className='grid grid-cols-4 gap-8'>

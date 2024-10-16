@@ -15,7 +15,7 @@ const AdminBlog = () => {
 
         <div className='rounded border border-gray-200 p-4'>
             <h1 className=''>Dia D</h1>
-            <p className='py-4'>Dia 28/10 terá Dia D para o terceiro ano do ensino médio com o tema de brasilidades</p>
+            <p className='py-4'>Dia 28/10 terá Dia D para o terceiro ano do ensino médio com o tema de brasilidades...</p>
         </div>
 
       </div>

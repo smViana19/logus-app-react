@@ -7,21 +7,23 @@ import axios from '../../../../services/axios';
 export default function AdminDashboard() {
   const [countStudents, setCountStudents] = useState('');
   const [countTeachers, setCountTeachers] = useState('');
-  const navigate = useNavigate()
+  const [isTableStudentsOpen, setIsTableStudentsOpen] = useState(false);
+  const [isTableTeachersOpen, setIsTableTeachersOpen] = useState(false)
+
+  const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user?.nome);
   useEffect(() => {
     const fetchCountStudents = async () => {
       const response = await axios.get('/users/count');
-      setCountStudents(response.data.count)
-    }
+      setCountStudents(response.data.count);
+    };
     const fetchCountTeachers = async () => {
       const response = await axios.get('/users/count/professores');
-      setCountTeachers(response.data.count)
-    }
-    fetchCountStudents()
+      setCountTeachers(response.data.count);
+    };
+    fetchCountStudents();
     fetchCountTeachers();
-  }, [])
-
+  }, []);
 
   const projects = [
     {
@@ -43,25 +45,248 @@ export default function AdminDashboard() {
       description: 'Visualize e analise relatórios gerenciais.',
       total: 10,
       path: '/admin/relatorios',
-      svg: "M160 0c-23.7 0-44.4 12.9-55.4 32L48 32C21.5 32 0 53.5 0 80L0 400c0 26.5 21.5 48 48 48l144 0 0-272c0-44.2 35.8-80 80-80l48 0 0-16c0-26.5-21.5-48-48-48l-56.6 0C204.4 12.9 183.7 0 160 0zM272 128c-26.5 0-48 21.5-48 48l0 272 0 16c0 26.5 21.5 48 48 48l192 0c26.5 0 48-21.5 48-48l0-220.1c0-12.7-5.1-24.9-14.1-33.9l-67.9-67.9c-9-9-21.2-14.1-33.9-14.1L320 128l-48 0zM160 40a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+      svg: 'M160 0c-23.7 0-44.4 12.9-55.4 32L48 32C21.5 32 0 53.5 0 80L0 400c0 26.5 21.5 48 48 48l144 0 0-272c0-44.2 35.8-80 80-80l48 0 0-16c0-26.5-21.5-48-48-48l-56.6 0C204.4 12.9 183.7 0 160 0zM272 128c-26.5 0-48 21.5-48 48l0 272 0 16c0 26.5 21.5 48 48 48l192 0c26.5 0 48-21.5 48-48l0-220.1c0-12.7-5.1-24.9-14.1-33.9l-67.9-67.9c-9-9-21.2-14.1-33.9-14.1L320 128l-48 0zM160 40a24 24 0 1 1 0 48 24 24 0 1 1 0-48z',
     },
     {
       title: 'Institucional',
       description: 'Informações institucionais e de contato.',
       total: 1,
       path: '/admin/institucional',
-      svg: "M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96 48 96C21.5 96 0 117.5 0 144L0 464c0 26.5 21.5 48 48 48l208 0 0-96c0-35.3 28.7-64 64-64s64 28.7 64 64l0 96 208 0c26.5 0 48-21.5 48-48l0-320c0-26.5-21.5-48-48-48L473.7 96 337.8 5.4zM96 192l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM96 320l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-16 0 0-16c0-8.8-7.2-16-16-16z"
+      svg: 'M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96 48 96C21.5 96 0 117.5 0 144L0 464c0 26.5 21.5 48 48 48l208 0 0-96c0-35.3 28.7-64 64-64s64 28.7 64 64l0 96 208 0c26.5 0 48-21.5 48-48l0-320c0-26.5-21.5-48-48-48L473.7 96 337.8 5.4zM96 192l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM96 320l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-16 0 0-16c0-8.8-7.2-16-16-16z',
     },
   ];
 
+  const tableItems = [
+    {
+      name: 'Liam James',
+      email: 'liamjames@example.com',
+      position: 'Software engineer',
+      salary: '$100K',
+    },
+    {
+      name: 'Olivia Emma',
+      email: 'oliviaemma@example.com',
+      position: 'Product designer',
+      salary: '$90K',
+    },
+    {
+      name: 'William Benjamin',
+      email: 'william.benjamin@example.com',
+      position: 'Front-end developer',
+      salary: '$80K',
+    },
+    {
+      name: 'Henry Theodore',
+      email: 'henrytheodore@example.com',
+      position: 'Laravel engineer',
+      salary: '$120K',
+    },
+    {
+      name: 'Amelia Elijah',
+      email: 'amelia.elijah@example.com',
+      position: 'Open source manager',
+      salary: '$75K',
+    },
+  ];
+
+  const handleTableStudents = () => {
+    if (isTableStudentsOpen === false) {
+      setIsTableStudentsOpen(true);
+    } else {
+      setIsTableStudentsOpen(false);
+    }
+  };
+
+  const handleTableTeachers = () => {
+	if (isTableTeachersOpen === false){
+		setIsTableTeachersOpen(true);
+	}  else {
+		setIsTableTeachersOpen(false);
+	}
+
+  }
+
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
-      <h1 className="text-xl font-semibold dark:text-white">Dashboard Administrador</h1>
+      <div className="">
+        <div className="items-start justify-between md:flex">
+          <div className="max-w-lg">
+            <h1 className="text-gray-800 text-xl font-bold sm:text-2xl">
+              Gestão Escolar
+            </h1>
+            <p className="text-gray-600 mt-2">
+              Selecione a turma que deseja visualizar
+            </p>
+          </div>
+
+          <div className="mt-3 md:mt-0">
+            <a
+              href="javascript:void(0)"
+              className="px-4 py-2 text-white duration-150 bg-purplePrimary rounded-lg hover:bg-purple-800 font-medium text-sm flex items-center gap-4"
+            >
+              Novo Cadastro
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="14"
+                width="12.25"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="#ffffff"
+                  d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <select
+          className="px-8 border border-gray-200 rounded mt-4 py-1"
+          name=""
+          id=""
+        >
+          <option value="">Selecione a turma</option>
+          <option value=""></option>
+        </select>
+        <div
+          onClick={handleTableStudents}
+          className="bg-purplePrimary px-4 py-2 rounded mt-8 flex justify-between items-center cursor-pointer"
+        >
+          <span className="text-white">Alunos</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="14"
+            width="14"
+            viewBox="0 0 512 512"
+          >
+            <path
+              className="fill-white"
+              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+            />
+          </svg>
+        </div>
+
+        {isTableStudentsOpen && (
+          <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
+            <table className="w-full table-auto text-sm text-left">
+              <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+                <tr>
+                  <th className="py-3 px-6">Nome Completo</th>
+                  <th className="py-3 px-6">Email</th>
+                  <th className="py-3 px-6">Matrícula</th>
+                  <th className="py-3 px-6">Média</th>
+                  <th className="py-3 px-6"></th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-600 divide-y">
+                {tableItems.map((item, idx) => (
+                  <tr key={idx}>
+                    <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.position}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.salary}
+                    </td>
+                    <td className="text-right px-6 whitespace-nowrap">
+                      <a
+                        href="javascript:void()"
+                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                      >
+                        Edit
+                      </a>
+                      <button
+                        href="javascript:void()"
+                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+
+
+	  <div
+          onClick={handleTableTeachers}
+          className="bg-purplePrimary px-4 py-2 rounded mt-8 flex justify-between items-center cursor-pointer"
+        >
+          <span className="text-white">Professores</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="14"
+            width="14"
+            viewBox="0 0 512 512"
+          >
+            <path
+              className="fill-white"
+              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+            />
+          </svg>
+        </div>
+
+        {isTableTeachersOpen && (
+          <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
+            <table className="w-full table-auto text-sm text-left">
+              <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+                <tr>
+                  <th className="py-3 px-6">Nome Completo</th>
+                  <th className="py-3 px-6">Email</th>
+                  <th className="py-3 px-6">Matrícula</th>
+                  <th className="py-3 px-6">Média</th>
+                  <th className="py-3 px-6"></th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-600 divide-y">
+                {tableItems.map((item, idx) => (
+                  <tr key={idx}>
+                    <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.position}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.salary}
+                    </td>
+                    <td className="text-right px-6 whitespace-nowrap">
+                      <a
+                        href="javascript:void()"
+                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                      >
+                        Edit
+                      </a>
+                      <button
+                        href="javascript:void()"
+                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
         {projects &&
           projects.map((project, index) => (
-            <InfoCard key={index} info={project} onClick={() => navigate(project.path)} />
+            <InfoCard
+              key={index}
+              info={project}
+              onClick={() => navigate(project.path)}
+            />
           ))}
       </div>
     </div>

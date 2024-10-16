@@ -39,7 +39,6 @@ const Sidebar = ({ role }) => {
 
   const DIRETOR_SIDEBAR_LINKS = [
     { id: 1, path: '/admin/dashboard', name: 'Gestão Escolar', icon: IoMdLock },
-    { id: 2, path: '/admin/blog', name: 'Blog', icon: IoBookOutline },
   ];
 
   const PROFESSOR_SIDEBAR_LINKS = [

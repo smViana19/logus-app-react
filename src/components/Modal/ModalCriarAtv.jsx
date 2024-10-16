@@ -4,8 +4,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
+    const mySwal = withReactContent(Swal);
     const {
         nome,
         setNome,
@@ -39,57 +42,46 @@ const Modal = ({ showModal, setShowModal }) => {
         }
     }, [showModal, setDataPostagem]);
 
-    const handleAddAtividade = async () => {
-        if (nome.trim() === '') {
-            toast.error('Por favor, preencha o nome da atividade.');
-            return;
-        }
-        if (categoria.trim() === '') {
-            toast.error('Selecione uma categoria.');
-            return;
-        }
+    const handleAddAtividadeLocal = async () => {
 
-        const dataEntregaCompleta = semDataEntrega
-            ? null
-            : `${dataEntrega}T${horaEntrega}`;
+        if (nome.length === 0 || categoria.length === 0) {
+            mySwal.fire({
+                title: 'Alerta',
+                text: 'Preencha os campos.',
+                icon: 'warning'
+            })
+            return;
+        }
+        if (nome.length < 4) {
+            mySwal.fire({
+                title: 'Alerta',
+                text: 'Nome precisa ter mais de 4 caracteres',
+                icon: 'warning'
+            })
+            return;
+        }
+        const dataEntregaCompleta = semDataEntrega ? null : `${dataEntrega}T${horaEntrega}`;
+        const newAtividadeData = {
+            subject_id: subjectId,
+            nome,
+            categoria,
+            pontos,
+            detalhes: detail,
+            data_entrega: dataEntregaCompleta,
+        };
 
         try {
-            const response = await axios.post(
-                'http://localhost:3000/materias/material/',
-                {
-                    subject_id: subjectId,
-                    nome,
-                    categoria,
-                    pontos,
-                    detalhes: detail,
-                    data_entrega: dataEntregaCompleta,
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                },
-            );
-
-            console.log('Dados retornados:', response.data);
-
-            const createdAtividade = response.data;
-            setAtividades([...atividades, createdAtividade]);
-           
-            setNome('');
-            setCategoria('');
-            setDataEntrega('');
-            setHoraEntrega('23:59');
-            setPontos('0');
-            setSemDataEntrega(false);
-            setDetail('');
-            setFile(null);
-            setShowModal(false); 
-            toast.success('Atividade adicionada com sucesso!');
+            await handleAddAtividade(newAtividadeData);
+            mySwal.fire({
+                title: 'Sucesso',
+                text: 'Atividade criada com sucesso.',
+                icon: 'success'
+            })
+            setShowModal(false)
         } catch (err) {
-            toast.error('Erro ao adicionar atividade.');
+            console.log("Erro modal: ", err)
         }
-    };
+    }
 
     const handleFocus = () => {
         if (pontos === '0') {
@@ -224,7 +216,7 @@ const Modal = ({ showModal, setShowModal }) => {
 
                             <div className="flex justify-end mt-6">
                                 <button
-                                    onClick={handleAddAtividade}
+                                    onClick={handleAddAtividadeLocal}
                                     className="bg-purple-600 text-white py-2 px-6 rounded-md hover:bg-purple-700"
                                 >
                                     Adicionar

@@ -9,6 +9,8 @@ import MenuMobile from '../../components/Navs/MenuMobile';
 import axios from '../../../services/axios';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 const Subject = () => {
     const token = useSelector((state) => state.auth.token);
@@ -18,16 +20,18 @@ const Subject = () => {
     const [filterStatus, setFilterStatus] = useState('all');
 
     const subjectId = useSelector(state => state.subject.selectedSubjectId);
-    console.log(`id materia: ${subjectId}`);
-
+    const mySwal = withReactContent(Swal);
     useEffect(() => {
         async function fetchAtividades() {
             try {
                 const response = await axios.get(`http://localhost:3000/materias/material/${subjectId}`);
-                console.log('Dados retornados:', response.data);
                 setAtividades(response.data);
             } catch (err) {
-                toast.error('Erro ao carregar atividades');
+                mySwal.fire({
+                    title: 'Erro ao carregar atividades',
+                    text: err.message,
+                    icon: 'error'
+                })
             }
         }
 
@@ -37,10 +41,8 @@ const Subject = () => {
     const handleAddAtividade = async (newAtividadeData) => {
         try {
             const response = await axios.post('http://localhost:3000/materias/material/', newAtividadeData);
-            console.log('Dados retornados:', response.data);
             setAtividades([...atividades, response.data]);
             setShowModal(false);
-            toast.success('Atividade adicionada com sucesso!');
         } catch (err) {
             const errors = get(err, 'response.data.errors', []);
             errors.forEach(error => toast.error(error));
@@ -67,38 +69,10 @@ const Subject = () => {
             console.log('Filtering atividade:', atividade);
             return atividade.categoria.toLowerCase() === filterStatus.toLowerCase();
         });
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    useEffect(() => {
-        // Verificar o tema armazenado no localStorage ao carregar a página
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            setIsDarkMode(true);
-        } else {
-            document.documentElement.classList.remove('dark');
-            setIsDarkMode(false);
-        }
-    }, []);
-
-    const handleThemeChange = () => {
-        if (isDarkMode) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-        setIsDarkMode(!isDarkMode);
-    };
-
 
     return (
         <AtividadeProvider>
             <div className="min-h-screen bg-gray-50">
-                <nav className="bg-white border-b border-gray-100">
-                    <MenuMobile />
-                </nav>
 
                 <main className="md:px-16 mt-4 lg:px-32 xl:px-64 py-16">
                     <div className="grid grid-cols-2 gap-4">
@@ -126,10 +100,10 @@ const Subject = () => {
                                     key={atividade.id}
                                     nome={atividade.nome}
                                     categoria={atividade.categoria}
-                                    dataEntrega={atividade.data_entrega} // Corrigido aqui
+                                    dataEntrega={atividade.data_entrega}
                                     pontos={atividade.pontos}
                                     file={atividade.file}
-                                    detail={atividade.detalhes} // Corrigido aqui
+                                    detail={atividade.detalhes}
                                     onDelete={() => handleDeleteAtividade(index, atividade.id)}
                                 />
                             ))

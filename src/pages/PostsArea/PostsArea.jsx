@@ -36,7 +36,7 @@ export default function PostsArea() {
         setIsLoading(false);
         mySwal.fire({
           title: 'Erro ao carregar as máterias.',
-          text: err,
+          text: err.message,
           icon: 'error'
         });
 
@@ -53,7 +53,6 @@ export default function PostsArea() {
 
     if (newMateria.trim() === '') {
       toast.error('Por favor, preencha o nome da matéria.');
-      console.log('funciona');
       return;
     }
 

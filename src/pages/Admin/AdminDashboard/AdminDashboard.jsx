@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import InfoCard from '../../../components/CardsContainers/InfoCard';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../../../../services/axios';
+import BtnOpenTable from '../../../components/Buttons/BtnOpenTable';
+import BtnGestaoEscolar from '../../../components/Buttons/BtnGestaoEscolar';
 
 export default function AdminDashboard() {
   const [countStudents, setCountStudents] = useState('');
   const [countTeachers, setCountTeachers] = useState('');
   const [isTableStudentsOpen, setIsTableStudentsOpen] = useState(false);
-  const [isTableTeachersOpen, setIsTableTeachersOpen] = useState(false)
+  const [isTableTeachersOpen, setIsTableTeachersOpen] = useState(false);
 
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user?.nome);
@@ -24,7 +26,8 @@ export default function AdminDashboard() {
     fetchCountStudents();
     fetchCountTeachers();
   }, []);
-
+  {
+    /*
   const projects = [
     {
       title: 'Alunos',
@@ -54,7 +57,8 @@ export default function AdminDashboard() {
       path: '/admin/institucional',
       svg: 'M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96 48 96C21.5 96 0 117.5 0 144L0 464c0 26.5 21.5 48 48 48l208 0 0-96c0-35.3 28.7-64 64-64s64 28.7 64 64l0 96 208 0c26.5 0 48-21.5 48-48l0-320c0-26.5-21.5-48-48-48L473.7 96 337.8 5.4zM96 192l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM96 320l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-16 0 0-16c0-8.8-7.2-16-16-16z',
     },
-  ];
+  ]; */
+  }
 
   const tableItems = [
     {
@@ -98,13 +102,12 @@ export default function AdminDashboard() {
   };
 
   const handleTableTeachers = () => {
-	if (isTableTeachersOpen === false){
-		setIsTableTeachersOpen(true);
-	}  else {
-		setIsTableTeachersOpen(false);
-	}
-
-  }
+    if (isTableTeachersOpen === false) {
+      setIsTableTeachersOpen(true);
+    } else {
+      setIsTableTeachersOpen(false);
+    }
+  };
 
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
@@ -119,25 +122,27 @@ export default function AdminDashboard() {
             </p>
           </div>
 
-          <div className="mt-3 md:mt-0">
-            <a
-              href="javascript:void(0)"
-              className="px-4 py-2 text-white duration-150 bg-purplePrimary rounded-lg hover:bg-purple-800 font-medium text-sm flex items-center gap-4"
-            >
-              Novo Cadastro
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="14"
-                width="12.25"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="#ffffff"
-                  d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"
-                />
-              </svg>
-            </a>
-          </div>
+          <div className="mt-3 md:mt-0"></div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-x-8 my-8">
+          <BtnGestaoEscolar
+            title={'Cadastrar'}
+            number={2}
+            path="/registro"
+            description={
+              'Crie cadastros para adicionar seus alunos e professores'
+            }
+            svg={
+              'M160 64c0-35.3 28.7-64 64-64L576 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64l-239.2 0c-11.8-25.5-29.9-47.5-52.4-64l99.6 0 0-32c0-17.7 14.3-32 32-32l64 0c17.7 0 32 14.3 32 32l0 32 64 0 0-288L224 64l0 49.1C205.2 102.2 183.3 96 160 96l0-32zm0 64a96 96 0 1 1 0 192 96 96 0 1 1 0-192zM133.3 352l53.3 0C260.3 352 320 411.7 320 485.3c0 14.7-11.9 26.7-26.7 26.7L26.7 512C11.9 512 0 500.1 0 485.3C0 411.7 59.7 352 133.3 352z'
+            }
+          />
+
+          <BtnGestaoEscolar
+            title={'Criar Turma'}
+            number={2}
+            description={'Crie turmas para organizar seu sistema'}
+          />
         </div>
 
         <select
@@ -148,23 +153,8 @@ export default function AdminDashboard() {
           <option value="">Selecione a turma</option>
           <option value=""></option>
         </select>
-        <div
-          onClick={handleTableStudents}
-          className="bg-purplePrimary px-4 py-2 rounded mt-8 flex justify-between items-center cursor-pointer"
-        >
-          <span className="text-white">Alunos</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="14"
-            width="14"
-            viewBox="0 0 512 512"
-          >
-            <path
-              className="fill-white"
-              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
-            />
-          </svg>
-        </div>
+
+        <BtnOpenTable onClick={handleTableStudents} user={'Alunos'} />
 
         {isTableStudentsOpen && (
           <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
@@ -213,73 +203,52 @@ export default function AdminDashboard() {
         )}
       </div>
 
+      <BtnOpenTable onClick={handleTableTeachers} user={'Professores'} />
 
-
-	  <div
-          onClick={handleTableTeachers}
-          className="bg-purplePrimary px-4 py-2 rounded mt-8 flex justify-between items-center cursor-pointer"
-        >
-          <span className="text-white">Professores</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="14"
-            width="14"
-            viewBox="0 0 512 512"
-          >
-            <path
-              className="fill-white"
-              d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
-            />
-          </svg>
-        </div>
-
-        {isTableTeachersOpen && (
-          <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
-            <table className="w-full table-auto text-sm text-left">
-              <thead className="bg-gray-50 text-gray-600 font-medium border-b">
-                <tr>
-                  <th className="py-3 px-6">Nome Completo</th>
-                  <th className="py-3 px-6">Email</th>
-                  <th className="py-3 px-6">Matrícula</th>
-                  <th className="py-3 px-6">Média</th>
-                  <th className="py-3 px-6"></th>
+      {isTableTeachersOpen && (
+        <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
+          <table className="w-full table-auto text-sm text-left">
+            <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+              <tr>
+                <th className="py-3 px-6">Nome Completo</th>
+                <th className="py-3 px-6">Email</th>
+                <th className="py-3 px-6">Matrícula</th>
+                <th className="py-3 px-6">Média</th>
+                <th className="py-3 px-6"></th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 divide-y">
+              {tableItems.map((item, idx) => (
+                <tr key={idx}>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item.position}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
+                  <td className="text-right px-6 whitespace-nowrap">
+                    <a
+                      href="javascript:void()"
+                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                    >
+                      Edit
+                    </a>
+                    <button
+                      href="javascript:void()"
+                      className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="text-gray-600 divide-y">
-                {tableItems.map((item, idx) => (
-                  <tr key={idx}>
-                    <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {item.email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {item.position}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {item.salary}
-                    </td>
-                    <td className="text-right px-6 whitespace-nowrap">
-                      <a
-                        href="javascript:void()"
-                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
-                      >
-                        Edit
-                      </a>
-                      <button
-                        href="javascript:void()"
-                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
+      {/*
+	  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
         {projects &&
           projects.map((project, index) => (
             <InfoCard
@@ -289,6 +258,7 @@ export default function AdminDashboard() {
             />
           ))}
       </div>
+	   */}
     </div>
   );
 }

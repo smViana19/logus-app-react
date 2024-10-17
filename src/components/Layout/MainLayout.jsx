@@ -63,7 +63,7 @@ const MainLayout = () => {
         <Sidebar role={role} />
         <div className="flex flex-col w-full">
           <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} handleLogout={handleLogout} />
-          <div className="flex-grow sm:p-4 bg-gray-50">
+          <div className="flex-grow sm:p-4 bg-gray-50 dark:bg-zinc-800">
             <Outlet />
           </div>
         </div>

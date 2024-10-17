@@ -141,7 +141,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
+    <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:bg-zinc-800">
       <div className="">
   
             <h1 className="text-gray-800 text-xl font-bold sm:text-2xl dark:text-zinc-100">

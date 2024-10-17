@@ -7,13 +7,14 @@ import BtnGestaoEscolar from '../../../components/Buttons/BtnGestaoEscolar';
 import CardBlog from '../../../components/CardsContainers/CardBlog';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
-const mySwal = withReactContent(Swal)
-const PAGE_SIZE = 10
+const mySwal = withReactContent(Swal);
+const PAGE_SIZE = 10;
 
 export default function AdminDashboard() {
   const [isTableStudentsOpen, setIsTableStudentsOpen] = useState(false);
   const [isTableTeachersOpen, setIsTableTeachersOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
+  const [isModalEditOpen, setIsModalEditOpen] = useState(false);
 
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
@@ -31,16 +32,20 @@ export default function AdminDashboard() {
             Authorization: `Bearer ${token}`,
           },
         });
-        const students = response.data.filter((user) => user.role === 'estudante');
-        const teachers = response.data.filter((user) => user.role === 'professor');
+        const students = response.data.filter(
+          (user) => user.role === 'estudante'
+        );
+        const teachers = response.data.filter(
+          (user) => user.role === 'professor'
+        );
         setStudents(students);
-        setTeachers(teachers)
+        setTeachers(teachers);
       } catch (error) {
         mySwal.fire({
-          title: "Erro",
+          title: 'Erro',
           text: error,
-          icon: 'error'
-        })
+          icon: 'error',
+        });
       }
     };
     fetchStudents();
@@ -66,39 +71,6 @@ export default function AdminDashboard() {
     }
   };
 
-  const tableItems = [
-    {
-      name: 'Liam James',
-      email: 'liamjames@example.com',
-      position: 'Software engineer',
-      salary: '$100K',
-    },
-    {
-      name: 'Olivia Emma',
-      email: 'oliviaemma@example.com',
-      position: 'Product designer',
-      salary: '$90K',
-    },
-    {
-      name: 'William Benjamin',
-      email: 'william.benjamin@example.com',
-      position: 'Front-end developer',
-      salary: '$80K',
-    },
-    {
-      name: 'Henry Theodore',
-      email: 'henrytheodore@example.com',
-      position: 'Laravel engineer',
-      salary: '$120K',
-    },
-    {
-      name: 'Amelia Elijah',
-      email: 'amelia.elijah@example.com',
-      position: 'Open source manager',
-      salary: '$75K',
-    },
-  ];
-
   const handleTableStudents = () => {
     if (isTableStudentsOpen === false) {
       setIsTableStudentsOpen(true);
@@ -119,14 +91,28 @@ export default function AdminDashboard() {
     setIsModalDeleteOpen(true);
   };
 
+  const handleModalDelete = () => {
+    if(isModalDeleteOpen === false) {
+      setIsModalDeleteOpen(true)
+    } else {
+      setIsModalDeleteOpen(false)
+    }
+  }
   const handleCloseModalDelete = () => {
     setIsModalDeleteOpen(false);
+  };
+
+  const handlenModalEdit = () => {
+    if(isModalEditOpen  === false) {
+      setIsModalEditOpen(true);
+    } else {
+      setIsModalEditOpen(false)
+    }
   };
 
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:bg-zinc-800">
       <div className="">
-
         <h1 className="text-gray-800 text-xl font-bold sm:text-2xl dark:text-zinc-100">
           Gestão Escolar
         </h1>
@@ -135,7 +121,6 @@ export default function AdminDashboard() {
         </p>
 
         <div className="mt-3 md:mt-0"></div>
-
 
         <div className="grid grid-cols-3 gap-x-8 my-8">
           <BtnGestaoEscolar
@@ -196,7 +181,9 @@ export default function AdminDashboard() {
                 {currentStudents.length > 0 ? (
                   currentStudents.map((student) => (
                     <tr key={student.id}>
-                      <td className="px-6 py-4 whitespace-nowrap">{student.nome}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {student.nome}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {student.email}
                       </td>
@@ -204,24 +191,27 @@ export default function AdminDashboard() {
                         {student.role}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className='px-6 py-1 bg-red-100 text-red-600 rounded-md'>50%</span>
+                        <span className="px-6 py-1 bg-red-100 text-red-600 rounded-md">
+                          50%
+                        </span>
                       </td>
                       <td className="text-right px-6 whitespace-nowrap">
-                        <a
-                          href="javascript:void()"
+                        <button
+                          onClick={handlenModalEdit}
                           className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-purplePrimary"
                         >
-                          Edit
-                        </a>
+                          Editar
+                        </button>
                         <button
-                          onClick={handleOpenModalDelete}
+                          onClick={handleModalDelete}
                           className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-rose-700"
                         >
-                          Delete
+                          Deletar
                         </button>
                       </td>
                     </tr>
-                  ))) : (
+                  ))
+                ) : (
                   <tr>
                     <td
                       colSpan="3"
@@ -245,7 +235,7 @@ export default function AdminDashboard() {
                   width="8.75"
                   viewBox="0 0 320 512"
                   className="text-black dark:text-zinc-200"
-                  fill='currentColor'
+                  fill="currentColor"
                 >
                   <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
                 </svg>
@@ -264,14 +254,13 @@ export default function AdminDashboard() {
                   width="8.75"
                   viewBox="0 0 320 512"
                   className="text-black dark:text-zinc-200"
-                  fill='currentColor'
+                  fill="currentColor"
                 >
                   <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                 </svg>
               </button>
             </div>
           </div>
-
         )}
       </div>
       <BtnOpenTable onClick={handleTableTeachers} user={'Professores'} />
@@ -290,8 +279,12 @@ export default function AdminDashboard() {
             <tbody className="text-gray-600 divide-y dark:text-zinc-400 ">
               {teachers.map((teacher) => (
                 <tr key={teacher.id}>
-                  <td className="px-6 py-4 whitespace-nowrap">{teacher.nome}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{teacher.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {teacher.nome}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {teacher.email}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {teacher.role}
                   </td>
@@ -316,16 +309,20 @@ export default function AdminDashboard() {
           </table>
         </div>
       )}
-
-      <div className='flex justify-between  pt-8 border-t border-gray-300 mb-8 mt-12 '>
-        <h2 className='font-semibold text-xl dark:text-zinc-100'>Blog e Notícias</h2>
-        <Link className='px-16 py-2 bg-purplePrimary text-white rounded dark:text-zinc-100' to='/admin/blog/add'>Criar</Link>
+      <div className="flex justify-between  pt-8 border-t border-gray-300 mb-8 mt-12 ">
+        <h2 className="font-semibold text-xl dark:text-zinc-100">
+          Blog e Notícias
+        </h2>
+        <Link
+          className="px-16 py-2 bg-purplePrimary text-white rounded dark:text-zinc-100"
+          to="/admin/blog/add"
+        >
+          Criar
+        </Link>
       </div>
-
-      <div className='grid grid-cols-4 gap-8'>
+      <div className="grid grid-cols-4 gap-8">
         <CardBlog />
       </div>
-
       {isModalDeleteOpen && (
         <div
           className="relative z-10"
@@ -385,7 +382,7 @@ export default function AdminDashboard() {
                     Deletar
                   </button>
                   <button
-                    onClick={handleCloseModalDelete}
+                    onClick={handleModalDelete}
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                   >
@@ -398,18 +395,91 @@ export default function AdminDashboard() {
         </div>
       )}{' '}
       {/* END MODAL */}
-      {/*
-	  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
-        {projects &&
-          projects.map((project, index) => (
-            <InfoCard
-              key={index}
-              info={project}
-              onClick={() => navigate(project.path)}
-            />
-          ))}
-      </div>
-	   */}
+
+
+
+
+      {isModalEditOpen && (
+        <div
+          className="relative z-10"
+          aria-labelledby="modal-title"
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* START MODAL */}
+          <div
+            className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            aria-hidden="true"
+          ></div>
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl px-8 py-6">
+             
+                  <div className="sm:flex sm:items-start">
+                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 sm:mx-0 sm:h-10 sm:w-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path className='fill-orange-600' d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z"/></svg>
+                    </div>
+                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                      <h3
+                        className="text-base font-semibold leading-6 text-gray-900"
+                        id="modal-title"
+                      >
+                        Editar Usuário
+                      </h3>
+                  
+                        <p className="text-sm text-gray-500">
+                         Este usuário será editado permanentemente
+                        </p>
+                    </div>
+                  </div>
+
+
+                  <form className='my-8 flex flex-col gap-4' action="">
+
+                    <div className='flex flex-col gap-1'>
+                      <label htmlFor="">Nome Completo</label>
+                      <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="text" />
+                    </div>
+
+                    <div className='flex flex-col gap-1'>
+                      <label htmlFor="">E-mail</label>
+                      <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="email" />
+                    </div>
+
+                    <div className='flex flex-col gap-1'>
+                      <label htmlFor="">Senha</label>
+                      <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="password" />
+                    </div>
+
+                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                  <button
+                    type="button"
+                    className="inline-flex w-full justify-center rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    onClick={handlenModalEdit}
+                    type="button"
+                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+
+                  </form>
+               
+
+
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      )}{' '}
+      {/* END MODAL */}
+      
     </div>
   );
 }

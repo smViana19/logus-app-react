@@ -22,10 +22,9 @@ function* loginRequest({ payload }) {
         history.push(payload.prevPath)
     } catch (e) {
         console.log('Erro no login:', e);
-        const errorMessage = e.response?.data?.errors?.[0] || 'Usuário ou senha inválidos.';
         yield call([mySwal, 'fire'], {
             title: 'Erro',
-            text: errorMessage,
+            text: e.message,
             icon: 'error',
             confirmButtonText: 'OK'
         });

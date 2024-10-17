@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import NavBar from '../../components/Navs/NavBar.jsx';
 import { toast } from 'react-toastify';
 import Sidebar from '../../components/Schedule/Sidebar.jsx';
 import Month from '../../components/Schedule/Month.jsx';
 import GlobalContext from '../../context/GlobalContext.jsx';
-import MenuMobile from '../../components/Navs/MenuMobile.jsx';
 import { getMonth } from '../../util.js';
 import CalendarHeader from '../../components/Schedule/CalendarHeader.jsx';
 import EventModal from '../../components/Schedule/EventModal.jsx';
@@ -56,22 +54,22 @@ export default function Schedule() {
   }, [monthIndex]);
 
   return (
-      <>
-        <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:text-white">
-          <main>
-            <React.Fragment>
-              {showEventModal && <EventModal />}
+    <>
+      <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:text-white">
+        <main>
+          <React.Fragment>
+            {showEventModal && <EventModal />}
 
-              <div className="h-sreen flex-columns">
-                <CalendarHeader />
-                <div className="flex flex-1">
-                  <Sidebar />
-                  <Month month={currentMonth} />
-                </div>
+            <div className="h-sreen flex-columns">
+              <CalendarHeader />
+              <div className="flex flex-1">
+                <Sidebar />
+                <Month month={currentMonth} />
               </div>
-            </React.Fragment>
-          </main>
-        </div>
-      </>
+            </div>
+          </React.Fragment>
+        </main>
+      </div>
+    </>
   );
 }

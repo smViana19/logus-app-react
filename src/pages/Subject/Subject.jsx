@@ -5,7 +5,6 @@ import SubjectFiltersButton from '../../components/Buttons/SubjectFiltersButton.
 import TaskCard from '../../components/CardsContainers/TaskCard.jsx';
 import { AtividadeProvider } from '../../context/AtividadeContext';
 import Modal from '../../components/Modal/ModalCriarAtv';
-import MenuMobile from '../../components/Navs/MenuMobile';
 import axios from '../../../services/axios';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';

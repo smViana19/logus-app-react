@@ -23,20 +23,20 @@ export default function LandingPage() {
 
   return (
     <>
-      <header class="fixed w-full">
-        <nav class="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
-          <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-            <a href="#" class="flex items-center">
-              <img src={logo} class="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
-             
+      <header className="fixed w-full">
+        <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
+          <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+            <a href="#" className="flex items-center">
+              <img src={logo} className="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
+
             </a>
-            <div class="flex items-center lg:order-2">
-              
+            <div className="flex items-center lg:order-2">
+
 
               <div>
                 {isLoggedIn ? (
                   <Link
-                    class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
+                    className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
                     to="/dashboard"
                   >
                     Entrar
@@ -45,14 +45,14 @@ export default function LandingPage() {
                   <>
                     <Link
                       to="/login"
-                      class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                      className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
                     >
                       Log in
                     </Link>
 
                     <Link
                       to="/registro"
-                      class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
+                      className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
                     >
                       Register
                     </Link>
@@ -63,13 +63,13 @@ export default function LandingPage() {
               <button
                 data-collapse-toggle="mobile-menu-2"
                 type="button"
-                class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="mobile-menu-2"
                 aria-expanded="false"
               >
-                <span class="sr-only">Open main menu</span>
+                <span className="sr-only">Open main menu</span>
                 <svg
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@ export default function LandingPage() {
                   ></path>
                 </svg>
                 <svg
-                  class="hidden w-6 h-6"
+                  className="hidden w-6 h-6"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -95,14 +95,14 @@ export default function LandingPage() {
               </button>
             </div>
             <div
-              class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
+              className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
               id="mobile-menu-2"
             >
-              <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
                   <a
                     href="#"
-                    class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white"
+                    className="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white"
                     aria-current="page"
                   >
                     Home
@@ -111,7 +111,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Ferramentas
                   </a>
@@ -119,7 +119,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Suporte
                   </a>
@@ -127,7 +127,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Custo
                   </a>
@@ -135,7 +135,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Team
                   </a>
@@ -143,7 +143,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Contact
                   </a>
@@ -154,13 +154,13 @@ export default function LandingPage() {
         </nav>
       </header>
 
-      <section class="bg-white dark:bg-gray-900">
-        <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
-          <div class="mr-auto place-self-center lg:col-span-7">
-            <h1 class="max-w-xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
+      <section className="bg-white dark:bg-gray-900">
+        <div className="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
+          <div className="mr-auto place-self-center lg:col-span-7">
+            <h1 className="max-w-xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
               Conectando & Educando
             </h1>
-            <p class="max-w-xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+            <p className="max-w-xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
               Nossa plataforma conecta a administração da escola, professores e
               alunos em um único ambiente. Com ferramentas para gestão eficiente
               e comunicação fluida, facilitamos o acompanhamento das atividades
@@ -170,35 +170,35 @@ export default function LandingPage() {
 
             <span
               href="https://www.figma.com/community/file/1125744163617429490"
-              class="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:w-auto focus:outline-none hover:bg-gray-100 hover:text-purplePrimary cursor-pointer focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              className="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:w-auto focus:outline-none hover:bg-gray-100 hover:text-purplePrimary cursor-pointer focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
             >
               Primeiro Acesso
             </span>
           </div>
-          <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img src={imageLanding} alt="hero image" />
           </div>
         </div>
       </section>
 
-      <section class="bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
-          <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
-            <div class="text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+      <section className="bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+          <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+            <div className="text-gray-500 sm:text-lg dark:text-gray-400">
+              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
                 Ferramentas para a escola
               </h2>
-              <p class="mb-8 font-light lg:text-xl">
+              <p className="mb-8 font-light lg:text-xl">
                 Algumas de nossas principais ferramentas para gestão da sua
                 escola.
               </p>
               <ul
                 role="list"
-                class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700"
+                className="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700"
               >
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -209,13 +209,13 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Criação e gerência de atividades
                   </span>
                 </li>
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -226,13 +226,13 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Gestão de notas dos alunos
                   </span>
                 </li>
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -243,13 +243,13 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Administração de avisos e notícias da escola
                   </span>
                 </li>
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -260,13 +260,13 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Avaliação do desempenho de cada aluno individualmente
                   </span>
                 </li>
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -277,40 +277,40 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Relatórios detalhados do prograsso acadêmico
                   </span>
                 </li>
               </ul>
             </div>
             <img
-              class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
+              className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
               src="./images/feature-1.png"
               alt="dashboard feature image"
             />
           </div>
-          <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+          <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
             <img
-              class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
+              className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
               src="./images/feature-2.png"
               alt="feature image 2"
             />
-            <div class="text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <div className="text-gray-500 sm:text-lg dark:text-gray-400">
+              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
                 Ferramentas para os alunos
               </h2>
-              <p class="mb-8 font-light lg:text-xl">
+              <p className="mb-8 font-light lg:text-xl">
                 Ferramentas essenciais para impulsionar a produtividade dos
                 alunos, melhorando seu desempenho e elevando a média da sua
                 escola.
               </p>
               <ul
                 role="list"
-                class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700"
+                className="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700"
               >
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -321,13 +321,13 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Método Pomodoro
                   </span>
                 </li>
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -338,13 +338,13 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Sons para concentração
                   </span>
                 </li>
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -355,13 +355,13 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Agenda
                   </span>
                 </li>
-                <li class="flex space-x-3">
+                <li className="flex space-x-3">
                   <svg
-                    class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
+                    className="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -372,12 +372,12 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
                     Acompanhamento por gráfico de suas notas e médias
                   </span>
                 </li>
               </ul>
-              <p class="font-light lg:text-xl">
+              <p className="font-light lg:text-xl">
                 Essas são apenas algumas de nossas soluções.
               </p>
             </div>
@@ -385,28 +385,28 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section class="bg-white dark:bg-gray-900">
-        <div class="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
-          <div class="col-span-2 mb-8">
-            <p class="text-lg font-medium text-purple-600 dark:text-purple-500">
+      <section className="bg-white dark:bg-gray-900">
+        <div className="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
+          <div className="col-span-2 mb-8">
+            <p className="text-lg font-medium text-purple-600 dark:text-purple-500">
               Trusted Worldwide
             </p>
-            <h2 class="mt-3 mb-4 text-3xl font-extrabold tracking-tight text-gray-900 md:text-3xl dark:text-white">
+            <h2 className="mt-3 mb-4 text-3xl font-extrabold tracking-tight text-gray-900 md:text-3xl dark:text-white">
               Trusted by over 600 million users and 10,000 teams
             </h2>
-            <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
               Our rigorous security and compliance standards are at the heart of
               all we do. We work tirelessly to protect you and your customers.
             </p>
-            <div class="pt-6 mt-6 space-y-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="pt-6 mt-6 space-y-4 border-t border-gray-200 dark:border-gray-700">
               <div>
                 <a
                   href="#"
-                  class="inline-flex items-center text-base font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700"
+                  className="inline-flex items-center text-base font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700"
                 >
                   Explore Legality Guide
                   <svg
-                    class="w-5 h-5 ml-1"
+                    className="w-5 h-5 ml-1"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -422,11 +422,11 @@ export default function LandingPage() {
               <div>
                 <a
                   href="#"
-                  class="inline-flex items-center text-base font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700"
+                  className="inline-flex items-center text-base font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700"
                 >
                   Visit the Trust Center
                   <svg
-                    class="w-5 h-5 ml-1"
+                    className="w-5 h-5 ml-1"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -441,10 +441,10 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div class="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
+          <div className="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
             <div>
               <svg
-                class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
+                className="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -455,32 +455,32 @@ export default function LandingPage() {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white">
+              <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 99.99% uptime
               </h3>
-              <p class="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-gray-500 dark:text-gray-400">
                 For Landwind, with zero maintenance downtime
               </p>
             </div>
             <div>
               <svg
-                class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
+                className="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
               </svg>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white">
+              <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 600M+ Users
               </h3>
-              <p class="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-gray-500 dark:text-gray-400">
                 Trusted by over 600 milion users around the world
               </p>
             </div>
             <div>
               <svg
-                class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
+                className="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -491,26 +491,26 @@ export default function LandingPage() {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white">
+              <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 100+ countries
               </h3>
-              <p class="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-gray-500 dark:text-gray-400">
                 Have used Landwind to create functional websites
               </p>
             </div>
             <div>
               <svg
-                class="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
+                className="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 dark:text-purple-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
               </svg>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white">
+              <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 5+ Million
               </h3>
-              <p class="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-gray-500 dark:text-gray-400">
                 Transactions per day
               </p>
             </div>
@@ -518,11 +518,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section class="bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-24 lg:px-6">
-          <figure class="max-w-screen-md mx-auto">
+      <section className="bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-24 lg:px-6">
+          <figure className="max-w-screen-md mx-auto">
             <svg
-              class="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600"
+              className="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600"
               viewBox="0 0 24 27"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -533,23 +533,23 @@ export default function LandingPage() {
               />
             </svg>
             <blockquote>
-              <p class="text-xl font-medium text-gray-900 md:text-2xl dark:text-white">
+              <p className="text-xl font-medium text-gray-900 md:text-2xl dark:text-white">
                 "Landwind is just awesome. It contains tons of predesigned
                 components and pages starting from login screen to complex
                 dashboard. Perfect choice for your next SaaS application."
               </p>
             </blockquote>
-            <figcaption class="flex items-center justify-center mt-6 space-x-3">
+            <figcaption className="flex items-center justify-center mt-6 space-x-3">
               <img
-                class="w-6 h-6 rounded-full"
+                className="w-6 h-6 rounded-full"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="profile picture"
               />
-              <div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-                <div class="pr-3 font-medium text-gray-900 dark:text-white">
+              <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+                <div className="pr-3 font-medium text-gray-900 dark:text-white">
                   Micheal Gough
                 </div>
-                <div class="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
+                <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
                   CEO at Google
                 </div>
               </div>
@@ -558,12 +558,12 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section class="bg-white dark:bg-gray-900">
-        <div class="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6 ">
-          <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-center text-gray-900 lg:mb-8 lg:text-3xl dark:text-white">
+      <section className="bg-white dark:bg-gray-900">
+        <div className="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6 ">
+          <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-center text-gray-900 lg:mb-8 lg:text-3xl dark:text-white">
             Frequently asked questions
           </h2>
-          <div class="max-w-screen-md mx-auto">
+          <div className="max-w-screen-md mx-auto">
             <div
               id="accordion-flush"
               data-accordion="collapse"
@@ -573,7 +573,7 @@ export default function LandingPage() {
               <h3 id="accordion-flush-heading-1">
                 <button
                   type="button"
-                  class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
                   data-accordion-target="#accordion-flush-body-1"
                   aria-expanded="true"
                   aria-controls="accordion-flush-body-1"
@@ -581,7 +581,7 @@ export default function LandingPage() {
                   <span>Can I use Landwind in open-source projects?</span>
                   <svg
                     data-accordion-icon=""
-                    class="w-6 h-6 rotate-180 shrink-0"
+                    className="w-6 h-6 rotate-180 shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -596,20 +596,20 @@ export default function LandingPage() {
               </h3>
               <div
                 id="accordion-flush-body-1"
-                class=""
+                className=""
                 aria-labelledby="accordion-flush-heading-1"
               >
-                <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     Landwind is an open-source library of interactive components
                     built on top of Tailwind CSS including buttons, dropdowns,
                     modals, navbars, and more.
                   </p>
-                  <p class="text-gray-500 dark:text-gray-400">
+                  <p className="text-gray-500 dark:text-gray-400">
                     Check out this guide to learn how to{' '}
                     <a
                       href="#"
-                      class="text-purple-600 dark:text-purple-500 hover:underline"
+                      className="text-purple-600 dark:text-purple-500 hover:underline"
                     >
                       get started
                     </a>{' '}
@@ -621,7 +621,7 @@ export default function LandingPage() {
               <h3 id="accordion-flush-heading-2">
                 <button
                   type="button"
-                  class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
                   data-accordion-target="#accordion-flush-body-2"
                   aria-expanded="false"
                   aria-controls="accordion-flush-body-2"
@@ -629,7 +629,7 @@ export default function LandingPage() {
                   <span>Is there a Figma file available?</span>
                   <svg
                     data-accordion-icon=""
-                    class="w-6 h-6 shrink-0"
+                    className="w-6 h-6 shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -644,20 +644,20 @@ export default function LandingPage() {
               </h3>
               <div
                 id="accordion-flush-body-2"
-                class="hidden"
+                className="hidden"
                 aria-labelledby="accordion-flush-heading-2"
               >
-                <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     Landwind is first conceptualized and designed using the
                     Figma software so everything you see in the library has a
                     design equivalent in our Figma file.
                   </p>
-                  <p class="text-gray-500 dark:text-gray-400">
+                  <p className="text-gray-500 dark:text-gray-400">
                     Check out the{' '}
                     <a
                       href="#"
-                      class="text-purple-600 dark:text-purple-500 hover:underline"
+                      className="text-purple-600 dark:text-purple-500 hover:underline"
                     >
                       Figma design system
                     </a>{' '}
@@ -669,7 +669,7 @@ export default function LandingPage() {
               <h3 id="accordion-flush-heading-3">
                 <button
                   type="button"
-                  class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
                   data-accordion-target="#accordion-flush-body-3"
                   aria-expanded="false"
                   aria-controls="accordion-flush-body-3"
@@ -679,7 +679,7 @@ export default function LandingPage() {
                   </span>
                   <svg
                     data-accordion-icon=""
-                    class="w-6 h-6 shrink-0"
+                    className="w-6 h-6 shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -694,30 +694,30 @@ export default function LandingPage() {
               </h3>
               <div
                 id="accordion-flush-body-3"
-                class="hidden"
+                className="hidden"
                 aria-labelledby="accordion-flush-heading-3"
               >
-                <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     The main difference is that the core components from
                     Landwind are open source under the MIT license, whereas
                     Tailwind UI is a paid product. Another difference is that
                     Landwind relies on smaller and standalone components,
                     whereas Tailwind UI offers sections of pages.
                   </p>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     However, we actually recommend using both Landwind, Landwind
                     Pro, and even Tailwind UI as there is no technical reason
                     stopping you from using the best of two worlds.
                   </p>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     Learn more about these technologies:
                   </p>
-                  <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
+                  <ul className="pl-5 text-gray-500 list-disc dark:text-gray-400">
                     <li>
                       <a
                         href="#"
-                        class="text-purple-600 dark:text-purple-500 hover:underline"
+                        className="text-purple-600 dark:text-purple-500 hover:underline"
                       >
                         Landwind Pro
                       </a>
@@ -725,7 +725,7 @@ export default function LandingPage() {
                     <li>
                       <a
                         href="#"
-                        class="text-purple-600 dark:text-purple-500 hover:underline"
+                        className="text-purple-600 dark:text-purple-500 hover:underline"
                       >
                         Tailwind UI
                       </a>
@@ -736,7 +736,7 @@ export default function LandingPage() {
               <h3 id="accordion-flush-heading-4">
                 <button
                   type="button"
-                  class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
                   data-accordion-target="#accordion-flush-body-4"
                   aria-expanded="false"
                   aria-controls="accordion-flush-body-4"
@@ -744,7 +744,7 @@ export default function LandingPage() {
                   <span>What about browser support?</span>
                   <svg
                     data-accordion-icon=""
-                    class="w-6 h-6 shrink-0"
+                    className="w-6 h-6 shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -759,30 +759,30 @@ export default function LandingPage() {
               </h3>
               <div
                 id="accordion-flush-body-4"
-                class="hidden"
+                className="hidden"
                 aria-labelledby="accordion-flush-heading-4"
               >
-                <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     The main difference is that the core components from
                     Landwind are open source under the MIT license, whereas
                     Tailwind UI is a paid product. Another difference is that
                     Landwind relies on smaller and standalone components,
                     whereas Tailwind UI offers sections of pages.
                   </p>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     However, we actually recommend using both Landwind, Landwind
                     Pro, and even Tailwind UI as there is no technical reason
                     stopping you from using the best of two worlds.
                   </p>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     Learn more about these technologies:
                   </p>
-                  <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
+                  <ul className="pl-5 text-gray-500 list-disc dark:text-gray-400">
                     <li>
                       <a
                         href="#"
-                        class="text-purple-600 dark:text-purple-500 hover:underline"
+                        className="text-purple-600 dark:text-purple-500 hover:underline"
                       >
                         Landwind Pro
                       </a>
@@ -790,7 +790,7 @@ export default function LandingPage() {
                     <li>
                       <a
                         href="#"
-                        class="text-purple-600 dark:text-purple-500 hover:underline"
+                        className="text-purple-600 dark:text-purple-500 hover:underline"
                       >
                         Tailwind UI
                       </a>
@@ -803,17 +803,17 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section class="bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
-          <div class="max-w-screen-md mx-auto text-center">
-            <h2 class="mb-8 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
+      <section className="bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
+          <div className="max-w-screen-md mx-auto text-center">
+            <h2 className="mb-8 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
               Como comprar nossa plataforma?
             </h2>
-            <p class="mb-8 font-light text-gray-500 dark:text-gray-400 md:text-lg text-justify">
-            Oferecemos planos de pagamento baseados em assinaturas anuais, com um valor único ajustado conforme o número de alunos que a escola atende. Além disso, disponibilizamos uma versão trial gratuita de 30 dias, para que você possa explorar a plataforma e avaliar se ela atende às necessidades da sua instituição.            </p>
+            <p className="mb-8 font-light text-gray-500 dark:text-gray-400 md:text-lg text-justify">
+              Oferecemos planos de pagamento baseados em assinaturas anuais, com um valor único ajustado conforme o número de alunos que a escola atende. Além disso, disponibilizamos uma versão trial gratuita de 30 dias, para que você possa explorar a plataforma e avaliar se ela atende às necessidades da sua instituição.            </p>
             <a
               href="#"
-              class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
+              className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
             >
               Free trial for 30 days
             </a>
@@ -821,163 +821,163 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer class="bg-white dark:bg-gray-800">
-        <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
-          <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+      <footer className="bg-white dark:bg-gray-800">
+        <div className="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
             <div>
-              <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Company
               </h3>
-              <ul class="text-gray-500 dark:text-gray-400">
-                <li class="mb-4">
-                  <a href="#" class=" hover:underline">
+              <ul className="text-gray-500 dark:text-gray-400">
+                <li className="mb-4">
+                  <a href="#" className=" hover:underline">
                     About
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Careers
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Brand Center
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Blog
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Help center
               </h3>
-              <ul class="text-gray-500 dark:text-gray-400">
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+              <ul className="text-gray-500 dark:text-gray-400">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Discord Server
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Twitter
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Facebook
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Contact Us
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Legal
               </h3>
-              <ul class="text-gray-500 dark:text-gray-400">
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+              <ul className="text-gray-500 dark:text-gray-400">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Privacy Policy
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Licensing
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Terms
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Company
               </h3>
-              <ul class="text-gray-500 dark:text-gray-400">
-                <li class="mb-4">
-                  <a href="#" class=" hover:underline">
+              <ul className="text-gray-500 dark:text-gray-400">
+                <li className="mb-4">
+                  <a href="#" className=" hover:underline">
                     About
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Careers
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Brand Center
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Blog
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Download
               </h3>
-              <ul class="text-gray-500 dark:text-gray-400">
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+              <ul className="text-gray-500 dark:text-gray-400">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     iOS
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Android
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     Windows
                   </a>
                 </li>
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+                <li className="mb-4">
+                  <a href="#" className="hover:underline">
                     MacOS
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-          <div class="text-center">
+          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <div className="text-center">
             <span
-              class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white"
+              className="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white"
             >
               <img
                 src={logo}
-                class="h-6 sm:h-16 my-8"
+                className="h-6 sm:h-16 my-8"
                 alt="Landwind Logo"
               />
-       
+
             </span>
-            <span class="block text-sm text-center text-gray-500 dark:text-gray-400">
+            <span className="block text-sm text-center text-gray-500 dark:text-gray-400">
               © 2024 Lógus
             </span>
-            <ul class="flex justify-center mt-5 space-x-5">
+            <ul className="flex justify-center mt-5 space-x-5">
               <li>
                 <a
                   href="#"
-                  class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                 >
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -993,10 +993,10 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                 >
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -1012,10 +1012,10 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                 >
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -1027,10 +1027,10 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                 >
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -1046,10 +1046,10 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                 >
                   <svg
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"

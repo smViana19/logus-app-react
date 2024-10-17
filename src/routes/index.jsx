@@ -18,9 +18,6 @@ import SendTaskSubject from '../pages/Subject/SendTaskSubject.jsx';
 import MainLayout from '@/components/Layout/MainLayout.jsx';
 import AdminInstitutional from '../pages/Admin/AdminInstitutional/AdminInstitutional';
 import AdminReport from '../pages/Admin/AdminReport/AdminReport';
-import AdminTeachers from '../pages/Admin/AdminTeachers/AdminTeachers';
-import AdminStudents from '../pages/Admin/AdminStudents/AdminStudents';
-import AdminTurmas from '../pages/Admin/AdminTurmas/AdminTurmas';
 import AdminSeries from '../pages/Admin/AdminInstitutional/AdminSeries/AdminSeries';
 import AdminPosts from '../pages/Admin/AdminPosts/AdminPosts';
 import AddPageBlog from '../pages/Admin/AdminBlog/AddPageBlog';
@@ -47,14 +44,11 @@ export default function Rotas() {
       </Route>
       <Route path='/admin' element={<MainLayout />}>
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/alunos" element={<AdminStudents />} />
-        <Route path="/admin/professores" element={<AdminTeachers />} />
         <Route path="/admin/relatorios" element={<AdminReport />} />
         <Route path="/admin/institucional" element={<AdminInstitutional />} />
         <Route path="/admin/institucional/postagens" element={<AdminPosts />} />
         <Route path="/admin/institucional/turmas" element={<AdminSeries />} />
         <Route path='/admin/blog/add' element={<AddPageBlog />} />
-
       </Route>
 
 

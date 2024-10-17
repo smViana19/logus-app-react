@@ -183,7 +183,7 @@ export default function AdminDashboard() {
         {isTableStudentsOpen && (
           <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
             <table className="w-full table-auto text-sm text-left">
-              <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100">
+              <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
                 <tr>
                   <th className="py-3 px-6">Nome Completo</th>
                   <th className="py-3 px-6">Email</th>
@@ -233,7 +233,7 @@ export default function AdminDashboard() {
                 )}
               </tbody>
             </table>
-            <div className="flex justify-between mt-4 px-4 py-2 bg-gray-100">
+            <div className="flex justify-between mt-4 px-4 py-2 bg-gray-100 dark:bg-zinc-700 dark:text-white">
               <button
                 onClick={handlePreviousPage}
                 disabled={currentPage === 1}
@@ -244,6 +244,8 @@ export default function AdminDashboard() {
                   height="14"
                   width="8.75"
                   viewBox="0 0 320 512"
+                  className="text-black dark:text-zinc-200"
+                  fill='currentColor'
                 >
                   <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
                 </svg>
@@ -261,6 +263,8 @@ export default function AdminDashboard() {
                   height="14"
                   width="8.75"
                   viewBox="0 0 320 512"
+                  className="text-black dark:text-zinc-200"
+                  fill='currentColor'
                 >
                   <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                 </svg>
@@ -274,7 +278,7 @@ export default function AdminDashboard() {
       {isTableTeachersOpen && (
         <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
           <table className="w-full table-auto text-sm text-left">
-            <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100">
+            <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
               <tr>
                 <th className="py-3 px-6">Nome Completo</th>
                 <th className="py-3 px-6">Email</th>
@@ -283,7 +287,7 @@ export default function AdminDashboard() {
                 <th className="py-3 px-6"></th>
               </tr>
             </thead>
-            <tbody className="text-gray-600 divide-y dark:text-zinc-400">
+            <tbody className="text-gray-600 divide-y dark:text-zinc-400 ">
               {teachers.map((teacher) => (
                 <tr key={teacher.id}>
                   <td className="px-6 py-4 whitespace-nowrap">{teacher.nome}</td>
@@ -324,24 +328,24 @@ export default function AdminDashboard() {
 
       {isModalDeleteOpen && (
         <div
-          class="relative z-10"
+          className="relative z-10"
           aria-labelledby="modal-title"
           role="dialog"
           aria-modal="true"
         >
           {/* START MODAL */}
           <div
-            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
             aria-hidden="true"
           ></div>
-          <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                  <div class="sm:flex sm:items-start">
-                    <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                  <div className="sm:flex sm:items-start">
+                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                       <svg
-                        class="h-6 w-6 text-red-600"
+                        className="h-6 w-6 text-red-600"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
@@ -356,15 +360,15 @@ export default function AdminDashboard() {
                         />
                       </svg>
                     </div>
-                    <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <h3
-                        class="text-base font-semibold leading-6 text-gray-900"
+                        className="text-base font-semibold leading-6 text-gray-900"
                         id="modal-title"
                       >
                         Deletar Usuário
                       </h3>
-                      <div class="mt-2">
-                        <p class="text-sm text-gray-500">
+                      <div className="mt-2">
+                        <p className="text-sm text-gray-500">
                           Você tem certeza que deseja deletar este usuário? Ele
                           e todas as informações atraladas a ele serão removido
                           permanentemente.
@@ -373,17 +377,17 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"
-                    class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                   >
                     Deletar
                   </button>
                   <button
                     onClick={handleCloseModalDelete}
                     type="button"
-                    class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                   >
                     Cancelar
                   </button>

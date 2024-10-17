@@ -92,7 +92,7 @@ export default function AdminDashboard() {
   };
 
   const handleModalDelete = () => {
-    if(isModalDeleteOpen === false) {
+    if (isModalDeleteOpen === false) {
       setIsModalDeleteOpen(true)
     } else {
       setIsModalDeleteOpen(false)
@@ -103,7 +103,7 @@ export default function AdminDashboard() {
   };
 
   const handlenModalEdit = () => {
-    if(isModalEditOpen  === false) {
+    if (isModalEditOpen === false) {
       setIsModalEditOpen(true);
     } else {
       setIsModalEditOpen(false)
@@ -121,8 +121,7 @@ export default function AdminDashboard() {
         </p>
 
         <div className="mt-3 md:mt-0"></div>
-
-        <div className="grid grid-cols-3 gap-x-8 my-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-1 gap-4 my-8">
           <BtnGestaoEscolar
             title={'Cadastrar'}
             number={2}
@@ -142,6 +141,7 @@ export default function AdminDashboard() {
             svg={
               'M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96 48 96C21.5 96 0 117.5 0 144L0 464c0 26.5 21.5 48 48 48l208 0 0-96c0-35.3 28.7-64 64-64s64 28.7 64 64l0 96 208 0c26.5 0 48-21.5 48-48l0-320c0-26.5-21.5-48-48-48L473.7 96 337.8 5.4zM96 192l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM96 320l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-16 0 0-16c0-8.8-7.2-16-16-16z'
             }
+            path={'/admin/turmas'}
           />
 
           <BtnGestaoEscolar
@@ -151,6 +151,7 @@ export default function AdminDashboard() {
             svg={
               'M384 480l48 0c11.4 0 21.9-6 27.6-15.9l112-192c5.8-9.9 5.8-22.1 .1-32.1S555.5 224 544 224l-400 0c-11.4 0-21.9 6-27.6 15.9L48 357.1 48 96c0-8.8 7.2-16 16-16l117.5 0c4.2 0 8.3 1.7 11.3 4.7l26.5 26.5c21 21 49.5 32.8 79.2 32.8L416 144c8.8 0 16 7.2 16 16l0 32 48 0 0-32c0-35.3-28.7-64-64-64L298.5 96c-17 0-33.3-6.7-45.3-18.7L226.7 50.7c-12-12-28.3-18.7-45.3-18.7L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l23.7 0L384 480z'
             }
+            path={'/admin/relatorios'}
           />
         </div>
 
@@ -170,6 +171,7 @@ export default function AdminDashboard() {
             <table className="w-full table-auto text-sm text-left">
               <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
                 <tr>
+                  <th className="py-3 px-6">ID</th>
                   <th className="py-3 px-6">Nome Completo</th>
                   <th className="py-3 px-6">Email</th>
                   <th className="py-3 px-6">Matrícula</th>
@@ -181,6 +183,9 @@ export default function AdminDashboard() {
                 {currentStudents.length > 0 ? (
                   currentStudents.map((student) => (
                     <tr key={student.id}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {student.id}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {student.nome}
                       </td>
@@ -269,16 +274,19 @@ export default function AdminDashboard() {
           <table className="w-full table-auto text-sm text-left">
             <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
               <tr>
+                <th className="py-3 px-6">ID</th>
                 <th className="py-3 px-6">Nome Completo</th>
                 <th className="py-3 px-6">Email</th>
                 <th className="py-3 px-6">Matéria</th>
-                <th className="py-3 px-6">Salário</th>
                 <th className="py-3 px-6"></th>
               </tr>
             </thead>
             <tbody className="text-gray-600 divide-y dark:text-zinc-400 ">
               {teachers.map((teacher) => (
                 <tr key={teacher.id}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {teacher.id}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {teacher.nome}
                   </td>
@@ -288,14 +296,13 @@ export default function AdminDashboard() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     {teacher.role}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{teacher.id}</td>
                   <td className="text-right px-6 whitespace-nowrap">
-                    <a
-                      href="javascript:void()"
-                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                    <button
+                      onClick={handlenModalEdit}
+                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-purplePrimary"
                     >
-                      Edit
-                    </a>
+                      Editar
+                    </button>
                     <button
                       onClick={handleOpenModalDelete}
                       className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
@@ -315,7 +322,7 @@ export default function AdminDashboard() {
         </h2>
         <Link
           className="px-16 py-2 bg-purplePrimary text-white rounded dark:text-zinc-100"
-          to="/admin/blog/add"
+          to="/admin/blog/criar"
         >
           Criar
         </Link>
@@ -414,72 +421,72 @@ export default function AdminDashboard() {
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
               <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl px-8 py-6">
-             
-                  <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 sm:mx-0 sm:h-10 sm:w-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path className='fill-orange-600' d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z"/></svg>
-                    </div>
-                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                      <h3
-                        className="text-base font-semibold leading-6 text-gray-900"
-                        id="modal-title"
-                      >
-                        Editar Usuário
-                      </h3>
-                  
-                        <p className="text-sm text-gray-500">
-                         Este usuário será editado permanentemente
-                        </p>
-                    </div>
+
+                <div className="sm:flex sm:items-start">
+                  <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 sm:mx-0 sm:h-10 sm:w-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path className='fill-orange-600' d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z" /></svg>
                   </div>
+                  <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <h3
+                      className="text-base font-semibold leading-6 text-gray-900"
+                      id="modal-title"
+                    >
+                      Editar Usuário
+                    </h3>
 
-
-                  <form className='my-8 flex flex-col gap-4' action="">
-
-                    <div className='flex flex-col gap-1'>
-                      <label htmlFor="">Nome Completo</label>
-                      <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="text" />
-                    </div>
-
-                    <div className='flex flex-col gap-1'>
-                      <label htmlFor="">E-mail</label>
-                      <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="email" />
-                    </div>
-
-                    <div className='flex flex-col gap-1'>
-                      <label htmlFor="">Senha</label>
-                      <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="password" />
-                    </div>
-
-                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  <button
-                    type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    onClick={handlenModalEdit}
-                    type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                  >
-                    Cancelar
-                  </button>
+                    <p className="text-sm text-gray-500">
+                      Este usuário será editado permanentemente
+                    </p>
+                  </div>
                 </div>
 
-                  </form>
-               
+
+                <form className='my-8 flex flex-col gap-4' action="">
+
+                  <div className='flex flex-col gap-1'>
+                    <label htmlFor="">Nome Completo</label>
+                    <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="text" />
+                  </div>
+
+                  <div className='flex flex-col gap-1'>
+                    <label htmlFor="">E-mail</label>
+                    <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="email" />
+                  </div>
+
+                  <div className='flex flex-col gap-1'>
+                    <label htmlFor="">Senha</label>
+                    <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="password" />
+                  </div>
+
+                  <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button
+                      type="button"
+                      className="inline-flex w-full justify-center rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      onClick={handlenModalEdit}
+                      type="button"
+                      className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+
+                </form>
 
 
-                
-                
+
+
+
               </div>
             </div>
           </div>
         </div>
       )}{' '}
       {/* END MODAL */}
-      
+
     </div>
   );
 }

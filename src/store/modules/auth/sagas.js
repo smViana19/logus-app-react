@@ -24,7 +24,7 @@ function* loginRequest({ payload }) {
         console.log('Erro no login:', e);
         yield call([mySwal, 'fire'], {
             title: 'Erro',
-            text: e.message,
+            text: e.response.data.errors,
             icon: 'error',
             confirmButtonText: 'OK'
         });

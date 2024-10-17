@@ -5,20 +5,18 @@ import axios from '../../../../services/axios';
 import BtnOpenTable from '../../../components/Buttons/BtnOpenTable';
 import BtnGestaoEscolar from '../../../components/Buttons/BtnGestaoEscolar';
 import CardBlog from '../../../components/CardsContainers/CardBlog';
-import { toast } from 'react-toastify';
-
-
-const PAGE_SIZE = 5;
-
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
+const mySwal = withReactContent(Swal)
+const PAGE_SIZE = 10
 
 export default function AdminDashboard() {
-  const [countStudents, setCountStudents] = useState('');
-  const [countTeachers, setCountTeachers] = useState('');
   const [isTableStudentsOpen, setIsTableStudentsOpen] = useState(false);
   const [isTableTeachersOpen, setIsTableTeachersOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
 
   const [students, setStudents] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const token = useSelector((state) => state.auth.token);
 
@@ -33,18 +31,21 @@ export default function AdminDashboard() {
             Authorization: `Bearer ${token}`,
           },
         });
-        const students = response.data.filter(
-          (user) => user.role === 'estudante'
-        );
+        const students = response.data.filter((user) => user.role === 'estudante');
+        const teachers = response.data.filter((user) => user.role === 'professor');
         setStudents(students);
+        setTeachers(teachers)
       } catch (error) {
-        toast.error('Erro ao carregar alunos.');
+        mySwal.fire({
+          title: "Erro",
+          text: error,
+          icon: 'error'
+        })
       }
     };
     fetchStudents();
   }, [token]);
 
-  
   const indexOfLastStudent = currentPage * PAGE_SIZE;
   const indexOfFirstStudent = indexOfLastStudent - PAGE_SIZE;
   const currentStudents = students.slice(
@@ -64,22 +65,6 @@ export default function AdminDashboard() {
       setCurrentPage(currentPage - 1);
     }
   };
-
-  
-{/*}
-  useEffect(() => {
-    const fetchCountStudents = async () => {
-      const response = await axios.get('/users/count');
-      setCountStudents(response.data.count);
-    };
-    const fetchCountTeachers = async () => {
-      const response = await axios.get('/users/count/professores');
-      setCountTeachers(response.data.count);
-    };
-    fetchCountStudents();
-    fetchCountTeachers();
-  }, []); */}
-
 
   const tableItems = [
     {
@@ -114,8 +99,6 @@ export default function AdminDashboard() {
     },
   ];
 
-  
-  //HANDLE OPEN TABLES AND MODALS
   const handleTableStudents = () => {
     if (isTableStudentsOpen === false) {
       setIsTableStudentsOpen(true);
@@ -143,16 +126,16 @@ export default function AdminDashboard() {
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:bg-zinc-800">
       <div className="">
-  
-            <h1 className="text-gray-800 text-xl font-bold sm:text-2xl dark:text-zinc-100">
-              Gestão Escolar
-            </h1>
-            <p className="text-gray-600 mt-2 dark:text-zinc-400">
-              Selecione a turma que deseja visualizar
-            </p>
 
-          <div className="mt-3 md:mt-0"></div>
-        
+        <h1 className="text-gray-800 text-xl font-bold sm:text-2xl dark:text-zinc-100">
+          Gestão Escolar
+        </h1>
+        <p className="text-gray-600 mt-2 dark:text-zinc-400">
+          Selecione a turma que deseja visualizar
+        </p>
+
+        <div className="mt-3 md:mt-0"></div>
+
 
         <div className="grid grid-cols-3 gap-x-8 my-8">
           <BtnGestaoEscolar
@@ -210,47 +193,81 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y dark:text-zinc-400">
-              {currentStudents.length > 0 ? (
-                currentStudents.map((student) => (
-                  <tr key={student.id}>
-                    <td className="px-6 py-4 whitespace-nowrap">{student.nome}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {student.email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      position
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className='px-6 py-1 bg-red-100 text-red-600 rounded-md'>50%</span>
-                    </td>
-                    <td className="text-right px-6 whitespace-nowrap">
-                      <a
-                        href="javascript:void()"
-                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-purplePrimary"
-                      >
-                        Edit
-                      </a>
-                      <button
-                        onClick={handleOpenModalDelete}
-                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-rose-700"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                   )) ) : (
-                    <tr>
-                      <td
-                        colSpan="3"
-                        className="px-6 py-4 text-sm font-medium text-gray-900 text-center"
-                      >
-                        Nenhum estudante encontrado
+                {currentStudents.length > 0 ? (
+                  currentStudents.map((student) => (
+                    <tr key={student.id}>
+                      <td className="px-6 py-4 whitespace-nowrap">{student.nome}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {student.email}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {student.role}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className='px-6 py-1 bg-red-100 text-red-600 rounded-md'>50%</span>
+                      </td>
+                      <td className="text-right px-6 whitespace-nowrap">
+                        <a
+                          href="javascript:void()"
+                          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-purplePrimary"
+                        >
+                          Edit
+                        </a>
+                        <button
+                          onClick={handleOpenModalDelete}
+                          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-rose-700"
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
-                  )}
+                  ))) : (
+                  <tr>
+                    <td
+                      colSpan="3"
+                      className="px-6 py-4 text-sm font-medium text-gray-900 text-center"
+                    >
+                      Nenhum estudante encontrado
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
+            <div className="flex justify-between mt-4 px-4 py-2 bg-gray-100">
+              <button
+                onClick={handlePreviousPage}
+                disabled={currentPage === 1}
+                className=" text-white px-4 rounded-md disabled:opacity-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="14"
+                  width="8.75"
+                  viewBox="0 0 320 512"
+                >
+                  <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
+              </button>
+              <span className="self-center">
+                Página {currentPage} de {totalPages}
+              </span>
+              <button
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+                className=" text-white px-4 rounded-md disabled:opacity-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="14"
+                  width="8.75"
+                  viewBox="0 0 320 512"
+                >
+                  <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                </svg>
+              </button>
+            </div>
           </div>
+
         )}
       </div>
       <BtnOpenTable onClick={handleTableTeachers} user={'Professores'} />
@@ -267,14 +284,14 @@ export default function AdminDashboard() {
               </tr>
             </thead>
             <tbody className="text-gray-600 divide-y dark:text-zinc-400">
-              {tableItems.map((item, idx) => (
-                <tr key={idx}>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
+              {teachers.map((teacher) => (
+                <tr key={teacher.id}>
+                  <td className="px-6 py-4 whitespace-nowrap">{teacher.nome}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{teacher.email}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {item.position}
+                    {teacher.role}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{teacher.id}</td>
                   <td className="text-right px-6 whitespace-nowrap">
                     <a
                       href="javascript:void()"
@@ -296,14 +313,14 @@ export default function AdminDashboard() {
         </div>
       )}
 
-	  <div className='flex justify-between  pt-8 border-t border-gray-300 mb-8 mt-12 '>
-		<h2 className='font-semibold text-xl dark:text-zinc-100'>Blog e Notícias</h2>
-		<Link className='px-16 py-2 bg-purplePrimary text-white rounded dark:text-zinc-100' to='/admin/blog/add'>Criar</Link>
-	  </div>
+      <div className='flex justify-between  pt-8 border-t border-gray-300 mb-8 mt-12 '>
+        <h2 className='font-semibold text-xl dark:text-zinc-100'>Blog e Notícias</h2>
+        <Link className='px-16 py-2 bg-purplePrimary text-white rounded dark:text-zinc-100' to='/admin/blog/add'>Criar</Link>
+      </div>
 
-	  <div className='grid grid-cols-4 gap-8'>
-	  	<CardBlog />
-	  </div>
+      <div className='grid grid-cols-4 gap-8'>
+        <CardBlog />
+      </div>
 
       {isModalDeleteOpen && (
         <div
@@ -377,7 +394,7 @@ export default function AdminDashboard() {
         </div>
       )}{' '}
       {/* END MODAL */}
-	        {/*
+      {/*
 	  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
         {projects &&
           projects.map((project, index) => (

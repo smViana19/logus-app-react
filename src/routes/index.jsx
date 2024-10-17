@@ -1,7 +1,6 @@
 // index.jsx (ou Routes.jsx)
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import MyRoute from './MyRoute'; // Se você ainda quiser usar MyRoute
 import Login from '../pages/Auth/Login/Login';
 import LandingPage from '../pages/LandingPage/LandingPage.jsx';
 import Registro from '../pages/Auth/Registro/Registro';
@@ -42,17 +41,15 @@ export default function Rotas() {
         <Route path="/dashboard/agenda" element={<Schedule />} />
 
       </Route>
-      <Route path='/admin' element={<MainLayout />}>
+      <Route element={<MainLayout />}>
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/relatorios" element={<AdminReport />} />
         <Route path="/admin/institucional" element={<AdminInstitutional />} />
         <Route path="/admin/institucional/postagens" element={<AdminPosts />} />
-        <Route path="/admin/institucional/turmas" element={<AdminSeries />} />
-        <Route path='/admin/blog/add' element={<AddPageBlog />} />
+        <Route path="/admin/turmas" element={<AdminSeries />} />
+        <Route path='/admin/blog/criar' element={<AddPageBlog />} />
       </Route>
-
-
-    </Routes>
+    </Routes >
 
 
   );

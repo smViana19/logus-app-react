@@ -254,7 +254,7 @@ export default function PostsArea() {
           className="fixed inset-0 flex items-center justify-center bg-zinc-800 bg-opacity-50  max-lg:px-4 z-50"
           onClick={() => setShowEditModal(false)}>
           <div
-            className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg lg:text-left max-lg:px-4"
+            className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg lg:text-left max-lg:px-4 dark:bg-zinc-600"
             onClick={(e) => e.stopPropagation()}>
             <h2 className="text-lg mb-6 dark:text-white">Editar Matéria</h2>
             <input

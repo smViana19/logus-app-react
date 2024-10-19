@@ -88,7 +88,7 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
       onClick={handleClose}
     >
       <div className="w-2/12 bg-white rounded-xl m-auto">
-        <h3 className="text-center text-lg text-zinc-700 font-medium pb-4 pt-6">
+        <h3 className="text-center text-lg text-zinc-700 font-medium pb-4 pt-6 dark:text-zinc-100 dark:bg-zinc-700">
           Sons
         </h3>
 
@@ -97,7 +97,7 @@ export default function ModalPomodoroSound({ isOpen, setOpenModal }) {
             <li
               key={sound}
               onClick={() => playSound(sounds[sound], sound)}
-              className="flex px-8 justify-between items-center py-3 border-b border-zinc-100 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-700 cursor-pointer"
+              className="flex px-8 justify-between items-center py-3 border-b border-zinc-100 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-700 cursor-pointer dark:text-zinc-100 dark:bg-zinc-700  dark:hover:bg-zinc-500"
             >
               <div className="flex items-center gap-8">
                 {soundIcons[sound]}

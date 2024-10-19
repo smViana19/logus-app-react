@@ -119,28 +119,28 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                         }}
                     >
                         <div
-                            className="bg-white py-8 xl:w-3/5 px-16 rounded-md shadow-lg"
+                            className="bg-white py-8 xl:w-3/5 px-16 rounded-md shadow-lg dark:bg-zinc-800"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <h2 className="text-xl mb-8 font-medium">Criar Material</h2>
+                            <h2 className="text-xl mb-8 font-medium dark:text-zinc-100">Criar Material</h2>
                             <div>
-                                <label htmlFor="">Nome </label>
+                                <label className="dark:text-zinc-100" htmlFor="">Nome </label>
                                 <input
                                     type="text"
                                     value={nome}
                                     onChange={(e) => setNome(e.target.value)}
-                                    className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
+                                    className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1 dark:bg-zinc-700 dark:placeholder-zinc-400 dark:text-zinc-100"
                                     placeholder="Nome do material"
                                 />
                             </div>
 
                             <div className="flex gap-8">
                                 <div className="w-2/3">
-                                    <label htmlFor="">Categoria</label>
+                                    <label className="dark:text-zinc-100" htmlFor="">Categoria</label>
                                     <select
                                         value={categoria}
                                         onChange={(e) => setCategoria(e.target.value)}
-                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
+                                       className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1 dark:bg-zinc-700 dark:text-zinc-100"
                                     >
                                         <option value="" disabled>
                                             Selecione a Categoria
@@ -153,25 +153,25 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="">Pontuação </label>
+                                    <label className="dark:text-zinc-100" htmlFor="">Pontuação </label>
                                     <input
                                         value={pontos}
                                         onChange={(e) => setPontos(e.target.value)}
                                         onFocus={handleFocus}
                                         onBlur={handleBlur}
-                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
+                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1 dark:bg-zinc-700 dark:text-zinc-100"
                                         type="text"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label htmlFor="">Descrição</label>
+                                <label className="dark:text-zinc-100" htmlFor="">Descrição</label>
                                 <textarea
                                     placeholder=""
                                     value={detail}
                                     onChange={(e) => setDetail(e.target.value)}
-                                    className="w-full border border-zinc-300 rounded-md h-48 px-4 py-2 outline-none mt-1"
+                                    className="w-full border border-zinc-300 rounded-md h-48 px-4 py-2 outline-none mt-1 dark:bg-zinc-700 dark:text-zinc-100"
                                 ></textarea>
                             </div>
 
@@ -179,7 +179,8 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                 <input
                                     onChange={(e) => setFile(e.target.files[0])}
                                     type="file"
-                                    className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+                                    className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm
+                                     file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 dark:text-zinc-400 dark:file:bg-zinc-700 dark:file:text-purple-600"
                                 />
                             </div>
 
@@ -191,7 +192,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         checked={semDataEntrega}
                                         onChange={(e) => setSemDataEntrega(e.target.checked)}
                                     />
-                                    <span className="ml-2">Não tem data de entrega</span>
+                                    <span className="ml-2 dark:text-zinc-100">Não tem data de entrega</span>
                                 </label>
                             </div>
 
@@ -201,7 +202,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         type="date"
                                         value={dataEntrega}
                                         onChange={(e) => setDataEntrega(e.target.value)}
-                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none"
+                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none dark:bg-zinc-700 dark:text-zinc-100"
                                     />
                                     <input
                                         type="time"
@@ -209,7 +210,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         onChange={(e) => setHoraEntrega(e.target.value)}
                                         onFocus={handleHoraFocus}
                                         onBlur={handleHoraBlur}
-                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none"
+                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none dark:bg-zinc-700 dark:text-zinc-100"
                                     />
                                 </div>
                             )}

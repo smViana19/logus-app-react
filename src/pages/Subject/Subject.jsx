@@ -71,14 +71,14 @@ const Subject = () => {
 
     return (
         <AtividadeProvider>
-            <div className="min-h-screen bg-zinc-50">
+            <div className="min-h-screen bg-zinc-50 dark:bg-zinc-800 ">
 
-                <main className="md:px-16 mt-4 lg:px-32 xl:px-64 py-16">
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="col-span-1 bg-purple-600 h-full flex items-end rounded-md">
+                <main className="md:px-16 mt-4 lg:px-32 xl:px-64 py-16 ">
+                    <div className="grid grid-cols-2 gap-4 ">
+                        <div className="col-span-1 bg-purple-600 h-full flex items-end rounded-md ">
                             <h1 className="text-white text-3xl p-2 md:p-6 first-letter:uppercase">{nomeMateria}</h1>
                         </div>
-                        <div className="col-span-1 grid grid-rows-4 gap-4">
+                        <div className="col-span-1 grid grid-rows-4 gap-4 dark:text-zinc-500">
                             <SubjectFiltersButton text={'Resumos'} onClick={() => setFilterStatus('resumo')} />
                             <SubjectFiltersButton text={'Apresentações'} onClick={() => setFilterStatus('apresentação')} />
                             <SubjectFiltersButton text={'Atividades'} onClick={() => setFilterStatus('atividade')} />

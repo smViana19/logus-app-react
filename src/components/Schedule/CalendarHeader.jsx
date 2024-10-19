@@ -29,7 +29,7 @@ export default function CalendarHeader() {
 				<div className="flex items-center justify-center gap-2 ">
 					<button
 						onClick={handleReset}
-						className="border rounded py-2 px-4 mr-5 text-zinc-800 bg-white dark:text-zinc-200 dark:border-zinc-500"
+						className="border rounded py-2 px-4 mr-5 text-zinc-800 bg-white dark:text-zinc-200 dark:border-zinc-500 dark:bg-zinc-700"
 					>
 						Today
 					</button>

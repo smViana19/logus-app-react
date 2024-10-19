@@ -92,7 +92,11 @@ export default function Pomodoro() {
                     />
                   </svg>
                 }
-                text={'Modo Foco'}
+                text={
+                  <span className="text-purplePrimary dark:text-purpleDark">
+                    Modo Foco
+                  </span>
+                }
             />
 
             
@@ -143,6 +147,10 @@ const StyledCircularProgressbar = styled(CircularProgressbar)`
 
     .CircularProgressbar-text {
         fill: #2e2e2e;
+    }
+
+    .dark & .CircularProgressbar-text {
+        fill: #f1f1f1; 
     }
 
     @media screen and (max-width: 768px) {

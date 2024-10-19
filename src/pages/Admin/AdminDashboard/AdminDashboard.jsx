@@ -220,7 +220,7 @@ export default function AdminDashboard() {
                   <tr>
                     <td
                       colSpan="3"
-                      className="px-6 py-4 text-sm font-medium text-zinc-900 text-center"
+                      className="px-6 py-4 text-sm font-medium text-zinc-900 text-center dark:text-zinc-500"
                     >
                       Nenhum estudante encontrado
                     </td>
@@ -299,13 +299,13 @@ export default function AdminDashboard() {
                   <td className="text-right px-6 whitespace-nowrap">
                     <button
                       onClick={handlenModalEdit}
-                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
+                      className="py-2 px-3 font-medium font-semibold text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
                     >
                       Editar
                     </button>
                     <button
                       onClick={handleOpenModalDelete}
-                      className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg"
+                      className="py-2 leading-none px-3 font-semibold font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg"
                     >
                       Delete
                     </button>

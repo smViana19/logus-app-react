@@ -4,7 +4,7 @@ import img from '../../../assets/logo.png';
 
 const CardProfile = ({ user, role }) => {
     return (
-        <div className="rounded-md bg-white py-8 px-12 shadow-md shadow-zinc-200">
+        <div className="rounded-md bg-white py-8 px-12 shadow-md shadow-zinc-200 dark:bg-zinc-800 dark:shadow-zinc-900">
             <div className="flex gap-2 mb-10">
                 <span className="w-1.5 bg-purplePrimary rounded-full"></span>
                 <span className=''>{role}</span>

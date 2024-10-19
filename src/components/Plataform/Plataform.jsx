@@ -5,7 +5,7 @@ import { FaApple, FaTabletAlt } from 'react-icons/fa';
 import { DiAndroid } from 'react-icons/di';
 
 const Plataform = () => {
-  return <div className="p-5 bg-white rounded-xl shadow">
+  return <div className="p-5 bg-white rounded-xl shadow dark:bg-zinc-700">
     <h1 className="text-2xl font-bold text-zinc-700 dark:text-white">Informações</h1>
     <div className="p-2 grid grid-cols-2 gap-8">
       <div className="space-y-3 text-zinc-500">

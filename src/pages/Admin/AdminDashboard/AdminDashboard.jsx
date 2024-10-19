@@ -113,10 +113,10 @@ export default function AdminDashboard() {
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:bg-zinc-800">
       <div className="">
-        <h1 className="text-gray-800 text-xl font-bold sm:text-2xl dark:text-zinc-100">
+        <h1 className="text-zinc-800 text-xl font-bold sm:text-2xl dark:text-zinc-100">
           Gestão Escolar
         </h1>
-        <p className="text-gray-600 mt-2 dark:text-zinc-400">
+        <p className="text-zinc-600 mt-2 dark:text-zinc-400">
           Selecione a turma que deseja visualizar
         </p>
 
@@ -156,7 +156,7 @@ export default function AdminDashboard() {
         </div>
 
         <select
-          className="px-8 border border-gray-200 rounded mt-4 py-1 dark:bg-zinc-800 dark:text-zinc-100 dark:border-gray-600"
+          className="px-8 border border-zinc-200 rounded mt-4 py-1 dark:bg-zinc-800 dark:text-zinc-100 dark:border-zinc-600"
           name=""
           id=""
         >
@@ -169,7 +169,7 @@ export default function AdminDashboard() {
         {isTableStudentsOpen && (
           <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
             <table className="w-full table-auto text-sm text-left">
-              <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
+              <thead className="bg-zinc-50 text-zinc-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
                 <tr>
                   <th className="py-3 px-6">ID</th>
                   <th className="py-3 px-6">Nome Completo</th>
@@ -179,7 +179,7 @@ export default function AdminDashboard() {
                   <th className="py-3 px-6"></th>
                 </tr>
               </thead>
-              <tbody className="text-gray-600 divide-y dark:text-zinc-400">
+              <tbody className="text-zinc-600 divide-y dark:text-zinc-400">
                 {currentStudents.length > 0 ? (
                   currentStudents.map((student) => (
                     <tr key={student.id}>
@@ -203,13 +203,13 @@ export default function AdminDashboard() {
                       <td className="text-right px-6 whitespace-nowrap">
                         <button
                           onClick={handlenModalEdit}
-                          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-purplePrimary"
+                          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
                         >
                           Editar
                         </button>
                         <button
                           onClick={handleModalDelete}
-                          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-rose-700"
+                          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-rose-700"
                         >
                           Deletar
                         </button>
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
                   <tr>
                     <td
                       colSpan="3"
-                      className="px-6 py-4 text-sm font-medium text-gray-900 text-center"
+                      className="px-6 py-4 text-sm font-medium text-zinc-900 text-center"
                     >
                       Nenhum estudante encontrado
                     </td>
@@ -228,7 +228,7 @@ export default function AdminDashboard() {
                 )}
               </tbody>
             </table>
-            <div className="flex justify-between mt-4 px-4 py-2 bg-gray-100 dark:bg-zinc-700 dark:text-white">
+            <div className="flex justify-between mt-4 px-4 py-2 bg-zinc-100 dark:bg-zinc-700 dark:text-white">
               <button
                 onClick={handlePreviousPage}
                 disabled={currentPage === 1}
@@ -272,7 +272,7 @@ export default function AdminDashboard() {
       {isTableTeachersOpen && (
         <div className="mt-4 shadow-sm border rounded-lg overflow-x-auto">
           <table className="w-full table-auto text-sm text-left">
-            <thead className="bg-gray-50 text-gray-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
+            <thead className="bg-zinc-50 text-zinc-600 font-medium border-b dark:text-zinc-100 dark:bg-zinc-700">
               <tr>
                 <th className="py-3 px-6">ID</th>
                 <th className="py-3 px-6">Nome Completo</th>
@@ -281,7 +281,7 @@ export default function AdminDashboard() {
                 <th className="py-3 px-6"></th>
               </tr>
             </thead>
-            <tbody className="text-gray-600 divide-y dark:text-zinc-400 ">
+            <tbody className="text-zinc-600 divide-y dark:text-zinc-400 ">
               {teachers.map((teacher) => (
                 <tr key={teacher.id}>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -299,13 +299,13 @@ export default function AdminDashboard() {
                   <td className="text-right px-6 whitespace-nowrap">
                     <button
                       onClick={handlenModalEdit}
-                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg dark:text-purplePrimary"
+                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
                     >
                       Editar
                     </button>
                     <button
                       onClick={handleOpenModalDelete}
-                      className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                      className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg"
                     >
                       Delete
                     </button>
@@ -316,7 +316,7 @@ export default function AdminDashboard() {
           </table>
         </div>
       )}
-      <div className="flex justify-between  pt-8 border-t border-gray-300 mb-8 mt-12 ">
+      <div className="flex justify-between  pt-8 border-t border-zinc-300 mb-8 mt-12 ">
         <h2 className="font-semibold text-xl dark:text-zinc-100">
           Blog e Notícias
         </h2>
@@ -339,7 +339,7 @@ export default function AdminDashboard() {
         >
           {/* START MODAL */}
           <div
-            className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            className="fixed inset-0 bg-zinc-500 bg-opacity-75 transition-opacity"
             aria-hidden="true"
           ></div>
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -366,13 +366,13 @@ export default function AdminDashboard() {
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <h3
-                        className="text-base font-semibold leading-6 text-gray-900"
+                        className="text-base font-semibold leading-6 text-zinc-900"
                         id="modal-title"
                       >
                         Deletar Usuário
                       </h3>
                       <div className="mt-2">
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-zinc-500">
                           Você tem certeza que deseja deletar este usuário? Ele
                           e todas as informações atraladas a ele serão removido
                           permanentemente.
@@ -381,7 +381,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <div className="bg-zinc-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
@@ -391,7 +391,7 @@ export default function AdminDashboard() {
                   <button
                     onClick={handleModalDelete}
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-zinc-900 shadow-sm ring-1 ring-inset ring-zinc-300 hover:bg-zinc-50 sm:mt-0 sm:w-auto"
                   >
                     Cancelar
                   </button>
@@ -415,7 +415,7 @@ export default function AdminDashboard() {
         >
           {/* START MODAL */}
           <div
-            className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            className="fixed inset-0 bg-zinc-500 bg-opacity-75 transition-opacity"
             aria-hidden="true"
           ></div>
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -428,13 +428,13 @@ export default function AdminDashboard() {
                   </div>
                   <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3
-                      className="text-base font-semibold leading-6 text-gray-900"
+                      className="text-base font-semibold leading-6 text-zinc-900"
                       id="modal-title"
                     >
                       Editar Usuário
                     </h3>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-zinc-500">
                       Este usuário será editado permanentemente
                     </p>
                   </div>
@@ -445,20 +445,20 @@ export default function AdminDashboard() {
 
                   <div className='flex flex-col gap-1'>
                     <label htmlFor="">Nome Completo</label>
-                    <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="text" />
+                    <input className='border border-zinc-200 rounded py-1 px-2 outline-none' type="text" />
                   </div>
 
                   <div className='flex flex-col gap-1'>
                     <label htmlFor="">E-mail</label>
-                    <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="email" />
+                    <input className='border border-zinc-200 rounded py-1 px-2 outline-none' type="email" />
                   </div>
 
                   <div className='flex flex-col gap-1'>
                     <label htmlFor="">Senha</label>
-                    <input className='border border-gray-200 rounded py-1 px-2 outline-none' type="password" />
+                    <input className='border border-zinc-200 rounded py-1 px-2 outline-none' type="password" />
                   </div>
 
-                  <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                  <div className="bg-zinc-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
@@ -468,7 +468,7 @@ export default function AdminDashboard() {
                     <button
                       onClick={handlenModalEdit}
                       type="button"
-                      className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                      className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-zinc-900 shadow-sm ring-1 ring-inset ring-zinc-300 hover:bg-zinc-50 sm:mt-0 sm:w-auto"
                     >
                       Cancelar
                     </button>

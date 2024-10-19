@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function UserCard({ role, user }) {
     return (
-        <div className="bg-white dark:bg-zinc-900  dark:shadow-zinc-900  rounded-xl xl:mx-16 mt-0 mb-8 md:p-8 py-8 lg:flex lg:justify-between shadow-sm shadow-gray-100 ">
+        <div className="bg-white dark:bg-zinc-900  dark:shadow-zinc-900  rounded-xl xl:mx-16 mt-0 mb-8 md:p-8 py-8 lg:flex lg:justify-between shadow-sm shadow-zinc-100 ">
             <div className="mb-12 lg:mb-0 px-8">
                 <div className="flex gap-16 mb-8 items-center">
                     <h1 className="font-bold text-3xl text-black dark:text-white">

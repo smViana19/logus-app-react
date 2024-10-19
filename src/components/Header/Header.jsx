@@ -14,9 +14,9 @@ const Header = ({ user, handleThemeChange, isDarkMode, handleLogout }) => {
         <span className="hidden md:block text-sm font-semibold dark:text-white first-letter:uppercase">{user}</span>
       </div>
       <div className="flex justify-between items-center h-16 bg-purplePrimary dark:bg-purpleDark  header-right">
-        <div className="bg-white rounded-md flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200 dark:border-gray-700 ">
+        <div className="bg-white rounded-md flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-zinc-200 dark:border-zinc-700 ">
           <button className="outline-none focus:outline-none">
-            <span className="w-5 text-gray-600 dark:text-gray-400 h-5 cursor-pointer">
+            <span className="w-5 text-zinc-600 dark:text-zinc-400 h-5 cursor-pointer">
               <CiSearch size={20} />
             </span>
           </button>
@@ -51,12 +51,12 @@ const Header = ({ user, handleThemeChange, isDarkMode, handleLogout }) => {
             </label>
           </li>
           <li>
-            <div className="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700"></div>
+            <div className="block w-px h-6 mx-3 bg-zinc-400 dark:bg-zinc-700"></div>
           </li>
           <li>
             <button
               onClick={handleLogout}
-              className="flex items-center mr-4 hover:text-white text-gray-300 dark:text-gray-400 dark:hover:text-white transition-all duration-300"
+              className="flex items-center mr-4 hover:text-white text-zinc-300 dark:text-zinc-400 dark:hover:text-white transition-all duration-300"
             >
               <span className="inline-flex mr-1">
                 <svg

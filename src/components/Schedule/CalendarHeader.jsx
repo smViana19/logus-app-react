@@ -29,12 +29,12 @@ export default function CalendarHeader() {
 				<div className="flex items-center justify-center gap-2 ">
 					<button
 						onClick={handleReset}
-						className="border rounded py-2 px-4 mr-5 text-gray-800 bg-white dark:text-zinc-200 dark:border-zinc-500"
+						className="border rounded py-2 px-4 mr-5 text-zinc-800 bg-white dark:text-zinc-200 dark:border-zinc-500"
 					>
 						Today
 					</button>
 					<button onClick={handlePrevMonth} className="px-1">
-						<span className="material-icons-outlined cursor-pointer text-gray-600 mx-4 dark:text-zinc-200">
+						<span className="material-icons-outlined cursor-pointer text-zinc-600 mx-4 dark:text-zinc-200">
 							<svg
 								width={14}
 								xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ export default function CalendarHeader() {
 						</span>
 					</button>
 					<button onClick={handleNextMonth} className="px-1">
-						<span className="material-icons-outlined cursor-pointer text-gray-600  0 mx-4">
+						<span className="material-icons-outlined cursor-pointer text-zinc-600  0 mx-4">
 							<svg
 								width={14}
 								xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ export default function CalendarHeader() {
 						</span>
 					</button>
 				</div>
-				<h2 className="md:ml-4 text-xl text-gray-500 dark:text-zinc-200 font-bold text-center">
+				<h2 className="md:ml-4 text-xl text-zinc-500 dark:text-zinc-200 font-bold text-center">
 					{dayjs(new Date(dayjs().year(), monthIndex)).format(
 						'MMMM YYYY'
 					)}

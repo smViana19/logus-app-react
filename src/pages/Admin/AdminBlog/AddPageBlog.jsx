@@ -15,14 +15,14 @@ const AddPageBlog = () => {
           type="text"
           id=""
           name=""
-          className="border border-gray-200 py-1 px-2 rounded mt-2 outline-none"
+          className="border border-zinc-200 py-1 px-2 rounded mt-2 outline-none dark:bg-zinc-700"
         />
       </div>
       <div className="flex flex-col">
         <label htmlFor="">Conteúdo</label>
         <textarea
           onChange={(e) => setText(e.target.value)}
-          className="border border-gray-200 py-1 px-2 rounded mt-2 h-80 outline-none"
+          className="border border-zinc-200 py-1 px-2 rounded mt-2 h-80 outline-none dark:bg-zinc-700"
           name=""
           id=""
         ></textarea>

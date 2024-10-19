@@ -87,7 +87,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                     className="absolute top-2 right-2 bg-white px-2 rounded-md py-2 shadow-lg"
                     onClick={handleCloseModal}
                 >
-                    <li className="py-1 px-6 border-b border-gray-100 cursor-pointer" onClick={handleEdit}>
+                    <li className="py-1 px-6 border-b border-zinc-100 cursor-pointer" onClick={handleEdit}>
                         Editar
                     </li>
                     <li className="py-1 px-6 cursor-pointer" onClick={handleDelete}>
@@ -98,7 +98,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
             <Link
                 to={`/dashboard/postagens/${nomeMateria}/${nome}`}
                 state={{ categoria, dataEntrega, pontos, detail, file }}
-                className="bg-white border border-gray-100 py-4 px-8 rounded-md mb-4 block"
+                className="bg-white border border-zinc-100 py-4 px-8 rounded-md mb-4 block"
                 onClick={handleSelectMaterial}
             >
                 <div className="md:flex md:justify-between">
@@ -112,14 +112,14 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                 </div>
 
                 <div className="flex flex-col gap-1">
-                    <span className='text-sm text-gray-500 '>
-                        <span className="pr-2 text-sm text-gray-500 tracking-wide">{pontos}</span>pontos
+                    <span className='text-sm text-zinc-500 '>
+                        <span className="pr-2 text-sm text-zinc-500 tracking-wide">{pontos}</span>pontos
                     </span>
                   
                 </div>
 
                 {file && (
-                    <div className="mt-2 p-2 border border-gray-300 rounded-md">
+                    <div className="mt-2 p-2 border border-zinc-300 rounded-md">
                         <a href={URL.createObjectURL(file)} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
                             Ver ou baixar arquivo: {file.name}
                         </a>

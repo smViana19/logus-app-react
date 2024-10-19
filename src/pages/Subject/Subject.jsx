@@ -71,7 +71,7 @@ const Subject = () => {
 
     return (
         <AtividadeProvider>
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen bg-zinc-50">
 
                 <main className="md:px-16 mt-4 lg:px-32 xl:px-64 py-16">
                     <div className="grid grid-cols-2 gap-4">
@@ -107,7 +107,7 @@ const Subject = () => {
                                 />
                             ))
                         ) : (
-                            <p className="col-span-3 text-center text-gray-500">Nenhuma atividade adicionada.</p>
+                            <p className="col-span-3 text-center text-zinc-500">Nenhuma atividade adicionada.</p>
                         )}
                     </div>
 

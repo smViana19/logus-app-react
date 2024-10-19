@@ -183,7 +183,7 @@ export default function PostsArea() {
                   <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
                     <button
                       onClick={() => setMenuVisible(menuVisible === index ? null : index)}
-                      className="px-3 py-2 rounded-full bg-gray-100 dark:bg-zinc-800"
+                      className="px-3 py-2 rounded-full bg-zinc-100 dark:bg-zinc-800"
                       style={{ color: '#000' }}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" height="14" width="3.5" viewBox="0 0 128 512">
@@ -191,16 +191,16 @@ export default function PostsArea() {
                     </button>
                     {menuVisible === index && (
                       <div
-                        className="absolute top-10 right-2 w-24 bg-white border border-gray-200 dark:border-zinc-600 rounded shadow-lg z-50">
+                        className="absolute top-10 right-2 w-24 bg-white border border-zinc-200 dark:border-zinc-600 rounded shadow-lg z-50">
                         <button
                           onClick={() => handleEditMateria(index)}
-                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700"
+                          className="block w-full text-left px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700"
                         >
                           Editar
                         </button>
                         <button
                           onClick={() => handleDeleteMateria(index, materia.id)}
-                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700 transition-colors"
+                          className="block w-full text-left px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700 transition-colors"
                         >
                           Excluir
                         </button>
@@ -211,7 +211,7 @@ export default function PostsArea() {
               ))}
             </section>
           ) : (
-            <p className="text-center text-gray-600 dark:text-gray-300 mt-8 text-xl">
+            <p className="text-center text-zinc-600 dark:text-zinc-300 mt-8 text-xl">
               Não foi possível encontrar as matérias.
             </p>
           )}
@@ -220,7 +220,7 @@ export default function PostsArea() {
 
       {showModal && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
+          className="fixed inset-0 flex items-center justify-center bg-zinc-800 bg-opacity-50 z-50"
           onClick={() => setShowModal(false)}>
 
           <div
@@ -233,7 +233,7 @@ export default function PostsArea() {
                 type="text"
                 value={newMateria}
                 onChange={(e) => setNewMateria(e.target.value)}
-                className="border border-gray-300 p-2 mb-4 w-full rounded outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 "
+                className="border border-zinc-300 p-2 mb-4 w-full rounded outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 "
                 placeholder="Nome da matéria"
               />
               <div className='flex justify-end mt-2'>
@@ -251,7 +251,7 @@ export default function PostsArea() {
 
       {showEditModal && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50  max-lg:px-4 z-50"
+          className="fixed inset-0 flex items-center justify-center bg-zinc-800 bg-opacity-50  max-lg:px-4 z-50"
           onClick={() => setShowEditModal(false)}>
           <div
             className="bg-white py-8 lg:w-1/3 md:w-1/2 w-full lg:px-16 px-0 rounded-lg shadow-lg lg:text-left max-lg:px-4"
@@ -261,7 +261,7 @@ export default function PostsArea() {
               type="text"
               value={editNome}
               onChange={(e) => setEditNome(e.target.value)}
-              className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100"
+              className="border border-zinc-300 p-2 mb-4 w-full rounded-lg outline-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100"
               placeholder="Nome da matéria"
             />
             <div className="flex justify-center gap-x-4">
@@ -273,7 +273,7 @@ export default function PostsArea() {
               </button>
               <button
                 onClick={() => setShowEditModal(false)}
-                className="bg-gray-500 text-white py-1.5 px-8 rounded-lg tracking-wide"
+                className="bg-zinc-500 text-white py-1.5 px-8 rounded-lg tracking-wide"
               >
                 Cancelar
               </button>

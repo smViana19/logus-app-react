@@ -5,7 +5,7 @@ const CardBlog = () => {
   return (
     <div>
       <div className="flex flex-col dark:bg-zinc-700 max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:text-zinc-100">
-        <span className="text-xs dark:text-gray-400 dark:text-zinc-100">
+        <span className="text-xs dark:text-zinc-400 dark:text-zinc-100">
           Data postagem: 28/10/2024
         </span>
 

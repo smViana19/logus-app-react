@@ -42,7 +42,7 @@ const InputFile = ({ onChange, nameFile }) => {
   return (
     <div className="w-full grid gap-5">
       <div
-        className={`w-full py-9 rounded-md border border-dashed ${dragging ? 'border-purple-500' : 'border-gray-300'} ${dragging ? 'bg-gray-100' : 'bg-gray-50'}`}
+        className={`w-full py-9 rounded-md border border-dashed ${dragging ? 'border-purple-500' : 'border-zinc-300'} ${dragging ? 'bg-zinc-100' : 'bg-zinc-50'}`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
@@ -61,12 +61,12 @@ const InputFile = ({ onChange, nameFile }) => {
           <div className="grid gap-2">
             {!fileName && (
 
-              <h4 className="text-center text-gray-900 text-sm font-medium leading-snug mb-2">
+              <h4 className="text-center text-zinc-900 text-sm font-medium leading-snug mb-2">
                 Arraste ou solte seu arquivo
               </h4>
             )}
             {fileName && (
-              <p className="text-center text-gray-600 text-sm mb-4">
+              <p className="text-center text-zinc-600 text-sm mb-4">
                 Arquivo selecionado: {fileName}
               </p>
             )}

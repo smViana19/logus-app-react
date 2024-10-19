@@ -39,7 +39,7 @@ export default function Dashboard() {
                 </svg>
               </div>
               {openCardId === 1 && (
-                  <div className="border border-gray-200 dark:border-zinc-600 rounded-md mt-6 px-4 py-4">
+                  <div className="border border-zinc-200 dark:border-zinc-600 rounded-md mt-6 px-4 py-4">
                     <RowNota subject={'Matemática'} firstScore={'7.0'} secondScore={'12.0'} />
                     <RowNota subject={'Matemática'} firstScore={'7.0'} secondScore={'12.0'} />
                   </div>
@@ -55,7 +55,7 @@ export default function Dashboard() {
                 </svg>
               </div>
               {openCardId === 2 && (
-                  <div className="border border-gray-200 dark:border-zinc-600 rounded-x mt-6 px-4 rounded-md py-4">
+                  <div className="border border-zinc-200 dark:border-zinc-600 rounded-x mt-6 px-4 rounded-md py-4">
                     <RowNota subject={'Física'} firstScore={'8.0'} secondScore={'10.0'} />
                   </div>
               )}
@@ -70,7 +70,7 @@ export default function Dashboard() {
                 </svg>
               </div>
               {openCardId === 3 && (
-                  <div className="border border-gray-200 dark:border-zinc-600 rounded-x mt-6 px-4 rounded-md py-4">
+                  <div className="border border-zinc-200 dark:border-zinc-600 rounded-x mt-6 px-4 rounded-md py-4">
                     <RowNota subject={'História'} firstScore={'8.0'} secondScore={'10.0'} />
                   </div>
               )}

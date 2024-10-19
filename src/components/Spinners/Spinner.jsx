@@ -7,7 +7,7 @@ const Spinner = () => {
     <div role="status" className="flex flex-col items-center">
       <svg
           aria-hidden="true"
-          className="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-purple-700"
+          className="w-16 h-16 text-zinc-200 animate-spin dark:text-zinc-600 fill-purple-700"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ const Spinner = () => {
         />
       </svg>
       <div>
-        <span className="mt-4 text-gray-700 text-xl">Carregando...</span>
+        <span className="mt-4 text-zinc-700 text-xl">Carregando...</span>
       </div>
     </div>
 

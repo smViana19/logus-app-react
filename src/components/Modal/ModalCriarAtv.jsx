@@ -113,7 +113,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                 {showModal && (
                     <div
                         id="modal-background"
-                        className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                        className="fixed inset-0 flex items-center justify-center bg-zinc-800 bg-opacity-50"
                         onClick={(e) => {
                             if (e.target.id === 'modal-background') setShowModal(false);
                         }}
@@ -129,7 +129,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                     type="text"
                                     value={nome}
                                     onChange={(e) => setNome(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
+                                    className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
                                     placeholder="Nome do material"
                                 />
                             </div>
@@ -140,7 +140,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                     <select
                                         value={categoria}
                                         onChange={(e) => setCategoria(e.target.value)}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
+                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
                                     >
                                         <option value="" disabled>
                                             Selecione a Categoria
@@ -159,7 +159,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         onChange={(e) => setPontos(e.target.value)}
                                         onFocus={handleFocus}
                                         onBlur={handleBlur}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
+                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none mt-1"
                                         type="text"
                                     />
                                 </div>
@@ -171,7 +171,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                     placeholder=""
                                     value={detail}
                                     onChange={(e) => setDetail(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-md h-48 px-4 py-2 outline-none mt-1"
+                                    className="w-full border border-zinc-300 rounded-md h-48 px-4 py-2 outline-none mt-1"
                                 ></textarea>
                             </div>
 
@@ -201,7 +201,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         type="date"
                                         value={dataEntrega}
                                         onChange={(e) => setDataEntrega(e.target.value)}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none"
+                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none"
                                     />
                                     <input
                                         type="time"
@@ -209,7 +209,7 @@ const Modal = ({ showModal, setShowModal, handleAddAtividade }) => {
                                         onChange={(e) => setHoraEntrega(e.target.value)}
                                         onFocus={handleHoraFocus}
                                         onBlur={handleHoraBlur}
-                                        className="border border-gray-300 p-2 mb-4 w-full rounded-md outline-none"
+                                        className="border border-zinc-300 p-2 mb-4 w-full rounded-md outline-none"
                                     />
                                 </div>
                             )}

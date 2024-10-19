@@ -72,7 +72,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
             {showModal && (
                 <div
                     id="modal-background"
-                    className="fixed inset-0 z-10 flex items-center justify-center bg-gray-800 bg-opacity-50"
+                    className="fixed inset-0 z-10 flex items-center justify-center bg-zinc-800 bg-opacity-50"
                     onClick={(e) => e.target.id === 'modal-background' && setShowModal(false)}
                 >
                     <div className="bg-white py-8 xl:w-3/5 px-16 rounded-lg shadow-lg" onClick={(e) => e.stopPropagation()}>
@@ -84,7 +84,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
                                 type="text"
                                 value={nome}
                                 onChange={(e) => setNome(e.target.value)}
-                                className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                className="border border-zinc-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
                                 placeholder="Nome da atividade"
                             />
                         </div>
@@ -95,7 +95,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
                                     id="categoria"
                                     value={categoria}
                                     onChange={(e) => setCategoria(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                    className="border border-zinc-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
                                 >
                                     <option value="" disabled>Selecione a Categoria</option>
                                     <option value="Atividade">Atividade</option>
@@ -111,7 +111,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
                                     type="number"
                                     value={pontos}
                                     onChange={(e) => setPontos(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
+                                    className="border border-zinc-300 p-2 mb-4 w-full rounded-lg outline-none mt-1"
                                     placeholder="Pontuação"
                                 />
                             </div>
@@ -122,7 +122,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
                                 id="descricao"
                                 value={detail}
                                 onChange={(e) => setDetail(e.target.value)}
-                                className="w-full border border-gray-300 rounded-lg h-48 px-4 py-2 outline-none mt-1"
+                                className="w-full border border-zinc-300 rounded-lg h-48 px-4 py-2 outline-none mt-1"
                                 placeholder="Descrição da atividade"
                             ></textarea>
                         </div>
@@ -149,13 +149,13 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
                                     type="date"
                                     value={dataEntrega}
                                     onChange={(e) => setDataEntrega(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                    className="border border-zinc-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 />
                                 <input
                                     type="time"
                                     value={horaEntrega}
                                     onChange={(e) => setHoraEntrega(e.target.value)}
-                                    className="border border-gray-300 p-2 mb-4 w-full rounded-lg outline-none"
+                                    className="border border-zinc-300 p-2 mb-4 w-full rounded-lg outline-none"
                                 />
                             </div>
                         )}

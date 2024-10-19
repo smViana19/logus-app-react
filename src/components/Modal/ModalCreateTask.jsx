@@ -62,17 +62,17 @@ export default function ModalCreateTask({ isOpen, setOpenModal, onCreateTask }) 
                     </svg>
                 </button>
                 <input
-                    className="bg-gray-200 w-full px-4 rounded-md py-2 text-lg font-medium"
+                    className="bg-zinc-200 w-full px-4 rounded-md py-2 text-lg font-medium"
                     placeholder="Tarefa"
                     type="text"
                     ref={nomeTarefaRef}
                 />
                 <div className="flex gap-8">
                     <select
-                        className="bg-gray-200 w-full px-4 rounded-md py-2 text-lg font-base text-gray-400"
+                        className="bg-zinc-200 w-full px-4 rounded-md py-2 text-lg font-base text-zinc-400"
                         ref={categoriaSelectRef}
                     >
-                        <option className="text-gray-400" value="" selected disabled>
+                        <option className="text-zinc-400" value="" selected disabled>
                             Categoria
                         </option>
                         <option value="Escola">Escola</option>
@@ -80,7 +80,7 @@ export default function ModalCreateTask({ isOpen, setOpenModal, onCreateTask }) 
                     </select>
                     <select
                         id="urgencia-select"
-                        className="bg-gray-200 w-full px-4 rounded-md py-2 text-lg font-base text-gray-400"
+                        className="bg-zinc-200 w-full px-4 rounded-md py-2 text-lg font-base text-zinc-400"
                         ref={urgenciaSelectRef}
                     >
                         <option selected disabled value="">
@@ -92,16 +92,16 @@ export default function ModalCreateTask({ isOpen, setOpenModal, onCreateTask }) 
                     </select>
                 </div>
                 <div className="flex gap-8">
-                    <div className="bg-gray-200 w-full px-4 rounded-md text-lg flex items-center justify-between">
-                        <span className="text-gray-400">Dia</span>
+                    <div className="bg-zinc-200 w-full px-4 rounded-md text-lg flex items-center justify-between">
+                        <span className="text-zinc-400">Dia</span>
                         <Switch />
                     </div>
                     <div className="flex gap-10">
-                        <div className="bg-gray-200 w-full px-4 py-2 rounded-md text-lg text-center flex items-center justify-center">
-                            <input className="bg-gray-200 m-auto" type="time" ref={timeInputRef} />
+                        <div className="bg-zinc-200 w-full px-4 py-2 rounded-md text-lg text-center flex items-center justify-center">
+                            <input className="bg-zinc-200 m-auto" type="time" ref={timeInputRef} />
                         </div>
-                        <div className="bg-gray-200 w-full px-4 py-2 rounded-md text-lg text-center flex items-center justify-center">
-                            <input className="bg-gray-200 m-auto" type="date" ref={dateInputRef} />
+                        <div className="bg-zinc-200 w-full px-4 py-2 rounded-md text-lg text-center flex items-center justify-center">
+                            <input className="bg-zinc-200 m-auto" type="date" ref={dateInputRef} />
                         </div>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ export default function LandingPage() {
   return (
     <>
       <header className="fixed w-full">
-        <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
+        <nav className="bg-white border-zinc-200 py-2.5 dark:bg-zinc-900">
           <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
             <a href="#" className="flex items-center">
               <img src={logo} className="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
@@ -45,7 +45,7 @@ export default function LandingPage() {
                   <>
                     <Link
                       to="/login"
-                      className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                      className="text-zinc-800 dark:text-white hover:bg-zinc-50 focus:ring-4 focus:ring-zinc-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-zinc-700 focus:outline-none dark:focus:ring-zinc-800"
                     >
                       Log in
                     </Link>
@@ -63,7 +63,7 @@ export default function LandingPage() {
               <button
                 data-collapse-toggle="mobile-menu-2"
                 type="button"
-                className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 ml-1 text-sm text-zinc-500 rounded-lg lg:hidden hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:focus:ring-zinc-600"
                 aria-controls="mobile-menu-2"
                 aria-expanded="false"
               >
@@ -111,7 +111,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-zinc-400 lg:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-zinc-700"
                   >
                     Ferramentas
                   </a>
@@ -119,7 +119,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-zinc-400 lg:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-zinc-700"
                   >
                     Suporte
                   </a>
@@ -127,7 +127,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-zinc-400 lg:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-zinc-700"
                   >
                     Custo
                   </a>
@@ -135,7 +135,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-zinc-400 lg:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-zinc-700"
                   >
                     Team
                   </a>
@@ -143,7 +143,7 @@ export default function LandingPage() {
                 <li>
                   <a
                     href="#"
-                    className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    className="block py-2 pl-3 pr-4 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-zinc-400 lg:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-zinc-700"
                   >
                     Contact
                   </a>
@@ -154,13 +154,13 @@ export default function LandingPage() {
         </nav>
       </header>
 
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white dark:bg-zinc-900">
         <div className="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
               Conectando & Educando
             </h1>
-            <p className="max-w-xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+            <p className="max-w-xl mb-6 font-light text-zinc-500 lg:mb-8 md:text-lg lg:text-xl dark:text-zinc-400">
               Nossa plataforma conecta a administração da escola, professores e
               alunos em um único ambiente. Com ferramentas para gestão eficiente
               e comunicação fluida, facilitamos o acompanhamento das atividades
@@ -170,7 +170,7 @@ export default function LandingPage() {
 
             <span
               href="https://www.figma.com/community/file/1125744163617429490"
-              className="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:w-auto focus:outline-none hover:bg-gray-100 hover:text-purplePrimary cursor-pointer focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              className="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-lg sm:w-auto focus:outline-none hover:bg-zinc-100 hover:text-purplePrimary cursor-pointer focus:z-10 focus:ring-4 focus:ring-zinc-200 dark:focus:ring-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-600 dark:hover:text-white dark:hover:bg-zinc-700"
             >
               Primeiro Acesso
             </span>
@@ -181,11 +181,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-gray-800">
+      <section className="bg-zinc-50 dark:bg-zinc-800">
         <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
           <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
-            <div className="text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <div className="text-zinc-500 sm:text-lg dark:text-zinc-400">
+              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
                 Ferramentas para a escola
               </h2>
               <p className="mb-8 font-light lg:text-xl">
@@ -194,7 +194,7 @@ export default function LandingPage() {
               </p>
               <ul
                 role="list"
-                className="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700"
+                className="pt-8 space-y-5 border-t border-zinc-200 my-7 dark:border-zinc-700"
               >
                 <li className="flex space-x-3">
                   <svg
@@ -209,7 +209,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Criação e gerência de atividades
                   </span>
                 </li>
@@ -226,7 +226,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Gestão de notas dos alunos
                   </span>
                 </li>
@@ -243,7 +243,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Administração de avisos e notícias da escola
                   </span>
                 </li>
@@ -260,7 +260,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Avaliação do desempenho de cada aluno individualmente
                   </span>
                 </li>
@@ -277,7 +277,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Relatórios detalhados do prograsso acadêmico
                   </span>
                 </li>
@@ -295,8 +295,8 @@ export default function LandingPage() {
               src="./images/feature-2.png"
               alt="feature image 2"
             />
-            <div className="text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <div className="text-zinc-500 sm:text-lg dark:text-zinc-400">
+              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
                 Ferramentas para os alunos
               </h2>
               <p className="mb-8 font-light lg:text-xl">
@@ -306,7 +306,7 @@ export default function LandingPage() {
               </p>
               <ul
                 role="list"
-                className="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700"
+                className="pt-8 space-y-5 border-t border-zinc-200 my-7 dark:border-zinc-700"
               >
                 <li className="flex space-x-3">
                   <svg
@@ -321,7 +321,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Método Pomodoro
                   </span>
                 </li>
@@ -338,7 +338,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Sons para concentração
                   </span>
                 </li>
@@ -355,7 +355,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Agenda
                   </span>
                 </li>
@@ -372,7 +372,7 @@ export default function LandingPage() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                  <span className="text-base font-medium leading-tight text-zinc-900 dark:text-white">
                     Acompanhamento por gráfico de suas notas e médias
                   </span>
                 </li>
@@ -385,20 +385,20 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white dark:bg-zinc-900">
         <div className="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
           <div className="col-span-2 mb-8">
             <p className="text-lg font-medium text-purple-600 dark:text-purple-500">
               Trusted Worldwide
             </p>
-            <h2 className="mt-3 mb-4 text-3xl font-extrabold tracking-tight text-gray-900 md:text-3xl dark:text-white">
+            <h2 className="mt-3 mb-4 text-3xl font-extrabold tracking-tight text-zinc-900 md:text-3xl dark:text-white">
               Trusted by over 600 million users and 10,000 teams
             </h2>
-            <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            <p className="font-light text-zinc-500 sm:text-xl dark:text-zinc-400">
               Our rigorous security and compliance standards are at the heart of
               all we do. We work tirelessly to protect you and your customers.
             </p>
-            <div className="pt-6 mt-6 space-y-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="pt-6 mt-6 space-y-4 border-t border-zinc-200 dark:border-zinc-700">
               <div>
                 <a
                   href="#"
@@ -458,7 +458,7 @@ export default function LandingPage() {
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 99.99% uptime
               </h3>
-              <p className="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-zinc-500 dark:text-zinc-400">
                 For Landwind, with zero maintenance downtime
               </p>
             </div>
@@ -474,7 +474,7 @@ export default function LandingPage() {
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 600M+ Users
               </h3>
-              <p className="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-zinc-500 dark:text-zinc-400">
                 Trusted by over 600 milion users around the world
               </p>
             </div>
@@ -494,7 +494,7 @@ export default function LandingPage() {
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 100+ countries
               </h3>
-              <p className="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-zinc-500 dark:text-zinc-400">
                 Have used Landwind to create functional websites
               </p>
             </div>
@@ -510,7 +510,7 @@ export default function LandingPage() {
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
                 5+ Million
               </h3>
-              <p className="font-light text-gray-500 dark:text-gray-400">
+              <p className="font-light text-zinc-500 dark:text-zinc-400">
                 Transactions per day
               </p>
             </div>
@@ -518,11 +518,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-gray-800">
+      <section className="bg-zinc-50 dark:bg-zinc-800">
         <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-24 lg:px-6">
           <figure className="max-w-screen-md mx-auto">
             <svg
-              className="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600"
+              className="h-12 mx-auto mb-3 text-zinc-400 dark:text-zinc-600"
               viewBox="0 0 24 27"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -533,7 +533,7 @@ export default function LandingPage() {
               />
             </svg>
             <blockquote>
-              <p className="text-xl font-medium text-gray-900 md:text-2xl dark:text-white">
+              <p className="text-xl font-medium text-zinc-900 md:text-2xl dark:text-white">
                 "Landwind is just awesome. It contains tons of predesigned
                 components and pages starting from login screen to complex
                 dashboard. Perfect choice for your next SaaS application."
@@ -545,11 +545,11 @@ export default function LandingPage() {
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
                 alt="profile picture"
               />
-              <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-                <div className="pr-3 font-medium text-gray-900 dark:text-white">
+              <div className="flex items-center divide-x-2 divide-zinc-500 dark:divide-zinc-700">
+                <div className="pr-3 font-medium text-zinc-900 dark:text-white">
                   Micheal Gough
                 </div>
-                <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
+                <div className="pl-3 text-sm font-light text-zinc-500 dark:text-zinc-400">
                   CEO at Google
                 </div>
               </div>
@@ -558,22 +558,22 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white dark:bg-zinc-900">
         <div className="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6 ">
-          <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-center text-gray-900 lg:mb-8 lg:text-3xl dark:text-white">
+          <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-center text-zinc-900 lg:mb-8 lg:text-3xl dark:text-white">
             Frequently asked questions
           </h2>
           <div className="max-w-screen-md mx-auto">
             <div
               id="accordion-flush"
               data-accordion="collapse"
-              data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-              data-inactive-classes="text-gray-500 dark:text-gray-400"
+              data-active-classes="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white"
+              data-inactive-classes="text-zinc-500 dark:text-zinc-400"
             >
               <h3 id="accordion-flush-heading-1">
                 <button
                   type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-900 bg-white border-b border-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
                   data-accordion-target="#accordion-flush-body-1"
                   aria-expanded="true"
                   aria-controls="accordion-flush-body-1"
@@ -599,13 +599,13 @@ export default function LandingPage() {
                 className=""
                 aria-labelledby="accordion-flush-heading-1"
               >
-                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     Landwind is an open-source library of interactive components
                     built on top of Tailwind CSS including buttons, dropdowns,
                     modals, navbars, and more.
                   </p>
-                  <p className="text-gray-500 dark:text-gray-400">
+                  <p className="text-zinc-500 dark:text-zinc-400">
                     Check out this guide to learn how to{' '}
                     <a
                       href="#"
@@ -621,7 +621,7 @@ export default function LandingPage() {
               <h3 id="accordion-flush-heading-2">
                 <button
                   type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-500 border-b border-zinc-200 dark:border-zinc-700 dark:text-zinc-400"
                   data-accordion-target="#accordion-flush-body-2"
                   aria-expanded="false"
                   aria-controls="accordion-flush-body-2"
@@ -647,13 +647,13 @@ export default function LandingPage() {
                 className="hidden"
                 aria-labelledby="accordion-flush-heading-2"
               >
-                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     Landwind is first conceptualized and designed using the
                     Figma software so everything you see in the library has a
                     design equivalent in our Figma file.
                   </p>
-                  <p className="text-gray-500 dark:text-gray-400">
+                  <p className="text-zinc-500 dark:text-zinc-400">
                     Check out the{' '}
                     <a
                       href="#"
@@ -669,7 +669,7 @@ export default function LandingPage() {
               <h3 id="accordion-flush-heading-3">
                 <button
                   type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-500 border-b border-zinc-200 dark:border-zinc-700 dark:text-zinc-400"
                   data-accordion-target="#accordion-flush-body-3"
                   aria-expanded="false"
                   aria-controls="accordion-flush-body-3"
@@ -697,23 +697,23 @@ export default function LandingPage() {
                 className="hidden"
                 aria-labelledby="accordion-flush-heading-3"
               >
-                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     The main difference is that the core components from
                     Landwind are open source under the MIT license, whereas
                     Tailwind UI is a paid product. Another difference is that
                     Landwind relies on smaller and standalone components,
                     whereas Tailwind UI offers sections of pages.
                   </p>
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     However, we actually recommend using both Landwind, Landwind
                     Pro, and even Tailwind UI as there is no technical reason
                     stopping you from using the best of two worlds.
                   </p>
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     Learn more about these technologies:
                   </p>
-                  <ul className="pl-5 text-gray-500 list-disc dark:text-gray-400">
+                  <ul className="pl-5 text-zinc-500 list-disc dark:text-zinc-400">
                     <li>
                       <a
                         href="#"
@@ -736,7 +736,7 @@ export default function LandingPage() {
               <h3 id="accordion-flush-heading-4">
                 <button
                   type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-500 border-b border-zinc-200 dark:border-zinc-700 dark:text-zinc-400"
                   data-accordion-target="#accordion-flush-body-4"
                   aria-expanded="false"
                   aria-controls="accordion-flush-body-4"
@@ -762,23 +762,23 @@ export default function LandingPage() {
                 className="hidden"
                 aria-labelledby="accordion-flush-heading-4"
               >
-                <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     The main difference is that the core components from
                     Landwind are open source under the MIT license, whereas
                     Tailwind UI is a paid product. Another difference is that
                     Landwind relies on smaller and standalone components,
                     whereas Tailwind UI offers sections of pages.
                   </p>
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     However, we actually recommend using both Landwind, Landwind
                     Pro, and even Tailwind UI as there is no technical reason
                     stopping you from using the best of two worlds.
                   </p>
-                  <p className="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
                     Learn more about these technologies:
                   </p>
-                  <ul className="pl-5 text-gray-500 list-disc dark:text-gray-400">
+                  <ul className="pl-5 text-zinc-500 list-disc dark:text-zinc-400">
                     <li>
                       <a
                         href="#"
@@ -803,13 +803,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-gray-800">
+      <section className="bg-zinc-50 dark:bg-zinc-800">
         <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
           <div className="max-w-screen-md mx-auto text-center">
-            <h2 className="mb-8 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
+            <h2 className="mb-8 text-3xl font-extrabold leading-tight tracking-tight text-zinc-900 dark:text-white">
               Como comprar nossa plataforma?
             </h2>
-            <p className="mb-8 font-light text-gray-500 dark:text-gray-400 md:text-lg text-justify">
+            <p className="mb-8 font-light text-zinc-500 dark:text-zinc-400 md:text-lg text-justify">
               Oferecemos planos de pagamento baseados em assinaturas anuais, com um valor único ajustado conforme o número de alunos que a escola atende. Além disso, disponibilizamos uma versão trial gratuita de 30 dias, para que você possa explorar a plataforma e avaliar se ela atende às necessidades da sua instituição.            </p>
             <a
               href="#"
@@ -821,14 +821,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-white dark:bg-gray-800">
+      <footer className="bg-white dark:bg-zinc-800">
         <div className="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
             <div>
-              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
                 Company
               </h3>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <ul className="text-zinc-500 dark:text-zinc-400">
                 <li className="mb-4">
                   <a href="#" className=" hover:underline">
                     About
@@ -852,10 +852,10 @@ export default function LandingPage() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
                 Help center
               </h3>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <ul className="text-zinc-500 dark:text-zinc-400">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     Discord Server
@@ -879,10 +879,10 @@ export default function LandingPage() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
                 Legal
               </h3>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <ul className="text-zinc-500 dark:text-zinc-400">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     Privacy Policy
@@ -901,10 +901,10 @@ export default function LandingPage() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
                 Company
               </h3>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <ul className="text-zinc-500 dark:text-zinc-400">
                 <li className="mb-4">
                   <a href="#" className=" hover:underline">
                     About
@@ -928,10 +928,10 @@ export default function LandingPage() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
                 Download
               </h3>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <ul className="text-zinc-500 dark:text-zinc-400">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     iOS
@@ -955,10 +955,10 @@ export default function LandingPage() {
               </ul>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <hr className="my-6 border-zinc-200 sm:mx-auto dark:border-zinc-700 lg:my-8" />
           <div className="text-center">
             <span
-              className="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white"
+              className="flex items-center justify-center mb-5 text-2xl font-semibold text-zinc-900 dark:text-white"
             >
               <img
                 src={logo}
@@ -967,14 +967,14 @@ export default function LandingPage() {
               />
 
             </span>
-            <span className="block text-sm text-center text-gray-500 dark:text-gray-400">
+            <span className="block text-sm text-center text-zinc-500 dark:text-zinc-400">
               © 2024 Lógus
             </span>
             <ul className="flex justify-center mt-5 space-x-5">
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white dark:text-zinc-400"
                 >
                   <svg
                     className="w-5 h-5"
@@ -993,7 +993,7 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white dark:text-zinc-400"
                 >
                   <svg
                     className="w-5 h-5"
@@ -1012,7 +1012,7 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white dark:text-zinc-400"
                 >
                   <svg
                     className="w-5 h-5"
@@ -1027,7 +1027,7 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white dark:text-zinc-400"
                 >
                   <svg
                     className="w-5 h-5"
@@ -1046,7 +1046,7 @@ export default function LandingPage() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white dark:text-zinc-400"
                 >
                   <svg
                     className="w-5 h-5"

@@ -82,7 +82,7 @@ const SendTaskSubject = () => {
   return (
     <div className="sm:p-5 min-h-screen  sm:ml-20 lg:ml-64 mt-8  md:mt-16  md:ml-64 lg:mt-8 transition-all duration-300 flex justify-between max-sm:mt-20 sm:justify-around flex-col">
       <div className="grid sm:grid-cols-[50px_1fr] items-start gap-8 mx-20 sm:mx-16">
-        <div className="bg-gray-200 rounded-full sm:flex hidden p-2 justify-center items-center">
+        <div className="bg-zinc-200 rounded-full sm:flex hidden p-2 justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="20"
@@ -105,17 +105,17 @@ const SendTaskSubject = () => {
               {data.categoria}
             </span>
           </div>
-          <p className="text-sm font-medium text-gray-600 mb-4">
+          <p className="text-sm font-medium text-zinc-600 mb-4">
             {data.pontos} pontos
           </p>
-          <span className="text-gray-600">Entrega: {dataEntregaFormatada}</span>
+          <span className="text-zinc-600">Entrega: {dataEntregaFormatada}</span>
           <p className="mt-8">{data.descricao}asdfasdfasdf</p>{' '}
           {/* MOSTRAR O ARQUIVO AQUI */}
         </div>
       </div>
 
       <form
-        className="bg-white p-8 max-sm:ml-14 rounded border border-gray-100 "
+        className="bg-white p-8 max-sm:ml-14 rounded border border-zinc-100 "
         onSubmit={handleSubmit}
       >
         {' '}

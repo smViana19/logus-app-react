@@ -29,7 +29,7 @@ export default function Rotas() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/registro" element={<Registro />} />
+
 
       <Route path="/dashboard" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
@@ -48,6 +48,7 @@ export default function Rotas() {
         <Route path="/admin/institucional/postagens" element={<AdminPosts />} />
         <Route path="/admin/turmas" element={<AdminSeries />} />
         <Route path='/admin/blog/criar' element={<AddPageBlog />} />
+        <Route path="/admin/registro" element={<Registro />} />
       </Route>
     </Routes >
 

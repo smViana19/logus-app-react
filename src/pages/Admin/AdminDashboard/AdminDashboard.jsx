@@ -125,7 +125,7 @@ export default function AdminDashboard() {
           <BtnGestaoEscolar
             title={'Cadastrar'}
             number={2}
-            path="/registro"
+            path="/admin/registro"
             description={
               'Crie cadastros para adicionar seus alunos e professores'
             }

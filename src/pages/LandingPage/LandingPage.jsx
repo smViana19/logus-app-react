@@ -45,16 +45,9 @@ export default function LandingPage() {
                   <>
                     <Link
                       to="/login"
-                      className="text-zinc-800 dark:text-white hover:bg-zinc-50 focus:ring-4 focus:ring-zinc-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-zinc-700 focus:outline-none dark:focus:ring-zinc-800"
-                    >
-                      Log in
-                    </Link>
-
-                    <Link
-                      to="/registro"
                       className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
                     >
-                      Register
+                      Log in
                     </Link>
                   </>
                 )}

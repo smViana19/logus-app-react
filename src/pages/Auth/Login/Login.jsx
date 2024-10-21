@@ -55,13 +55,13 @@ export default function Login(props) {
 
   return (
 
-    <div className="bg-gray-100 w-full h-screen m-0 flex items-center">
+    <div className="bg-gray-100 w-full h-screen m-0 flex items-center dark:bg-zinc-800">
       <ToastContainer />
       <ContainerMain
-        className="flex mx-auto sm:max-w-xl flex-1 flex-col justify-center px-16 py-4 bg-white rounded-xl">
-        <div className="mx-auto w-40 ">
+        className="flex mx-auto sm:max-w-xl flex-1 flex-col justify-center px-16 py-4 bg-white rounded-xl dark:bg-zinc-700">
+        <div className="mx-auto w-40 dark:bg-zinc-700">
           <Logo />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700 dark:text-zinc-100 ">
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-zinc-700 dark:text-zinc-100 ">
             Login
           </h2>
         </div>
@@ -75,6 +75,7 @@ export default function Login(props) {
                 type="email"
                 onChange={e => setEmail(e.target.value)}
                 placeholder="Digite seu email"
+                className=""
               />
               <InputError message="" className="mt-2" />
             </div>
@@ -91,7 +92,7 @@ export default function Login(props) {
               </div>
             </div>
             <div className="text-sm">
-              <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
+              <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-purple-500">
                 Esqueci minha senha
               </Link>
 
@@ -105,7 +106,7 @@ export default function Login(props) {
 
           <p className="mt-4 text-center text-sm text-gray-500 pb-2 dark:text-zinc-100">
             Ainda não possui cadastro? {'  '}
-            <Link to="/registro" className="font-medium text-txtTitulo hover:underline dark:text-purplePrimary">
+            <Link to="/registro" className="font-medium text-txtTitulo hover:underline dark:text-purple-500">
               Cadastre-se
             </Link>
           </p>

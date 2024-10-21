@@ -105,13 +105,13 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                     file,
                     subject_material_id: material.id
                 }}
-                className="bg-white border border-zinc-100 py-4 px-8 rounded-md mb-4 block"
+                className="bg-white border border-zinc-100 py-4 px-8 rounded-md mb-4 block dark:bg-zinc-700 dark:text-zinc-100"
                 onClick={handleSelectMaterial}
             >
                 <div className="md:flex md:justify-between">
                     <div className="flex gap-6">
                         <span className="font-medium first-letter:uppercase">{nome}</span>
-                        <span className="rounded px-4 py-1 font-medium text-xs text-purple-700 bg-purple-200">
+                        <span className="rounded px-4 py-1 font-medium text-xs text-purple-700 bg-purple-200 dark:bg-purple-700 dark:text-purple-200">
                             {categoria}
                         </span>
                     </div>

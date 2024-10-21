@@ -89,17 +89,17 @@ const SendTaskSubject = () => {
 
         <div>
           <div className="flex justify-between">
-            <h1 className="first-letter:uppercase text-xl font-medium mb-2">
+            <h1 className="first-letter:uppercase text-xl font-medium mb-2 dark:text-zinc-100">
               {nomeAtiv}
             </h1>
-            <span className="rounded-md sm:px-4 px-2 md:h-8 flex items-center font-medium sm:text-sm text-xs text-purplePrimary bg-[#EDDDFF]">
+            <span className="rounded-md sm:px-4 px-2 md:h-8 flex items-center font-medium sm:text-sm text-xs text-purplePrimary bg-[#EDDDFF] dark:bg-purple-700 dark:text-purple-200">
               {data.categoria}
             </span>
           </div>
-          <p className="text-sm font-medium text-zinc-600 mb-4">
+          <p className="text-sm font-medium text-zinc-600 mb-4 dark:text-zinc-500">
             {data.pontos} pontos
           </p>
-          <span className="text-zinc-600">Entrega: {dataEntregaFormatada}</span>
+          <span className="text-zinc-600 dark:text-zinc-300">Entrega: {dataEntregaFormatada}</span>
           <p className="mt-8">{data.descricao}</p>
           {/* Aqui você pode adicionar a lógica para exibir as atividades entregues */}
           <p className="mt-2 text-sm text-gray-500">Atividades entregues: {activitiesSubmitted}</p>
@@ -107,12 +107,12 @@ const SendTaskSubject = () => {
       </div>
 
       <form
-        className="bg-white p-8 max-sm:ml-14 rounded border border-zinc-100"
+        className="bg-white p-8 max-sm:ml-14 rounded border border-zinc-100 dark:bg-zinc-700 dark:text-zinc-100"
         onSubmit={handleSubmit}
       >
         <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div>
-          <input type="file" onChange={handleFileChange} />
+          <input className="" type="file" onChange={handleFileChange} />
           {/* <InputFile
             onChange={handleFileChange}
             nameFile={

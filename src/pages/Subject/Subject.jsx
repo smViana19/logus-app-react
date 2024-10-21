@@ -18,13 +18,17 @@ const Subject = () => {
     const [showModal, setShowModal] = useState(false);
     const [filterStatus, setFilterStatus] = useState('all');
 
+
     const subjectId = useSelector(state => state.subject.selectedSubjectId);
     const mySwal = withReactContent(Swal);
+
     useEffect(() => {
         async function fetchAtividades() {
             try {
                 const response = await axios.get(`http://localhost:3000/materias/material/${subjectId}`);
                 setAtividades(response.data);
+
+               
             } catch (err) {
                 mySwal.fire({
                     title: 'Erro ao carregar atividades',

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import axios from '../../../../services/axios';
 import BtnOpenTable from '../../../components/Buttons/BtnOpenTable';
 import BtnGestaoEscolar from '../../../components/Buttons/BtnGestaoEscolar';
 import CardBlog from '../../../components/CardsContainers/CardBlog';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import { setDate } from 'date-fns';
+import { read } from 'xlsx';
 const mySwal = withReactContent(Swal);
 const PAGE_SIZE = 10;
 
@@ -20,6 +22,10 @@ export default function AdminDashboard() {
   const [teachers, setTeachers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const token = useSelector((state) => state.auth.token);
+
+  const [notaImport, setNotaImport] = useState([])
+  const [headers, setHeaders] = useState([])
+
 
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user?.nome);
@@ -110,6 +116,28 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleRowClick = (student) => {
+    navigate(`/admin/students/${student.id}`, { state: { student } });
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]
+    const reader = new FileReader()
+
+    reader.onload = (e) => {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });    
+      
+      setHeaders(jsonData[0])
+      setDate(json.slice(1))
+    }
+
+    reader.readAsArrayBuffer(file)
+  }
+  
+
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:bg-zinc-800">
       <div className="">
@@ -153,16 +181,21 @@ export default function AdminDashboard() {
             }
             path={'/admin/relatorios'}
           />
+          
         </div>
 
-        <select
-          className="px-8 border border-zinc-200 rounded mt-4 py-1 dark:bg-zinc-800 dark:text-zinc-100 dark:border-zinc-600"
-          name=""
-          id=""
-        >
-          <option value="">Selecione a turma</option>
-          <option value=""></option>
-        </select>
+        <div className='flex justify-between mt-4'>
+          <select
+            className="px-8 border border-zinc-200 rounded py-1 dark:bg-zinc-800 dark:text-zinc-100 dark:border-zinc-600"
+            name=""
+            id=""
+          >
+            <option value="">Selecione a turma</option>
+            <option value=""></option>
+          </select>
+
+          <input type="file" onChange={handleFileChange} accept=".xlsx, .xls" />
+          </div>
 
         <BtnOpenTable onClick={handleTableStudents} user={'Alunos'} />
 
@@ -180,53 +213,49 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody className="text-zinc-600 divide-y dark:text-zinc-400">
-                {currentStudents.length > 0 ? (
-                  currentStudents.map((student) => (
-                    <tr key={student.id}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {student.id}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {student.nome}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {student.email}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {student.role}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-6 py-1 bg-red-100 text-red-600 rounded-md">
-                          50%
-                        </span>
-                      </td>
-                      <td className="text-right px-6 whitespace-nowrap">
-                        <button
-                          onClick={handlenModalEdit}
-                          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
-                        >
-                          Editar
-                        </button>
-                        <button
-                          onClick={handleModalDelete}
-                          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-rose-700"
-                        >
-                          Deletar
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td
-                      colSpan="3"
-                      className="px-6 py-4 text-sm font-medium text-zinc-900 text-center dark:text-zinc-500"
-                    >
-                      Nenhum estudante encontrado
-                    </td>
-                  </tr>
-                )}
-              </tbody>
+      {currentStudents.length > 0 ? (
+        currentStudents.map((student) => (
+          <tr
+            key={student.id}
+            onClick={() => handleRowClick(student)}
+            className="cursor-pointer"
+          >
+            <td className="px-6 py-4 whitespace-nowrap">{student.id}</td>
+            <td className="px-6 py-4 whitespace-nowrap">{student.nome}</td>
+            <td className="px-6 py-4 whitespace-nowrap">{student.email}</td>
+            <td className="px-6 py-4 whitespace-nowrap">{student.role}</td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <span className="px-6 py-1 bg-red-100 text-red-600 rounded-md">
+                50%
+              </span>
+            </td>
+            <td className="text-right px-6 whitespace-nowrap">
+              <button
+                onClick={handlenModalEdit}
+                className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
+              >
+                Editar
+              </button>
+              <button
+                onClick={handleModalDelete}
+                className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-rose-700"
+              >
+                Deletar
+              </button>
+            </td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td
+            colSpan="3"
+            className="px-6 py-4 text-sm font-medium text-zinc-900 text-center dark:text-zinc-500"
+          >
+            Nenhum estudante encontrado
+          </td>
+        </tr>
+      )}
+    </tbody>
             </table>
             <div className="flex justify-between mt-4 px-4 py-2 bg-zinc-100 dark:bg-zinc-700 dark:text-white">
               <button
@@ -299,13 +328,13 @@ export default function AdminDashboard() {
                   <td className="text-right px-6 whitespace-nowrap">
                     <button
                       onClick={handlenModalEdit}
-                      className="py-2 px-3 font-medium font-semibold text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
+                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
                     >
                       Editar
                     </button>
                     <button
                       onClick={handleOpenModalDelete}
-                      className="py-2 leading-none px-3 font-semibold font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg"
+                      className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg"
                     >
                       Delete
                     </button>

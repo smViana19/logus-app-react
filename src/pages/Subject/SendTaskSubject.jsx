@@ -7,11 +7,9 @@ import InputFile from '../../components/Inputs/InputFile';
 const SendTaskSubject = () => {
   const { nomeAtiv } = useParams();
   const location = useLocation();
-  const { categoria, data_entrega, pontos, detail, descricao } =
-    location.state || {};
-
   const materialId = useSelector((state) => state.material.selectedMaterialId);
   const userId = useSelector((state) => state.auth.user.id);
+
 
   const [data, setData] = useState({
     categoria: location.state.categoria,
@@ -22,24 +20,28 @@ const SendTaskSubject = () => {
     files: [],
   });
 
-  const [activitiesSubmitted, setActivitiesSubmitted] = useState(0); 
+  const [activitiesSubmitted, setActivitiesSubmitted] = useState(0);
 
   const dataEntregaFormatada = data.dataEntrega
     ? new Date(data.dataEntrega).toLocaleString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-      })
+      day: '2-digit',
+      month: '2-digit',
+      year: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
     : 'Sem data de entrega';
 
   const handleFileChange = (event) => {
     const files = event.target.files;
-    setData((prevData) => ({
-      ...prevData,
-      files: Array.from(files),
-    }));
+    if (files && files.length > 0) {
+      setData((prevData) => ({
+        ...prevData,
+        files: Array.from(files),
+      }));
+    } else {
+      console.error("Nenhum arquivo selecionado");
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -56,10 +58,11 @@ const SendTaskSubject = () => {
     });
     formData.append('data_entrega', new Date().toISOString());
     formData.append('subject_material_id', materialId);
+    console.log(materialId)
     formData.append('user_id', userId);
 
     try {
-      await axios.post(
+      const response = await axios.post(
         `http://localhost:3000/materias/material/submit/`,
         formData,
         {
@@ -68,16 +71,14 @@ const SendTaskSubject = () => {
           },
         }
       );
-      setNumEntregas(prevNum => prevNum + 1); // Incrementa o número de entregas
+      setActivitiesSubmitted((prev) => prev + 1);
       alert('Arquivos enviados com sucesso!');
-      navigate('/dashboard/perfil', { state: { numEntregas } }); // Navega e passa o número de entregas
     } catch (error) {
       console.error('Erro ao enviar os arquivos:', error);
       alert('Erro ao enviar os arquivos. Tente novamente.');
     }
-    
-    
   };
+
 
   return (
     <div className="sm:p-5 min-h-screen sm:ml-20 lg:ml-64 mt-8 md:mt-16 md:ml-64 lg:mt-8 transition-all duration-300 flex justify-between max-sm:mt-20 sm:justify-around flex-col">
@@ -111,14 +112,15 @@ const SendTaskSubject = () => {
       >
         <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div>
-          <InputFile
+          <input type="file" onChange={handleFileChange} />
+          {/* <InputFile
             onChange={handleFileChange}
             nameFile={
               data.files.length > 0
                 ? data.files.map((file) => file.name).join(', ')
                 : ''
             }
-          />
+          /> */}
         </div>
         <button
           type="submit"

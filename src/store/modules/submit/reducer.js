@@ -6,20 +6,20 @@ const initialState = {
 }
 
 const materialReducer = (state = initialState, action) => {
-    switch (action.type){
-        case 'SELECT_MATERIAL':
-            return{
+    switch (action.type) {
+        case types.SELECT_MATERIAL:
+            return {
                 ...state,
                 selectedMaterialId: action.payload.materialId
             }
 
-        case 'CLEAR_MATERIAL':
-            return{
+        case types.CLEAR_MATERIAL:
+            return {
                 ...state,
                 selectedMaterialId: null,
             }
-            default:
-                return state
+        default:
+            return state
     }
 }
 

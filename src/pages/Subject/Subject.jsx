@@ -28,7 +28,7 @@ const Subject = () => {
                 const response = await axios.get(`http://localhost:3000/materias/material/${subjectId}`);
                 setAtividades(response.data);
 
-               
+
             } catch (err) {
                 mySwal.fire({
                     title: 'Erro ao carregar atividades',
@@ -107,6 +107,7 @@ const Subject = () => {
                                     pontos={atividade.pontos}
                                     file={atividade.file}
                                     detail={atividade.detalhes}
+                                    material={atividade.id}
                                     onDelete={() => handleDeleteAtividade(index, atividade.id)}
                                 />
                             ))

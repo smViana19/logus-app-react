@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 
 
 
-const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividade, IdAtv }) => {
- console.log(IdAtv)
+const ModalEditarAtv = ({ showModal, setShowModal, atividade, idAtv, onEditComplete }) => {
+ console.log(idAtv)
     const [nome, setNome] = useState('');
     const [categoria, setCategoria] = useState('');
     const [dataEntrega, setDataEntrega] = useState('');
@@ -28,7 +28,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
             setHoraEntrega(atividade.dataEntrega ? atividade.dataEntrega.split('T')[1].slice(0, 5) : '23:59');
             setPontos(atividade.pontos);
             setDetail(atividade.detail);
-            setFile(null); // Resetar o arquivo quando o modal abre
+            setFile(null); 
             setSemDataEntrega(!atividade.dataEntrega);
         }
     }, [showModal, atividade]);
@@ -53,16 +53,23 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, handleEditAtividad
         if (file) formData.append('file', file);
     
         try {
-            const response = await axios.put(`/materias/material/${IdAtv}`, formData, {
+            const response = await axios.put(`/materias/material/${idAtv}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
             toast.success('Atividade editada com sucesso!');
-            handleEditAtividade(response.data);
+            console.log('Fechando o modal');
             setShowModal(false);
+            if(onEditComplete){
+                onEditComplete()
+            }
         } catch (error) {
-            toast.error('Erro ao editar a atividade');
+            if (error.response && error.response.status >= 400) {
+                toast.error('Erro ao editar a atividade');
+            } else {
+                console.error('Erro desconhecido:', error);
+            }
         }
     };
     

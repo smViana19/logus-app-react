@@ -9,6 +9,7 @@ const SendTaskSubject = () => {
   const location = useLocation();
   const materialId = useSelector((state) => state.material.selectedMaterialId);
   const userId = useSelector((state) => state.auth.user.id);
+  console.log(materialId)
 
 
   const [data, setData] = useState({
@@ -17,8 +18,11 @@ const SendTaskSubject = () => {
     pontos: location.state.pontos,
     detail: location.state.detail,
     descricao: location.state.descricao,
+    id: location.state.subject_material_id,
     files: [],
   });
+
+  console.log(data.id)
 
   const [activitiesSubmitted, setActivitiesSubmitted] = useState(0);
 
@@ -34,6 +38,12 @@ const SendTaskSubject = () => {
 
   const handleFileChange = (event) => {
     const files = event.target.files;
+
+    if (files.length > 2){
+      window.alert("limite de arquivos excedido!!")
+      event.target.value = null;
+      return;
+    } else
     if (files && files.length > 0) {
       setData((prevData) => ({
         ...prevData,
@@ -57,8 +67,7 @@ const SendTaskSubject = () => {
       formData.append('files', file);
     });
     formData.append('data_entrega', new Date().toISOString());
-    formData.append('subject_material_id', materialId);
-    console.log(materialId)
+    formData.append('subject_material_id', data.id);
     formData.append('user_id', userId);
 
     try {
@@ -112,7 +121,7 @@ const SendTaskSubject = () => {
       >
         <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div>
-          <input className="" type="file" onChange={handleFileChange} />
+          <input className="" type="file" onChange={handleFileChange} multiple />
           {/* <InputFile
             onChange={handleFileChange}
             nameFile={

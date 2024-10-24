@@ -4,10 +4,11 @@ import ModalEditarAtv from '../../components/Modal/ModalEditarAtv';
 import { useDispatch } from 'react-redux';
 import { selectMaterial } from '@/store/modules/submit/action'; // Importar a action correta para selecionar a atividade
 
-const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete, onEdit, material }) => {
+const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete,  material, idAtv, fetchAtividades }) => {
     const { nomeMateria } = useParams();
     const [showModalOption, setShowModalOptions] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [selectedMaterialId, setSelectedMaterialId] = useState(null);
 
     const dispatch = useDispatch();
 
@@ -20,11 +21,17 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     const handleRightClick = (event) => {
         event.preventDefault();
         setShowModalOptions(true);
+        setSelectedMaterialId(idAtv);
+        console.log(`ID da atividade selecionada: ${idAtv}`);
     };
 
     const handleCloseModal = () => {
         setShowModalOptions(false);
     };
+
+    const handleEditComplete = () => {
+        fetchAtividades()
+    }
 
     const handleClickOutside = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -103,7 +110,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                     pontos,
                     detail,
                     file,
-                    subject_material_id: material.id
+                    subject_material_id: idAtv
                 }}
                 className="bg-white border border-zinc-100 py-4 px-8 rounded-md mb-4 block dark:bg-zinc-700 dark:text-zinc-100"
                 onClick={handleSelectMaterial}
@@ -139,10 +146,8 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                     showModal={showEditModal}
                     setShowModal={setShowEditModal}
                     atividade={{ nome, categoria, dataEntrega, pontos, detail, file }}
-                    handleEditAtividade={(updatedAtividade) => {
-                        onEdit(updatedAtividade);
-                        setShowEditModal(false);
-                    }}
+                    idAtv = {idAtv}
+                    onEditComplete={handleEditComplete}
                 />
             )}
         </div>

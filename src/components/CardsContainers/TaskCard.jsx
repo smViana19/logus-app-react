@@ -51,8 +51,8 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
     }, [showModalOption]);
 
     const handleEdit = () => {
-        dispatch(selectMaterial(material)); 
-        setShowEditModal(true); 
+        dispatch(selectMaterial(material));
+        setShowEditModal(true);
         handleCloseModal();
     };
 
@@ -73,17 +73,17 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
 
     const dataEntregaFormatada = dataEntrega
         ? (() => {
-              const data = new Date(dataEntrega);
-              return isNaN(data.getTime())
-                  ? 'Data de entrega inválida'
-                  :  data.toLocaleString('pt-BR', {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-          })()
+            const data = new Date(dataEntrega);
+            return isNaN(data.getTime())
+                ? 'Data de entrega inválida'
+                : data.toLocaleString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+        })()
         : '';
 
     return (
@@ -104,14 +104,21 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
             )}
             <Link
                 to={`/dashboard/postagens/${nomeMateria}/${nome}`}
-                state={{ categoria, dataEntrega, pontos, detail, file }}
-                className="bg-white border border-zinc-100 py-4 px-8 rounded-md mb-4 block"
+                state={{
+                    categoria,
+                    dataEntrega,
+                    pontos,
+                    detail,
+                    file,
+                    subject_material_id: material.id
+                }}
+                className="bg-white border border-zinc-100 py-4 px-8 rounded-md mb-4 block dark:bg-zinc-700 dark:text-zinc-100"
                 onClick={handleSelectMaterial}
             >
                 <div className="md:flex md:justify-between">
                     <div className="flex gap-6">
                         <span className="font-medium first-letter:uppercase">{nome}</span>
-                        <span className="rounded px-4 py-1 font-medium text-xs text-purple-700 bg-purple-200">
+                        <span className="rounded px-4 py-1 font-medium text-xs text-purple-700 bg-purple-200 dark:bg-purple-700 dark:text-purple-200">
                             {categoria}
                         </span>
                     </div>
@@ -122,7 +129,7 @@ const TaskCard = ({ nome, categoria, dataEntrega, pontos, file, detail, onDelete
                     <span className='text-sm text-zinc-500 '>
                         <span className="pr-2 text-sm text-zinc-500 tracking-wide">{pontos}</span>pontos
                     </span>
-                  
+
                 </div>
 
                 {file && (

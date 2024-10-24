@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const BtnGestaoEscolar = ({title, number, description, svg, path}) => {
   return (
-    <Link to={path} className="p-6 bg-white rounded-md shadow-md space-y-4 dark:bg-zinc-700 cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-600 transition-all duration-500 hover:scale-102">
+    <Link to={path} className="px-6 py-4 bg-white rounded-md shadow-md space-y-4 dark:bg-zinc-700 cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-600 transition-all duration-500 hover:scale-102">
     <div className="flex items-center justify-between">
       <div>
         <h1 className="text-gray-600 dark:text-gray-200">

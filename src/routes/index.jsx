@@ -20,6 +20,7 @@ import AdminReport from '../pages/Admin/AdminReport/AdminReport';
 import AdminSeries from '../pages/Admin/AdminInstitutional/AdminSeries/AdminSeries';
 import AdminPosts from '../pages/Admin/AdminPosts/AdminPosts';
 import AddPageBlog from '../pages/Admin/AdminBlog/AddPageBlog';
+import StudentDetail from '../pages/Admin/StudentDetail';
 
 export default function Rotas() {
 
@@ -49,6 +50,7 @@ export default function Rotas() {
         <Route path="/admin/turmas" element={<AdminSeries />} />
         <Route path='/admin/blog/criar' element={<AddPageBlog />} />
         <Route path="/admin/registro" element={<Registro />} />
+        <Route path="/admin/students/:id" element={<StudentDetail />} />
       </Route>
     </Routes >
 

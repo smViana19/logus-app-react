@@ -21,6 +21,7 @@ const Subject = () => {
   const subjectId = useSelector((state) => state.subject.selectedSubjectId);
   const mySwal = withReactContent(Swal);
 
+
   const fetchAtividades = async () => {
     try {
       const response = await axios.get(
@@ -119,6 +120,7 @@ const Subject = () => {
             </button>
           </div>
 
+
           <div className="gap-y- flex flex-col mt-8">
             {filteredAtividades.length > 0 ? (
               filteredAtividades.map((atividade, index) => (
@@ -141,6 +143,7 @@ const Subject = () => {
               </p>
             )}
           </div>
+
 
           <Modal
             showModal={showModal}

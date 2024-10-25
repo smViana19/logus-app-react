@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../store/modules/auth/actions.js';
 import logo from '../../assets/logo.png';
 import imageLanding from '../../assets/imageLanding.svg';
-
+import ThemeToggle from '../../components/Darkmode/ThemeToggle.jsx'
 
 
 export default function LandingPage() {
@@ -13,6 +13,11 @@ export default function LandingPage() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const handleThemeChange = () => {
+  setIsDarkMode((prevMode) => !prevMode);
+
+};
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -140,6 +145,9 @@ export default function LandingPage() {
                   >
                     Contact
                   </a>
+                </li>
+                <li>
+                <ThemeToggle handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
                 </li>
               </ul>
             </div>

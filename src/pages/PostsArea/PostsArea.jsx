@@ -20,7 +20,6 @@ export default function PostsArea() {
   const [isLoading, setIsLoading] = useState(true);
   const token = useSelector((state) => state.auth.token);
   const mySwal = withReactContent(Swal)
-
   useEffect(() => {
     async function fetchMaterias() {
       setIsLoading(true);
@@ -152,6 +151,9 @@ export default function PostsArea() {
       });
     }
   };
+  console.log(useSelector((state) => state.auth)); 
+  const { user } = useSelector((state) => state.auth);
+  const userRole = user?.role;
 
   if (isLoading) return <Spinner />;
 
@@ -160,13 +162,15 @@ export default function PostsArea() {
     <>
       <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
         <main className="">
-          <section className="flex justify-end mx-auto">
-            <button
-              className="bg-purplePrimary  hover:bg-purple-600 transition-all duration-300 text-white xl:px-24 max-lg:w-full py-2 rounded mt-4"
-              onClick={() => setShowModal(true)}
-            >
-              Adicionar Matéria
-            </button>
+        <section className="flex justify-end mx-auto">
+            {userRole === "diretor" && (
+              <button
+                className="bg-purplePrimary  hover:bg-purple-600 transition-all duration-300 text-white xl:px-24 max-lg:w-full py-2 rounded mt-4"
+                onClick={() => setShowModal(true)}
+              >
+                Adicionar Matéria
+              </button>
+            )}
           </section>
           {materias.length > 0 ? (
             <section className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 3xl:grid-cols-4 gap-x-8 gap-y-16 justify-center mx-auto mt-8 ">

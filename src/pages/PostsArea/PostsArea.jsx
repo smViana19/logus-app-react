@@ -19,7 +19,10 @@ export default function PostsArea() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const token = useSelector((state) => state.auth.token);
+  const role = useSelector((state) => state.auth.user.role);
   const mySwal = withReactContent(Swal)
+
+  console.log(role)
 
   useEffect(() => {
     async function fetchMaterias() {
@@ -180,6 +183,7 @@ export default function PostsArea() {
                       subject={materia}
                     />
                   </Link>
+                  {(role == "diretor" || role =="professor")  &&(
                   <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
                     <button
                       onClick={() => setMenuVisible(menuVisible === index ? null : index)}
@@ -189,6 +193,8 @@ export default function PostsArea() {
                       <svg xmlns="http://www.w3.org/2000/svg" height="14" width="3.5" viewBox="0 0 128 512">
                         <path className='fill-purplePrimary' d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" /></svg>
                     </button>
+                    
+                    
                     {menuVisible === index && (
                       <div
                         className="absolute top-10 right-2 w-24 bg-white border border-zinc-200 dark:border-zinc-600 rounded shadow-lg z-50">
@@ -207,7 +213,9 @@ export default function PostsArea() {
                       </div>
                     )}
                   </div>
+                  )}
                 </div>
+                
               ))}
             </section>
           ) : (

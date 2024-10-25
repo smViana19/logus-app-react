@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import InputFile from '../../components/Inputs/InputFile';
 
 const SendTaskSubject = () => {
   const { nomeAtiv } = useParams();
   const location = useLocation();
   const materialId = useSelector((state) => state.material.selectedMaterialId);
   const userId = useSelector((state) => state.auth.user.id);
-  console.log(materialId)
+  const [submissionId, setSubmissionId] = useState(null);
 
+  const token = useSelector((state) => state.auth.token);
+  
 
   const [data, setData] = useState({
     categoria: location.state.categoria,
@@ -22,37 +23,83 @@ const SendTaskSubject = () => {
     files: [],
   });
 
-  console.log(data.id)
-
   const [activitiesSubmitted, setActivitiesSubmitted] = useState(0);
 
   const dataEntregaFormatada = data.dataEntrega
     ? new Date(data.dataEntrega).toLocaleString('pt-BR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    })
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      })
     : 'Sem data de entrega';
 
   const handleFileChange = (event) => {
     const files = event.target.files;
 
-    if (files.length > 2){
-      window.alert("limite de arquivos excedido!!")
+    if (files.length > 2) {
+      window.alert("limite de arquivos excedido!!");
       event.target.value = null;
       return;
-    } else
-    if (files && files.length > 0) {
-      setData((prevData) => ({
-        ...prevData,
-        files: Array.from(files),
-      }));
-    } else {
-      console.error("Nenhum arquivo selecionado");
+    }
+
+    setData((prevData) => ({
+      ...prevData,
+      files: [...prevData.files, ...Array.from(files)],
+    }));
+  };
+
+  const handleRemoveFile = (fileName) => {
+    setData((prevData) => ({
+      ...prevData,
+      files: prevData.files.filter(file => file.name !== fileName),
+      
+    }));
+
+    
+  };
+
+  /*const handleCancelSubmit = async () => {
+    if (!submissionId) {
+      alert("Entrega não encontrada.");
+      return;
+    }
+  
+    try {
+      await axios.delete(`http://localhost:3000/materias/material/submit/${submissionId}`);
+      alert('Entrega cancelada com sucesso!');
+      setActivitiesSubmitted((prev) => prev - 1);
+      setSubmissionId(null);  // Limpa o ID após o cancelamento
+    } catch (error) {
+      console.error('Erro ao cancelar a entrega:', error);
+      alert('Erro ao cancelar a entrega. Tente novamente.');
     }
   };
+  
+  const fetchSubmission = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/materias/material/submit', {
+        headers: {
+          Authorization: `Bearer ${token}`  
+        },
+
+      });
+  
+      const submission = response;
+      console.log("submission: ", submission)
+      if (submission) {
+        setSubmissionId(submission.id);  // Armazena o ID da entrega no estado.
+      } else {
+        alert('Nenhuma entrega encontrada.');
+      }
+    } catch (error) {
+      console.error('Erro ao buscar entrega:', error);
+      console.log(submissionId)
+      alert('Erro ao buscar entrega. Tente novamente.');
+    }
+  };
+  */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,15 +118,11 @@ const SendTaskSubject = () => {
     formData.append('user_id', userId);
 
     try {
-      const response = await axios.post(
-        `http://localhost:3000/materias/material/submit/`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
+      await axios.post(`http://localhost:3000/materias/material/submit/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       setActivitiesSubmitted((prev) => prev + 1);
       alert('Arquivos enviados com sucesso!');
     } catch (error) {
@@ -88,6 +131,11 @@ const SendTaskSubject = () => {
     }
   };
 
+/*
+  useEffect(() => {
+    fetchSubmission();
+  }, []);
+  */
 
   return (
     <div className="sm:p-5 min-h-screen sm:ml-20 lg:ml-64 mt-8 md:mt-16 md:ml-64 lg:mt-8 transition-all duration-300 flex justify-between max-sm:mt-20 sm:justify-around flex-col">
@@ -95,7 +143,6 @@ const SendTaskSubject = () => {
         <div className="bg-zinc-200 rounded-full sm:flex hidden p-2 justify-center items-center">
           {/* SVG Icon */}
         </div>
-
         <div>
           <div className="flex justify-between">
             <h1 className="first-letter:uppercase text-xl font-medium mb-2 dark:text-zinc-100">
@@ -110,7 +157,6 @@ const SendTaskSubject = () => {
           </p>
           <span className="text-zinc-600 dark:text-zinc-300">Entrega: {dataEntregaFormatada}</span>
           <p className="mt-8">{data.descricao}</p>
-          {/* Aqui você pode adicionar a lógica para exibir as atividades entregues */}
           <p className="mt-2 text-sm text-gray-500">Atividades entregues: {activitiesSubmitted}</p>
         </div>
       </div>
@@ -122,15 +168,29 @@ const SendTaskSubject = () => {
         <h1 className="mb-8 font-medium">Enviar Atividade</h1>
         <div>
           <input className="" type="file" onChange={handleFileChange} multiple />
-          {/* <InputFile
-            onChange={handleFileChange}
-            nameFile={
-              data.files.length > 0
-                ? data.files.map((file) => file.name).join(', ')
-                : ''
-            }
-          /> */}
         </div>
+
+        <div className="mt-4">
+          {data.files.length > 0 && (
+            <div className="space-y-2">
+              {data.files.map((file, index) => (
+                <div key={index} className="flex items-center justify-between bg-gray-100 p-2 rounded">
+                  <span>{file.name}</span>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveFile(file.name)}
+                    className="text-red-500"
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+
+
         <button
           type="submit"
           className="sm:mt-8 mt-4 sm:px-32 px-8 max-sm:w-full sm:py-2 py-1 bg-purplePrimary text-white rounded"

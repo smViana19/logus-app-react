@@ -43,6 +43,11 @@ const StudentDetail = () => {
 ]
 
 
+    const handleModalEdit = () => {
+        
+    }
+
+
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:bg-zinc-800">
 
@@ -50,38 +55,42 @@ const StudentDetail = () => {
                     {student.id} - <p className='first-letter:uppercase'>{student.nome} </p>
                 </h3>
   
-            <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
+                <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
                 <table className="w-full table-auto text-sm text-left">
                     <thead className="bg-gray-50 text-gray-600 font-medium border-b">
-                        <tr className="divide-x">
-                            <th className="py-3 px-6">Prova Intermediária</th>
-                            <th className="py-3 px-6">Projetos</th>
-                            <th className="py-3 px-6">Prova Final</th>
-                            <th className="py-3 px-6">Geografia</th>
-                            <th className="py-3 px-6">Geografia</th>
-                            <th className="py-3 px-6">Geografia</th>
-                            
+                        <tr>
+                            <th className="py-3 px-6">Prova 1</th>
+                            <th className="py-3 px-6">Prova 2</th>
+                            <th className="py-3 px-6">Prova 3</th>
+                            <th className="py-3 px-6">Atividades</th>
+                            <th className="py-3 px-6">Total</th>
+
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
                         {
                             tableItems.map((item, idx) => (
-                                <tr key={idx} className="divide-x">
-                                    <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-6">
-                                        <span>{idx + 1}</span>
-                                        Total
+                                <tr key={idx}>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+
+                                    <td className="text-right px-6 whitespace-nowrap">
+                                        <button className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg">
+                                            Edit
+                                        </button>
+                                        <button className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
+                                            Delete
+                                        </button>
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </table>
-            </div>
+                </div>
 
 
     </div>

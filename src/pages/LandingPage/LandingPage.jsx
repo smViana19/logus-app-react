@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../store/modules/auth/actions.js';
 import logo from '../../assets/logo.png';
 import imageLanding from '../../assets/imageLanding.svg';
-import ThemeToggle from '../../components/Darkmode/ThemeToggle.jsx'
-
+import ThemeToggle from '../../components/Darkmode/ThemeToggle.jsx';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -15,16 +14,14 @@ export default function LandingPage() {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const handleThemeChange = () => {
-  setIsDarkMode((prevMode) => !prevMode);
-
-};
+    setIsDarkMode((prevMode) => !prevMode);
+  };
 
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(actions.loginFailure());
     navigate('/');
   };
-
 
   return (
     <>
@@ -33,11 +30,8 @@ export default function LandingPage() {
           <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
             <a href="#" className="flex items-center">
               <img src={logo} className="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
-
             </a>
             <div className="flex items-center lg:order-2">
-
-
               <div>
                 {isLoggedIn ? (
                   <Link
@@ -130,24 +124,12 @@ export default function LandingPage() {
                     Custo
                   </a>
                 </li>
+
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2 pl-3 pr-4 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-zinc-400 lg:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-zinc-700"
-                  >
-                    Team
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block py-2 pl-3 pr-4 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-zinc-400 lg:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-zinc-700"
-                  >
-                    Contact
-                  </a>
-                </li>
-                <li>
-                <ThemeToggle handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
+                  <ThemeToggle
+                    handleThemeChange={handleThemeChange}
+                    isDarkMode={isDarkMode}
+                  />
                 </li>
               </ul>
             </div>
@@ -389,58 +371,13 @@ export default function LandingPage() {
       <section className="bg-white dark:bg-zinc-900">
         <div className="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
           <div className="col-span-2 mb-8">
-            <p className="text-lg font-medium text-purple-600 dark:text-purple-500">
-              Trusted Worldwide
-            </p>
             <h2 className="mt-3 mb-4 text-3xl font-extrabold tracking-tight text-zinc-900 md:text-3xl dark:text-white">
-              Trusted by over 600 million users and 10,000 teams
+              Por Que Escolher Nosso Sistema?
             </h2>
             <p className="font-light text-zinc-500 sm:text-xl dark:text-zinc-400">
-              Our rigorous security and compliance standards are at the heart of
-              all we do. We work tirelessly to protect you and your customers.
+              Algumas de nossas principais vantagens de mercado.
             </p>
-            <div className="pt-6 mt-6 space-y-4 border-t border-zinc-200 dark:border-zinc-700">
-              <div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-base font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700"
-                >
-                  Explore Legality Guide
-                  <svg
-                    className="w-5 h-5 ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-              <div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-base font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700"
-                >
-                  Visit the Trust Center
-                  <svg
-                    className="w-5 h-5 ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
+            <div className="pt-6 mt-6 space-y-4 border-t border-zinc-200 dark:border-zinc-700"></div>
           </div>
           <div className="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
             <div>
@@ -457,10 +394,11 @@ export default function LandingPage() {
                 ></path>
               </svg>
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
-                99.99% uptime
+                Interface Intuitiva
               </h3>
               <p className="font-light text-zinc-500 dark:text-zinc-400">
-                For Landwind, with zero maintenance downtime
+                Desenvolvida para ser fácil de usar por todos os perfis de
+                usuários
               </p>
             </div>
             <div>
@@ -473,10 +411,11 @@ export default function LandingPage() {
                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
               </svg>
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
-                600M+ Users
+                Personalização Total
               </h3>
               <p className="font-light text-zinc-500 dark:text-zinc-400">
-                Trusted by over 600 milion users around the world
+                Você poderá personalizar a plataforma de acordo com sua
+                instituição
               </p>
             </div>
             <div>
@@ -493,10 +432,11 @@ export default function LandingPage() {
                 ></path>
               </svg>
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
-                100+ countries
+                Dashboards
               </h3>
               <p className="font-light text-zinc-500 dark:text-zinc-400">
-                Have used Landwind to create functional websites
+                Dashboards com gráficos para alunos e diretores gerenciarem suas
+                estatísticas
               </p>
             </div>
             <div>
@@ -509,10 +449,11 @@ export default function LandingPage() {
                 <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
               </svg>
               <h3 className="mb-2 text-2xl font-bold dark:text-white">
-                5+ Million
+                Baixo Custo
               </h3>
               <p className="font-light text-zinc-500 dark:text-zinc-400">
-                Transactions per day
+                Preços super acessíveis e personalizados de acordo com o tamanho
+                da sua instituição
               </p>
             </div>
           </div>
@@ -535,23 +476,19 @@ export default function LandingPage() {
             </svg>
             <blockquote>
               <p className="text-xl font-medium text-zinc-900 md:text-2xl dark:text-white">
-                "Landwind is just awesome. It contains tons of predesigned
-                components and pages starting from login screen to complex
-                dashboard. Perfect choice for your next SaaS application."
+                “A tecnologia não apenas facilita a organização e a gestão do
+                ambiente escolar, mas também transforma a experiência
+                educacional, aproximando alunos e professores e otimizando
+                processos essenciais.”
               </p>
             </blockquote>
             <figcaption className="flex items-center justify-center mt-6 space-x-3">
-              <img
-                className="w-6 h-6 rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
-                alt="profile picture"
-              />
               <div className="flex items-center divide-x-2 divide-zinc-500 dark:divide-zinc-700">
                 <div className="pr-3 font-medium text-zinc-900 dark:text-white">
-                  Micheal Gough
+                  Eric Sheninger
                 </div>
                 <div className="pl-3 text-sm font-light text-zinc-500 dark:text-zinc-400">
-                  CEO at Google
+                  Especialista em liderança educacional digital
                 </div>
               </div>
             </figcaption>
@@ -559,259 +496,19 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-zinc-900">
-        <div className="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6 ">
-          <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-center text-zinc-900 lg:mb-8 lg:text-3xl dark:text-white">
-            Frequently asked questions
-          </h2>
-          <div className="max-w-screen-md mx-auto">
-            <div
-              id="accordion-flush"
-              data-accordion="collapse"
-              data-active-classes="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white"
-              data-inactive-classes="text-zinc-500 dark:text-zinc-400"
-            >
-              <h3 id="accordion-flush-heading-1">
-                <button
-                  type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-900 bg-white border-b border-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
-                  data-accordion-target="#accordion-flush-body-1"
-                  aria-expanded="true"
-                  aria-controls="accordion-flush-body-1"
-                >
-                  <span>Can I use Landwind in open-source projects?</span>
-                  <svg
-                    data-accordion-icon=""
-                    className="w-6 h-6 rotate-180 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </h3>
-              <div
-                id="accordion-flush-body-1"
-                className=""
-                aria-labelledby="accordion-flush-heading-1"
-              >
-                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    Landwind is an open-source library of interactive components
-                    built on top of Tailwind CSS including buttons, dropdowns,
-                    modals, navbars, and more.
-                  </p>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    Check out this guide to learn how to{' '}
-                    <a
-                      href="#"
-                      className="text-purple-600 dark:text-purple-500 hover:underline"
-                    >
-                      get started
-                    </a>{' '}
-                    and start developing websites even faster with components on
-                    top of Tailwind CSS.
-                  </p>
-                </div>
-              </div>
-              <h3 id="accordion-flush-heading-2">
-                <button
-                  type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-500 border-b border-zinc-200 dark:border-zinc-700 dark:text-zinc-400"
-                  data-accordion-target="#accordion-flush-body-2"
-                  aria-expanded="false"
-                  aria-controls="accordion-flush-body-2"
-                >
-                  <span>Is there a Figma file available?</span>
-                  <svg
-                    data-accordion-icon=""
-                    className="w-6 h-6 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </h3>
-              <div
-                id="accordion-flush-body-2"
-                className="hidden"
-                aria-labelledby="accordion-flush-heading-2"
-              >
-                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    Landwind is first conceptualized and designed using the
-                    Figma software so everything you see in the library has a
-                    design equivalent in our Figma file.
-                  </p>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    Check out the{' '}
-                    <a
-                      href="#"
-                      className="text-purple-600 dark:text-purple-500 hover:underline"
-                    >
-                      Figma design system
-                    </a>{' '}
-                    based on the utility classes from Tailwind CSS and
-                    components from Landwind.
-                  </p>
-                </div>
-              </div>
-              <h3 id="accordion-flush-heading-3">
-                <button
-                  type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-500 border-b border-zinc-200 dark:border-zinc-700 dark:text-zinc-400"
-                  data-accordion-target="#accordion-flush-body-3"
-                  aria-expanded="false"
-                  aria-controls="accordion-flush-body-3"
-                >
-                  <span>
-                    What are the differences between Landwind and Tailwind UI?
-                  </span>
-                  <svg
-                    data-accordion-icon=""
-                    className="w-6 h-6 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </h3>
-              <div
-                id="accordion-flush-body-3"
-                className="hidden"
-                aria-labelledby="accordion-flush-heading-3"
-              >
-                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    The main difference is that the core components from
-                    Landwind are open source under the MIT license, whereas
-                    Tailwind UI is a paid product. Another difference is that
-                    Landwind relies on smaller and standalone components,
-                    whereas Tailwind UI offers sections of pages.
-                  </p>
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    However, we actually recommend using both Landwind, Landwind
-                    Pro, and even Tailwind UI as there is no technical reason
-                    stopping you from using the best of two worlds.
-                  </p>
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    Learn more about these technologies:
-                  </p>
-                  <ul className="pl-5 text-zinc-500 list-disc dark:text-zinc-400">
-                    <li>
-                      <a
-                        href="#"
-                        className="text-purple-600 dark:text-purple-500 hover:underline"
-                      >
-                        Landwind Pro
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-purple-600 dark:text-purple-500 hover:underline"
-                      >
-                        Tailwind UI
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <h3 id="accordion-flush-heading-4">
-                <button
-                  type="button"
-                  className="flex items-center justify-between w-full py-5 font-medium text-left text-zinc-500 border-b border-zinc-200 dark:border-zinc-700 dark:text-zinc-400"
-                  data-accordion-target="#accordion-flush-body-4"
-                  aria-expanded="false"
-                  aria-controls="accordion-flush-body-4"
-                >
-                  <span>What about browser support?</span>
-                  <svg
-                    data-accordion-icon=""
-                    className="w-6 h-6 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </h3>
-              <div
-                id="accordion-flush-body-4"
-                className="hidden"
-                aria-labelledby="accordion-flush-heading-4"
-              >
-                <div className="py-5 border-b border-zinc-200 dark:border-zinc-700">
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    The main difference is that the core components from
-                    Landwind are open source under the MIT license, whereas
-                    Tailwind UI is a paid product. Another difference is that
-                    Landwind relies on smaller and standalone components,
-                    whereas Tailwind UI offers sections of pages.
-                  </p>
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    However, we actually recommend using both Landwind, Landwind
-                    Pro, and even Tailwind UI as there is no technical reason
-                    stopping you from using the best of two worlds.
-                  </p>
-                  <p className="mb-2 text-zinc-500 dark:text-zinc-400">
-                    Learn more about these technologies:
-                  </p>
-                  <ul className="pl-5 text-zinc-500 list-disc dark:text-zinc-400">
-                    <li>
-                      <a
-                        href="#"
-                        className="text-purple-600 dark:text-purple-500 hover:underline"
-                      >
-                        Landwind Pro
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-purple-600 dark:text-purple-500 hover:underline"
-                      >
-                        Tailwind UI
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-zinc-50 dark:bg-zinc-800">
+      <section className="bg-white dark:bg-zinc-800">
         <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
           <div className="max-w-screen-md mx-auto text-center">
             <h2 className="mb-8 text-3xl font-extrabold leading-tight tracking-tight text-zinc-900 dark:text-white">
               Como comprar nossa plataforma?
             </h2>
             <p className="mb-8 font-light text-zinc-500 dark:text-zinc-400 md:text-lg text-justify">
-              Oferecemos planos de pagamento baseados em assinaturas anuais, com um valor único ajustado conforme o número de alunos que a escola atende. Além disso, disponibilizamos uma versão trial gratuita de 30 dias, para que você possa explorar a plataforma e avaliar se ela atende às necessidades da sua instituição.            </p>
+              Oferecemos planos de pagamento baseados em assinaturas anuais, com
+              um valor único ajustado conforme o número de alunos que a escola
+              atende. Além disso, disponibilizamos uma versão trial gratuita de
+              30 dias, para que você possa explorar a plataforma e avaliar se
+              ela atende às necessidades da sua instituição.{' '}
+            </p>
             <a
               href="#"
               className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
@@ -822,175 +519,21 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-white dark:bg-zinc-800">
-        <div className="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
-            <div>
-              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
-                Company
-              </h3>
-              <ul className="text-zinc-500 dark:text-zinc-400">
-                <li className="mb-4">
-                  <a href="#" className=" hover:underline">
-                    About
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Careers
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Brand Center
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
-                Help center
-              </h3>
-              <ul className="text-zinc-500 dark:text-zinc-400">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Discord Server
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Twitter
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Facebook
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
-                Legal
-              </h3>
-              <ul className="text-zinc-500 dark:text-zinc-400">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Licensing
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Terms
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
-                Company
-              </h3>
-              <ul className="text-zinc-500 dark:text-zinc-400">
-                <li className="mb-4">
-                  <a href="#" className=" hover:underline">
-                    About
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Careers
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Brand Center
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-6 text-sm font-semibold text-zinc-900 uppercase dark:text-white">
-                Download
-              </h3>
-              <ul className="text-zinc-500 dark:text-zinc-400">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    iOS
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Android
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Windows
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    MacOS
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <hr className="my-6 border-zinc-200 sm:mx-auto dark:border-zinc-700 lg:my-8" />
+      <footer className="bg-zinc-50 dark:bg-zinc-800">
+        <div className="max-w-screen-xl p-4 mx-auto lg:py-16 md:p-8 lg:p-10">
+          <hr className="my-4 border-zinc-200 sm:mx-auto dark:border-zinc-700 lg:my-8" />
           <div className="text-center">
-            <span
-              className="flex items-center justify-center mb-5 text-2xl font-semibold text-zinc-900 dark:text-white"
-            >
+            <span className="flex items-center justify-center mb-5 text-2xl font-semibold text-zinc-900 dark:text-white">
               <img
                 src={logo}
                 className="h-6 sm:h-16 my-8"
                 alt="Landwind Logo"
               />
-
             </span>
             <span className="block text-sm text-center text-zinc-500 dark:text-zinc-400">
               © 2024 Lógus
             </span>
             <ul className="flex justify-center mt-5 space-x-5">
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white dark:text-zinc-400"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </a>
-              </li>
               <li>
                 <a
                   href="#"
@@ -1010,21 +553,7 @@ export default function LandingPage() {
                   </svg>
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white dark:text-zinc-400"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                  </svg>
-                </a>
-              </li>
+
               <li>
                 <a
                   href="#"
@@ -1067,9 +596,6 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
-
-
     </>
   );
 }
-

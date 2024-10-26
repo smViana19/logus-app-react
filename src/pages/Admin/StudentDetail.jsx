@@ -69,13 +69,13 @@ const StudentDetail = () => {
                                 <tr key={idx} className="divide-x">
                                     <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-6">
                                         <span>{idx + 1}</span>
-                                        {item.name}
+                                        Total
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item.position}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">0.0</td>
                                 </tr>
                             ))
                         }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { json, Link, useNavigate } from 'react-router-dom';
-import axios from '../../../../services/axios';
-import BtnOpenTable from '../../../components/Buttons/BtnOpenTable';
-import BtnGestaoEscolar from '../../../components/Buttons/BtnGestaoEscolar';
-import CardBlog from '../../../components/CardsContainers/CardBlog';
+import axios from '../../../services/axios';
+import BtnOpenTable from '../../components/Buttons/BtnOpenTable';
+import BtnGestaoEscolar from '../../components/Buttons/BtnGestaoEscolar';
+import CardBlog from '../../components/CardsContainers/CardBlog';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { setDate } from 'date-fns';

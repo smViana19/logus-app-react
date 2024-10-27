@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import ProjectStatics from '@/components/ProjectsStatistics/ProjectStatics.jsx';
+import ProjectStatics from '../../components/Graphics/ProjectStatics';
 import Plataform from '@/components/Plataform/Plataform.jsx';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ColumnChart from '../../components/Graphics/ColumnChart';
 
 
 export default function Dashboard() {
@@ -27,10 +28,10 @@ export default function Dashboard() {
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 md:grid-cols-1 gap-4 dark:bg-zinc-800">
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 dark:bg-zinc-800">
         <ProjectStatics />
-        <Plataform />
-        <ProjectStatics />
+      {/*  <Plataform />*/}
+        <ColumnChart/>
       </div>
 
       <div>

@@ -9,7 +9,7 @@ import ForgotPassword from '../pages/Auth/ForgotPassword/ForgotPassword.jsx';
 import Pomodoro from '../pages/Pomodoro/Pomodoro.jsx';
 import Schedule from '../pages/Schedule/Schedule.jsx';
 import PostsArea from '../pages/PostsArea/PostsArea.jsx';
-import AdminDashboard from '../pages/Admin/AdminDashboard/AdminDashboard.jsx';
+import AdminDashboard from '../pages/Admin/AdminDashboard.jsx';
 import Subject from '../pages/Subject/Subject.jsx';
 import Profile from '../pages/Profile/Profile.jsx';
 import { AtividadeProvider } from '../context/AtividadeContext';
@@ -17,7 +17,7 @@ import SendTaskSubject from '../pages/Subject/SendTaskSubject.jsx';
 import MainLayout from '@/components/Layout/MainLayout.jsx';
 import AdminInstitutional from '../pages/Admin/AdminInstitutional/AdminInstitutional';
 import AdminSeries from '../pages/Admin/AdminInstitutional/AdminSeries/AdminSeries';
-import AddPageBlog from '../pages/Admin/AdminBlog/AddPageBlog';
+import AddPageBlog from '../pages/Admin/AddPageBlog';
 import StudentDetail from '../pages/Admin/StudentDetail';
 
 export default function Rotas() {

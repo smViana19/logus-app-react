@@ -16,9 +16,7 @@ import { AtividadeProvider } from '../context/AtividadeContext';
 import SendTaskSubject from '../pages/Subject/SendTaskSubject.jsx';
 import MainLayout from '@/components/Layout/MainLayout.jsx';
 import AdminInstitutional from '../pages/Admin/AdminInstitutional/AdminInstitutional';
-import AdminReport from '../pages/Admin/AdminReport/AdminReport';
 import AdminSeries from '../pages/Admin/AdminInstitutional/AdminSeries/AdminSeries';
-import AdminPosts from '../pages/Admin/AdminPosts/AdminPosts';
 import AddPageBlog from '../pages/Admin/AdminBlog/AddPageBlog';
 import StudentDetail from '../pages/Admin/StudentDetail';
 
@@ -44,9 +42,7 @@ export default function Rotas() {
       </Route>
       <Route element={<MainLayout />}>
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/relatorios" element={<AdminReport />} />
         <Route path="/admin/institucional" element={<AdminInstitutional />} />
-        <Route path="/admin/institucional/postagens" element={<AdminPosts />} />
         <Route path="/admin/turmas" element={<AdminSeries />} />
         <Route path='/admin/blog/criar' element={<AddPageBlog />} />
         <Route path="/admin/registro" element={<Registro />} />

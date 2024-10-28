@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import SubjectCard from '../../components/CardsContainers/SubjectCard.jsx';
 import bannerMateria from '../../assets/Banners/bannerMaterias.jpg';
 import { toast, ToastContainer } from 'react-toastify';
-import axios from '../../../services/axios.js';
 import { get } from 'lodash';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Spinner from '@/components/Spinners/Spinner.jsx';
 import Swal from 'sweetalert2';
 import withReactContent from "sweetalert2-react-content";
+import axiosInstance from '../../../services/axios.js';
 export default function PostsArea() {
   const [materias, setMaterias] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -22,19 +22,11 @@ export default function PostsArea() {
   const role = useSelector((state) => state.auth.user.role);
   const mySwal = withReactContent(Swal)
 
-
-  console.log(role)
-
-
   useEffect(() => {
     async function fetchMaterias() {
       setIsLoading(true);
       try {
-        const response = await axios.get('http://localhost:3000/materias/', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get('/materias/');
         setIsLoading(false);
         setMaterias(response.data);
       } catch (err) {
@@ -62,15 +54,9 @@ export default function PostsArea() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/materias/', {
+      const response = await axiosInstance.post('http://localhost:3000/materias/', {
         nome: newMateria,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
       });
-
       const createdMateria = response.data;
       setMaterias([...materias, createdMateria]);
       setNewMateria('');
@@ -110,11 +96,7 @@ export default function PostsArea() {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:3000/materias/${id}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+        await axiosInstance.delete(`http://localhost:3000/materias/${id}`);
         setMaterias((prevMaterias) => prevMaterias.filter((_, i) => i !== index));
         mySwal.fire({
           title: 'Excluido!',
@@ -138,7 +120,7 @@ export default function PostsArea() {
       nome: editNome,
     };
     try {
-      const response = await axios.put(`http://localhost:3000/materias/${materias[editingIndex].id}`, updatedMateria);
+      const response = await axiosInstance.put(`http://localhost:3000/materias/${materias[editingIndex].id}`, updatedMateria);
       const updatedMaterias = [...materias];
       updatedMaterias[editingIndex] = response.data;
       setMaterias(updatedMaterias);
@@ -157,7 +139,6 @@ export default function PostsArea() {
       });
     }
   };
-  console.log(useSelector((state) => state.auth)); 
   const { user } = useSelector((state) => state.auth);
   const userRole = user?.role;
 
@@ -168,7 +149,7 @@ export default function PostsArea() {
     <>
       <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
         <main className="">
-        <section className="flex justify-end mx-auto">
+          <section className="flex justify-end mx-auto">
             {userRole === "diretor" && (
               <button
                 className="bg-purplePrimary  hover:bg-purple-600 transition-all duration-300 text-white xl:px-24 max-lg:w-full py-2 rounded mt-4"
@@ -190,39 +171,39 @@ export default function PostsArea() {
                       subject={materia}
                     />
                   </Link>
-                  {(role == "diretor" || role =="professor")  &&(
-                  <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
-                    <button
-                      onClick={() => setMenuVisible(menuVisible === index ? null : index)}
-                      className="px-3 py-2 rounded-full bg-zinc-100 dark:bg-zinc-800"
-                      style={{ color: '#000' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" height="14" width="3.5" viewBox="0 0 128 512">
-                        <path className='fill-purplePrimary' d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" /></svg>
-                    </button>
-                    
-                    
-                    {menuVisible === index && (
-                      <div
-                        className="absolute top-10 right-2 w-24 bg-white border border-zinc-200 dark:border-zinc-600 rounded shadow-lg z-50">
-                        <button
-                          onClick={() => handleEditMateria(index)}
-                          className="block w-full text-left px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700"
-                        >
-                          Editar
-                        </button>
-                        <button
-                          onClick={() => handleDeleteMateria(index, materia.id)}
-                          className="block w-full text-left px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700 transition-colors"
-                        >
-                          Excluir
-                        </button>
-                      </div>
-                    )}
-                  </div>
+                  {(role == "diretor" || role == "professor") && (
+                    <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
+                      <button
+                        onClick={() => setMenuVisible(menuVisible === index ? null : index)}
+                        className="px-3 py-2 rounded-full bg-zinc-100 dark:bg-zinc-800"
+                        style={{ color: '#000' }}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="3.5" viewBox="0 0 128 512">
+                          <path className='fill-purplePrimary' d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" /></svg>
+                      </button>
+
+
+                      {menuVisible === index && (
+                        <div
+                          className="absolute top-10 right-2 w-24 bg-white border border-zinc-200 dark:border-zinc-600 rounded shadow-lg z-50">
+                          <button
+                            onClick={() => handleEditMateria(index)}
+                            className="block w-full text-left px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700"
+                          >
+                            Editar
+                          </button>
+                          <button
+                            onClick={() => handleDeleteMateria(index, materia.id)}
+                            className="block w-full text-left px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 dark:text-zinc-100 dark:bg-zinc-700 transition-colors"
+                          >
+                            Excluir
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   )}
                 </div>
-                
+
               ))}
             </section>
           ) : (

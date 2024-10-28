@@ -28,6 +28,7 @@ const Subject = () => {
         `http://localhost:3000/materias/material/${subjectId}`
       );
       setAtividades(response.data);
+      console.log(response.data)
     } catch (err) {
       mySwal.fire({
         title: 'Erro ao carregar atividades',
@@ -36,6 +37,7 @@ const Subject = () => {
       });
     }
   };
+
 
   useEffect(() => {
     fetchAtividades();
@@ -94,11 +96,11 @@ const Subject = () => {
             <div className="col-span-1 grid grid-rows-4 gap-4 dark:text-zinc-500">
               <SubjectFiltersButton
                 text={'Resumos'}
-                onClick={() => setFilterStatus('resumo')}
+                onClick={() => setFilterStatus('resumos')}
               />
               <SubjectFiltersButton
                 text={'Apresentações'}
-                onClick={() => setFilterStatus('apresentação')}
+                onClick={() => setFilterStatus('apresentacao')}
               />
               <SubjectFiltersButton
                 text={'Atividades'}

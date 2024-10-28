@@ -6,11 +6,12 @@ import axios from '../../../../services/axios';
 import history from '../../../../services/history';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import axiosInstance from '../../../../services/axios';
 
 const mySwal = withReactContent(Swal)
 function* loginRequest({ payload }) {
     try {
-        const response = yield call(axios.post, '/tokens', payload)
+        const response = yield call(axiosInstance.post, '/tokens', payload)
         yield put(actions.loginSucess({ ...response.data }));
         yield call([mySwal, 'fire'], {
             title: 'Sucesso',

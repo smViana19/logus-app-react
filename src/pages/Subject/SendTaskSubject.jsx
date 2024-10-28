@@ -19,6 +19,8 @@ const SendTaskSubject = () => {
   const token = useSelector((state) => state.auth.token);
   const mySwal = withReactContent(Swal);
   const navigate = useNavigate();
+  const fileInputRef = React.useRef(null);
+
 
 
   const [data, setData] = useState({
@@ -30,6 +32,10 @@ const SendTaskSubject = () => {
     id: location.state.subject_material_id,
     files: [],
   });
+
+  const handleClickFileInput = () => {
+    fileInputRef.current.click();
+  };
 
   const [activitiesSubmitted, setActivitiesSubmitted] = useState(0);
 
@@ -186,9 +192,22 @@ const SendTaskSubject = () => {
         className="bg-white p-8 max-sm:ml-14 rounded border border-zinc-100 dark:bg-zinc-700 dark:text-zinc-100"
         onSubmit={handleSubmit}
       >
-        <h1 className="mb-8 font-medium">Enviar Atividade</h1>
+        <h1 className="mb-4 font-medium">Enviar Atividade</h1>
         <div>
-          <input className="" type="file" onChange={handleFileChange} multiple />
+          <input
+            ref={fileInputRef}
+            type="file"
+            onChange={handleFileChange}
+            multiple
+            className="hidden"
+          />
+          <button
+            type="button"
+            onClick={handleClickFileInput}
+            className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+          >
+            Selecionar Arquivos
+          </button>
         </div>
 
         <div className="mt-4">

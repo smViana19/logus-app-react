@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
+
 
 const SendTaskSubject = () => {
   const { nomeAtiv } = useParams();
@@ -11,9 +13,13 @@ const SendTaskSubject = () => {
   const materialId = useSelector((state) => state.material.selectedMaterialId);
   const userId = useSelector((state) => state.auth.user.id);
   const [submissionId, setSubmissionId] = useState(null);
+  const { nomeMateria } = useParams();
+
 
   const token = useSelector((state) => state.auth.token);
   const mySwal = withReactContent(Swal);
+  const navigate = useNavigate();
+
 
   const [data, setData] = useState({
     categoria: location.state.categoria,
@@ -134,8 +140,9 @@ const SendTaskSubject = () => {
       setActivitiesSubmitted((prev) => prev + 1);
       mySwal.fire({
         title: 'Arquivos enviados com sucesso!!',
-        icon: 'error',
+        icon: 'success',
       });
+      navigate(`/dashboard/postagens/${nomeMateria}`);
     } catch (error) {
       console.error('Erro ao enviar os arquivos:', error);
       mySwal.fire({

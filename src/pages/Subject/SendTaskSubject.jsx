@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { Navigate, Outlet, useNavigate } from 'react-router-dom';
+import axiosInstance from '../../../services/axios';
 
 
 const SendTaskSubject = () => {
@@ -41,12 +41,12 @@ const SendTaskSubject = () => {
 
   const dataEntregaFormatada = data.dataEntrega
     ? new Date(data.dataEntrega).toLocaleString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-      })
+      day: '2-digit',
+      month: '2-digit',
+      year: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
     : 'Sem data de entrega';
 
   const handleFileChange = (event) => {
@@ -71,52 +71,11 @@ const SendTaskSubject = () => {
     setData((prevData) => ({
       ...prevData,
       files: prevData.files.filter(file => file.name !== fileName),
-      
+
     }));
 
-    
-  };
 
-  /*const handleCancelSubmit = async () => {
-    if (!submissionId) {
-      alert("Entrega não encontrada.");
-      return;
-    }
-  
-    try {
-      await axios.delete(`http://localhost:3000/materias/material/submit/${submissionId}`);
-      alert('Entrega cancelada com sucesso!');
-      setActivitiesSubmitted((prev) => prev - 1);
-      setSubmissionId(null);  // Limpa o ID após o cancelamento
-    } catch (error) {
-      console.error('Erro ao cancelar a entrega:', error);
-      alert('Erro ao cancelar a entrega. Tente novamente.');
-    }
   };
-  
-  const fetchSubmission = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/materias/material/submit', {
-        headers: {
-          Authorization: `Bearer ${token}`  
-        },
-
-      });
-  
-      const submission = response;
-      console.log("submission: ", submission)
-      if (submission) {
-        setSubmissionId(submission.id);  // Armazena o ID da entrega no estado.
-      } else {
-        alert('Nenhuma entrega encontrada.');
-      }
-    } catch (error) {
-      console.error('Erro ao buscar entrega:', error);
-      console.log(submissionId)
-      alert('Erro ao buscar entrega. Tente novamente.');
-    }
-  };
-  */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -138,7 +97,7 @@ const SendTaskSubject = () => {
     formData.append('user_id', userId);
 
     try {
-      await axios.post(`http://localhost:3000/materias/material/submit/`, formData, {
+      await axiosInstance.post(`http://localhost:3000/materias/material/submit/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -157,12 +116,6 @@ const SendTaskSubject = () => {
       });
     }
   };
-
-/*
-  useEffect(() => {
-    fetchSubmission();
-  }, []);
-  */
 
   return (
     <div className="sm:p-5 min-h-screen sm:ml-20 lg:ml-64 mt-8 md:mt-16 md:ml-64 lg:mt-8 transition-all duration-300 flex justify-between max-sm:mt-20 sm:justify-around flex-col">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../../../../services/axios';
 import { useSelector } from 'react-redux';
+import axiosInstance from '../../../../../services/axios';
 
 const AdminSeries = () => {
   const [serieId, setSerieId] = useState('');
@@ -13,7 +13,7 @@ const AdminSeries = () => {
 
   const fetchSeries = async () => {
     try {
-      const response = await axios.get('/admin/serie/');
+      const response = await axiosInstance.get('/admin/serie/');
       setSeries(response.data.grade);
     } catch (error) {
       console.error('Erro ao buscar séries:', error);
@@ -22,7 +22,7 @@ const AdminSeries = () => {
 
   const fetchSchoolYears = async () => {
     try {
-      const response = await axios.get('/admin/ano-escolar/');
+      const response = await axiosInstance.get('/admin/ano-escolar/');
       setSchoolYear(response.data);
     } catch (error) {
       console.error('Erro ao buscar anos escolares:', error);
@@ -39,7 +39,7 @@ const AdminSeries = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/admin/turma/', {
+      const response = await axiosInstance.post('/admin/turma/', {
         turma: grade,
         serie_id: serieId,
         ano_escolar_id: yearSchoolId,

@@ -5,11 +5,11 @@ import SubjectFiltersButton from '../../components/Buttons/SubjectFiltersButton.
 import TaskCard from '../../components/CardsContainers/TaskCard.jsx';
 import { AtividadeProvider } from '../../context/AtividadeContext';
 import Modal from '../../components/Modal/ModalCriarAtv';
-import axios from '../../../services/axios';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import axiosInstance from '../../../services/axios';
 
 const Subject = () => {
   const token = useSelector((state) => state.auth.token);
@@ -24,7 +24,7 @@ const Subject = () => {
 
   const fetchAtividades = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `http://localhost:3000/materias/material/${subjectId}`
       );
       setAtividades(response.data);
@@ -45,7 +45,7 @@ const Subject = () => {
 
   const handleAddAtividade = async (newAtividadeData) => {
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         'http://localhost:3000/materias/material/',
         newAtividadeData
       );
@@ -59,11 +59,7 @@ const Subject = () => {
 
   const handleDeleteAtividade = async (index, id) => {
     try {
-      await axios.delete(`http://localhost:3000/materias/material/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axiosInstance.delete(`http://localhost:3000/materias/material/${id}`);
       setAtividades((prevAtividades) =>
         prevAtividades.filter((_, i) => i !== index)
       );
@@ -77,11 +73,11 @@ const Subject = () => {
     filterStatus === 'all'
       ? atividades
       : atividades.filter((atividade) => {
-          console.log('Filtering atividade:', atividade);
-          return (
-            atividade.categoria.toLowerCase() === filterStatus.toLowerCase()
-          );
-        });
+        console.log('Filtering atividade:', atividade);
+        return (
+          atividade.categoria.toLowerCase() === filterStatus.toLowerCase()
+        );
+      });
 
   return (
     <AtividadeProvider>

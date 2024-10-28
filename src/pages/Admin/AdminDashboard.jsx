@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { json, Link, useNavigate } from 'react-router-dom';
-import axios from '../../../services/axios';
 import BtnOpenTable from '../../components/Buttons/BtnOpenTable';
 import BtnGestaoEscolar from '../../components/Buttons/BtnGestaoEscolar';
 import CardBlog from '../../components/CardsContainers/CardBlog';
@@ -9,6 +8,7 @@ import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { setDate } from 'date-fns';
 import { read } from 'xlsx';
+import axiosInstance from '../../../services/axios';
 const mySwal = withReactContent(Swal);
 const PAGE_SIZE = 10;
 
@@ -33,11 +33,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('/users/', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get('/users/');
         const students = response.data.filter(
           (user) => user.role === 'estudante'
         );
@@ -128,15 +124,15 @@ export default function AdminDashboard() {
       const data = new Uint8Array(e.target.result);
       const workbook = XLSX.read(data, { type: 'array' });
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });    
-      
+      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
       setHeaders(jsonData[0])
       setDate(json.slice(1))
     }
 
     reader.readAsArrayBuffer(file)
   }
-  
+
 
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:bg-zinc-800">
@@ -157,7 +153,7 @@ export default function AdminDashboard() {
             description={
               'Crie cadastros para adicionar seus alunos e professores'
             }
-            svg={ 
+            svg={
               'M160 64c0-35.3 28.7-64 64-64L576 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64l-239.2 0c-11.8-25.5-29.9-47.5-52.4-64l99.6 0 0-32c0-17.7 14.3-32 32-32l64 0c17.7 0 32 14.3 32 32l0 32 64 0 0-288L224 64l0 49.1C205.2 102.2 183.3 96 160 96l0-32zm0 64a96 96 0 1 1 0 192 96 96 0 1 1 0-192zM133.3 352l53.3 0C260.3 352 320 411.7 320 485.3c0 14.7-11.9 26.7-26.7 26.7L26.7 512C11.9 512 0 500.1 0 485.3C0 411.7 59.7 352 133.3 352z'
             }
           />
@@ -181,7 +177,7 @@ export default function AdminDashboard() {
             }
             path={'/admin/relatorios'}
           />
-          
+
         </div>
 
         <div className='flex justify-between mt-4'>
@@ -195,7 +191,7 @@ export default function AdminDashboard() {
           </select>
 
           <input type="file" onChange={handleFileChange} accept=".xlsx, .xls" />
-          </div>
+        </div>
 
         <BtnOpenTable onClick={handleTableStudents} user={'Alunos'} />
 
@@ -213,49 +209,49 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody className="text-zinc-600 divide-y dark:text-zinc-400">
-      {currentStudents.length > 0 ? (
-        currentStudents.map((student) => (
-          <tr
-            key={student.id}
-            onClick={() => handleRowClick(student)}
-            className="cursor-pointer"
-          >
-            <td className="px-6 py-4 whitespace-nowrap">{student.id}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{student.nome}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{student.email}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{student.role}</td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <span className="px-6 py-1 bg-red-100 text-red-600 rounded-md">
-                50%
-              </span>
-            </td>
-            <td className="text-right px-6 whitespace-nowrap">
-              <button
-                onClick={handlenModalEdit}
-                className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
-              >
-                Editar
-              </button>
-              <button
-                onClick={handleModalDelete}
-                className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-rose-700"
-              >
-                Deletar
-              </button>
-            </td>
-          </tr>
-        ))
-      ) : (
-        <tr>
-          <td
-            colSpan="3"
-            className="px-6 py-4 text-sm font-medium text-zinc-900 text-center dark:text-zinc-500"
-          >
-            Nenhum estudante encontrado
-          </td>
-        </tr>
-      )}
-    </tbody>
+                {currentStudents.length > 0 ? (
+                  currentStudents.map((student) => (
+                    <tr
+                      key={student.id}
+                      onClick={() => handleRowClick(student)}
+                      className="cursor-pointer"
+                    >
+                      <td className="px-6 py-4 whitespace-nowrap">{student.id}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{student.nome}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{student.email}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{student.role}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className="px-6 py-1 bg-red-100 text-red-600 rounded-md">
+                          50%
+                        </span>
+                      </td>
+                      <td className="text-right px-6 whitespace-nowrap">
+                        <button
+                          onClick={handlenModalEdit}
+                          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-purplePrimary"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          onClick={handleModalDelete}
+                          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-zinc-50 rounded-lg dark:text-rose-700"
+                        >
+                          Deletar
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="3"
+                      className="px-6 py-4 text-sm font-medium text-zinc-900 text-center dark:text-zinc-500"
+                    >
+                      Nenhum estudante encontrado
+                    </td>
+                  </tr>
+                )}
+              </tbody>
             </table>
             <div className="flex justify-between mt-4 px-4 py-2 bg-zinc-100 dark:bg-zinc-700 dark:text-white">
               <button

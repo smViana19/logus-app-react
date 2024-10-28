@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 const SendTaskSubject = () => {
   const { nomeAtiv } = useParams();
@@ -11,7 +13,7 @@ const SendTaskSubject = () => {
   const [submissionId, setSubmissionId] = useState(null);
 
   const token = useSelector((state) => state.auth.token);
-  
+  const mySwal = withReactContent(Swal);
 
   const [data, setData] = useState({
     categoria: location.state.categoria,
@@ -39,7 +41,10 @@ const SendTaskSubject = () => {
     const files = event.target.files;
 
     if (files.length > 2) {
-      window.alert("limite de arquivos excedido!!");
+      mySwal.fire({
+        title: 'Limite de arquivos excedido!!',
+        icon: 'error',
+      });
       event.target.value = null;
       return;
     }
@@ -105,7 +110,10 @@ const SendTaskSubject = () => {
     event.preventDefault();
 
     if (data.files.length === 0) {
-      alert('Por favor, selecione ao menos um arquivo para enviar.');
+      mySwal.fire({
+        title: 'Selecione ao menos um arquivo para enviar!',
+        icon: 'error',
+      });
       return;
     }
 
@@ -124,10 +132,16 @@ const SendTaskSubject = () => {
         },
       });
       setActivitiesSubmitted((prev) => prev + 1);
-      alert('Arquivos enviados com sucesso!');
+      mySwal.fire({
+        title: 'Arquivos enviados com sucesso!!',
+        icon: 'error',
+      });
     } catch (error) {
       console.error('Erro ao enviar os arquivos:', error);
-      alert('Erro ao enviar os arquivos. Tente novamente.');
+      mySwal.fire({
+        title: 'Erro ao enviar os arquivos, por favor tente novamente!',
+        icon: 'error',
+      });
     }
   };
 

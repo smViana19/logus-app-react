@@ -1,6 +1,7 @@
 import React from 'react';
 import { CiSearch } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
+import ThemeToggle from '../../components/Darkmode/ThemeToggle.jsx';
 
 const Header = ({ user, handleThemeChange, isDarkMode, handleLogout }) => {
   return (
@@ -13,8 +14,8 @@ const Header = ({ user, handleThemeChange, isDarkMode, handleLogout }) => {
         />
         <span className="hidden md:block text-sm font-semibold dark:text-white first-letter:uppercase">{user}</span>
       </div>
-      <div className="flex justify-between items-center h-16 bg-purplePrimary dark:bg-purpleDark  header-right">
-        <div className="bg-white rounded-md flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-zinc-200 dark:border-zinc-700 ">
+      <div className="flex justify-between items-center h-16 bg-purplePrimary dark:bg-purpleDark header-right">
+        <div className="bg-white rounded-md flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-zinc-200 dark:border-zinc-700">
           <button className="outline-none focus:outline-none">
             <span className="w-5 text-zinc-600 dark:text-zinc-400 h-5 cursor-pointer">
               <CiSearch size={20} />
@@ -30,25 +31,7 @@ const Header = ({ user, handleThemeChange, isDarkMode, handleLogout }) => {
         </div>
         <ul className="flex items-center">
           <li>
-            <label
-              htmlFor="myCheckbox"
-              className="flex cursor-pointer items-center relative"
-            >
-              <input
-                type="checkbox"
-                id="myCheckbox"
-                className="sr-only peer"
-                onChange={handleThemeChange}
-                checked={isDarkMode}
-              />
-              <div
-                className="w-16 h-8 rounded-full flex items-center px-1 bg-zinc-200 transition-all duration-500
-                  after:content-[''] after:flex after:relative after:w-6 after:h-6 after:bg-white after:rounded-full after:left-0 after:transition-all after:duration-300 after:rotate-0 shadow-inner
-                  peer-checked:after:left-8 peer-checked:after:bg-[url('/icons/moon-solid.svg')] peer-checked:after:-rotate-360
-                  after:bg-[url('/icons/sun-solid.svg')] after:bg-no-repeat after:bg-center
-                  dark:bg-zinc-700 dark:after:bg-zinc-800"
-              ></div>
-            </label>
+            <ThemeToggle handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
           </li>
           <li>
             <div className="block w-px h-6 mx-3 bg-zinc-400 dark:bg-zinc-700"></div>

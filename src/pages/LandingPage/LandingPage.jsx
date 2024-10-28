@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCircle, FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,9 +13,28 @@ export default function LandingPage() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      setIsDarkMode(true);
+    } else {
+      document.documentElement.classList.remove('dark');
+      setIsDarkMode(false);
+    }
+  }, []);
+
   const handleThemeChange = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    setIsDarkMode(!isDarkMode);
   };
+
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -126,10 +145,7 @@ export default function LandingPage() {
                 </li>
 
                 <li>
-                  <ThemeToggle
-                    handleThemeChange={handleThemeChange}
-                    isDarkMode={isDarkMode}
-                  />
+                <ThemeToggle handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
                 </li>
               </ul>
             </div>

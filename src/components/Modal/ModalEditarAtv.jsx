@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../../../services/axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //import selectedMaterialId from `../CardsContainers/TaskCard`
 import { useSelector } from 'react-redux';
-
-
-
+import axiosInstance from '../../../services/axios';
 
 
 const ModalEditarAtv = ({ showModal, setShowModal, atividade, idAtv, onEditComplete }) => {
- console.log(idAtv)
+    console.log(idAtv)
     const [nome, setNome] = useState('');
     const [categoria, setCategoria] = useState('');
     const [dataEntrega, setDataEntrega] = useState('');
@@ -28,7 +25,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, idAtv, onEditCompl
             setHoraEntrega(atividade.dataEntrega ? atividade.dataEntrega.split('T')[1].slice(0, 5) : '23:59');
             setPontos(atividade.pontos);
             setDetail(atividade.detail);
-            setFile(null); 
+            setFile(null);
             setSemDataEntrega(!atividade.dataEntrega);
         }
     }, [showModal, atividade]);
@@ -38,12 +35,12 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, idAtv, onEditCompl
             toast.error('Nome e categoria são obrigatórios');
             return;
         }
-    
+
         if (!semDataEntrega && (!dataEntrega || !horaEntrega)) {
             toast.error('Data e hora de entrega inválidas');
             return;
         }
-    
+
         const formData = new FormData();
         formData.append('nome', nome);
         formData.append('categoria', categoria);
@@ -51,9 +48,9 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, idAtv, onEditCompl
         formData.append('pontos', pontos);
         formData.append('detalhes', detail); // Certifique-se de que o nome aqui seja 'detalhes'
         if (file) formData.append('file', file);
-    
+
         try {
-            const response = await axios.put(`/materias/material/${idAtv}`, formData, {
+            const response = await axiosInstance.put(`/materias/material/${idAtv}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -61,7 +58,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, idAtv, onEditCompl
             toast.success('Atividade editada com sucesso!');
             console.log('Fechando o modal');
             setShowModal(false);
-            if(onEditComplete){
+            if (onEditComplete) {
                 onEditComplete()
             }
         } catch (error) {
@@ -72,7 +69,7 @@ const ModalEditarAtv = ({ showModal, setShowModal, atividade, idAtv, onEditCompl
             }
         }
     };
-    
+
 
     return (
         <>

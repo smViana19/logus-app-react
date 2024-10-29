@@ -130,7 +130,7 @@ export default function Pomodoro() {
       </div>
   );
 }
-
+//Consertar a responsividade dessa pagina quando o meu Mysql funcionar
 const StyledCircularProgressbar = styled(CircularProgressbar)`
     .CircularProgressbar-path {
         stroke-width: 6px;

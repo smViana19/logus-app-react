@@ -145,7 +145,7 @@ export default function LandingPage() {
                 </li>
 
                 <li>
-                <ThemeToggle handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
+                  <ThemeToggle handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
                 </li>
               </ul>
             </div>
@@ -529,7 +529,7 @@ export default function LandingPage() {
               href="#"
               className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
             >
-              Free trial for 30 days
+              Teste grátis por 30 dias
             </a>
           </div>
         </div>

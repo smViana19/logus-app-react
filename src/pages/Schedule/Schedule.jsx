@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Sidebar from '../../components/Schedule/Sidebar.jsx';
 import Month from '../../components/Schedule/Month.jsx';
 import GlobalContext from '../../context/GlobalContext.jsx';
-import { getMonth } from '../../util.js';
+import { getMonth } from '../../utils/util.js';
 import CalendarHeader from '../../components/Schedule/CalendarHeader.jsx';
 import EventModal from '../../components/Schedule/EventModal.jsx';
 

@@ -9,7 +9,7 @@ import DefaultButton from '../../../components/Buttons/DefaultButton.jsx';
 import Logo from '../../../components/Logo/Logo.jsx';
 import axios from '../../../../services/axios';
 import UserRoleSelector from '../../../components/RadioButton/RoleRadioButton.jsx';
-import { generatePassword } from '../../../util';
+import { generatePassword } from '../../../utils/util';
 import Spinner from '../../../components/Spinners/Spinner';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';

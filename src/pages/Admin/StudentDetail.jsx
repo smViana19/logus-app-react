@@ -1,55 +1,60 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import axiosInstance from '../../../services/axios';
+
+
+//TODO: REFAZER OS INPUTS E COLOCAR MAIS BONITO FAZER ISSO AMANHA DE MANHA - SAMUEL
+//TODO: REFAZER A REQ DOS SELECT PRA TALVEZ DIRETO DAS MATERIAS E DE TDS ANOS - SAMUEL
+
+
+
 
 const StudentDetail = () => {
   const { id } = useParams();
   const location = useLocation();
   const student = location.state?.student;
   const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
+  const [grades, setGrades] = useState([]);
+  const [periods, setPeriods] = useState([]);
+  const [subjects, setSubjects] = useState([]);
+  const [turmas, setTurmas] = useState([]);
 
+  useEffect(() => {
+    const fetchStudentGrades = async () => {
+      try {
+        const response = await axiosInstance('/notas');
+        const data = response.data;
+
+        const filteredGrades = data.filter(grade => grade.user_id === parseInt(id));
+        setGrades(filteredGrades);
+        setPeriods([...new Set(filteredGrades.map(grade => grade.period.name))]);
+        setSubjects([...new Set(filteredGrades.map(grade => grade.subject.nome))]);
+        setTurmas([...new Set(filteredGrades.map(grade => grade.turma.turma))]);
+
+      } catch (error) {
+        console.error("Erro ao buscar dados de notas:", error);
+      }
+    };
+
+    fetchStudentGrades();
+  }, [id]);
   if (!student) {
     return <div>Aluno não encontrado</div>;
   }
 
-  const tableItems = [
-    {
-      name: 'Liam James',
-      email: 'liamjames@example.com',
-      position: 'Software engineer',
-      salary: '$100K',
-    },
-    {
-      name: 'Olivia Emma',
-      email: 'oliviaemma@example.com',
-      position: 'Product designer',
-      salary: '$90K',
-    },
-    {
-      name: 'William Benjamin',
-      email: 'william.benjamin@example.com',
-      position: 'Front-end developer',
-      salary: '$80K',
-    },
-    {
-      name: 'Henry Theodore',
-      email: 'henrytheodore@example.com',
-      position: 'Laravel engineer',
-      salary: '$120K',
-    },
-    {
-      name: 'Amelia Elijah',
-      email: 'amelia.elijah@example.com',
-      position: 'Open source manager',
-      salary: '$75K',
-    },
-  ];
+  const subjectGrades = grades.reduce((acc, grade) => {
+    const subjectName = grade.subject.nome;
+    const period = grade.period.name;
+    if (!acc[subjectName]) {
+      acc[subjectName] = { '1º Trimestre': 0, '2º Trimestre': 0, '3º Trimestre': 0, total: 0 };
+    }
+    acc[subjectName][period] = grade.value || 0;
+    acc[subjectName].total += grade.value || 0;
+    return acc;
+  }, {})
 
   const handleModalEdit = () => {
-    if (isOpenModalEdit === false) {
-      setIsOpenModalEdit(true);
-    } else {
-      setIsOpenModalEdit(false);
-    }
+    setIsOpenModalEdit(!isOpenModalEdit);
   };
 
   return (
@@ -57,28 +62,56 @@ const StudentDetail = () => {
       <h3 className="text-gray-800 text-xl font-bold sm:text-2xl first-letter:uppercase flex gap-2">
         {student.id} - <p className="first-letter:uppercase">{student.nome} </p>
       </h3>
+      <div>
+        <form action="">
+          <input type="text" placeholder='Valor' />
+          <select id="periodId" className="border border-zinc-200 px-2 py-1 rounded" required>
+            <option selected disabled>Selecione um trimestre</option>
+            {periods.map((period, index) => (
+              <option key={index} value={period}>
+                {period}
+              </option>
+            ))}
+          </select>
+          <select id="subjectId" className="border border-zinc-200 px-2 py-1 rounded" required>
+            <option selected disabled>Selecione uma matéria</option>
+            {subjects.map((subject, index) => (
+              <option key={index} value={subject}>
+                {subject}
+              </option>
+            ))}
+          </select>
+          <select id="turmaId" className="border border-zinc-200 px-2 py-1 rounded" required>
+            <option selected disabled>Selecione uma turma</option>
+            {turmas.map((turma, index) => (
+              <option key={index} value={turma}>
+                {turma}
+              </option>
+            ))}
+          </select>
+        </form>
+      </div>
 
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-gray-50 text-gray-600 font-medium border-b">
             <tr>
               <th className="py-3 px-6"></th>
-              <th className="py-3 px-6">Prova 1</th>
-              <th className="py-3 px-6">Prova 2</th>
-              <th className="py-3 px-6">Atividades</th>
+              <th className="py-3 px-6">1º Trimestre</th>
+              <th className="py-3 px-6">2º Trimestre</th>
+              <th className="py-3 px-6">3º Trimestre</th>
               <th className="py-3 px-6">Total</th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {tableItems.map((item, idx) => (
-              <tr key={idx}>
-                <td className="px-6 py-4 whitespace-nowrap">Etapa 01</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-                <td className="px-6 py-4 whitespace-nowrap">0.0</td>
-
-                <td className="text-right  px-6 whitespace-nowrap">
+            {Object.entries(subjects).map(([subject, values]) => (
+              <tr key={subject}>
+                <td className="px-6 py-4 whitespace-nowrap">{subject}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{values['1º Trimestre'] || '0.0'}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{values['2º Trimestre'] || '0.0'}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{values['3º Trimestre'] || '0.0'}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{values.total}</td>
+                <td className="text-right px-6 whitespace-nowrap">
                   <button
                     onClick={handleModalEdit}
                     className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
@@ -88,6 +121,7 @@ const StudentDetail = () => {
                 </td>
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>
@@ -120,7 +154,7 @@ const StudentDetail = () => {
                     />
                   </div>
 
-				  <div className="mt-4 flex flex-col">
+                  <div className="mt-4 flex flex-col">
                     <label className='text-sm pb-2' htmlFor="">Prova 02</label>
                     <input
                       className="border boder-gray-200 rounded px-4 py-1 w-full"
@@ -128,7 +162,7 @@ const StudentDetail = () => {
                     />
                   </div>
 
-				  <div className="mt-4 flex flex-col">
+                  <div className="mt-4 flex flex-col">
                     <label className='text-sm pb-2' htmlFor="">Atividades</label>
                     <input
                       className="border boder-gray-200 rounded px-4 py-1 w-full"
@@ -146,7 +180,7 @@ const StudentDetail = () => {
                     Deletar
                   </button>
                   <button
-				  	onClick={handleModalEdit}
+                    onClick={handleModalEdit}
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-zinc-900 shadow-sm ring-1 ring-inset ring-zinc-300 hover:bg-zinc-50 sm:mt-0 sm:w-auto"
                   >

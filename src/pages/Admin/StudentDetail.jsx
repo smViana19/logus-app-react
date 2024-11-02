@@ -104,7 +104,7 @@ const StudentDetail = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {Object.entries(subjects).map(([subject, values]) => (
+            {Object.entries(subjectGrades).map(([subject, values]) => (
               <tr key={subject}>
                 <td className="px-6 py-4 whitespace-nowrap">{subject}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{values['1º Trimestre'] || '0.0'}</td>

@@ -43,10 +43,10 @@ const Sidebar = ({ role }) => {
   ];
 
   return (
-    <div className="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-white dark:bg-zinc-900 h-full transition-all duration-300 border-none z-10 sidebar overflow-hidden dark:text-zinc-300">
+    <div className="fixed flex flex-col top-14 left-0 w-10 sm:w-14 hover:w-64 lg:w-64 bg-white dark:bg-zinc-900 h-full transition-all duration-300 border-none z-10 sidebar overflow-hidden dark:text-zinc-300">
       <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
         <ul className="flex flex-col py-4 space-y-1">
-          <li className="px-5 hidden md:block">
+          <li className="px-5 hidden lg:block">
             <div className="flex flex-row items-center mt-5 mb-4 h-8">
               <div className="text-sm font-light tracking-wide text-zinc-400 uppercase">
                 Páginas
@@ -63,7 +63,7 @@ const Sidebar = ({ role }) => {
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500  dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark  dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
                 onClick={() => handleLinkClick(index)}
               >
-                <span className="inline-flex justify-center items-center ml-4">
+                <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
                   {link.icon()}
                 </span>
                 <span className="ml-2 text-sm tracking-wide truncate ">
@@ -84,7 +84,7 @@ const Sidebar = ({ role }) => {
                   className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
                   onClick={() => handleLinkClick(index + SIDEBAR_LINKS.length)}
                 >
-                  <span className="inline-flex justify-center items-center ml-4">
+                  <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
                     {link.icon()}
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate ">
@@ -94,7 +94,7 @@ const Sidebar = ({ role }) => {
               </li>
             ))}
         </ul>
-        <p className="mb-14 px-5 py-3 hidden md:block text-center text-xs">
+        <p className="mb-14 px-5 py-3 hidden lg:block text-center text-xs">
           Copyright@ Logus 2024
         </p>
       </div>

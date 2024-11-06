@@ -27,16 +27,16 @@ export default function Dashboard() {
 
   return (
       <>
-        <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300 dark:text-white">
+        <div className="lg:p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-10 md:ml-14 transition-all duration-300 dark:text-white">
 
-          <div className="mx-48 my-5">
-          <div className="rounded-md bg-white py-8 px-12 shadow-md shadow-zinc-200 dark:bg-zinc-700 dark:shadow-zinc-900">
+          <div className="mx-0 2xl:mx-48 my-5">
+          <div className="rounded-md bg-white py-8 px-8 sm:px-12 shadow-md shadow-zinc-200 dark:bg-zinc-700 dark:shadow-zinc-900">
             <div className="flex gap-2 mb-10">
                 <span className="w-1.5 bg-purplePrimary rounded-full"></span>
                 <span className=''>{role}</span>
             </div>
 
-            <div className="flex items-center gap-16">
+            <div className="flex items-center gap-4 sm: md: lg:gap-6">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="32"
@@ -49,7 +49,7 @@ export default function Dashboard() {
                 <div className="">
                     <p className="text-xl first-letter:uppercase">{user}</p>
 
-                    <div className="flex gap-16 mt-4">
+                    <div className="flex-col md:flex-row flex lg:gap-16 mt-4">
                         <SubCard numEntregas={numEntregas || 0} />
                         <SubCard />
                         <SubCard />

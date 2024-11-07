@@ -73,7 +73,7 @@ export default function Pomodoro() {
 
   return (
       <div
-          className="min-h-screen  relative sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
+          className="min-h-screen relative sm:ml-20 lg:ml-64 mt-24 ml-10 md:ml-14 transition-all duration-300">
         <main>
           <ContainerButtons
               className="flex justify-center gap-8 ">
@@ -130,7 +130,7 @@ export default function Pomodoro() {
       </div>
   );
 }
-//Consertar a responsividade dessa pagina quando o meu Mysql funcionar
+
 const StyledCircularProgressbar = styled(CircularProgressbar)`
     .CircularProgressbar-path {
         stroke-width: 6px;

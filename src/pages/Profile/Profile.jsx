@@ -30,18 +30,19 @@ export default function Dashboard() {
         <div className="lg:p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-10 md:ml-14 transition-all duration-300 dark:text-white">
 
           <div className="mx-0 2xl:mx-48 my-5">
-          <div className="rounded-md bg-white py-8 px-8 sm:px-12 shadow-md shadow-zinc-200 dark:bg-zinc-700 dark:shadow-zinc-900">
+          <div className="rounded-md bg-white py-8 px-2 sm:px-24 shadow-md shadow-zinc-200 dark:bg-zinc-700 dark:shadow-zinc-900">
             <div className="flex gap-2 mb-10">
                 <span className="w-1.5 bg-purplePrimary rounded-full"></span>
                 <span className=''>{role}</span>
             </div>
 
-            <div className="flex items-center gap-4 sm: md: lg:gap-6">
+            <div className="lg:flex lg:items-center gap-4 lg:gap-6">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="32"
                     width="30.25"
                     viewBox="0 0 448 512"
+                    className="hidden lg:flex"
                 >
                     <path className='dark:fill-white' d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" />
                 </svg>
@@ -49,7 +50,7 @@ export default function Dashboard() {
                 <div className="">
                     <p className="text-xl first-letter:uppercase">{user}</p>
 
-                    <div className="flex-col md:flex-row flex lg:gap-16 mt-4">
+                    <div className="flex-col md:flex-row flex items-center lg:gap-16 mt-4 w-full">
                         <SubCard numEntregas={numEntregas || 0} />
                         <SubCard />
                         <SubCard />

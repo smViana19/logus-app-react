@@ -12,7 +12,7 @@ const InstitutionalCard = ({ info }) => {
                     <span className="font-semibold text-2xl">Lorem ipsum dolor sit amet.</span>
                 </div>
                 <span className='bg-[#EDDDFF] p-3 rounded-lg'>
-                    meu pau
+                    
                 </span>
             </div>
             <p className='text-sm text-zinc-500 '>Lorem ipsum dolor sit amet.</p>

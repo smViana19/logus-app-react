@@ -150,7 +150,7 @@ export default function PostsArea() {
       <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
         <main className="">
           <section className="flex justify-end mx-auto">
-            {userRole === "diretor" && (
+            {userRole === "diretor" || "professor" && (
               <button
                 className="bg-purplePrimary  hover:bg-purple-600 transition-all duration-300 text-white xl:px-24 max-lg:w-full py-2 rounded mt-4"
                 onClick={() => setShowModal(true)}

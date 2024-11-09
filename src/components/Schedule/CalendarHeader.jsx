@@ -25,8 +25,8 @@ export default function CalendarHeader() {
                 className="md:mr-4 md:ml-0 w-28 mx-auto"
             />
 
-            <div className='flex items-center gap-8'>
-				<div className="flex items-center justify-center gap-2 ">
+            <div className='flex-col sm:flex-row flex items-center sm:gap-8'>
+				<div className="flex items-center justify-center gap-2 mt-8">
 					<button
 						onClick={handleReset}
 						className="border rounded py-2 px-4 mr-5 text-zinc-800 bg-white dark:text-zinc-200 dark:border-zinc-500 dark:bg-zinc-700"
@@ -64,11 +64,14 @@ export default function CalendarHeader() {
 						</span>
 					</button>
 				</div>
-				<h2 className="md:ml-4 text-xl text-zinc-500 dark:text-zinc-200 font-bold text-center">
-					{dayjs(new Date(dayjs().year(), monthIndex)).format(
-						'MMMM YYYY'
-					)}
-				</h2>
+				<div className='h-full'>
+					<h2 className="md:ml-4 text-xl text-zinc-500 dark:text-zinc-200 font-bold text-center sm:mt-8">
+						{dayjs(new Date(dayjs().year(), monthIndex)).format(
+							'MMMM YYYY'
+						)}
+					</h2>
+				</div>
+				
 			</div>
         </header>
     );

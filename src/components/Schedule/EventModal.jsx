@@ -51,7 +51,7 @@ export default function EventModal() {
 
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
-      <form className="bg-white rounded-lg shadow-2xl xl:w-1/4 lg:w-1/2 sm:w-2/3 w-full">
+      <form className="bg-white rounded-lg shadow-2xl xl:w-1/4 lg:w-1/2 sm:w-2/3 w-full pl-8">
         <header className="bg-zinc-100 px-4 py-2 flex justify-between items-center">
           <span className="material-icons-outlined text-zinc-400">
             drag_handle

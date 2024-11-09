@@ -5,6 +5,7 @@ import { Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '@/components/Spinners/Spinner.jsx';
 import * as actions from '@/store/modules/auth/actions.js';
+import { showDialog } from '../Dialog/Dialog';
 
 const MainLayout = () => {
 
@@ -41,8 +42,15 @@ const MainLayout = () => {
   };
   const handleLogout = e => {
     e.preventDefault();
-    dispatch(actions.loginFailure());
-    navigate('/');
+    showDialog({
+      text: "Deseja mesmo sair?",
+      confirmButtonText: "Sim, sair",
+      cancelButtonText: "Não, cancelar",
+      onConfirm: () => {
+        dispatch(actions.loginFailure());
+        navigate('/');
+      }
+    })
   };
 
   if (isLoading) {

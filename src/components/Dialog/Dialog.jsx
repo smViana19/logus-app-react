@@ -10,6 +10,7 @@ const Dialog = ({
     title = 'Atenção',
     text = '',
     confirmButtonText = 'OK',
+    confirmButtonColor = '#820AD1',
     onConfirm = null,
 }) => {
     return mySwal.fire({
@@ -17,6 +18,7 @@ const Dialog = ({
         title,
         text,
         confirmButtonText,
+        confirmButtonColor,
         onConfirm,
     }).then((result) => {
         if (result.isConfirmed && onConfirm) {
@@ -25,23 +27,27 @@ const Dialog = ({
     });
 }
 
-const showDialog = ({
-    type = 'info',
-    title = 'Atenção',
-    text = '',
-    confirmButtonText = 'OK',
+export const showDialog = ({
+    title = 'Tem certeza?',
+    text = 'Essa ação não pode ser desfeita!',
+    confirmButtonText = 'Confirmar',
+    cancelButtonText = 'Cancelar',
+    confirmButtonColor = '#820AD1',
     onConfirm = null,
+    showCancelButton = true
 }) => {
     return mySwal.fire({
-        type,
-        icon,
         title,
         text,
+        icon: 'warning',
+        showCancelButton,
+        confirmButtonColor,
         confirmButtonText,
-        onConfirm
+
+        cancelButtonText
     }).then((result) => {
         if (result.isConfirmed && onConfirm) {
-            onConfirm();
+            onConfirm()
         }
     });
 }
@@ -51,7 +57,8 @@ export const showConfirmationDialog = (message) => {
         title: "",
         text: message,
         icon: 'warning',
-        confirmButtonText: 'Ok'
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#820AD1',
     });
 };
 
@@ -61,6 +68,7 @@ export const showSuccesDialog = (message) => {
         text: message,
         icon: 'success',
         confirmButtonText: 'Ok',
+        confirmButtonColor: '#820AD1',
     });
 };
 
@@ -70,6 +78,7 @@ export const showErrorAlert = (message) => {
         text: message,
         icon: 'error',
         confirmButtonText: 'Tentar Novamente',
+        confirmButtonColor: '#820AD1',
     });
 }
 

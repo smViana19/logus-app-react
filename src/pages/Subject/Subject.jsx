@@ -17,7 +17,7 @@ const Subject = () => {
   const [atividades, setAtividades] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [filterStatus, setFilterStatus] = useState('all');
-
+  const role = useSelector((state) => state.auth.user.role);
   const subjectId = useSelector((state) => state.subject.selectedSubjectId);
   const mySwal = withReactContent(Swal);
 
@@ -110,12 +110,15 @@ const Subject = () => {
           </div>
 
           <div className="flex justify-end">
-            <button
-              className="px-3 bg-purplePrimary text-white tracking-wide py-1 text-3xl rounded-full"
-              onClick={() => setShowModal(true)}
-            >
-              +
-            </button>
+            {(role === 'diretor' || role === 'professor') && (
+              <button
+                className="px-3 bg-purplePrimary text-white tracking-wide py-1 text-3xl rounded-full"
+                onClick={() => setShowModal(true)}
+              >
+                +
+              </button>
+            )}
+
           </div>
 
 

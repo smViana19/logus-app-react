@@ -18,28 +18,26 @@ const Sidebar = ({ role }) => {
   const handleLinkClick = (index) => {
     setActiveLink(index);
   };
-  const SIDEBAR_LINKS = [
+  const COMMON_LINKS = [
     { id: 1, path: '/dashboard', name: 'Dashboard', icon: LuBox },
-    {
-      id: 2,
-      path: '/dashboard/postagens',
-      name: 'Postagens',
-      icon: LuFilePlus,
-    },
-    { id: 3, path: '/dashboard/agenda', name: 'Agenda', icon: LuCalendar },
-    { id: 4, path: '/dashboard/pomodoro', name: 'Pomodoro', icon: LuClock },
-    { id: 5, path: '/dashboard/perfil', name: 'Perfil', icon: LuUserCircle },
-
+    { id: 2, path: '/dashboard/postagens', name: 'Postagens', icon: LuFilePlus },
   ];
 
+  // Links exclusivos para diretores
   const DIRETOR_SIDEBAR_LINKS = [
-    { id: 1, path: '/admin/dashboard', name: 'Gestão Escolar', icon: IoMdLock },
+    { id: 1, path: '/admin/gestao-escolar', name: 'Gestão Escolar', icon: IoMdLock },
   ];
 
+  // Links exclusivos para professores
   const PROFESSOR_SIDEBAR_LINKS = [
     { id: 1, path: '/admin/notas', name: 'Notas', icon: LuFilePlus },
     { id: 2, path: '/admin/notas/grade', name: 'Grade', icon: LuCalendar },
-    { id: 3, path: '/admin/dashboard', name: 'Admin Dashboard', icon: FaLock },
+  ];
+
+  // Links disponíveis para estudantes
+  const STUDENT_SIDEBAR_LINKS = [
+    { id: 1, path: '/dashboard/perfil', name: 'Perfil', icon: LuUserCircle },
+    { id: 2, path: '/dashboard/pomodoro', name: 'Pomodoro', icon: LuClock },
   ];
 
   return (
@@ -53,14 +51,16 @@ const Sidebar = ({ role }) => {
               </div>
             </div>
           </li>
-          {SIDEBAR_LINKS.map((link, index) => (
+
+          {/* Links comuns a todos */}
+          {COMMON_LINKS.map((link, index) => (
             <li
               key={index}
               className={`font-medium hover:text-white ${activeLink === index ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
             >
               <Link
                 to={link.path}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500  dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark  dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
                 onClick={() => handleLinkClick(index)}
               >
                 <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
@@ -72,17 +72,18 @@ const Sidebar = ({ role }) => {
               </Link>
             </li>
           ))}
-          <div className="border-t border-zinc-300 dark:border-zinc-600 my-10" />
+
+          {/* Links exclusivos para diretores */}
           {role === 'diretor' &&
             DIRETOR_SIDEBAR_LINKS.map((link, index) => (
               <li
-                key={index + 10} // Use um índice diferente para evitar conflitos com os outros links
-                className={`font-medium hover:text-white ${activeLink === index + SIDEBAR_LINKS.length ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white ' : ''}`}
+                key={index + COMMON_LINKS.length} // Diferenciar os índices dos links
+                className={`font-medium hover:text-white ${activeLink === index + COMMON_LINKS.length ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
               >
                 <Link
                   to={link.path}
                   className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
-                  onClick={() => handleLinkClick(index + SIDEBAR_LINKS.length)}
+                  onClick={() => handleLinkClick(index + COMMON_LINKS.length)}
                 >
                   <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
                     {link.icon()}
@@ -93,7 +94,53 @@ const Sidebar = ({ role }) => {
                 </Link>
               </li>
             ))}
+
+          {/* Links exclusivos para professores */}
+          {role === 'professor' &&
+            PROFESSOR_SIDEBAR_LINKS.map((link, index) => (
+              <li
+                key={index + COMMON_LINKS.length}
+                className={`font-medium hover:text-white ${activeLink === index + COMMON_LINKS.length ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
+              >
+                <Link
+                  to={link.path}
+                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
+                  onClick={() => handleLinkClick(index + COMMON_LINKS.length)}
+                >
+                  <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
+                    {link.icon()}
+                  </span>
+                  <span className="ml-2 text-sm tracking-wide truncate ">
+                    {link.name}
+                  </span>
+                </Link>
+              </li>
+            ))}
+
+          {/* Links para estudantes */}
+          {(role === 'estudante' || role === 'professor') &&
+            STUDENT_SIDEBAR_LINKS.map((link, index) => (
+              <li
+                key={index + COMMON_LINKS.length}
+                className={`font-medium hover:text-white ${activeLink === index + COMMON_LINKS.length ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
+              >
+                <Link
+                  to={link.path}
+                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
+                  onClick={() => handleLinkClick(index + COMMON_LINKS.length)}
+                >
+                  <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
+                    {link.icon()}
+                  </span>
+                  <span className="ml-2 text-sm tracking-wide truncate ">
+                    {link.name}
+                  </span>
+                </Link>
+              </li>
+            ))}
+
         </ul>
+
         <p className="mb-14 px-5 py-3 hidden lg:block text-center text-xs">
           Copyright@ Logus 2024
         </p>

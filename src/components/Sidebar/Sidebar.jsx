@@ -25,7 +25,7 @@ const Sidebar = ({ role }) => {
 
   // Links exclusivos para diretores
   const DIRETOR_SIDEBAR_LINKS = [
-    { id: 1, path: '/admin/gestao-escolar', name: 'Gestão Escolar', icon: IoMdLock },
+    { id: 1, path: '/admin/dashboard', name: 'Gestão Escolar', icon: IoMdLock },
   ];
 
   // Links exclusivos para professores

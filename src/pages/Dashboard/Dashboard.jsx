@@ -10,10 +10,27 @@ import axiosInstance from '../../../services/axios';
 export default function Dashboard() {
   const [latestMaterials, setLatestMaterials] = useState([]);
   const navigate = useNavigate();
+  const [grades, setGrades] = useState([]);
+  const [studentAverage, setStudentAverage] = useState(0);
   const user = useSelector(state => state.auth.user);
+
   useEffect(() => {
     if (user && user.role === "diretor") {
       navigate("/admin/dashboard")
+    }
+
+    const fetchGrades = async () => {
+      try {
+        const response = await axiosInstance.get(`/grade/student/${user.id}`)
+        setGrades(response.data);
+        if (response.data.length > 0) {
+          const totalGrades = response.data.reduce((acc, grade) => acc + grade.grade, 0);
+          const average = totalGrades / response.data.length;
+          setStudentAverage(average);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar notas: ", error);
+      }
     }
 
     const fetchLatestMaterials = async () => {
@@ -26,13 +43,18 @@ export default function Dashboard() {
       }
     }
     fetchLatestMaterials()
+    if (user.id) {
+      fetchGrades()
+    }
+
   }, [user, navigate])
+  if (grades.length === 0) {
+    return <div className='p-5 min-h-screen'>Não há notas disponíveis.</div>;
+  }
   return (
     <div className="p-5 min-h-screen sm:ml-20 lg:ml-64 mt-24 ml-14 md:ml-64 transition-all duration-300">
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 dark:bg-zinc-800">
-        {/* <ProjectStatics /> */}
-        {/*  <Plataform />*/}
-        <ColumnChart />
+        <ColumnChart grades={grades} studentAverage={studentAverage} />
       </div>
 
       <div>

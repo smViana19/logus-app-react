@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const ColumnChart = () => {
-  const [series] = useState([
+const ColumnChart = ({ grades, studentAverage }) => {
+  if (grades.length === 0) {
+    return <div>Não há notas disponíveis.</div>;
+  }
+  const series = [
     {
-      name: 'Net Profit',
-      data: [0, 20, 30, 40, 50, 60, 70, 80, 90]
+      name: 'Notas',
+      data: grades.map(nota => nota.grade)
     },
     {
-      name: 'Revenue',
-      data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+      name: 'Média',
+      data: Array(grades.length).fill(studentAverage)
     }
-  ]);
-
-  const [options] = useState({
+  ]
+  const options = {
     chart: {
       type: 'bar',
       height: 350
@@ -31,7 +33,7 @@ const ColumnChart = () => {
     stroke: {
       show: true,
       width: 2,
-      colors: ['#1A56DB', '#7E3BF2'] 
+      colors: ['#0341fc', '#8003fc']
     },
     fill: {
       type: 'gradient',
@@ -39,38 +41,54 @@ const ColumnChart = () => {
         shade: 'light',
         type: 'vertical',
         shadeIntensity: 0.3,
-        gradientToColors: ['#1A56DB', '#7E3BF2'], 
+        gradientToColors: ['#0341fc', '#9a03fc'],
         inverseColors: false,
         opacityFrom: 0.9,
-        opacityTo: 0.4, 
+        opacityTo: 0.4,
         stops: [0, 100]
       }
     },
-    colors: ['#1A56DB', '#7E3BF2'],
+    colors: ['#9a03fc', '#9a03fc'],
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+      categories: grades.map(nota => nota.subject.nome),
     },
     yaxis: {
       title: {
-        text: 'Percentage (%)'
+        text: 'Notas'
       },
       min: 0,
       max: 100,
       tickAmount: 5,
       labels: {
         formatter: function (value) {
-          return value + '%'; 
+          return value + '%';
         }
       }
     },
     tooltip: {
       y: {
         formatter: function (val) {
-          return val + " %"; 
+          return val + " %";
         }
       }
+    },
+    annotations: {
+      yaxis: [
+        {
+          y: studentAverage,
+          borderColor: '#9a03fc',
+          label: {
+            borderColor: '#9a03fc',
+            style: {
+              color: '#fff',
+              background: '#9a03fc'
+            },
+            text: 'Média: ' + studentAverage.toFixed(2) + '%',
+          }
+        }
+      ]
     }
-  });
+  };
 
   return (
     <div className='bg-white rounded-xl shadow'>

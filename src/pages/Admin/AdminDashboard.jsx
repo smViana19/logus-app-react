@@ -159,7 +159,7 @@ export default function AdminDashboard() {
           />
 
           <BtnGestaoEscolar
-            title={'Criar Turma'}
+            title={'Configurações gerais da escola'}
             number={2}
             description={'Crie turmas para organizar seu sistema'}
             svg={

@@ -1,68 +1,22 @@
-import React from 'react';
-import { CiSearch } from 'react-icons/ci';
-import { Link } from 'react-router-dom';
-import ThemeToggle from '../../components/Darkmode/ThemeToggle.jsx';
+import { IoMoonOutline, IoSunnyOutline } from 'react-icons/io5';
 
 const Header = ({ user, handleThemeChange, isDarkMode, handleLogout }) => {
   return (
-    <div className="fixed w-full flex items-center justify-between h-14 text-white z-10 ">
-      <div className="flex items-center justify-start md:justify-center pl-3 gap-2 w-14 md:w-64 h-16 bg-purplePrimary dark:bg-purpleDark border-none">
-        <img
-          className="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden"
-          src="https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
-          alt=""
-        />
-        <span className="hidden md:block text-sm font-semibold dark:text-white first-letter:uppercase">{user}</span>
+    <header className="flex items-center h-14 px-4 bg-white dark:bg-zinc-900 shadow-md justify-center">
+      <div className="fixed bottom-5 right-5 z-50">
+        <button
+          onClick={handleThemeChange}
+          className="p-3 rounded-full shadow-md bg-purplePrimary text-white dark:bg-purple-400 hover:bg-purple-500 dark:hover:bg-purple-600 transition focus:outline-none focus:ring-2 focus:ring-purple-300 dark:focus:ring-purple-600"
+          aria-label="Alternar tema"
+        >
+          {isDarkMode ? (
+            <IoSunnyOutline size={24} />
+          ) : (
+            <IoMoonOutline size={24} />
+          )}
+        </button>
       </div>
-      <div className="flex justify-between items-center h-16 bg-purplePrimary dark:bg-purpleDark header-right">
-        <div className="bg-white rounded-md flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-zinc-200 dark:border-zinc-700">
-          <button className="outline-none focus:outline-none">
-            <span className="w-5 text-zinc-600 dark:text-zinc-400 h-5 cursor-pointer">
-              <CiSearch size={20} />
-            </span>
-          </button>
-          <input
-            type="search"
-            name=""
-            id=""
-            placeholder="Buscar..."
-            className="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent"
-          />
-        </div>
-        <ul className="flex items-center">
-          <li>
-            <ThemeToggle handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} />
-          </li>
-          <li>
-            <div className="block w-px h-6 mx-3 bg-zinc-400 dark:bg-zinc-700"></div>
-          </li>
-          <li>
-            <button
-              onClick={handleLogout}
-              className="flex items-center mr-4 hover:text-white text-zinc-300 dark:text-zinc-400 dark:hover:text-white transition-all duration-300"
-            >
-              <span className="inline-flex mr-1">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                  ></path>
-                </svg>
-              </span>
-              Sair
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
+    </header>
   );
 };
 

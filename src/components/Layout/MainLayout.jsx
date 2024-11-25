@@ -17,6 +17,7 @@ const MainLayout = () => {
   }));
 
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -52,6 +53,7 @@ const MainLayout = () => {
       }
     })
   };
+  const toggleSidebar = () => setIsSidebarOpen((prevState) => !prevState);
 
   if (isLoading) {
     return (
@@ -66,15 +68,18 @@ const MainLayout = () => {
   }
 
   return (
-    <div >
-      <div className="flex">
-        <Sidebar role={role} />
-        <div className="flex flex-col w-full">
-          <Header user={user} handleThemeChange={handleThemeChange} isDarkMode={isDarkMode} handleLogout={handleLogout} />
-          <div className="flex-grow sm:p-4 bg-zinc-50 dark:bg-zinc-800">
-            <Outlet />
-          </div>
-        </div>
+    <div className="flex h-screen overflow-hidden">
+      <Sidebar user={user} role={role} toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} handleLogout={handleLogout} />
+      <div className="flex flex-col w-full">
+        <Header
+          user={user.nome}
+          handleThemeChange={handleThemeChange}
+          isDarkMode={isDarkMode}
+          handleLogout={handleLogout}
+        />
+        <main className="flex-grow bg-zinc-50 dark:bg-zinc-800 p-4">
+          <Outlet />
+        </main>
       </div>
     </div>
 

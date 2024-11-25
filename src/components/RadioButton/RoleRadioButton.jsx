@@ -9,8 +9,7 @@ const UserRoleSelector = ({ role, setRole }) => {
 
     return (
         <div className="flex justify-center gap-16">
-            <div className="flex">
-                <label htmlFor="aluno" className="mr-2">Aluno</label>
+            <div className="flex items-center">
                 <input
                     type="radio"
                     name="tipo"
@@ -18,11 +17,18 @@ const UserRoleSelector = ({ role, setRole }) => {
                     value="estudante"
                     checked={role === 'estudante'}
                     onChange={handleRoleChange}
+                    className="peer hidden"
                 />
+                <label
+                    htmlFor="aluno"
+                    className="cursor-pointer px-4 py-2 rounded-md border border-gray-300 dark:border-zinc-600 dark:text-white transition 
+        peer-checked:bg-purplePrimary peer-checked:text-white peer-checked:border-purplePrimary"
+                >
+                    Aluno
+                </label>
             </div>
 
-            <div className="flex">
-                <label htmlFor="professor" className="mr-2">Professor</label>
+            <div className="flex items-center">
                 <input
                     type="radio"
                     name="tipo"
@@ -30,11 +36,18 @@ const UserRoleSelector = ({ role, setRole }) => {
                     value="professor"
                     checked={role === 'professor'}
                     onChange={handleRoleChange}
+                    className="peer hidden"
                 />
+                <label
+                    htmlFor="professor"
+                    className="cursor-pointer px-4 py-2 rounded-md border border-gray-300 dark:border-zinc-600 dark:text-white transition 
+        peer-checked:bg-purplePrimary peer-checked:text-white peer-checked:border-purplePrimary"
+                >
+                    Professor
+                </label>
             </div>
 
-            <div className="flex">
-                <label htmlFor="diretor" className="mr-2">Diretor</label>
+            <div className="flex items-center">
                 <input
                     type="radio"
                     name="tipo"
@@ -42,7 +55,15 @@ const UserRoleSelector = ({ role, setRole }) => {
                     value="diretor"
                     checked={role === 'diretor'}
                     onChange={handleRoleChange}
+                    className="peer hidden"
                 />
+                <label
+                    htmlFor="diretor"
+                    className="cursor-pointer px-4 py-2 rounded-md border border-gray-300 dark:border-zinc-600 dark:text-white transition 
+        peer-checked:bg-purplePrimary peer-checked:text-white peer-checked:border-purplePrimary"
+                >
+                    Diretor
+                </label>
             </div>
         </div>
     );

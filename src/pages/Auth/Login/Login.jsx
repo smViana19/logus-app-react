@@ -103,13 +103,6 @@ export default function Login(props) {
               </BotaoPrincipal>
             </div>
           </form>
-
-          <p className="mt-4 text-center text-sm text-gray-500 pb-2 dark:text-zinc-100">
-            Ainda não possui cadastro? {'  '}
-            <Link to="/registro" className="font-medium text-txtTitulo hover:underline dark:text-purple-500">
-              Cadastre-se
-            </Link>
-          </p>
         </div>
 
       </ContainerMain>

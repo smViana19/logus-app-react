@@ -71,7 +71,7 @@ export default function LandingPage() {
                 )}
               </div>
 
-              <button
+              {/* <button
                 data-collapse-toggle="mobile-menu-2"
                 type="button"
                 className="inline-flex items-center p-2 ml-1 text-sm text-zinc-500 rounded-lg lg:hidden hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:focus:ring-zinc-600"
@@ -103,7 +103,7 @@ export default function LandingPage() {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-              </button>
+              </button> */}
             </div>
             <div
               className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
@@ -167,12 +167,12 @@ export default function LandingPage() {
               aprendizado.
             </p>
 
-            <span
+            {/* <span
               href="https://www.figma.com/community/file/1125744163617429490"
               className="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-lg sm:w-auto focus:outline-none hover:bg-zinc-100 hover:text-purplePrimary cursor-pointer focus:z-10 focus:ring-4 focus:ring-zinc-200 dark:focus:ring-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-600 dark:hover:text-white dark:hover:bg-zinc-700"
             >
               Primeiro Acesso
-            </span>
+            </span> */}
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img src={imageLanding} alt="hero image" />

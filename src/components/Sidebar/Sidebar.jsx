@@ -1,151 +1,102 @@
+import { useState } from "react";
+import { IoMdLock } from 'react-icons/io';
 import {
   LuBox,
-  LuFilePlus,
-  LuClock,
   LuCalendar,
+  LuClock,
+  LuFilePlus,
   LuUserCircle,
 } from 'react-icons/lu';
-import { IoSettingsOutline } from 'react-icons/io5';
-import { IoMdLock } from 'react-icons/io';
+import { Link } from "react-router-dom";
 
-import { FaLock } from 'react-icons/fa';
-import { IoBookOutline } from 'react-icons/io5';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { IoBookOutline, IoLogOutOutline, IoMenuOutline } from 'react-icons/io5';
 
-const Sidebar = ({ role }) => {
-  const [activeLink, setActiveLink] = useState(0);
-  const handleLinkClick = (index) => {
-    setActiveLink(index);
-  };
+
+const Sidebar = ({ role, user, handleLogout }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const COMMON_LINKS = [
-    { id: 1, path: '/dashboard', name: 'Dashboard', icon: LuBox },
-    { id: 2, path: '/dashboard/postagens', name: 'Postagens', icon: LuFilePlus },
+    { id: "common-1", path: "/dashboard", name: "Dashboard", icon: LuBox },
+    { id: "common-2", path: "/dashboard/postagens", name: "Postagens", icon: LuFilePlus },
   ];
 
-  // Links exclusivos para diretores
   const DIRETOR_SIDEBAR_LINKS = [
-    { id: 1, path: '/admin/dashboard', name: 'Gestão Escolar', icon: IoMdLock },
+    { id: "diretor-1", path: "/admin/dashboard", name: "Gestão Escolar", icon: IoMdLock },
   ];
 
-  // Links exclusivos para professores
   const PROFESSOR_SIDEBAR_LINKS = [
-    { id: 1, path: '/admin/notas', name: 'Notas', icon: LuFilePlus },
-    { id: 2, path: '/admin/notas/grade', name: 'Grade', icon: LuCalendar },
+    { id: "professor-1", path: "/admin/notas", name: "Notas", icon: LuFilePlus },
+    { id: "professor-2", path: "/admin/notas/grade", name: "Grade", icon: LuCalendar },
   ];
 
-  // Links disponíveis para estudantes
   const STUDENT_SIDEBAR_LINKS = [
-    { id: 1, path: '/dashboard/perfil', name: 'Perfil', icon: LuUserCircle },
-    { id: 2, path: '/dashboard/pomodoro', name: 'Pomodoro', icon: LuClock },
+    { id: "student-1", path: "/dashboard/perfil", name: "Perfil", icon: LuUserCircle },
+    { id: "student-2", path: "/dashboard/pomodoro", name: "Pomodoro", icon: LuClock },
+    { id: "student-3", path: "/dashboard/agenda", name: "Agenda", icon: IoBookOutline },
   ];
+
+  const LINKS_BY_ROLE = {
+    diretor: DIRETOR_SIDEBAR_LINKS,
+    professor: PROFESSOR_SIDEBAR_LINKS.concat(STUDENT_SIDEBAR_LINKS),
+    estudante: STUDENT_SIDEBAR_LINKS,
+  };
+
+  const roleLinks = LINKS_BY_ROLE[role] || [];
 
   return (
-    <div className="fixed flex flex-col top-14 left-0 w-10 sm:w-14 hover:w-64 lg:w-64 bg-white dark:bg-zinc-900 h-full transition-all duration-300 border-none z-10 sidebar overflow-hidden dark:text-zinc-300">
-      <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
-        <ul className="flex flex-col py-4 space-y-1">
-          <li className="px-5 hidden lg:block">
-            <div className="flex flex-row items-center mt-5 mb-4 h-8">
-              <div className="text-sm font-light tracking-wide text-zinc-400 uppercase">
-                Páginas
-              </div>
-            </div>
-          </li>
+    <>
+      {/* Botão para abrir a Sidebar no Mobile */}
+      <button
+        className="lg:hidden fixed top-4 left-4 z-50 bg-purplePrimary text-white p-2 rounded-full shadow-md"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <IoMenuOutline size={24} />
+      </button>
 
-          {/* Links comuns a todos */}
-          {COMMON_LINKS.map((link, index) => (
-            <li
-              key={index}
-              className={`font-medium hover:text-white ${activeLink === index ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
+      <aside
+        className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-zinc-900 shadow-lg z-40 transform ${isOpen ? "translate-x-0" : "-translate-x-full"}
+      lg:translate-x-0 transition-transform duration-300 ease-in-out`}
+      >
+        <div className="flex flex-col sm:flex-row justify-between items-center p-4 border-b dark:border-zinc-700">
+          <div className="text-center sm:text-left">
+            <span className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 capitalize">
+              {user}
+            </span>
+            <span className="text-xs text-zinc-500 dark:text-zinc-400">{role}</span>
+          </div>
+        </div>
+
+        <nav className="flex-grow p-4 space-y-2">
+          {COMMON_LINKS.concat(roleLinks).map(({ id, path, name, icon: Icon }) => (
+            <Link
+              key={id}
+              to={path}
+              className="flex items-center space-x-2 p-2 rounded-md text-zinc-600 dark:text-zinc-400 hover:bg-purple-100 dark:hover:bg-zinc-800 hover:text-purplePrimary dark:hover:text-purple-400 transition"
             >
-              <Link
-                to={link.path}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
-                onClick={() => handleLinkClick(index)}
-              >
-                <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
-                  {link.icon()}
-                </span>
-                <span className="ml-2 text-sm tracking-wide truncate ">
-                  {link.name}
-                </span>
-              </Link>
-            </li>
+              <Icon size={20} />
+              <span>{name}</span>
+            </Link>
           ))}
+        </nav>
 
-          {/* Links exclusivos para diretores */}
-          {role === 'diretor' &&
-            DIRETOR_SIDEBAR_LINKS.map((link, index) => (
-              <li
-                key={index + COMMON_LINKS.length} // Diferenciar os índices dos links
-                className={`font-medium hover:text-white ${activeLink === index + COMMON_LINKS.length ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
-              >
-                <Link
-                  to={link.path}
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
-                  onClick={() => handleLinkClick(index + COMMON_LINKS.length)}
-                >
-                  <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
-                    {link.icon()}
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate ">
-                    {link.name}
-                  </span>
-                </Link>
-              </li>
-            ))}
+        <div className="p-4 border-t dark:border-zinc-700">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center space-x-2 p-2 rounded-md text-zinc-600 dark:text-zinc-400 hover:bg-red-100 dark:hover:bg-zinc-800 hover:text-red-500 dark:hover:text-red-400 transition"
+          >
+            <IoLogOutOutline size={20} />
+            <span>Sair</span>
+          </button>
+        </div>
+      </aside>
 
-          {/* Links exclusivos para professores */}
-          {role === 'professor' &&
-            PROFESSOR_SIDEBAR_LINKS.map((link, index) => (
-              <li
-                key={index + COMMON_LINKS.length}
-                className={`font-medium hover:text-white ${activeLink === index + COMMON_LINKS.length ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
-              >
-                <Link
-                  to={link.path}
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
-                  onClick={() => handleLinkClick(index + COMMON_LINKS.length)}
-                >
-                  <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
-                    {link.icon()}
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate ">
-                    {link.name}
-                  </span>
-                </Link>
-              </li>
-            ))}
-
-          {/* Links para estudantes */}
-          {(role === 'estudante' || role === 'professor') &&
-            STUDENT_SIDEBAR_LINKS.map((link, index) => (
-              <li
-                key={index + COMMON_LINKS.length}
-                className={`font-medium hover:text-white ${activeLink === index + COMMON_LINKS.length ? 'bg-purplePrimary dark:bg-purpleDark dark:text-white text-white' : ''}`}
-              >
-                <Link
-                  to={link.path}
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-purple-500 dark:hover:bg-purple-900 dark:hover:bg-opacity-50 border-l-4 border-transparent hover:border-purpleDark dark:hover:border-zinc-800 pr-6 transition duration-300 ease-in-out"
-                  onClick={() => handleLinkClick(index + COMMON_LINKS.length)}
-                >
-                  <span className="inline-flex justify-center items-center ml-2 sm:ml-4">
-                    {link.icon()}
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate ">
-                    {link.name}
-                  </span>
-                </Link>
-              </li>
-            ))}
-
-        </ul>
-
-        <p className="mb-14 px-5 py-3 hidden lg:block text-center text-xs">
-          Copyright@ Logus 2024
-        </p>
-      </div>
-    </div>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          onClick={() => setIsOpen(false)}
+        ></div>
+      )}
+    </>
   );
 };
 

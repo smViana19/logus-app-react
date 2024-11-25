@@ -84,7 +84,7 @@ export default function Registro() {
       <div className="flex mx-auto max-w-4xl flex-1 flex-col justify-center py-12 lg:px-16 ">
         <div className="sm:mx-auto ">
           <Logo className="w-40 mx-auto" />
-          <h2 className="mt-8 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-8 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-300">
             Registre o novo usuário
           </h2>
         </div>
@@ -99,6 +99,7 @@ export default function Registro() {
               value={nome}
               onChange={e => setNome(e.target.value)}
               placeholder="Digite o nome"
+
             />
           </div>
 

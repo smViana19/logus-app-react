@@ -172,7 +172,7 @@ export default function PostsArea() {
                     />
                   </Link>
                   {(role == "diretor") && (
-                    <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-50">
+                    <div className="absolute top-2 right-2 p-2 rounded-full focus:outline-none z-20">
                       <button
                         onClick={() => setMenuVisible(menuVisible === index ? null : index)}
                         className="px-3 py-2 rounded-full bg-zinc-100 dark:bg-zinc-800"

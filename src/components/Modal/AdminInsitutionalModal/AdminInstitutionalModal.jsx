@@ -28,7 +28,7 @@ const AdminInstitutionalModal = (toggleModal) => {
                                 type="text"
                                 name="name"
                                 id="name"
-                                className="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                className="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  "
                                 placeholder="Digite o nome do produto"
                                 required
                             />

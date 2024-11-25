@@ -118,81 +118,82 @@ const SendTaskSubject = () => {
   };
 
   return (
-    <div className="sm:p-5 min-h-screen sm:ml-20 lg:ml-64 mt-8 md:mt-16 md:ml-64 lg:mt-8 transition-all duration-300 flex justify-between max-sm:mt-20 sm:justify-around flex-col">
-      <div className="grid sm:grid-cols-[50px_1fr] items-start gap-8 mx-20 sm:mx-16">
-        <div className="bg-zinc-200 rounded-full sm:flex hidden p-2 justify-center items-center">
-          {/* SVG Icon */}
-        </div>
-        <div>
-          <div className="flex justify-between">
-            <h1 className="first-letter:uppercase text-xl font-medium mb-2 dark:text-zinc-100">
+    <div className="flex justify-center p-5 ml-16 items-center min-h-screen bg-gray-100 dark:bg-zinc-800">
+      <div className="max-w-4xl w-full bg-white dark:bg-zinc-700 shadow-lg rounded-lg p-6 space-y-6">
+        {/* Cabeçalho do Card */}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-semibold text-gray-800 dark:text-white capitalize">
               {nomeAtiv}
             </h1>
-            <span className="rounded-md sm:px-4 px-2 md:h-8 flex items-center font-medium sm:text-sm text-xs text-purplePrimary bg-[#EDDDFF] dark:bg-purple-700 dark:text-purple-200">
+            <span className="px-4 py-1 text-sm font-medium text-purplePrimary bg-purple-100 rounded-full dark:bg-purple-700 dark:text-purple-200">
               {data.categoria}
             </span>
           </div>
-          <p className="text-sm font-medium text-zinc-600 mb-4 dark:text-zinc-500">
-            {data.pontos} pontos
-          </p>
-          <span className="text-zinc-600 dark:text-zinc-300">Entrega: {dataEntregaFormatada}</span>
-          <p className="mt-8">{data.descricao}</p>
-          <p className="mt-2 text-sm text-gray-500">Atividades entregues: {activitiesSubmitted}</p>
-        </div>
-      </div>
-
-      <form
-        className="bg-white p-8 max-sm:ml-14 rounded border border-zinc-100 dark:bg-zinc-700 dark:text-zinc-100"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="mb-4 font-medium">Enviar Atividade</h1>
-        <div>
-          <input
-            ref={fileInputRef}
-            type="file"
-            onChange={handleFileChange}
-            multiple
-            className="hidden"
-          />
-
-          <button
-            type="button"
-            onClick={handleClickFileInput}
-            className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
-          >
-            Selecionar Arquivos
-          </button>
+          <div className="text-sm text-gray-600 dark:text-gray-300">
+            <p className="mb-1">Entrega até: <strong>{dataEntregaFormatada}</strong></p>
+            <p className="mb-1">{data.pontos} pontos</p>
+            <p>{data.descricao}</p>
+          </div>
         </div>
 
-        <div className="mt-4">
-          {data.files.length > 0 && (
-            <div className="space-y-2">
-              {data.files.map((file, index) => (
-                <div key={index} className="flex items-center justify-between bg-gray-100 p-2 rounded">
-                  <span>{file.name}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveFile(file.name)}
-                    className="text-red-500"
+        {/* Atividades Enviadas */}
+        <div className="text-gray-600 dark:text-gray-400 text-sm">
+          <p>Atividades enviadas: <strong>{activitiesSubmitted}</strong></p>
+        </div>
+
+        {/* Formulário para envio */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <h2 className="text-lg font-medium text-gray-700 dark:text-white">
+            Enviar Atividade
+          </h2>
+          <div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              onChange={handleFileChange}
+              multiple
+              className="hidden"
+            />
+            <button
+              type="button"
+              onClick={handleClickFileInput}
+              className="inline-block px-6 py-2 bg-purplePrimary text-white font-medium rounded-lg shadow-md hover:bg-purple-700 transition-all"
+            >
+              Selecionar Arquivos
+            </button>
+          </div>
+          <div>
+            {data.files.length > 0 && (
+              <div className="space-y-2">
+                {data.files.map((file, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between p-2 bg-gray-100 dark:bg-gray-700 rounded-lg"
                   >
-                    X
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-
-
-        <button
-          type="submit"
-          className="sm:mt-8 mt-4 sm:px-32 px-8 max-sm:w-full sm:py-2 py-1 bg-purplePrimary text-white rounded"
-        >
-          Enviar
-        </button>
-      </form>
+                    <span className="text-sm text-gray-800 dark:text-gray-200">{file.name}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveFile(file.name)}
+                      className="text-red-500 hover:text-red-600"
+                    >
+                      Remover
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="w-full px-6 py-2 bg-purplePrimary text-white font-semibold rounded-lg hover:bg-purple-700 transition-all"
+          >
+            Enviar Atividade
+          </button>
+        </form>
+      </div>
     </div>
+
   );
 };
 
